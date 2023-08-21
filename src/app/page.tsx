@@ -4,9 +4,10 @@ import Banner from "@/components/Carousel";
 import EmploymentBanner from "@/components/EmploymentBanner";
 import Suggestion from "@/components/Suggestion";
 import Header from "@/components/common/Header";
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 export default function Home() {
+
   return (
     <>
       <Header />

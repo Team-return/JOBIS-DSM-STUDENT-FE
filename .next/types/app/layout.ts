@@ -1,4 +1,4 @@
-// File: C:\Users\DSM2022\Desktop\Folder\Project\JOBIS-DSM-STUDENT-FE\src\app\layout.tsx
+// File: /Users/DSM20221/Desktop/JOBIS-DSM-STUDENT-FE/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
