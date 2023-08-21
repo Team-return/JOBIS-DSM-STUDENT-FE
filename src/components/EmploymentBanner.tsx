@@ -1,8 +1,8 @@
 import { Icon, theme } from "@team-return/design-system";
 import Image from "next/image";
 import { styled } from "styled-components";
-import BannerBackground from "../../public/BannerBackground.png";
-import Guy from "../../public/Guy.png";
+import BannerBackground from "@public/BannerBackground.png";
+import Guy from "@public/Guy.png";
 
 export default function EmploymentBanner() {
   return (

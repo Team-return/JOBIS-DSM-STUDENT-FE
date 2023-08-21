@@ -2,8 +2,8 @@ import { theme } from "@team-return/design-system";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { RecruitmentsInfo } from "@/util/Type/RecruitmentsType";
-import BookMarkFull from "../../public/BookMarkFull.svg";
-import BookMarkUnFull from "../../public/BookMarkUnFull.svg";
+import BookMarkFull from "@public/BookMarkFull.svg";
+import BookMarkUnFull from "@public/BookMarkUnFull.svg";
 
 interface PropsType {
   recruitments_list: RecruitmentsInfo[];

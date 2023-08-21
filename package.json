@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@team-return/design-system": "^1.0.85",
+    "@team-return/design-system": "^1.0.89",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
@@ -28,6 +28,7 @@
   "packageManager": "yarn@3.6.0",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
+    "@types/styled-components": "^5.1.26",
     "@types/testing-library__jest-dom": "^5"
   }
 }

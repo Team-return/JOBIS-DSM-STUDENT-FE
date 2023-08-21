@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 import Image from "next/image";
 import { theme, Icon } from "@team-return/design-system";
 import CardList from "./CardList";
-import Building from "../../public/Building.svg";
-import Pushpin from "../../public/Pushpin.svg";
-import Smile from "../../public/Smile.svg";
+import Building from "@public/Building.svg";
+import Pushpin from "@public/Pushpin.svg";
+import Smile from "@public/Smile.svg";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";

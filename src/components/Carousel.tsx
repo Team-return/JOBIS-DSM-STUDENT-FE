@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
 
 //=======================================================================================================
-import TeatBannerImg from "../../public/test-banner-1.png";
+import TeatBannerImg from "@public/test-banner-1.png";
 const test = [
   {
     img: TeatBannerImg,
