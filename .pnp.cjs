@@ -896,8 +896,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:3.0.0", {\
           "packageLocation": "./.yarn/cache/bundle-name-npm-3.0.0-d7e52ba2a3-edf2b1fbe6.zip/node_modules/bundle-name/",\
           "packageDependencies": [\
-            ["bundle-name", "npm:3.0.0"],\
-            ["run-applescript", "npm:5.0.0"]\
+            ["browserslist", "npm:4.21.10"],\
+            ["caniuse-lite", "npm:1.0.30001522"],\
+            ["electron-to-chromium", "npm:1.4.496"],\
+            ["node-releases", "npm:2.0.13"],\
+            ["update-browserslist-db", "virtual:e2170a875bba2f8fa9e93e47c65f2f250097e101a59d95ea6fd852f32965e8cd6cef3b5662aa7295279d5bc60c9a612ddb8515c7dd1b7e8fb9984dee1823e7d6#npm:1.0.11"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -967,6 +970,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chalk", "npm:4.1.2"],\
             ["ansi-styles", "npm:4.3.0"],\
             ["supports-color", "npm:7.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["chokidar", [\
+        ["npm:3.5.3", {\
+          "packageLocation": "./.yarn/cache/chokidar-npm-3.5.3-c5f9b0a56a-b49fcde401.zip/node_modules/chokidar/",\
+          "packageDependencies": [\
+            ["chokidar", "npm:3.5.3"],\
+            ["anymatch", "npm:3.1.3"],\
+            ["braces", "npm:3.0.2"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"],\
+            ["glob-parent", "npm:5.1.2"],\
+            ["is-binary-path", "npm:2.1.0"],\
+            ["is-glob", "npm:4.0.3"],\
+            ["normalize-path", "npm:3.0.0"],\
+            ["readdirp", "npm:3.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["chownr", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/chownr-npm-2.0.0-638f1c9c61-c57cf9dd07.zip/node_modules/chownr/",\
+          "packageDependencies": [\
+            ["chownr", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1219,6 +1248,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/dom-accessibility-api-npm-0.5.16-d3e2310666-005eb283ca.zip/node_modules/dom-accessibility-api/",\
           "packageDependencies": [\
             ["dom-accessibility-api", "npm:0.5.16"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["eastasianwidth", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/eastasianwidth-npm-0.2.0-c37eb16bd1-7d00d7cd8e.zip/node_modules/eastasianwidth/",\
+          "packageDependencies": [\
+            ["eastasianwidth", "npm:0.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["electron-to-chromium", [\
+        ["npm:1.4.496", {\
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.4.496-90aae7ba69-b90cc4cc71.zip/node_modules/electron-to-chromium/",\
+          "packageDependencies": [\
+            ["electron-to-chromium", "npm:1.4.496"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1914,6 +1961,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/fs.realpath-npm-1.0.0-c8f05d8126-99ddea01a7.zip/node_modules/fs.realpath/",\
           "packageDependencies": [\
             ["fs.realpath", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["fsevents", [\
+        ["patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1", {\
+          "packageLocation": "./.yarn/unplugged/fsevents-patch-2882183fbf/node_modules/fsevents/",\
+          "packageDependencies": [\
+            ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"],\
+            ["node-gyp", "npm:9.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
