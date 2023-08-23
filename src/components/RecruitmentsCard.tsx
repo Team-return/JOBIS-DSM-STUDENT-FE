@@ -1,9 +1,8 @@
-import { theme } from "@team-return/design-system";
+import { theme, Icon } from "@team-return/design-system";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { RecruitmentsInfo } from "@/util/Type/RecruitmentsType";
-import BookMarkFull from "@public/BookMarkFull.svg";
-import BookMarkUnFull from "@public/BookMarkUnFull.svg";
+import React from "react";
 
 interface PropsType {
   recruitments_list: RecruitmentsInfo[];
@@ -28,13 +27,13 @@ export default function RecruitmentsCard({ recruitments_list }: PropsType) {
             <CompanyName>{company_name}</CompanyName>
             <TrainPay>실습수당 {train_pay}원</TrainPay>
             <BookMark
-              onClick={(event) => {
+              onClick={(event: React.MouseEvent<HTMLElement>) => {
                 event.stopPropagation();
               }}
             >
-              <Image
-                src={bookmarked ? BookMarkFull : BookMarkUnFull}
-                alt="북마크"
+              <Icon
+                icon={`Bookmark${bookmarked ? "On" : "Off"}`}
+                color={bookmarked ? "skyblue" : "gray60"}
               />
             </BookMark>
           </Container>

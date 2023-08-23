@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { styled } from "styled-components";
 import { theme } from "@team-return/design-system";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
 
 //=======================================================================================================
@@ -66,7 +66,7 @@ export default function Banner() {
           <CurrentBanner
             index={index}
             end={test.length - 1}
-            ref={(el) => (BannerRefs.current[index] = el)}
+            ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
               // 링크 이동
             }}
