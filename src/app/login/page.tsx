@@ -1,27 +1,84 @@
 "use client";
 
-import { styled } from "styled-components";
-import Logo from "@public/Logo.svg";
+import { css, styled } from "styled-components";
+import { theme, Input, CheckBox } from "@team-return/design-system";
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
-import { theme } from "@team-return/design-system";
-import TextFiled from "@/components/common/TextFiled";
+import Link from "next/link";
+import Backgroundg from "@public/LoginBackground.svg";
 
 export default function Login() {
+  const [isHidden, setIsHidden] = useState<boolean>(true);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [inputStates, setInputStates] = useState<{ [index: string]: string }>({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputStates((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <Warpper>
       <Container>
         <div>
           <Header>
-            <Image height={18} src={Logo} alt="logo" />
             <p>로그인</p>
           </Header>
           <main>
             <Inputs>
-              <TextFiled />
+              <Input
+                value={inputStates.email}
+                onChange={handleChange}
+                width={100}
+                name="email"
+                kind="LineInput"
+                label="이메일"
+                placeHolder="이메일을 입력해주세요"
+              />
+              <Input
+                value={inputStates.password}
+                onChange={handleChange}
+                width={100}
+                name="password"
+                kind="LineInput"
+                label="비밀번호"
+                placeHolder="비밀번호를 입력해주세요"
+                iconClick={() => {
+                  setIsHidden((prev) => !prev);
+                }}
+                iconName={isHidden ? "EyesClose" : "EyesOpen"}
+                type={isHidden ? "password" : "text"}
+              />
             </Inputs>
+            <Submit
+              light={inputStates.email !== "" && inputStates.password !== ""}
+            >
+              <div className="saveId">
+                <CheckBox
+                  children="로그인 정보 저장"
+                  checked={isChecked}
+                  onClick={() => {
+                    setIsChecked((prev) => !prev);
+                  }}
+                />
+              </div>
+              <button onClick={() => {}}>로그인</button>
+              <Link className="signup" href="/signup">
+                회원가입
+              </Link>
+            </Submit>
           </main>
         </div>
       </Container>
+      <BackgroundImg src={Backgroundg} alt="" />
     </Warpper>
   );
 }
@@ -35,16 +92,18 @@ const Warpper = styled.div`
   main {
     width: 100%;
     flex: 1;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
 const Container = styled.div`
   min-width: 400px;
-  width: 50%;
+  width: 45%;
   height: 650px;
   display: flex;
   justify-content: center;
+  background-color: white;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   > div {
@@ -62,12 +121,60 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
+  display: block;
   p {
     ${theme.font.Heading1}
-    font-weight: 500;
     line-height: 45px;
-    color: ${theme.color.gray80};
+    color: ${theme.color.skyblue};
   }
 `;
 
-const Inputs = styled.div``;
+const Inputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 0;
+`;
+
+const Submit = styled.div<{ light: boolean }>`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+  color: ${theme.color.gray60};
+  .saveId {
+    width: 100%;
+  }
+  .signup {
+    margin-top: 10px;
+    color: ${theme.color.gray60};
+  }
+  > button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: ${theme.color.gray40};
+    cursor: default;
+    color: ${theme.color.gray10};
+    ${(props) =>
+      props.light &&
+      css`
+        background-color: ${theme.color.liteBlue};
+        cursor: pointer;
+      `}
+    ${theme.font.Body1}
+  }
+`;
+
+const BackgroundImg = styled(Image)`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 102vw;
+  object-fit: cover;
+  z-index: -1;
+  margin-left: -10px;
+`;
