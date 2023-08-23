@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "cssImports": {
     "/Users/DSM20221/Desktop/JOBIS-DSM-STUDENT-FE/src/app/layout.tsx": [
       "/Users/DSM20221/Desktop/JOBIS-DSM-STUDENT-FE/src/app/globals.css",
@@ -21,4 +22,8 @@
 >>>>>>> Stashed changes
     ]
   }
+=======
+  "cssImports": {},
+  "cssModules": {}
+>>>>>>> #1)_main_page_publishing
 }

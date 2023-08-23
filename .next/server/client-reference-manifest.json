@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "ssrModuleMapping": {
     "(app-client)/./.yarn/__virtual__/next-virtual-2e229ead3f/0/cache/next-npm-13.4.5-1c09aca815-428bf846dc.zip/node_modules/next/dist/client/components/app-router.js": {
       "*": {
@@ -1139,4 +1140,9 @@
       ]
     }
   }
+=======
+  "ssrModuleMapping": {},
+  "edgeSSRModuleMapping": {},
+  "clientModules": {}
+>>>>>>> #1)_main_page_publishing
 }
