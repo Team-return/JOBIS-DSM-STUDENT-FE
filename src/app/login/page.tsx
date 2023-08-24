@@ -9,7 +9,7 @@ import Backgroundg from "@public/LoginBackground.svg";
 
 export default function Login() {
   const [isHidden, setIsHidden] = useState<boolean>(true);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  //const [isChecked, setIsChecked] = useState<boolean>(false);
   const [inputStates, setInputStates] = useState<{ [index: string]: string }>({
     email: "",
     password: "",
@@ -33,7 +33,7 @@ export default function Login() {
             <p>로그인</p>
           </Header>
           <main>
-            <Inputs>
+            <Inputs autoComplete="off">
               <Input
                 value={inputStates.email}
                 onChange={handleChange}
@@ -61,15 +61,15 @@ export default function Login() {
             <Submit
               light={inputStates.email !== "" && inputStates.password !== ""}
             >
-              <div className="saveId">
-                <CheckBox
-                  children="로그인 정보 저장"
-                  checked={isChecked}
-                  onClick={() => {
-                    setIsChecked((prev) => !prev);
-                  }}
-                />
-              </div>
+                {/* <div className="saveId">
+                  <CheckBox
+                    children="로그인 정보 저장"
+                    checked={isChecked}
+                    onClick={() => {
+                      setIsChecked((prev) => !prev);
+                    }}
+                  />
+                </div> */}
               <button onClick={() => {}}>로그인</button>
               <Link className="signup" href="/signup">
                 회원가입
@@ -129,7 +129,7 @@ const Header = styled.div`
   }
 `;
 
-const Inputs = styled.div`
+const Inputs = styled.form`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -141,7 +141,7 @@ const Submit = styled.div<{ light: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 50px;
   gap: 15px;
   color: ${theme.color.gray60};
   .saveId {
