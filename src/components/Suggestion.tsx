@@ -5,6 +5,7 @@ import CardList from "./CardList";
 import Building from "@public/Building.svg";
 import Pushpin from "@public/Pushpin.svg";
 import Smile from "@public/Smile.svg";
+import IconTitle from "./IconTitle";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";
@@ -28,10 +29,9 @@ const fix_data = {
 export default function Suggestion({ listType }: PropsType) {
   return (
     <Warpper>
-      <Title>
-        <Image src={fix_data[listType].emoji} alt="제목 아이콘" />
-        <p>{fix_data[listType].title}</p>
-      </Title>
+      <IconTitle icon={fix_data[listType].emoji}>
+        {fix_data[listType].title}
+      </IconTitle>
       <ShowAllBtn>
         전체보기
         <Icon icon="Chevron" direction="right" color="gray60" />

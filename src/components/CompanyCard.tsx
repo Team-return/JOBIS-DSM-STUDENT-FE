@@ -1,4 +1,4 @@
-import { theme } from "@team-return/design-system";
+import { Icon, theme } from "@team-return/design-system";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import { CompanyInfo } from "@/util/Type/CompanyInfoType";
@@ -18,6 +18,9 @@ export default function CompanyCard({ company_list }: PropsType) {
             </Img>
             <Name>{company_name}</Name>
             <Sales>연매출 {take}억원</Sales>
+            <IsDoc>
+              <Icon icon="Document" color="gray60" />
+            </IsDoc>
           </Container>
         )
       )}
@@ -36,6 +39,7 @@ const WarpperGrid = styled.div`
 const Container = styled.div`
   width: 100%;
   cursor: pointer;
+  position: relative;
 `;
 
 const Img = styled.div`
@@ -63,4 +67,17 @@ const Sales = styled.p`
   ${theme.font.Body4}
   color: ${theme.color.gray60};
   margin-top: 8px;
+`;
+
+const IsDoc = styled.div`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
 `;

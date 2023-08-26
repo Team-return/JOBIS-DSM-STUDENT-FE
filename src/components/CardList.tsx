@@ -4,6 +4,9 @@ import RecruitmentsCard from "./RecruitmentsCard";
 
 //================================================================================
 
+// api 연동 후 아래 더미값 지울 것
+// switch case에서 각각의 get api호출
+
 let company_the_me = [
   {
     company_profile_url: "https://i.stack.imgur.com/l60Hf.png",
