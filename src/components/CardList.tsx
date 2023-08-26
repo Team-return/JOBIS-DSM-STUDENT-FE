@@ -6,6 +6,8 @@ import RecruitmentsCard from "./RecruitmentsCard";
 
 // api 연동 후 아래 더미값 지울 것
 // switch case에서 각각의 get api호출
+// 필터 적용할 수 있도록 props로 받아오기
+// 필터 적용 코드 작성하기
 
 let company_the_me = [
   {
