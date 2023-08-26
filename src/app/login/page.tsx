@@ -6,12 +6,14 @@ import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Backgroundg from "@public/LoginBackground.svg";
+import { Login } from "@/apis/user";
+import { RequestBody } from "@/apis/user/type";
 
-export default function Login() {
+export default function LoginPage() {
   const [isHidden, setIsHidden] = useState<boolean>(true);
-  //const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [inputStates, setInputStates] = useState<{ [index: string]: string }>({
-    email: "",
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [inputStates, setInputStates] = useState<RequestBody>({
+    account_id: "",
     password: "",
   });
 
@@ -35,10 +37,10 @@ export default function Login() {
           <main>
             <Inputs autoComplete="off">
               <Input
-                value={inputStates.email}
+                value={inputStates.account_id}
                 onChange={handleChange}
                 width={100}
-                name="email"
+                name="account_id"
                 kind="LineInput"
                 label="이메일"
                 placeHolder="이메일을 입력해주세요"
@@ -59,18 +61,27 @@ export default function Login() {
               />
             </Inputs>
             <Submit
-              light={inputStates.email !== "" && inputStates.password !== ""}
+              light={
+                inputStates.account_id !== "" && inputStates.password !== ""
+              }
             >
-                {/* <div className="saveId">
-                  <CheckBox
-                    children="로그인 정보 저장"
-                    checked={isChecked}
-                    onClick={() => {
-                      setIsChecked((prev) => !prev);
-                    }}
-                  />
-                </div> */}
-              <button onClick={() => {}}>로그인</button>
+              <div className="saveId">
+                <CheckBox
+                  children="아이디 저장"
+                  checked={isChecked}
+                  onClick={() => {
+                    setIsChecked((prev) => !prev);
+                  }}
+                />
+              </div>
+              <button
+                disabled={
+                  inputStates.account_id == "" || inputStates.password == ""
+                }
+                onClick={() => Login(inputStates, isChecked)}
+              >
+                로그인
+              </button>
               <Link className="signup" href="/signup">
                 회원가입
               </Link>

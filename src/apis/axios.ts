@@ -39,22 +39,36 @@ instance.interceptors.response.use(
         const originalRequest = config;
 
         if (refreshToken) {
-          ReissueToken(refreshToken).then((res) => {
-            const accessExpred = new Date(res.access_expires_at);
-            const refreshExpred = new Date(res.refresh_expires_at);
+          ReissueToken(refreshToken)
+            .then((res) => {
+              const accessExpred = new Date(res.access_expires_at);
+              const refreshExpred = new Date(res.refresh_expires_at);
 
-            cookies.set("access_token", res.access_token, {
-              expires: accessExpred,
-              path: "/",
+              cookies.set("access_token", res.access_token, {
+                expires: accessExpred,
+                path: "/",
+              });
+              cookies.set("refresh_token", res.refresh_token, {
+                expires: refreshExpred,
+                path: "/",
+              });
+              if (originalRequest!.headers)
+                originalRequest!.headers[
+                  "Authorization"
+                ] = `Bearer ${res.access_token}`;
+              return axios(originalRequest!);
+            })
+            .catch(() => {
+              cookies.remove("access_token");
+              cookies.remove("refresh_token");
+              window.location.href = "/login";
             });
-            cookies.set("refresh_token", res.refresh_token, {
-              expires: refreshExpred,
-              path: "/",
-            });
-            if(originalRequest!.headers) originalRequest!.headers["Authorization"] = `Bearer ${res.access_token}`
-          });
+        } else {
+          cookies.remove("access_token");
+          cookies.remove("refresh_token");
+          window.location.href = "/login";
         }
-      }
+      } else return Promise.reject(error);
     }
   }
 );
