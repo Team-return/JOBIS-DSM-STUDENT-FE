@@ -3,8 +3,7 @@
 import "./globals.css";
 import { Noto_Sans_KR } from "next/font/google";
 import { CookiesProvider } from "react-cookie";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const notoSans = Noto_Sans_KR({
   weight: ["400", "500", "700"],
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="ko">
       <body className={notoSans.className}>
         <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={true} />
           <CookiesProvider>{children}</CookiesProvider>
         </QueryClientProvider>
       </body>

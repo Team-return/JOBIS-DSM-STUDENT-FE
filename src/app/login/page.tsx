@@ -27,6 +27,10 @@ export default function LoginPage() {
     });
   };
 
+  const submit = () => {
+    Login(inputStates, isChecked);
+  };
+
   return (
     <Warpper>
       <Container>
@@ -78,7 +82,7 @@ export default function LoginPage() {
                 disabled={
                   inputStates.account_id == "" || inputStates.password == ""
                 }
-                onClick={() => Login(inputStates, isChecked)}
+                onClick={submit}
               >
                 로그인
               </button>
