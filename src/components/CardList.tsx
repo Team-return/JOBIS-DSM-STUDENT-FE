@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./RecruitmentsCard";
 
@@ -55,7 +55,6 @@ let recruitments_the_me = [
     job_code_list: "서버 개발자, IOS",
     bookmarked: false,
   },
-  
 ];
 
 //================================================================================

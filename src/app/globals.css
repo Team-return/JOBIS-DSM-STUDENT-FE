@@ -12,10 +12,10 @@ html {
 body {
   width: 65vw;
   margin: auto;
+  padding-top: 56px;
 }
 
 a {
   color: black;
   text-decoration: none;
 }
-
