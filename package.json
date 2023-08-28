@@ -11,6 +11,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@types/node": "^20.5.7",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@types/testing-library__jest-dom": "^6.0.0",
     "add": "^2.0.6",
     "axios": "^1.4.0",
     "eslint": "8.42.0",
@@ -26,10 +30,6 @@
   "devDependencies": {
     "@team-return/design-system": "^1.0.89",
     "@testing-library/jest-dom": "^5.16.5",
-    "@types/node": "^20.5.1",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
-    "@types/testing-library__jest-dom": "^5",
     "@yarnpkg/sdks": "^3.0.0-rc.49",
     "typescript": "4.7.2"
   }
