@@ -1,21 +1,17 @@
 import styled from "@emotion/styled";
 import { Icon, theme } from "@team-return/design-system";
-import { ChangeEvent } from "react";
 
-interface PropsType {
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  type?: "Text" | "Search";
-  name: string;
+interface PropsType extends React.ComponentProps<'input'> {
+  customType?: "Text" | "Search";
   onIconClick?: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function TextFiled({
   value,
   placeholder,
   onChange,
-  type = "Text",
+  customType = "Text",
   name,
   onIconClick,
 }: PropsType) {
@@ -28,9 +24,9 @@ export default function TextFiled({
         placeholder={placeholder}
         name={name}
       />
-      {type !== "Text" && (
+      {customType !== "Text" && (
         <div onClick={onIconClick}>
-          <Icon icon={type} size={16} />
+          <Icon icon={customType} size={16} />
         </div>
       )}
     </Container>

@@ -25,7 +25,7 @@ export default function CompanyListPage() {
             value={state}
             onChange={onChange}
             name='search'
-            type="Search"
+            customType="Search"
           />
         </SubHeader>
         <hr />
