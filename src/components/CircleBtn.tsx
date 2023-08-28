@@ -1,5 +1,5 @@
 import { Icon, theme } from "@team-return/design-system";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 
 interface PropsType {
   direction: "right" | "left";

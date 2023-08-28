@@ -1,6 +1,6 @@
 import { theme, Icon } from "@team-return/design-system";
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import { RecruitmentsInfo } from "@/util/Type/RecruitmentsType";
 import React from "react";
 

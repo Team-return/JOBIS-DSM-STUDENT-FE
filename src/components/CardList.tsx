@@ -1,8 +1,13 @@
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./RecruitmentsCard";
 
 //================================================================================
+
+// api 연동 후 아래 더미값 지울 것
+// switch case에서 각각의 get api호출
+// 필터 적용할 수 있도록 props로 받아오기
+// 필터 적용 코드 작성하기
 
 let company_the_me = [
   {
@@ -55,7 +60,6 @@ let recruitments_the_me = [
     job_code_list: "서버 개발자, IOS",
     bookmarked: false,
   },
-  
 ];
 
 //================================================================================

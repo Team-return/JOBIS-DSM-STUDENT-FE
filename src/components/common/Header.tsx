@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Logo from "../../../public/Logo.svg";
 import BellIcon from "../../../public/Bell.svg";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import { theme } from "@team-return/design-system";
 import Link from "next/link";
 
@@ -31,6 +31,7 @@ export default function Header() {
 
 const Container = styled.div`
   width: 100vw;
+  height: 56px;
   background-color: ${theme.color.gray10};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
   position: absolute;

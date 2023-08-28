@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "@emotion/styled";
 import { theme } from "@team-return/design-system";
 import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";

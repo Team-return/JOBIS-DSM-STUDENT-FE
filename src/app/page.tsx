@@ -4,27 +4,23 @@ import Banner from "@/components/Carousel";
 import EmploymentBanner from "@/components/EmploymentBanner";
 import Suggestion from "@/components/Suggestion";
 import Header from "@/components/common/Header";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <Main>
-        <Banner />
-        <Warpper>
-          <Suggestion listType="Company" />
-          <Suggestion listType="Recruitments" />
-          <EmploymentBanner />
-          <Suggestion listType="BookMark" />
-        </Warpper>
-      </Main>
-    </>
+    <Main>
+      <Banner />
+      <Warpper>
+        <Suggestion listType="Company" />
+        <Suggestion listType="Recruitments" />
+        <EmploymentBanner />
+        <Suggestion listType="BookMark" />
+      </Warpper>
+    </Main>
   );
 }
 
 const Main = styled.main`
-  margin-top: 56px;
   width: 100%;
   padding: 40px 0;
 `;
