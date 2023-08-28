@@ -27,6 +27,7 @@ export default function RecruitmentsCard({ recruitments_list }: PropsType) {
             <CompanyName>{company_name}</CompanyName>
             <TrainPay>실습수당 {train_pay}원</TrainPay>
             <BookMark
+              aria-label="bookMarkBtn"
               onClick={(event: React.MouseEvent<HTMLElement>) => {
                 event.stopPropagation();
               }}

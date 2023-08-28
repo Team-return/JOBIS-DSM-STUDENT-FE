@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <title>JOBIS</title>
+      </head>
       <body className={notoSans.className}>
         <Header />
         {children}

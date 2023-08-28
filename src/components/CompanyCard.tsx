@@ -8,6 +8,8 @@ interface PropsType {
 }
 
 export default function CompanyCard({ company_list }: PropsType) {
+  console.log("카드");
+
   return (
     <WarpperGrid>
       {company_list.map(

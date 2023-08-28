@@ -2,7 +2,7 @@
 
 import styled from "@emotion/styled";
 import Image from "next/image";
-import BackgroundImg from "@public/CompanyImage.png";
+import BackgroundImg from "@public/CompanyImage.webp";
 import BuildingIcon from "@public/Building.svg";
 import IconTitle from "@/components/IconTitle";
 import TextFiled from "@/components/common/TextFiled";
@@ -12,6 +12,8 @@ import CardList from "@/components/CardList";
 
 export default function CompanyListPage() {
   const { state, onChange } = useInput({ search: "" });
+  console.log("페이지");
+
   return (
     <>
       <BackgroundWarpper>

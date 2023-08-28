@@ -8,7 +8,7 @@ interface PropsType {
 
 export default function CircleBtn({ direction, onClick }: PropsType) {
   return (
-    <Container onClick={onClick}>
+    <Container aria-label="prevNextBtn" onClick={onClick}>
       <Icon icon="Chevron" direction={direction} size={30} color="gray60" />
     </Container>
   );
