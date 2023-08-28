@@ -11,7 +11,7 @@ import { theme } from "@team-return/design-system";
 import CardList from "@/components/CardList";
 
 export default function CompanyListPage() {
-  const { state, onChange } = useInput<string>("");
+  const { state, onChange } = useInput({ search: "" });
   return (
     <>
       <BackgroundWarpper>
@@ -22,9 +22,9 @@ export default function CompanyListPage() {
           <IconTitle icon={BuildingIcon}>기업체</IconTitle>
           <TextFiled
             placeholder="검색어를 입력해주세요."
-            value={state}
+            value={state.search}
             onChange={onChange}
-            name='search'
+            name="search"
             customType="Search"
           />
         </SubHeader>
