@@ -47,7 +47,6 @@ const Container = styled.div`
     height: 100%;
     padding: 0 12px;
     border: none;
-    outline: none;
   }
   div {
     padding: 8px;
