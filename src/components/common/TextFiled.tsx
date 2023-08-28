@@ -7,6 +7,7 @@ interface PropsType {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   type?: "Text" | "Search";
+  name: string;
   onIconClick?: () => void;
 }
 
@@ -15,6 +16,7 @@ export default function TextFiled({
   placeholder,
   onChange,
   type = "Text",
+  name,
   onIconClick,
 }: PropsType) {
   return (
@@ -24,6 +26,7 @@ export default function TextFiled({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        name={name}
       />
       {type !== "Text" && (
         <div onClick={onIconClick}>

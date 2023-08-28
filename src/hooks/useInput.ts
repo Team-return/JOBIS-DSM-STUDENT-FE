@@ -1,10 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { useState, useCallback } from "react";
 
-export default function useInput(initialState: string) {
-  const [state, setState] = useState("");
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setState(e.target.value);
-  };
+export default function useInput<T>(initialState: T) {
+  const [state, setState] = useState<T>(initialState);
+  const onChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target;
+      setState((prev) => ({ ...prev, [name]: value }));
+    },
+    []
+  );
 
   return { state, setState, onChange };
 }
