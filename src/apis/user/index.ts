@@ -15,7 +15,6 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
 
   return useMutation(
     async () => {
-      console.log("api");
       const response = await instance.post<ResponseBody>(
         `${router}/login`,
         body
@@ -24,7 +23,6 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
     },
     {
       onSuccess: (res) => {
-        console.log("success");
         if (res.authority !== "STUDENT") {
           append({
             title: "해당 서비스를 사용할 수 없는 계정입니다.",
@@ -53,11 +51,8 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
         }
       },
       onError: (error: AxiosError) => {
-        console.log(error);
-
         switch (error.response?.status) {
           case 401:
-            console.log("dd");
             append({
               title: "계정오류",
               message: "비밀번호가 일치하지 않습니다",
@@ -65,7 +60,6 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
             });
             break;
           case 404 | 400:
-            console.log("dd");
             append({
               title: "계정오류",
               message: "아이디와 비밀번호를 다시 확인해주세요",

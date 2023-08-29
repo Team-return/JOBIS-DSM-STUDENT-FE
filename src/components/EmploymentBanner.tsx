@@ -8,7 +8,6 @@ export default function EmploymentBanner() {
   return (
     <Container
       onClick={() => {
-        console.log("컨테이너");
       }}
     >
       <TextWarpper>
