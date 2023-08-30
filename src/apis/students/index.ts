@@ -8,7 +8,7 @@ import { ResponseBody } from "../user/type";
 import { RequestBody } from "./type";
 
 const router = "students";
-
+//a
 export const Signup = () => {
   const [, setCookie] = useCookies();
   const navigator = useRouter();
