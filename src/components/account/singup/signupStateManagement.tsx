@@ -1,9 +1,11 @@
 import { css, styled } from "styled-components";
 import { theme, Input } from "@team-return/design-system";
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { SignupType, IsHiddenProps } from "./type";
 import { FirstInputs, SecondInputs } from "./dataComponent";
 import LargeBtn from "@/components/common/LargeBtn";
+import { Signup } from "@/apis/students";
+import { RequestBody } from "@/apis/students/type";
 
 export default function SingupContainer() {
   const [isHidden, setIsHidden] = useState<IsHiddenProps>({
@@ -11,16 +13,18 @@ export default function SingupContainer() {
     passwordCheck: true,
   });
   const [page, setPage] = useState<0 | 1>(0);
+  //marge후 useinput으로 교체
   const [inputStates, setInputStates] = useState<SignupType>({
     email: "",
     password: "",
     passwordCheck: "",
-    grade: "",
+    grade: undefined,
     name: "",
     gender: undefined,
     class_room: undefined,
     number: undefined,
   });
+  //marge후 useinput으로 교체
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputStates((prev) => {
@@ -30,6 +34,8 @@ export default function SingupContainer() {
       };
     });
   }, []);
+
+  const { mutate: SignupAPI } = Signup();
 
   const pageNation = [
     {
@@ -41,10 +47,23 @@ export default function SingupContainer() {
     {
       text: "가입하기",
       onClick: () => {
-        console.log("가입하기");
+        const RequestBody = {
+          email: inputStates.email,
+          password: inputStates.password,
+          grade: Number(inputStates.grade),
+          gender: inputStates.gender,
+          class_room: Number(inputStates.class_room),
+          number: Number(inputStates.number),
+          name: inputStates.name,
+        };
+        SignupAPI(RequestBody);
       },
     },
   ];
+
+  useEffect(() => {
+    console.log(inputStates);
+  }, [inputStates]);
 
   const allDataChecked = useCallback((): boolean => {
     const {
@@ -59,13 +78,7 @@ export default function SingupContainer() {
     } = inputStates;
 
     if (page === 0)
-      return (
-        grade !== "" &&
-        name !== "" &&
-        gender !== undefined &&
-        class_room !== undefined &&
-        number !== undefined
-      );
+      return !!grade && !!name && !!gender && !!class_room && !!number;
     return email !== "" && password !== "" && passwordCheck !== "";
   }, [inputStates, page]);
 

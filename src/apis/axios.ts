@@ -61,12 +61,12 @@ instance.interceptors.response.use(
             .catch(() => {
               cookies.remove("access_token");
               cookies.remove("refresh_token");
-              window.location.href = "/login";
+              // window.location.href = "/login";
             });
         } else {
           cookies.remove("access_token");
           cookies.remove("refresh_token");
-          window.location.href = "/login";
+          // window.location.href = "/login";
         }
       } else return Promise.reject(error);
     }
