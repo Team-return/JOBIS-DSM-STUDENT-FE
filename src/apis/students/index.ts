@@ -10,7 +10,6 @@ import { RequestBody } from "./type";
 const router = "students";
 
 export const Signup = () => {
-  //
   const [, setCookie] = useCookies();
   const navigator = useRouter();
   const { append } = useToastStore();

@@ -26,7 +26,7 @@ export default function LoginStateMenagement() {
   }, []);
   const { mutate: loginClick } = Login(inputStates, isChecked);
   const allIsInputState = useCallback(
-    (): boolean => inputStates.account_id === "" || inputStates.password === "",
+    (): boolean => inputStates.account_id !== "" && inputStates.password !== "",
     [inputStates]
   );
 
