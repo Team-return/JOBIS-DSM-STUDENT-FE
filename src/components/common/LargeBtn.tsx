@@ -8,8 +8,6 @@ interface PropsType {
 }
 
 export default function LargeBtn({ disabled, text, onClick }: PropsType) {
-  console.log(disabled());
-
   return (
     <BtnContainer light={disabled()} disabled={!disabled()} onClick={onClick}>
       {text}

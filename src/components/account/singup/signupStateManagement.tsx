@@ -29,7 +29,6 @@ export default function SingupContainer() {
   const { mutate: CheckAuthCodeAPI } = CheckAuthCode();
 
   const { page } = param;
-  console.log(page);
 
   const pageNation = [
     {
@@ -41,12 +40,11 @@ export default function SingupContainer() {
     {
       text: "다음",
       onClick: async () => {
-        
-        // await CheckAuthCodeAPI({
-        //   email: email,
-        //   auth_code: auth_code,
-        // });
-        navigator.push("/account/signup/3"); 
+        await CheckAuthCodeAPI({
+          email: email,
+          auth_code: auth_code,
+        });
+        navigator.push("/account/signup/3");
       },
     },
     {
@@ -61,8 +59,7 @@ export default function SingupContainer() {
           class_room: Number(class_room),
           number: Number(number),
         };
-        navigator.push("/account/signup/1")
-        // SignupAPI(RequestBody);
+        SignupAPI(RequestBody);
       },
     },
   ];
@@ -81,9 +78,9 @@ export default function SingupContainer() {
       </Inputs>
       <Submit>
         <LargeBtn
-          text={pageNation[+page-1]?.text}
+          text={pageNation[+page - 1]?.text}
           disabled={allDataChecked}
-          onClick={pageNation[+page-1]?.onClick}
+          onClick={pageNation[+page - 1]?.onClick}
         />
       </Submit>
     </div>

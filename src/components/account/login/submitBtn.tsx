@@ -24,7 +24,6 @@ function SubmitBtn({
   setIsChecked,
   loginClick,
 }: PropsType) {
-  console.log(allIsInputState());
   return (
     
     <Submit light={allIsInputState()}>
@@ -40,7 +39,6 @@ function SubmitBtn({
       <button
         disabled={!allIsInputState()}
         onClick={() => {
-          console.log("잘 옴");
           loginClick();
         }}
       >
