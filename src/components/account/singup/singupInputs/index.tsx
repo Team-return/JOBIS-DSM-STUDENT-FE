@@ -24,6 +24,6 @@ export default function InputsComponents({ page }: PropsType) {
         />
       );
     default:
-      return <div></div>;
+      return <></>;
   }
 }

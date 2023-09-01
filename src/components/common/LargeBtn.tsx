@@ -2,14 +2,14 @@ import { theme } from "@team-return/design-system";
 import styled, { css } from "styled-components";
 
 interface PropsType {
-  disabled: () => boolean;
+  disabled: boolean;
   text: string;
   onClick: () => void;
 }
 
 export default function LargeBtn({ disabled, text, onClick }: PropsType) {
   return (
-    <BtnContainer light={disabled()} disabled={!disabled()} onClick={onClick}>
+    <BtnContainer light={disabled} disabled={!disabled} onClick={onClick}>
       {text}
     </BtnContainer>
   );

@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import { Axios, AxiosError } from "axios";
 import { instance } from "../axios";
@@ -65,17 +65,24 @@ export const SendAuthCode = () => {
   );
 };
 
-export const CheckAuthCode = () => {
+export const CheckAuthCode = (
+  query_string: AuthCode,
+  options?: Omit<
+    UseMutationOptions<any, AxiosError<unknown, any>, void, unknown>,
+    "mutationFn"
+  >
+) => {
   const { append } = useToastStore();
   return useMutation(
-    async (query_string: AuthCode) => {
+    async () => {
       const response = await instance.patch(
         `${router}/code?email=${query_string.email}&auth_code=${query_string.auth_code}`
       );
       return response.data;
     },
     {
-      onSuccess: () => {},
+      onSuccess: () => {
+      },
       onError: (err: AxiosError) => {
         const response = err.response;
         switch (response?.status) {
@@ -101,8 +108,9 @@ export const CheckAuthCode = () => {
             });
             break;
         }
-        return response?.data;
+        return false;
       },
+      ...options,
     }
   );
 };

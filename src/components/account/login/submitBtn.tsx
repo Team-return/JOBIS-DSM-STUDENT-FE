@@ -25,7 +25,6 @@ function SubmitBtn({
   loginClick,
 }: PropsType) {
   return (
-    
     <Submit light={allIsInputState()}>
       <div className="saveId">
         <CheckBox
@@ -44,7 +43,7 @@ function SubmitBtn({
       >
         로그인
       </button>
-      <Link className="signup" href="/account/signup">
+      <Link className="signup" href="/account/signup/1">
         회원가입
       </Link>
     </Submit>
