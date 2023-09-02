@@ -22,6 +22,9 @@ export default function Header() {
         <Menu router={router} id="/recruitments" href={"/recruitments"}>
           모집의뢰서
         </Menu>
+        <Menu router={router} id="/mypage" href={"/mypage"}>
+          마이페이지
+        </Menu>
       </MenuWarpper>
       <ASide>
         <Bell onClick={() => {}}>
@@ -57,7 +60,7 @@ const Container = styled.div`
 const MenuWarpper = styled.nav`
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 44px;
 `;
 
 const Menu = styled(Link)<{ router: string; id: string }>`

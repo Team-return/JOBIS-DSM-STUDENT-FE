@@ -1,5 +1,7 @@
 export interface CompanyInfo {
-  company_profile_url: string;
-  company_name: string;
+  id: number;
+  name: string;
+  logo_url: string;
   take: number;
+  has_recruitment: boolean;
 }

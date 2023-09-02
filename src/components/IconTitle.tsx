@@ -21,4 +21,5 @@ const Warpper = styled.div`
   gap: 10px;
   align-items: center;
   ${theme.font.Heading5}
+  font-weight: 700;
 `;

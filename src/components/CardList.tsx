@@ -1,3 +1,4 @@
+import { CompanyInfo } from "@/util/Type/CompanyInfoType";
 import styled from "@emotion/styled";
 import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./RecruitmentsCard";
@@ -9,21 +10,34 @@ import RecruitmentsCard from "./RecruitmentsCard";
 // 필터 적용할 수 있도록 props로 받아오기
 // 필터 적용 코드 작성하기
 
-let company_the_me = [
+const company_the_me: CompanyInfo[] = [
   {
-    company_profile_url: "https://i.stack.imgur.com/l60Hf.png",
-    company_name: "쿼터랩주식회사",
+    id: 1,
+    name: "쿼터랩주식회사",
+    logo_url: "https://i.stack.imgur.com/l60Hf.png",
     take: 69.0,
+    has_recruitment: true,
   },
   {
-    company_profile_url: "https://i.stack.imgur.com/l60Hf.png",
-    company_name: "쿼터랩주식회사",
+    id: 2,
+    name: "쿼터랩주식회사",
+    logo_url: "https://i.stack.imgur.com/l60Hf.png",
     take: 69.0,
+    has_recruitment: true,
   },
   {
-    company_profile_url: "https://i.stack.imgur.com/l60Hf.png",
-    company_name: "쿼터랩주식회사",
+    id: 3,
+    logo_url: "https://i.stack.imgur.com/l60Hf.png",
+    name: "쿼터랩주식회사",
     take: 69.0,
+    has_recruitment: false,
+  },
+  {
+    id: 4,
+    name: "test",
+    logo_url: "",
+    take: 0,
+    has_recruitment: false,
   },
 ];
 

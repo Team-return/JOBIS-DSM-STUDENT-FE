@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { Icon, theme } from "@team-return/design-system";
+import { gray60 } from "@team-return/design-system/dist/styles/theme/color";
 
-interface PropsType extends React.ComponentProps<'input'> {
+interface PropsType extends React.ComponentProps<"input"> {
   customType?: "Text" | "Search";
   onIconClick?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,9 +15,10 @@ export default function TextFiled({
   customType = "Text",
   name,
   onIconClick,
+  width,
 }: PropsType) {
   return (
-    <Container>
+    <Container width={width}>
       <input
         type="text"
         value={value}
@@ -26,31 +28,38 @@ export default function TextFiled({
       />
       {customType !== "Text" && (
         <div onClick={onIconClick}>
-          <Icon icon={customType} size={16} />
+          <Icon icon={customType} size={20} color={"gray60"} />
         </div>
       )}
     </Container>
   );
 }
 
-const Container = styled.div`
-  height: 34px;
-  width: 300px;
+const Container = styled.div<{ width: string | number | undefined }>`
+  height: 40px;
+  width: 40%;
   background-color: ${theme.color.gray10};
   border: 1px solid ${theme.color.gray50};
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  width: ${(props) => {
+    if (typeof props.width === "number") return props.width + "px";
+    else props.width;
+  }};
   input {
     flex: 1;
     height: 100%;
-    padding: 0 12px;
+    padding: 0 16px;
     border: none;
+    font-size: 14px;
   }
   div {
-    padding: 8px;
-    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 14px;
     cursor: pointer;
   }
 `;

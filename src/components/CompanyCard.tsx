@@ -10,20 +10,22 @@ interface PropsType {
 export default function CompanyCard({ company_list }: PropsType) {
   return (
     <WarpperGrid>
-      {company_list.map(
-        ({ company_profile_url, company_name, take }, index) => (
-          <Container key={index}>
-            <Img>
-              <Image width={0} height={0} src={company_profile_url} alt="" />
-            </Img>
-            <Name>{company_name}</Name>
+      {company_list.map(({ logo_url, name, take, has_recruitment }, index) => (
+        <Container key={index}>
+          <Img>
+            <Image width={0} height={0} src={logo_url} alt="" />
+          </Img>
+          <Info>
+            <Name>{name}</Name>
             <Sales>연매출 {take}억원</Sales>
-            <IsDoc>
-              <Icon icon="Document" color="gray60" />
-            </IsDoc>
-          </Container>
-        )
-      )}
+            {has_recruitment && (
+              <Doc>
+                <Icon icon="Document" color="gray60" />
+              </Doc>
+            )}
+          </Info>
+        </Container>
+      ))}
     </WarpperGrid>
   );
 }
@@ -31,9 +33,9 @@ export default function CompanyCard({ company_list }: PropsType) {
 const WarpperGrid = styled.div`
   width: 100%;
   display: grid;
-  margin-top: 20px;
+  margin-top: 10px;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 3vw;
+  grid-gap: 2vw;
 `;
 
 const Container = styled.div`
@@ -52,13 +54,17 @@ const Img = styled.div`
     height: 100%;
     position: absolute;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid ${theme.color.gray40};
+    border-radius: 14px;
   }
+`;
+
+const Info = styled.div`
+  position: relative;
 `;
 
 const Name = styled.p`
   ${theme.font.Heading6}
+  font-weight: 700;
   color: ${theme.color.gray90};
   margin-top: 16px;
 `;
@@ -69,11 +75,11 @@ const Sales = styled.p`
   margin-top: 8px;
 `;
 
-const IsDoc = styled.div`
+const Doc = styled.div`
   width: 24px;
   height: 24px;
   position: absolute;
-  bottom: 4px;
+  top: 4px;
   right: 4px;
   display: flex;
   align-items: center;
