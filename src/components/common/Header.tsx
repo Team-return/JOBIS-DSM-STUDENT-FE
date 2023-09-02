@@ -1,21 +1,28 @@
 import Image from "next/image";
-import Logo from "../../../public/Logo.svg";
+import Logo from "../../../public/Logo.png";
 import BellIcon from "../../../public/Bell.svg";
 import styled from "@emotion/styled";
 import { theme } from "@team-return/design-system";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const router = usePathname();
+  console.log(router);
+
   return (
     <Container>
-      <Image width={70} height={20} src={Logo} alt="joibs_logo" />
-      <Menu>
-        <Link href={"/company"}>기업체</Link>
-        <Link href={"/"}>모집의뢰서</Link>
-      </Menu>
-      <div></div>
-      <div></div>
-      <div></div>
+      <Link href={"/"}>
+        <Image width={80} height={22} src={Logo} alt="joibs_logo" />
+      </Link>
+      <MenuWarpper>
+        <Menu router={router} id="/company" href={"/company"}>
+          기업체
+        </Menu>
+        <Menu router={router} id="/recruitments" href={"/recruitments"}>
+          모집의뢰서
+        </Menu>
+      </MenuWarpper>
       <ASide>
         <Bell onClick={() => {}}>
           <Image width={16} height={20} src={BellIcon} alt="알림" />
@@ -31,27 +38,31 @@ export default function Header() {
 
 const Container = styled.div`
   width: 100vw;
-  height: 56px;
+  height: 68px;
   background-color: ${theme.color.gray10};
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   padding: 12px 17.5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 10;
   a,
   p {
     color: ${theme.color.gray80};
   }
 `;
 
-const Menu = styled.nav`
+const MenuWarpper = styled.nav`
   display: flex;
   align-items: center;
   gap: 30px;
+`;
+
+const Menu = styled(Link)<{ router: string; id: string }>`
   ${theme.font.Body2}
+  font-weight: ${(props) => props.router === props.id && 700}
 `;
 
 const ASide = styled.div`

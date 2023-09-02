@@ -12,8 +12,6 @@ import CardList from "@/components/CardList";
 
 export default function CompanyListPage() {
   const { state, onChange } = useInput({ search: "" });
-  console.log("페이지");
-
   return (
     <>
       <BackgroundWarpper>
