@@ -20,7 +20,7 @@ export default function Header() {
         <Menu router={pathname} id="/recruitments" href={"/recruitments"}>
           모집의뢰서
         </Menu>
-        <Menu router={router} id="/mypage" href={"/mypage"}>
+        <Menu router={pathname} id="/mypage" href={"/mypage"}>
           마이페이지
         </Menu>
       </MenuWarpper>

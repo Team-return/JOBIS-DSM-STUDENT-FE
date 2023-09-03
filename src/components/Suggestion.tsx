@@ -15,10 +15,12 @@ const fix_data = {
   Company: {
     title: "이런 기업은 어떠세요?",
     emoji: Building,
+    router: "/company",
   },
   Recruitments: {
     title: `${"강용수"}의 관심 분야에요`,
     emoji: Smile,
+    router: "/recruitements",
   },
   BookMark: {
     title: "내가 저장한 모집의뢰서",
@@ -52,6 +54,7 @@ const Warpper = styled.div`
 const Header = styled.header`
   display: flex;
   align-items: end;
+  margin-bottom: 12px;
 `;
 const ShowAllBtn = styled.button`
   width: 120px;
