@@ -44,7 +44,6 @@ function TextFiled({
 const Container = styled.div<{ width: string | number | undefined }>`
   height: 40px;
   width: 40%;
-  background-color: ${theme.color.gray10};
   border: 1px solid ${theme.color.gray50};
   border-radius: 8px;
   display: flex;
@@ -52,7 +51,7 @@ const Container = styled.div<{ width: string | number | undefined }>`
   overflow: hidden;
   width: ${(props) => {
     if (typeof props.width === "number") return props.width + "px";
-    else props.width;
+    else return props.width;
   }};
   input {
     flex: 1;

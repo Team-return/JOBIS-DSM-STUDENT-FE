@@ -46,7 +46,7 @@ let recruitments_the_me = [
     company_name: "(주)비바리퍼블리카",
     company_profile_url:
       "https://jobis-file.s3.ap-northeast-2.amazonaws.com/LOGO_IMAGE/afe069fb-20a7-4415-9e37-f57ff2bac9de.png",
-    train_pay: 100000,
+    train_pay: 100,
     job_code_list: "서버 개발자, IOS",
     bookmarked: false,
   },
@@ -54,7 +54,7 @@ let recruitments_the_me = [
     company_name: "(주)비바리퍼블리카",
     company_profile_url:
       "https://jobis-file.s3.ap-northeast-2.amazonaws.com/LOGO_IMAGE/afe069fb-20a7-4415-9e37-f57ff2bac9de.png",
-    train_pay: 100000,
+    train_pay: 100,
     job_code_list: "서버 개발자, IOS",
     bookmarked: false,
   },
@@ -62,7 +62,7 @@ let recruitments_the_me = [
     company_name: "(주)비바리퍼블리카",
     company_profile_url:
       "https://jobis-file.s3.ap-northeast-2.amazonaws.com/LOGO_IMAGE/afe069fb-20a7-4415-9e37-f57ff2bac9de.png",
-    train_pay: 100000,
+    train_pay: 100,
     job_code_list: "서버 개발자, IOS",
     bookmarked: false,
   },
@@ -70,9 +70,9 @@ let recruitments_the_me = [
     company_name: "(주)비바리퍼블리카",
     company_profile_url:
       "https://jobis-file.s3.ap-northeast-2.amazonaws.com/LOGO_IMAGE/afe069fb-20a7-4415-9e37-f57ff2bac9de.png",
-    train_pay: 100000,
+    train_pay: 100,
     job_code_list: "서버 개발자, IOS",
-    bookmarked: false,
+    bookmarked: true,
   },
 ];
 

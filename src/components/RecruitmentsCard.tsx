@@ -23,20 +23,25 @@ export default function RecruitmentsCard({ recruitments_list }: PropsType) {
             <Img>
               <Image width={0} height={0} src={company_profile_url} alt="" />
             </Img>
-            <Title>{job_code_list}</Title>
-            <CompanyName>{company_name}</CompanyName>
-            <TrainPay>실습수당 {train_pay}원</TrainPay>
-            <BookMark
-              aria-label="bookMarkBtn"
-              onClick={(event: React.MouseEvent<HTMLElement>) => {
-                event.stopPropagation();
-              }}
-            >
-              <Icon
-                icon={`Bookmark${bookmarked ? "On" : "Off"}`}
-                color={bookmarked ? "skyblue" : "gray60"}
-              />
-            </BookMark>
+            <Info>
+              <Title>{job_code_list}</Title>
+              <CompanyName>{company_name}</CompanyName>
+              <Tags>
+                <Tag>실습수당 {train_pay}만원</Tag>
+                <Tag>병역특례</Tag>
+              </Tags>
+              <BookMark
+                aria-label="bookMarkBtn"
+                onClick={(event: React.MouseEvent<HTMLElement>) => {
+                  event.stopPropagation();
+                }}
+              >
+                <Icon
+                  icon={`Bookmark${bookmarked ? "On" : "Off"}`}
+                  color={bookmarked ? "skyblue" : "gray60"}
+                />
+              </BookMark>
+            </Info>
           </Container>
         )
       )}
@@ -49,54 +54,74 @@ const WarpperGrid = styled.div`
   display: grid;
   margin-top: 20px;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 2vw;
+  grid-gap: 1.5vw;
 `;
 
 const Container = styled.div`
   width: 100%;
   cursor: pointer;
-  position: relative;
 `;
 
 const Img = styled.div`
   width: 100%;
   height: 0;
-  padding-bottom: 80%;
+  padding-bottom: 70%;
   position: relative;
   img {
     width: 100%;
     height: 100%;
     position: absolute;
     object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid ${theme.color.gray40};
+    border-radius: 12px 12px 0 0;
+    border: 2px solid ${theme.color.gray20};
   }
 `;
 
+const Info = styled.div`
+  position: relative;
+  border-radius: 0 0 12px 12px;
+  background-color: ${theme.color.gray20};
+  padding: 14px;
+`;
+
 const Title = styled.p`
-  ${theme.font.Heading6}
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
   color: ${theme.color.gray90};
-  margin-top: 16px;
 `;
 
 const CompanyName = styled.p`
-  ${theme.font.Body3}
+  font-size: 14px;
   color: ${theme.color.gray70};
-  margin-top: 8px;
+  line-height: 20px;
+  margin-top: 4px;
 `;
 
-const TrainPay = styled.p`
-  ${theme.font.Body4}
-  color: ${theme.color.gray90};
+const Tags = styled.div`
+  display: flex;
   margin-top: 24px;
+  flex-wrap: wrap;
+  width: inherit;
+  overflow-x: scroll;
+  white-space: nowrap;
+  gap: 4px;
+`;
+
+const Tag = styled.div`
+  ${theme.font.Body4}
+  color: ${theme.color.liteBlue};
+  border: 1px solid ${theme.color.liteBlue};
+  border-radius: 100px;
+  padding: 4px 8px;
 `;
 
 const BookMark = styled.button`
   width: 24px;
   height: 24px;
   position: absolute;
-  bottom: 4px;
-  right: 4px;
+  top: 14px;
+  right: 14px;
   display: flex;
   align-items: center;
   justify-content: center;

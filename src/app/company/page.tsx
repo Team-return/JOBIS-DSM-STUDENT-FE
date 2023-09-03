@@ -31,40 +31,26 @@ export default function CompanyListPage() {
   }, [page]);
 
   return (
-    <>
-      <Main>
-        <SubHeader>
-          <IconTitle icon={BuildingIcon}>기업체</IconTitle>
-          <TextFiled
-            placeholder="검색어를 입력해주세요."
-            value={searchState.search}
-            onChange={onChangeSearch}
-            name="search"
-            customType="Search"
-            enterEvent={onSearch}
-          />
-        </SubHeader>
-        <button
-          onClick={() => {
-            setPage(2);
-          }}
-        >
-          페이지변경
-        </button>
-        <CardList listType="Company" />
-      </Main>
-    </>
+    <Main>
+      <SubHeader>
+        <IconTitle icon={BuildingIcon}>기업체</IconTitle>
+        <TextFiled
+          placeholder="검색어를 입력해주세요."
+          value={searchState.search}
+          onChange={onChangeSearch}
+          name="search"
+          customType="Search"
+          enterEvent={onSearch}
+        />
+      </SubHeader>
+      <CardList listType="Company" />
+    </Main>
   );
 }
 
 const Main = styled.div`
   width: 100%;
   margin-top: 68px;
-  > hr {
-    background-color: ${theme.color.gray40};
-    height: 1px;
-    border: 0;
-  }
 `;
 const SubHeader = styled.div`
   width: 100%;
