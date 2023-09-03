@@ -7,8 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const router = usePathname();
-  console.log(router);
+  const pathname = usePathname();
 
   return (
     <Container>
@@ -16,10 +15,10 @@ export default function Header() {
         <Image width={80} height={22} src={Logo} alt="joibs_logo" />
       </Link>
       <MenuWarpper>
-        <Menu router={router} id="/company" href={"/company"}>
+        <Menu router={pathname} id="/company" href={"/company"}>
           기업체
         </Menu>
-        <Menu router={router} id="/recruitments" href={"/recruitments"}>
+        <Menu router={pathname} id="/recruitments" href={"/recruitments"}>
           모집의뢰서
         </Menu>
       </MenuWarpper>

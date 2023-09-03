@@ -30,5 +30,5 @@ const Warpper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 120px;
-  margin-top: 150px;
+  margin-top: 80px;
 `;
