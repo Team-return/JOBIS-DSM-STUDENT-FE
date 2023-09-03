@@ -1,5 +1,5 @@
+import React from "react";
 import { CompanyInfo } from "@/util/Type/CompanyInfoType";
-import styled from "@emotion/styled";
 import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./RecruitmentsCard";
 
@@ -35,7 +35,7 @@ const company_the_me: CompanyInfo[] = [
   {
     id: 4,
     name: "test",
-    logo_url: "",
+    logo_url: "https://i.stack.imgur.com/l60Hf.png",
     take: 0,
     has_recruitment: false,
   },
@@ -82,7 +82,7 @@ interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";
 }
 
-export default function CardList({ listType }: PropsType) {
+function CardList({ listType }: PropsType) {
   switch (listType) {
     case "Company":
       //api
@@ -104,3 +104,5 @@ export default function CardList({ listType }: PropsType) {
     </>
   );
 }
+
+export default React.memo(CardList);

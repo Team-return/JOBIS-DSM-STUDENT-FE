@@ -1,22 +1,26 @@
 import styled from "@emotion/styled";
 import { Icon, theme } from "@team-return/design-system";
-import { gray60 } from "@team-return/design-system/dist/styles/theme/color";
+import React, { KeyboardEvent, useRef } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
   customType?: "Text" | "Search";
-  onIconClick?: () => void;
+  enterEvent?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function TextFiled({
+function TextFiled({
   value,
   placeholder,
   onChange,
   customType = "Text",
   name,
-  onIconClick,
+  enterEvent,
   width,
 }: PropsType) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") if (enterEvent) enterEvent();
+  };
   return (
     <Container width={width}>
       <input
@@ -25,10 +29,12 @@ export default function TextFiled({
         onChange={onChange}
         placeholder={placeholder}
         name={name}
+        ref={inputRef}
+        onKeyUp={onKeyDown}
       />
       {customType !== "Text" && (
-        <div onClick={onIconClick}>
-          <Icon icon={customType} size={20} color={"gray60"} />
+        <div onClick={enterEvent}>
+          <Icon icon={customType} size={20} color="gray60" />
         </div>
       )}
     </Container>
@@ -63,3 +69,5 @@ const Container = styled.div<{ width: string | number | undefined }>`
     cursor: pointer;
   }
 `;
+
+export default React.memo(TextFiled);
