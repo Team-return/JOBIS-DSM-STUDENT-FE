@@ -17,11 +17,11 @@ const fix_data = {
     emoji: Building,
   },
   Recruitments: {
-    title: `${"강용수"}님이 관심있는 분야에요`,
+    title: `${"강용수"}의 관심 분야에요`,
     emoji: Smile,
   },
   BookMark: {
-    title: "북마크한 모집의뢰서",
+    title: "내가 저장한 모집의뢰서",
     emoji: Pushpin,
   },
 };
@@ -29,13 +29,15 @@ const fix_data = {
 export default function Suggestion({ listType }: PropsType) {
   return (
     <Warpper>
-      <IconTitle icon={fix_data[listType].emoji}>
-        {fix_data[listType].title}
-      </IconTitle>
-      <ShowAllBtn>
-        전체보기
-        <Icon icon="Chevron" direction="right" color="gray60" />
-      </ShowAllBtn>
+      <Header>
+        <IconTitle icon={fix_data[listType].emoji}>
+          {fix_data[listType].title}
+        </IconTitle>
+        <ShowAllBtn>
+          전체보기
+          <Icon icon="Chevron" direction="right" size={18} color="gray60" />
+        </ShowAllBtn>
+      </Header>
       <CardList listType={listType} />
     </Warpper>
   );
@@ -45,13 +47,11 @@ const Warpper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 `;
-const Title = styled.div`
+const Header = styled.header`
   display: flex;
-  gap: 10px;
-  align-items: center;
-  ${theme.font.Heading5}
+  align-items: end;
 `;
 const ShowAllBtn = styled.button`
   width: 120px;
@@ -59,9 +59,8 @@ const ShowAllBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${theme.font.Body2}
+  font-size: 14px;
   color: ${theme.color.gray60};
-  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;

@@ -13,19 +13,19 @@ const test = [
   },
   {
     img: TeatBannerImg,
-    url: "",
+    url: "https://www.naver.com",
   },
   {
     img: TeatBannerImg,
-    url: "",
+    url: "https://www.naver.com",
   },
   {
     img: TeatBannerImg,
-    url: "",
+    url: "https://www.naver.com",
   },
   {
     img: TeatBannerImg,
-    url: "",
+    url: "https://www.naver.com",
   },
 ];
 //=======================================================================================================
@@ -68,7 +68,7 @@ export default function Banner() {
             end={test.length - 1}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              // 링크 이동
+              window.open(item.url);
             }}
           >
             <Image width={0} height={0} src={item.img} alt="" />
@@ -120,7 +120,7 @@ const CurrentBanner = styled.div<{ index: number; end: number }>`
   height: 20vw;
   display: inline-block;
   flex: 0 0 auto;
-  border-radius: 5px;
+  border-radius: 12px;
   border: 1px solid ${theme.color.gray40};
   overflow: hidden;
   cursor: pointer;
@@ -142,6 +142,9 @@ const CurrentBanner = styled.div<{ index: number; end: number }>`
 const PageIndicator = styled.div`
   display: flex;
   gap: 7px;
+  position: relative;
+  bottom: 40px;
+  z-index: 3;
 `;
 
 const Dot = styled.div<{ select: boolean }>`
@@ -150,7 +153,7 @@ const Dot = styled.div<{ select: boolean }>`
   border-radius: 50%;
   cursor: pointer;
   background-color: ${(props) =>
-    props.select ? theme.color.skyblue : theme.color.gray40};
+    props.select ? theme.color.gray10 : "rgba(255, 255, 255, 0.40)"};
 `;
 
 const PrevNextBtns = styled.div`
