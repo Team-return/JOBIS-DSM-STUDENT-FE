@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Logo from "../../../public/Logo.png";
-import BellIcon from "../../../public/Bell.svg";
 import styled from "@emotion/styled";
-import { theme } from "@team-return/design-system";
+import { Icon, theme } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const router = usePathname();
-  console.log(router);
 
   return (
     <Container>
@@ -16,7 +14,7 @@ export default function Header() {
         <Image width={80} height={22} src={Logo} alt="joibs_logo" />
       </Link>
       <MenuWarpper>
-        <Menu router={router} id="/company" href={"/company"}>
+        <Menu router={router} id="/company" href={"/company?page=1&name="}>
           기업체
         </Menu>
         <Menu router={router} id="/recruitments" href={"/recruitments"}>
@@ -27,13 +25,13 @@ export default function Header() {
         </Menu>
       </MenuWarpper>
       <ASide>
-        <Bell onClick={() => {}}>
-          <Image width={16} height={20} src={BellIcon} alt="알림" />
-        </Bell>
         <Profile onClick={() => {}}>
-          <div />
+          <Image src={""} alt="프로필사진" />
           <p>강용수</p>
         </Profile>
+        <Arrow>
+          <Icon icon={"Chevron"} size={16} color="gray90" />
+        </Arrow>
       </ASide>
     </Container>
   );
@@ -70,16 +68,8 @@ const Menu = styled(Link)<{ router: string; id: string }>`
 
 const ASide = styled.div`
   display: flex;
-  gap: 20px;
-`;
-
-const Bell = styled.div`
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
+  gap: 5px;
 `;
 
 const Profile = styled.div`
@@ -89,11 +79,13 @@ const Profile = styled.div`
   gap: 10px;
   align-items: center;
   cursor: pointer;
-  ${theme.font.Body4}
-  > div {
+  ${theme.font.Body2}
+  > img {
     width: 28px;
     height: 28px;
     border-radius: 50%;
     background-color: #d9d9d9;
   }
 `;
+
+const Arrow = styled.div``;
