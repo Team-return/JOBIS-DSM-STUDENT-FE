@@ -35,10 +35,6 @@ export default function SignupContextProvider({
       };
     });
   }, []);
-
-  useEffect(() => {
-    console.log(signupState);
-  }, [signupState]);
   return (
     <SignupContext.Provider
       value={{ signupState, setSignupState, handleChange }}

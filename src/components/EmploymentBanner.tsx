@@ -6,7 +6,9 @@ import Guy from "@public/Guy.png";
 
 export default function EmploymentBanner() {
   return (
-    <Container onClick={() => {}}>
+    <Container onClick={()=>{
+      //취업율 링크 이동
+    }}>
       <TextWarpper>
         <Title>우리학교 학생들은 얼마나 취업했을까?</Title>
         <ShowGO>

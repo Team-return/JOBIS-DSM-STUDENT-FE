@@ -5,7 +5,6 @@ import { Input, theme } from "@team-return/design-system";
 import { useRouter } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
-import { SecondInputsPropsType } from "../type";
 
 function SecondInputs() {
   const { signupState, handleChange } = useSignUpContext();
@@ -39,13 +38,13 @@ function SecondInputs() {
           />
           <button
             onClick={() => {
-              if (SandAuthCodeAPI)
+              SandAuthCodeAPI &&
                 SandAuthCodeAPI({
                   email: email,
                   auth_code_type: "SIGN_UP",
                 });
             }}
-            disabled={email === ""}
+            disabled={!!email}
           >
             메일발송
           </button>
