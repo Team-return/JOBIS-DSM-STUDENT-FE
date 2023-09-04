@@ -4,17 +4,37 @@ import styled from "@emotion/styled";
 import { Icon, theme } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const pathname = usePathname();
+  const [scroll, setScroll] = useState(window.scrollY);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(() => {
+        if (window.scrollY > 100) return 1;
+        else return (window.scrollY % 100) / 100;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(scroll);
+  }, [scroll]);
 
   return (
-    <Container>
+    <Container scroll={scroll}>
       <Link href={"/"}>
         <Image width={80} height={22} src={Logo} alt="joibs_logo" />
       </Link>
       <MenuWarpper>
-        <Menu router={pathname} id="/company" href={"/company"}>
+        <Menu router={pathname} id="/company" href={"/company?page=1&name="}>
           기업체
         </Menu>
         <Menu router={pathname} id="/recruitments" href={"/recruitments"}>
@@ -37,12 +57,15 @@ export default function Header() {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ scroll: number }>`
   width: 100vw;
   height: 68px;
   background-color: ${theme.color.gray10};
   display: flex;
   justify-content: space-between;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: ${(props) => `rgba(229,229,229,${props.scroll})`};
   align-items: center;
   position: fixed;
   top: 0;

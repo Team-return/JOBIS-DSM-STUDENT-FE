@@ -5350,10 +5350,10 @@ __metadata:
     follow-redirects: ^1.15.2
     next: ^13.4.19
     or: ^0.2.0
-    react-cookie: ^6.1.0
-    react-query: ^3.39.3
-    react-dom: 18.2.0
     react: 18.2.0
+    react-cookie: ^6.1.0
+    react-dom: 18.2.0
+    react-query: ^3.39.3
     styled-components: ^6.0.7
     typescript: 4.7.2
     yarn: ^1.22.19
@@ -5894,7 +5894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
+"react-dom@npm:18.2.0, react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -6884,6 +6884,16 @@ __metadata:
     "@types/cookie": ^0.5.1
     cookie: ^0.5.0
   checksum: 173bd5e944bb0441fb0454d13554b950825857b4ef3e58882089e49f3d3d837f63b410cde414d7b7bcfa7d965476c2f86d691d6f09d2f2abddf0622cecce5e1d
+  languageName: node
+  linkType: hard
+
+"unload@npm:2.2.0":
+  version: 2.2.0
+  resolution: "unload@npm:2.2.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    detect-node: ^2.0.4
+  checksum: 88ba950c5ff83ab4f9bbd8f63bbf19ba09687ed3c434efd43b7338cc595bc574df8f9b155ee6eee7a435de3d3a4a226726988428977a68ba4907045f1fac5d41
   languageName: node
   linkType: hard
 
