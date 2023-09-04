@@ -28,7 +28,7 @@ export const SendAuthCode = () => {
       return response.data;
     },
     {
-      onSuccess: (res) => {
+      onSuccess: () => {
         append({
           title: "이메일 발송",
           message: "이메일을 확인해주세요",
@@ -37,13 +37,6 @@ export const SendAuthCode = () => {
       },
       onError: (err: AxiosError) => {
         switch (err.response?.status) {
-          case 409:
-            append({
-              title: "",
-              message: "이미 계정이 존재합니다",
-              type: "RED",
-            });
-            break;
           case 400:
             append({
               title: "입력오류",
@@ -52,6 +45,13 @@ export const SendAuthCode = () => {
             });
             break;
           case 404:
+            break;
+          case 409:
+            append({
+              title: "",
+              message: "이미 계정이 존재합니다",
+              type: "RED",
+            });
             break;
           default:
             append({
