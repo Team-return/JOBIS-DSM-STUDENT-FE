@@ -3,9 +3,8 @@
 import CardList from "@/components/CardList";
 import TextFiled from "@/components/common/TextFiled";
 import IconTitle from "@/components/IconTitle";
-import useInput from "@/hooks/useInput";
+import useInput from "@/hook/useInput";
 import styled from "@emotion/styled";
-import Paper from "@public/paper.svg";
 import { Icon, theme } from "@team-return/design-system";
 
 export default function Recruitments() {
@@ -18,7 +17,7 @@ export default function Recruitments() {
   return (
     <Main>
       <SubHeader>
-        <IconTitle icon={Paper}>모집의뢰서</IconTitle>
+        <IconTitle>📄 모집의뢰서</IconTitle>
         <Filter>
           <DropDownContainer>
             <p>분야</p>

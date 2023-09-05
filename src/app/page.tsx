@@ -1,10 +1,9 @@
 "use client";
 
 import Banner from "@/components/Carousel";
-import EmploymentBanner from "@/components/EmploymentBanner";
 import Suggestion from "@/components/Suggestion";
-import Header from "@/components/common/Header";
 import styled from "@emotion/styled";
+import BandBanner from "@/components/BandBanner";
 
 export default function Home() {
   return (
@@ -13,7 +12,7 @@ export default function Home() {
       <Warpper>
         <Suggestion listType="Company" />
         <Suggestion listType="Recruitments" />
-        <EmploymentBanner />
+        <BandBanner />
         <Suggestion listType="BookMark" />
       </Warpper>
     </Main>

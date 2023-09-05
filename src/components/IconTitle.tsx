@@ -4,13 +4,13 @@ import Image, { StaticImageData } from "next/image";
 
 interface ProsType {
   children: string;
-  icon: StaticImageData;
+  //icon: StaticImageData;
 }
 
-export default function IconTitle({ children, icon }: ProsType) {
+export default function IconTitle({ children }: ProsType) {
   return (
     <Warpper>
-      <Image width={40} height={40} src={icon} alt="titleIcon" />
+      {/* <Image width={40} height={40} src={icon} alt="titleIcon" /> */}
       <p>{children}</p>
     </Warpper>
   );

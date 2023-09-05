@@ -4,16 +4,18 @@ import styled from "@emotion/styled";
 import BannerBackground from "@public/BannerBackground.png";
 import Guy from "@public/Guy.png";
 
-export default function EmploymentBanner() {
+export default function BandBanner() {
   return (
-    <Container onClick={()=>{
-      //취업율 링크 이동
-    }}>
+    <Container
+      onClick={() => {
+        //취업율 링크 이동
+      }}
+    >
       <TextWarpper>
         <Title>우리학교 학생들은 얼마나 취업했을까?</Title>
         <ShowGO>
-          취업률 보러가기{" "}
-          <Icon icon="Chevron" direction="right" color="gray10" />
+          <p>취업률 보러가기</p>
+          <Icon icon="Chevron" direction="right" color="gray10" size={16} />
         </ShowGO>
       </TextWarpper>
       <BackgroundImg
@@ -29,8 +31,8 @@ export default function EmploymentBanner() {
 
 const Container = styled.div`
   width: 100%;
-  height: 108px;
-  padding: 22px 100px;
+  height: 120px;
+  padding: 28px 100px;
   margin-top: 80px;
   cursor: pointer;
   position: relative;
@@ -39,18 +41,25 @@ const Container = styled.div`
 const TextWarpper = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Title = styled.p`
-  ${theme.font.Heading5}
-  font-weight: 900;
+  font-size: 20px;
+  font-weight: 700;
   color: ${theme.color.gray10};
 `;
 const ShowGO = styled.div`
   display: flex;
-  ${theme.font.Body2}
+  align-items: center;
+  font-size: 12px;
   color: ${theme.color.gray10};
-  margin-top: 4px;
+  width: 117px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 12px;
+  border-radius: 100px;
 `;
 
 const BackgroundImg = styled(Image)`
@@ -68,8 +77,9 @@ const GuyImg = styled(Image)`
   position: absolute;
   bottom: 0;
   right: 100px;
-  width: 147px;
-  height: 173px;
+  width: 121px;
+  height: 143px;
+  margin-right: 50px;
   @media screen and (max-width: 1100px) {
     display: none;
   }

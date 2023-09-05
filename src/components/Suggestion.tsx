@@ -13,26 +13,27 @@ interface PropsType {
 
 const fix_data = {
   Company: {
-    title: "이런 기업은 어떠세요?",
+    title: "🏢 이런 기업은 어떠세요?",
     emoji: Building,
     router: "/company",
   },
   Recruitments: {
-    title: `${"강용수"}의 관심 분야에요`,
+    title: `👩‍💻 ${"강용수"}의 관심 분야에요`,
     emoji: Smile,
     router: "/recruitements",
   },
   BookMark: {
-    title: "내가 저장한 모집의뢰서",
+    title: "📌 내가 저장한 모집의뢰서",
     emoji: Pushpin,
   },
 };
 
+// icon={fix_data[listType].emoji}
 export default function Suggestion({ listType }: PropsType) {
   return (
     <Warpper>
       <Header>
-        <IconTitle icon={fix_data[listType].emoji}>
+        <IconTitle >
           {fix_data[listType].title}
         </IconTitle>
         <ShowAllBtn>

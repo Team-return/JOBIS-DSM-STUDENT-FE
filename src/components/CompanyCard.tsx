@@ -36,6 +36,9 @@ const WarpperGrid = styled.div`
   margin-top: 10px;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2vw;
+  @media (max-width: 999px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const Container = styled.div`

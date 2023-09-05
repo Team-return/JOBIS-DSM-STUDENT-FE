@@ -63,15 +63,16 @@ const Container = styled.div<{ scroll: number }>`
   background-color: ${theme.color.gray10};
   display: flex;
   justify-content: space-between;
-  border-bottom-width: 1px;
+  /* border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: ${(props) => `rgba(229,229,229,${props.scroll})`};
+  border-bottom-color: ${(props) => `rgba(229,229,229,${props.scroll})`}; */
+  box-shadow: ${(props) => `0 2px 4px 0 rgba(229,229,229,${props.scroll})`};
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   padding: 12px 17.5vw;
-  z-index: 10;
+  z-index: 4;
   a,
   p {
     color: ${theme.color.gray80};
