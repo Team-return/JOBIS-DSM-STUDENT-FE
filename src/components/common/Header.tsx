@@ -24,9 +24,9 @@ export default function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(scroll);
-  }, [scroll]);
+  if (pathname.toString().indexOf("/account") !== -1) {
+    return null;
+  }
 
   return (
     <Container scroll={scroll}>
@@ -63,9 +63,6 @@ const Container = styled.div<{ scroll: number }>`
   background-color: ${theme.color.gray10};
   display: flex;
   justify-content: space-between;
-  /* border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: ${(props) => `rgba(229,229,229,${props.scroll})`}; */
   box-shadow: ${(props) => `0 2px 4px 0 rgba(229,229,229,${props.scroll})`};
   align-items: center;
   position: fixed;
@@ -87,7 +84,7 @@ const MenuWarpper = styled.nav`
 
 const Menu = styled(Link)<{ router: string; id: string }>`
   ${theme.font.Body2}
-  font-weight: ${(props) => props.router === props.id && 700}
+  font-weight: ${(props) => props.router === props.id && 700};
 `;
 
 const ASide = styled.div`

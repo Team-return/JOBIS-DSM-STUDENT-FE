@@ -19,7 +19,7 @@ export default function CompanyTitle({
   onClickRecruitments,
   onClickInterview,
 }: PropsType) {
-  const { Modal, toggleModal } = useMoadl();
+  const { Modal, toggleModal, closeModal } = useMoadl();
   return (
     <Warpper>
       <div className="info">
@@ -40,8 +40,22 @@ export default function CompanyTitle({
         <Image width={24} height={24} src={DotIcon} alt="" />
         <Modal>
           <MenuModal>
-            <MenuBtn onClick={onClickRecruitments}>모집의뢰서 조회</MenuBtn>
-            <MenuBtn onClick={onClickInterview}>면접 후기 조회</MenuBtn>
+            <MenuBtn
+              onClick={() => {
+                onClickRecruitments();
+                closeModal();
+              }}
+            >
+              모집의뢰서 조회
+            </MenuBtn>
+            <MenuBtn
+              onClick={() => {
+                onClickInterview();
+                closeModal();
+              }}
+            >
+              면접 후기 조회
+            </MenuBtn>
           </MenuModal>
         </Modal>
       </button>
@@ -113,6 +127,7 @@ const MenuBtn = styled.div`
   justify-content: start;
   align-items: center;
   padding: 0 10px;
+  cursor: pointer;
   :hover {
     color: ${theme.color.gray80};
   }

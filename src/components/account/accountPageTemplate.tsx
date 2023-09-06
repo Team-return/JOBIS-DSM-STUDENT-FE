@@ -26,7 +26,7 @@ export default function AccountPageTemplate({ title, children }: PropsType) {
 
 const Warpper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

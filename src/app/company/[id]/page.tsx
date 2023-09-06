@@ -1,5 +1,6 @@
 "use client";
 
+import Table from "@/components/common/Table";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import styled from "@emotion/styled";
 
@@ -17,6 +18,7 @@ export default function CompanyDetialPage() {
           console.log("후기 조회");
         }}
       />
+      <Table />
     </Warpper>
   );
 }
