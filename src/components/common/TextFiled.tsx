@@ -3,9 +3,11 @@ import { Icon, theme } from "@team-return/design-system";
 import React, { KeyboardEvent, useRef } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
-  customType?: "Text" | "Search";
-  enterEvent?: () => void;
+  customType?: "Text" | "Search" | "EyesClose" | "EyesOpen";
+  iconClick?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  width: string | number;
 }
 
 function TextFiled({
@@ -14,59 +16,46 @@ function TextFiled({
   onChange,
   customType = "Text",
   name,
-  enterEvent,
+  iconClick,
   width,
+  label,
+  type,
 }: PropsType) {
   const inputRef = useRef<HTMLInputElement>(null);
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") if (enterEvent) enterEvent();
+    if (e.key === "Enter") if (iconClick) iconClick();
   };
   return (
-    <Container width={width}>
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        name={name}
-        ref={inputRef}
-        onKeyUp={onKeyDown}
-      />
-      {customType !== "Text" && (
-        <div onClick={enterEvent}>
-          <Icon icon={customType} size={20} color="gray60" />
-        </div>
+    <div>
+      {label && (
+        <p className="text-caption text-[#333333] font-m mb-[4px]">{label}</p>
       )}
-    </Container>
+      <div
+        className={`h-[40px] w-[${
+          typeof width === "number" ? width + "px" : width
+        }] border border-[#cccccc] border-solid rounded-[8px] flex align-center overflow-hidden`}
+      >
+        <input
+          className="w-full flex-1 h-full px-[16px] border-none text-b3 font-r leading-b3"
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          name={name}
+          ref={inputRef}
+          onKeyUp={onKeyDown}
+        />
+        {customType !== "Text" && (
+          <div
+            className="flex justify-center items-center mr-[14px] cursor-pointer  "
+            onClick={iconClick}
+          >
+            <Icon icon={customType} size={20} color="gray60" />
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
-
-const Container = styled.div<{ width: string | number | undefined }>`
-  height: 40px;
-  width: 40%;
-  border: 1px solid ${theme.color.gray50};
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  width: ${(props) => {
-    if (typeof props.width === "number") return props.width + "px";
-    else return props.width;
-  }};
-  input {
-    flex: 1;
-    height: 100%;
-    padding: 0 16px;
-    border: none;
-    font-size: 14px;
-  }
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 14px;
-    cursor: pointer;
-  }
-`;
 
 export default React.memo(TextFiled);

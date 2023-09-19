@@ -1,5 +1,5 @@
 import { Signup } from "@/apis/students";
-import LargeBtn from "@/components/common/LargeBtn";
+import LargeBtn from "@/components/common/Button/LargeBtn";
 import useSignUpContext from "@/hook/useSignupContext";
 import { Input, theme, useToastStore } from "@team-return/design-system";
 import React, { useState } from "react";

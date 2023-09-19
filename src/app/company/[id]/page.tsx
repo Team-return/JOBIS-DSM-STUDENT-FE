@@ -1,29 +1,54 @@
 "use client";
 
-import Table from "@/components/common/Table";
+import { GetCompaniesDetail } from "@/apis/companies";
+import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
+import { business_number_regex } from "@/util/regex";
 import styled from "@emotion/styled";
+import { useToastStore } from "@team-return/design-system";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function CompanyDetialPage() {
-  return (
-    <Warpper>
-      <CompanyTitle
-        business_number="111-11-11111"
-        company_name="이름"
-        company_profile_url="https://jobis-file.s3.ap-northeast-2.amazonaws.com/LOGO_IMAGE/afe069fb-20a7-4415-9e37-f57ff2bac9de.png"
-        onClickRecruitments={() => {
-          console.log("모집의뢰서 조회");
-        }}
-        onClickInterview={() => {
-          console.log("후기 조회");
-        }}
-      />
-      <Table />
-    </Warpper>
-  );
-}
+  const navigator = useRouter();
+  const { append } = useToastStore();
+  const pathname = usePathname();
+  const id = pathname.replace("/company/", "");
+  const { data } = GetCompaniesDetail(id);
 
-const Warpper = styled.div`
-  width: 100%;
-  margin-top: 56px;
-`;
+  if (data) {
+    const {
+      business_number,
+      company_name,
+      company_profile_url,
+      recruitment_id,
+      ...rest
+    } = data.data;
+
+    const onClickRecruitments = () => {
+      if (recruitment_id) {
+        navigator.push(`/recruitments/${recruitment_id}`);
+      } else {
+        append({
+          title: "",
+          message: "해당 기업은 모집의뢰서가 없습니다.",
+          type: "BLUE",
+        });
+      }
+    };
+
+    return (
+      <div className="w-full my-[56px]">
+        <CompanyTitle
+          business_number={business_number_regex(business_number)}
+          company_name={company_name}
+          company_profile_url={company_profile_url}
+          onClickRecruitments={onClickRecruitments}
+          onClickInterview={() => {
+            // 후기조회 링크이동
+          }}
+        />
+        <CompanyTable {...rest} />
+      </div>
+    );
+  }
+}

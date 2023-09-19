@@ -1,15 +1,12 @@
 "use client";
 
 import styled from "@emotion/styled";
-import BuildingIcon from "@public/Building.svg";
-import IconTitle from "@/components/IconTitle";
 import TextFiled from "@/components/common/TextFiled";
 import useInput from "@/hook/useInput";
-import { theme } from "@team-return/design-system";
 import CardList from "@/components/CardList";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { URL } from "url";
+import CompanyCard from "@/components/CompanyCard";
 
 export default function CompanyListPage() {
   const getParams = useSearchParams();
@@ -17,7 +14,7 @@ export default function CompanyListPage() {
   const navigator = useRouter();
   const pathname = usePathname();
   const { state: searchState, onChange: onChangeSearch } = useInput<{
-    search: string | number | readonly string[] | undefined;
+    search: string | readonly string[] | undefined;
   }>({
     search: getParams.get("name")?.toString(),
   });
@@ -30,34 +27,23 @@ export default function CompanyListPage() {
     onSearch();
   }, [page]);
 
-  // icon={BuildingIcon}
-
   return (
-    <Main>
-      <SubHeader>
-        <IconTitle>🏢 기업체</IconTitle>
+    <div className="w-full mt-[68px]">
+      <div className="w-full flex justify-between items-center py-5">
+        <div className="flex gap-[10px] items-center text-h5 leading-h5 font-b">
+          <p>🏢 기업체</p>
+        </div>
         <TextFiled
+          width="40%"
           placeholder="검색어를 입력해주세요."
           value={searchState.search}
           onChange={onChangeSearch}
           name="search"
           customType="Search"
-          enterEvent={onSearch}
+          iconClick={onSearch}
         />
-      </SubHeader>
-      <CardList listType="Company" />
-    </Main>
+      </div>
+      <CompanyCard />
+    </div>
   );
 }
-
-const Main = styled.div`
-  width: 100%;
-  margin-top: 68px;
-`;
-const SubHeader = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-`;

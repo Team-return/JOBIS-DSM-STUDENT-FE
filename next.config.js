@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     unoptimized: true,
+    domains: ["picsum.photos"],
   },
   reactStrictMode: true,
 };

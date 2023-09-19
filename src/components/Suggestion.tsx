@@ -1,11 +1,7 @@
-import { styled } from "styled-components";
-import Image from "next/image";
-import { theme, Icon } from "@team-return/design-system";
+import { Icon } from "@team-return/design-system";
 import CardList from "./CardList";
-import Building from "@public/Building.svg";
-import Pushpin from "@public/Pushpin.svg";
-import Smile from "@public/Smile.svg";
-import IconTitle from "./IconTitle";
+import CompanyCard from "./CompanyCard";
+import RecruitmentsCard from "./RecruitmentsCard";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";
@@ -14,58 +10,32 @@ interface PropsType {
 const fix_data = {
   Company: {
     title: "🏢 이런 기업은 어떠세요?",
-    emoji: Building,
     router: "/company",
   },
   Recruitments: {
     title: `👩‍💻 ${"강용수"}의 관심 분야에요`,
-    emoji: Smile,
     router: "/recruitements",
   },
   BookMark: {
     title: "📌 내가 저장한 모집의뢰서",
-    emoji: Pushpin,
   },
 };
 
 // icon={fix_data[listType].emoji}
 export default function Suggestion({ listType }: PropsType) {
   return (
-    <Warpper>
-      <Header>
-        <IconTitle >
-          {fix_data[listType].title}
-        </IconTitle>
-        <ShowAllBtn>
+    <div className="w-full flex flex-col items-start">
+      <header className="flex mb-[12px]">
+        <div className="flex gap-[10px] items-center text-h5 leading-h5 font-b">
+          <p>{fix_data[listType].title}</p>
+        </div>
+        <button className="w-[120px] h-[32px] flex items-end justify-center text-b3 leading-b3 text-[#7f7f7f] font-m bg-none border-none cursor-pointer">
           전체보기
-          <Icon icon="Chevron" direction="right" size={18} color="gray60" />
-        </ShowAllBtn>
-      </Header>
-      <CardList listType={listType} />
-    </Warpper>
+          {/* <Icon icon="Chevron" direction="right" size={18} color="gray60" /> */}
+        </button>
+      </header>
+      {listType === "Company" && <CompanyCard />}
+      {listType === "Recruitments" && <RecruitmentsCard />}
+    </div>
   );
 }
-
-const Warpper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-`;
-const Header = styled.header`
-  display: flex;
-  align-items: end;
-  margin-bottom: 12px;
-`;
-const ShowAllBtn = styled.button`
-  width: 120px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: ${theme.color.gray60};
-  background: none;
-  border: none;
-  cursor: pointer;
-`;

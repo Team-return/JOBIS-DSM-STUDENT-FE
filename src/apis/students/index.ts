@@ -1,11 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { instance } from "../axios";
 import { ResponseBody } from "../user/type";
-import { RequestBody } from "./type";
+import { MyProfileProps, RequestBody } from "./type";
 
 const router = "students";
 
@@ -66,5 +66,18 @@ export const Signup = () => {
         }
       },
     }
+  );
+};
+
+export const MyProfile = () => {
+  const [cookie] = useCookies(["access_token"]);
+  return useQuery(
+    ["myProfile"],
+    async () =>
+      await instance.get<MyProfileProps>(`${router}/my`, {
+        headers: {
+          Authorization: `Bearer ${cookie.access_token}`,
+        },
+      })
   );
 };

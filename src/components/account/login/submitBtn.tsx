@@ -25,10 +25,10 @@ function SubmitBtn({
   loginClick,
 }: PropsType) {
   return (
-    <Submit light={allIsInputState()}>
-      <div className="saveId">
+    <div className="w-full flex flex-col items-center gap-[15px] text-[#7f7f7f]">
+      <div className="w-full mb-[40px]">
         <CheckBox
-          children="아이디 저장"
+          children="자동 로그인"
           checked={isChecked}
           onClick={() => {
             setIsChecked((prev) => !prev);
@@ -36,6 +36,9 @@ function SubmitBtn({
         />
       </div>
       <button
+        className={`w-full h-[48px] border-none rounded-[8px] ${
+          allIsInputState() ? "bg-[#135C9D]" : "bg-[#E5E5E5]"
+        } cursor-defualt text-white text-b3 font-b`}
         disabled={!allIsInputState()}
         onClick={() => {
           loginClick();
@@ -43,43 +46,21 @@ function SubmitBtn({
       >
         로그인
       </button>
-      <Link className="signup" href="/account/signup/1">
-        회원가입
-      </Link>
-    </Submit>
+      <p className="mt-[10px] text-caption text-black font-m">
+        아직 회원이 아니신가요? <Link className="font-b text-subBlue" href="/account/signup/1">회원가입</Link>
+      </p>
+    </div>
   );
 }
 
 const Submit = styled.div<{ light: boolean }>`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  gap: 15px;
-  color: ${theme.color.gray60};
-  .saveId {
-    width: 100%;
-  }
-  .signup {
-    margin-top: 10px;
-    color: ${theme.color.gray60};
-  }
   > button {
-    width: 100%;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    background-color: ${theme.color.gray40};
-    cursor: default;
-    color: ${theme.color.gray10};
     ${(props) =>
       props.light &&
       css`
         background-color: ${theme.color.liteBlue};
         cursor: pointer;
       `}
-    ${theme.font.Body1}
   }
 `;
 

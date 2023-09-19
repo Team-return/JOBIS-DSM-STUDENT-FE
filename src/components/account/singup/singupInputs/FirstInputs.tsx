@@ -1,4 +1,4 @@
-import LargeBtn from "@/components/common/LargeBtn";
+import LargeBtn from "@/components/common/Button/LargeBtn";
 import useSignUpContext from "@/hook/useSignupContext";
 import { Input, RadioButton, theme } from "@team-return/design-system";
 import { useRouter } from "next/navigation";

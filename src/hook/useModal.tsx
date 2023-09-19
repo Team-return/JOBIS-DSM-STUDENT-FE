@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ModalContext } from "@/context/ModalContext";
 
 export default function useMoadl() {
@@ -17,21 +17,21 @@ export default function useMoadl() {
   return {
     Modal: ({
       children,
+      className,
     }: {
+      className?: string;
       children: React.ReactNode | React.ReactNode[];
     }) => (
       <>
-        {
-          isOpen && 
+        {isOpen && (
           <div
+            className={className || ""}
             onClick={(e) => e.stopPropagation()}
             style={{ zIndex: 6, cursor: "default" }}
           >
-          {
-            children
-          }
+            {children}
           </div>
-        }
+        )}
       </>
     ),
     openModal,

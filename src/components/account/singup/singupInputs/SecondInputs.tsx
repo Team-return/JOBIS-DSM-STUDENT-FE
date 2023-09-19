@@ -1,5 +1,5 @@
 import { CheckAuthCode, SendAuthCode } from "@/apis/auth";
-import LargeBtn from "@/components/common/LargeBtn";
+import LargeBtn from "@/components/common/Button/LargeBtn";
 import useSignUpContext from "@/hook/useSignupContext";
 import { Input, theme } from "@team-return/design-system";
 import { useRouter } from "next/navigation";
