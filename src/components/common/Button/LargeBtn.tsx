@@ -9,25 +9,26 @@ interface PropsType {
 
 export default function LargeBtn({ disabled, text, onClick }: PropsType) {
   return (
-    <BtnContainer light={disabled} disabled={!disabled} onClick={onClick}>
+    <button
+      className={`w-full h-[50px] border-none rounded-[10px] text-white text-b3 leading-b3 font-b`}
+      style={
+        disabled
+          ? { backgroundColor: theme.color.liteBlue, cursor: "pointer" }
+          : { backgroundColor: theme.color.gray40, cursor: "default" }
+      }
+      disabled={!disabled}
+      onClick={onClick}
+    >
       {text}
-    </BtnContainer>
+    </button>
   );
 }
 
 const BtnContainer = styled.button<{ light: boolean }>`
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  background-color: ${theme.color.gray40};
-  cursor: default;
-  color: ${theme.color.gray10};
   ${(props) =>
     props.light &&
     css`
       background-color: ${theme.color.liteBlue};
       cursor: pointer;
     `}
-  ${theme.font.Body1}
 `;

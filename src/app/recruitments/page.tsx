@@ -1,3 +1,5 @@
+"use client";
+
 import Filter from "@/components/recruitments/filter";
 import RecruitmentsCard from "@/components/RecruitmentsCard";
 
@@ -10,7 +12,7 @@ export default function Recruitments() {
         </div>
         <Filter />
       </div>
-      {/* <RecruitmentsCard /> */}
+      <RecruitmentsCard />
     </div>
   );
 }

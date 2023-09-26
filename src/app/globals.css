@@ -37,6 +37,11 @@ input {
   outline: none;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .drag {
   -webkit-user-select: text;
   -moz-user-select: text;

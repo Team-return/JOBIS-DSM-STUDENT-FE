@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
+import Link_ from "./common/Link_";
 
 export default function RecruitmentsCard() {
   const navigator = useRouter();
@@ -33,45 +34,42 @@ export default function RecruitmentsCard() {
           bookmarked,
           recruit_id,
         }) => (
-          <div
-            className="w-full cursor-pointer flex flex-col shadow-elevaiton rounded-xl overflow-hidden transition hover:transition hover:scale-105 duration-200"
-            onClick={() => {
-              navigator.push(`/recruitments/${recruit_id}`);
-            }}
-          >
-            <div className="w-full h-0 pb-[70%] relative">
-              <Image
-                className="absolute object-contain"
-                fill
-                src={`https://jobis-bucket.s3.ap-northeast-2.amazonaws.com/${company_profile_url}`}
-                alt=""
-              />
-            </div>
-            <div className="relative bg-[#fafafa] p-[14px] flex-1 flex flex-col">
-              <p className="text-b2 leading-b2 font-b text-black mr-8">
-                {job_code_list}
-              </p>
-              <p className="text-b3 leading-b3 font-r text-[#444444] mt-1">
-                {company_name}
-              </p>
-              <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
-                <div className={tagStyle}>실습수당 {train_pay}만원</div>
-                <div className={tagStyle}>병역특례</div>
-              </div>
-              <button
-                className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
-                aria-label="bookMarkBtn"
-                onClick={(event: React.MouseEvent<HTMLElement>) => {
-                  event.stopPropagation();
-                }}
-              >
-                <Icon
-                  icon={`Bookmark${bookmarked ? "On" : "Off"}`}
-                  color={bookmarked ? "skyblue" : "gray60"}
+          <Link_ href={`/recruitments/${recruit_id}`}>
+            <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
+              <div className="w-full h-0 pb-[70%] relative">
+                <Image
+                  className="absolute object-contain"
+                  fill
+                  src={`https://jobis-bucket.s3.ap-northeast-2.amazonaws.com/${company_profile_url}`}
+                  alt=""
                 />
-              </button>
+              </div>
+              <div className="relative bg-[#fafafa] p-[14px] flex-1 flex flex-col">
+                <p className="mr-8 text-black text-b2 leading-b2 font-b">
+                  {job_code_list}
+                </p>
+                <p className="text-b3 leading-b3 font-r text-[#444444] mt-1">
+                  {company_name}
+                </p>
+                <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
+                  <div className={tagStyle}>실습수당 {train_pay}만원</div>
+                  <div className={tagStyle}>병역특례</div>
+                </div>
+                <button
+                  className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
+                  aria-label="bookMarkBtn"
+                  onClick={(event: React.MouseEvent<HTMLElement>) => {
+                    event.stopPropagation();
+                  }}
+                >
+                  <Icon
+                    icon={`Bookmark${bookmarked ? "On" : "Off"}`}
+                    color={bookmarked ? "skyblue" : "gray60"}
+                  />
+                </button>
+              </div>
             </div>
-          </div>
+          </Link_>
         )
       )}
     </div>

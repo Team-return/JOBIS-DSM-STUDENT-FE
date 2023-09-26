@@ -1,6 +1,8 @@
+"use client";
+
 import { RequestBody } from "@/apis/user/type";
 import TextFiled from "@/components/common/TextFiled";
-import { Input } from "@team-return/design-system";
+// import { Input } from "@team-return/design-system";
 import React, { useState } from "react";
 
 interface PropsType {
@@ -16,6 +18,7 @@ function LoginInputs({ inputStates, handleChange }: PropsType) {
         value={inputStates.account_id}
         onChange={handleChange}
         width="100%"
+        height={48}
         name="account_id"
         label="이메일"
         placeholder="이메일을 입력해주세요"
@@ -23,7 +26,8 @@ function LoginInputs({ inputStates, handleChange }: PropsType) {
       <TextFiled
         value={inputStates.password}
         onChange={handleChange}
-        width={100}
+        width="100%"
+        height={48}
         name="password"
         label="비밀번호"
         placeholder="비밀번호를 입력해주세요"

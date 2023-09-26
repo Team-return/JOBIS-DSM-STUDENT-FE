@@ -1,3 +1,5 @@
+"use client";
+
 import Banner from "@/components/Carousel";
 import Suggestion from "@/components/Suggestion";
 import BandBanner from "@/components/BandBanner";

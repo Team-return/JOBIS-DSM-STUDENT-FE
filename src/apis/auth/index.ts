@@ -81,8 +81,7 @@ export const CheckAuthCode = (
       return response.data;
     },
     {
-      onSuccess: () => {
-      },
+      onSuccess: () => {},
       onError: (err: AxiosError) => {
         const response = err.response;
         switch (response?.status) {
@@ -96,7 +95,7 @@ export const CheckAuthCode = (
           case 404:
             append({
               title: "",
-              message: "메일을 확인해주세요",
+              message: "이메일이 잘못되었습니다.",
               type: "RED",
             });
             break;

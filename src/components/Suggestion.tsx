@@ -24,7 +24,7 @@ const fix_data = {
 // icon={fix_data[listType].emoji}
 export default function Suggestion({ listType }: PropsType) {
   return (
-    <div className="w-full flex flex-col items-start">
+    <div className="flex flex-col items-start w-full">
       <header className="flex mb-[12px]">
         <div className="flex gap-[10px] items-center text-h5 leading-h5 font-b">
           <p>{fix_data[listType].title}</p>
