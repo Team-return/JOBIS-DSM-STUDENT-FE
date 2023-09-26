@@ -5,6 +5,8 @@ const nextConfig = {
     domains: ["picsum.photos"],
   },
   reactStrictMode: true,
+  trailingSlash: true,
+  output: "export",
 };
 
 module.exports = nextConfig;
