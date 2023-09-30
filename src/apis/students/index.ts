@@ -70,14 +70,9 @@ export const Signup = () => {
 };
 
 export const MyProfile = () => {
-  const [cookie] = useCookies(["access_token"]);
   return useQuery(
     ["myProfile"],
     async () =>
-      await instance.get<MyProfileProps>(`${router}/my`, {
-        headers: {
-          Authorization: `Bearer ${cookie.access_token}`,
-        },
-      })
+      await instance.get<MyProfileProps>(`${router}/my`)
   );
 };
