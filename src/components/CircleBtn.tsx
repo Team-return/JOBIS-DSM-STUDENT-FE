@@ -1,3 +1,5 @@
+"use client";
+
 import { Icon } from "@team-return/design-system";
 
 interface PropsType {

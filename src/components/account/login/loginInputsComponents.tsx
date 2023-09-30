@@ -2,7 +2,6 @@
 
 import { RequestBody } from "@/apis/user/type";
 import TextFiled from "@/components/common/TextFiled";
-// import { Input } from "@team-return/design-system";
 import React, { useState } from "react";
 
 interface PropsType {

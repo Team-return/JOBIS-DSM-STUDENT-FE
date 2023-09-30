@@ -12,7 +12,6 @@ export default function CompanyDetialPage() {
   const { append } = useToastStore();
   const pathname = usePathname();
   const id = pathname.replace("/companies/", "").replace("/", "");
-  console.log(id);
 
   const { data } = GetCompaniesDetail(id);
 

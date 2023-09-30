@@ -50,7 +50,12 @@ function Header() {
           마이페이지
         </Link>
       </nav>
-      <div className="flex items-center gap-[5px]" onClick={() => {}}>
+      <div
+        className="flex items-center gap-[5px]"
+        onClick={() => {
+          //알림모달
+        }}
+      >
         <div className="h-[32px] bg-white flex gap-[10px] items-center cursor-pointer">
           <Image
             className="rounded-full bg-[#D9D9D9]"

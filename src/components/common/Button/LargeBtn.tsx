@@ -1,5 +1,4 @@
 import { theme } from "@team-return/design-system";
-import styled, { css } from "styled-components";
 
 interface PropsType {
   disabled: boolean;
@@ -23,12 +22,3 @@ export default function LargeBtn({ disabled, text, onClick }: PropsType) {
     </button>
   );
 }
-
-const BtnContainer = styled.button<{ light: boolean }>`
-  ${(props) =>
-    props.light &&
-    css`
-      background-color: ${theme.color.liteBlue};
-      cursor: pointer;
-    `}
-`;

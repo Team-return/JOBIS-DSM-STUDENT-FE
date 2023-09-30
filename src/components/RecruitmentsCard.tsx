@@ -3,21 +3,18 @@
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
 
 export default function RecruitmentsCard() {
-  const navigator = useRouter();
   const getParams = useSearchParams();
   const [list, setList] = useState<RecruitmentsListType[]>([]);
 
   const res = GetRecruitmentsList(getParams.toString());
   useEffect(() => {
-    if (res.data?.data.recruitments) {
-      setList(res.data?.data.recruitments);
-    }
+    setList((prev) => res.data?.data.recruitments || prev);
   }, [res]);
 
   const tagStyle =

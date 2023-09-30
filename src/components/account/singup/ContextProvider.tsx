@@ -1,5 +1,5 @@
 import { SignupContext } from "@/context/SignupContext";
-import useInput from "@/hook/useInput";
+import useForm from "@/hook/useForm";
 import { ReactNode } from "react";
 import { SignupType } from "./type";
 
@@ -12,7 +12,7 @@ export default function SignupContextProvider({
     state: signupState,
     setState: setSignupState,
     onChange: handleChange,
-  } = useInput<SignupType>({
+  } = useForm<SignupType>({
     email: "",
     auth_code: "",
     password: "",

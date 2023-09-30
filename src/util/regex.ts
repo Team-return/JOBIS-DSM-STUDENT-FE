@@ -5,13 +5,7 @@ export const business_number_regex = (res: string) => {
 export const pon_number_regex = (number: string | null) => {
   if (number) {
     if (number.length === 10)
-      return (
-        number.slice(0, 3) +
-        "-" +
-        number.slice(3, 6) +
-        "-" +
-        number.slice(6, 10)
-      );
+      return number.replace(/^(\d{3})(\d{3})(\d{4})$/, $1 - $2 - $3);
     else if (number.length === 11)
       return (
         number.slice(0, 3) +

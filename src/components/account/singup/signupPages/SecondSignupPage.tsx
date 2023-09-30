@@ -3,8 +3,7 @@ import LargeBtn from "@/components/common/Button/LargeBtn";
 import RadioBtn from "@/components/common/RadioBtn";
 import TextFiled from "@/components/common/TextFiled";
 import useSignUpContext from "@/hook/useSignupContext";
-import { theme, useToastStore } from "@team-return/design-system";
-import { useRouter } from "next/navigation";
+import { theme } from "@team-return/design-system";
 import React, { useEffect } from "react";
 
 function SecondSignupPage() {
@@ -13,14 +12,10 @@ function SecondSignupPage() {
   const { grade, name, class_room, number, gender, password, email } =
     signupState;
 
-  const navigator = useRouter();
-
   useEffect(() => {
     setSignupState((prev) => ({ ...prev, ["gender"]: select }));
-    console.log(signupState);
   }, [select]);
 
-  const { append } = useToastStore();
   const { mutate } = Signup();
 
   const SignupAPI = () => {
@@ -102,9 +97,7 @@ function SecondSignupPage() {
             !!signupState.number &&
             !!signupState.gender
           }
-          onClick={() => {
-            SignupAPI();
-          }}
+          onClick={SignupAPI}
         />
       </div>
     </div>

@@ -1,5 +1,3 @@
-"use client";
-
 import Filter from "@/components/recruitments/filter";
 import RecruitmentsCard from "@/components/RecruitmentsCard";
 

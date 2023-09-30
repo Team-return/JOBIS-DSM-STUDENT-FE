@@ -81,7 +81,6 @@ export const CheckAuthCode = (
       return response.data;
     },
     {
-      onSuccess: () => {},
       onError: (err: AxiosError) => {
         const response = err.response;
         switch (response?.status) {

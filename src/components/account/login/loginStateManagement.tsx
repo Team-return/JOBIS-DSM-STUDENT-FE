@@ -6,11 +6,11 @@ import LoginInputs from "@/components/account/login/loginInputsComponents";
 import SubmitBtn from "@/components/account/login/submitBtn";
 import { useCallback, useState } from "react";
 import { Login } from "@/apis/user";
-import useInput from "@/hook/useInput";
+import useForm from "@/hook/useForm";
 
 export default function LoginStateMenagement() {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const { state: inputStates, onChange: handleChange } = useInput<RequestBody>({
+  const { state: inputStates, onChange: handleChange } = useForm<RequestBody>({
     account_id: "",
     password: "",
   });

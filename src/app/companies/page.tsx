@@ -1,7 +1,7 @@
 "use client";
 
 import TextFiled from "@/components/common/TextFiled";
-import useInput from "@/hook/useInput";
+import useForm from "@/hook/useForm";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CompanyCard from "@/components/CompanyCard";
@@ -11,7 +11,7 @@ export default function CompanyListPage() {
   const [page, setPage] = useState(Number(getParams.get("page")));
   const navigator = useRouter();
   const pathname = usePathname();
-  const { state: searchState, onChange: onChangeSearch } = useInput<{
+  const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
   }>({
     search: getParams.get("name")?.toString(),
@@ -21,9 +21,7 @@ export default function CompanyListPage() {
     navigator.push(`${pathname}?page=${page}&name=${searchState.search}`);
   };
 
-  useEffect(() => {
-    onSearch();
-  }, [page]);
+  useEffect(onSearch, [page]);
 
   return (
     <div className="w-full mt-[68px]">

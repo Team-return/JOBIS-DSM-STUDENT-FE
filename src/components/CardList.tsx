@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./RecruitmentsCard";
 
@@ -9,15 +7,7 @@ interface PropsType {
 }
 
 function CardList({ listType }: PropsType) {
-  return (
-    <>
-      {listType === "Company" ? (
-        <CompanyCard />
-      ) : (
-        <RecruitmentsCard />
-      )}
-    </>
-  );
+  return <>{listType === "Company" ? <CompanyCard /> : <RecruitmentsCard />}</>;
 }
 
 export default React.memo(CardList);

@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon, theme } from "@team-return/design-system";
-import React, { KeyboardEvent, useEffect, useRef, useState } from "react";
+import React, { KeyboardEvent, useState } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
   customType?: "Text" | "Search" | "EyesClose" | "EyesOpen";

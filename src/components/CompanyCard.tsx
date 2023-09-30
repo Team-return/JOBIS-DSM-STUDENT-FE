@@ -6,6 +6,7 @@ import { GetCompaniesList } from "@/apis/companies";
 import { useEffect, useState } from "react";
 import { CompaniesListType } from "@/apis/companies/type";
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
+import { Icon } from "@team-return/design-system";
 
 export default function CompanyCard() {
   const getParams = useSearchParams();
@@ -47,7 +48,7 @@ export default function CompanyCard() {
                 </p>
                 {has_recruitment && (
                   <div className="absolute flex items-center justify-center w-6 h-6 border-none top-1 right-1 bg-none">
-                    {/* <Icon icon="Document" color="gray60" /> */}
+                    <Icon icon="Document" color="gray60" />
                   </div>
                 )}
               </div>

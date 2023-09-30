@@ -7,7 +7,6 @@ interface PropsType {
 }
 
 
-// icon={fix_data[listType].emoji}
 export default function Suggestion({ listType }: PropsType) {
   return (
     <div className="flex flex-col items-start w-full">

@@ -1,8 +1,7 @@
 "use client";
 
 import { GetCode } from "@/apis/code";
-import useInput from "@/hook/useInput";
-import { Icon } from "@team-return/design-system";
+import useForm from "@/hook/useForm";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -19,7 +18,7 @@ function Filter() {
     job_code: getParams.get("job_code"),
     tech_code: getParams.get("tech_code"),
   });
-  const { state: searchState, onChange: onChangeSearch } = useInput<{
+  const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
   }>({
     search: getParams.get("name")?.toString(),
@@ -31,9 +30,7 @@ function Filter() {
     );
   };
 
-  useEffect(() => {
-    onSearch();
-  }, [filter]);
+  useEffect(onSearch, [filter]);
 
   const onItemClick = (
     item: string | number,
@@ -45,7 +42,6 @@ function Filter() {
   };
 
   const { data } = GetCode("JOB");
-  console.log(data?.data);
 
   return (
     <div className="flex gap-4">

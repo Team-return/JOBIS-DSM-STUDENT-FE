@@ -43,8 +43,6 @@ function FirstSignupPage() {
             className={`h-[48px] px-6 rounded-[8px] border-none text-[${theme.color.liteBlue}] bg-white hover:bg-[${theme.color.liteBlue}] hover:text-white text-b3 leading-b3 font-r whitespace-nowrap`}
             style={{ border: `1px solid ${theme.color.liteBlue}` }}
             onClick={() => {
-              console.log("gs");
-
               SandAuthCodeAPI &&
                 SandAuthCodeAPI({
                   email,
