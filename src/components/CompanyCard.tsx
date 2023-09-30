@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { GetCompaniesList } from "@/apis/companies";
 import { useEffect, useState } from "react";
 import { CompaniesListType } from "@/apis/companies/type";
-import Link_ from "./common/Link_";
+import HoverPrefetchLink from "./common/HoverPrefetchLink";
 
 export default function CompanyCard() {
   const getParams = useSearchParams();
@@ -25,7 +25,7 @@ export default function CompanyCard() {
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
       {companyList.map(
         ({ logo_url, name, take, has_recruitment, id }, index) => (
-          <Link_ href={`/companies/${id}`}>
+          <HoverPrefetchLink href={`/companies/${id}`}>
             <div
               className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1"
               key={index}
@@ -52,7 +52,7 @@ export default function CompanyCard() {
                 )}
               </div>
             </div>
-          </Link_>
+          </HoverPrefetchLink>
         )
       )}
     </div>

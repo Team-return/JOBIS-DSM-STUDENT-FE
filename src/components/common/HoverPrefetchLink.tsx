@@ -8,7 +8,12 @@ interface PropsType extends LinkProps {
   children: React.ReactNode;
 }
 
-export default function Link_({ children, prefetch, href, ...res }: PropsType) {
+export default function HoverPrefetchLink({
+  children,
+  prefetch,
+  href,
+  ...res
+}: PropsType) {
   const router = useRouter();
   return (
     <Link

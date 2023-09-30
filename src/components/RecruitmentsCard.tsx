@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
-import Link_ from "./common/Link_";
+import HoverPrefetchLink from "./common/HoverPrefetchLink";
 
 export default function RecruitmentsCard() {
   const navigator = useRouter();
@@ -34,7 +34,7 @@ export default function RecruitmentsCard() {
           bookmarked,
           recruit_id,
         }) => (
-          <Link_ href={`/recruitments/${recruit_id}`}>
+          <HoverPrefetchLink href={`/recruitments/${recruit_id}`}>
             <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
               <div className="w-full h-0 pb-[70%] relative">
                 <Image
@@ -69,7 +69,7 @@ export default function RecruitmentsCard() {
                 </button>
               </div>
             </div>
-          </Link_>
+          </HoverPrefetchLink>
         )
       )}
     </div>
