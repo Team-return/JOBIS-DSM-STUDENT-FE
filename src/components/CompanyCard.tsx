@@ -34,7 +34,7 @@ export default function CompanyCard() {
                 <Image
                   className="absolute object-contain"
                   fill
-                  src={`https://jobis-bucket.s3.ap-northeast-2.amazonaws.com/${logo_url}`}
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${logo_url}`}
                   alt={name}
                 />
               </div>

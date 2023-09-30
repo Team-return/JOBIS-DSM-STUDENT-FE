@@ -33,7 +33,7 @@ export default function CompanyTitle({
             className="object-contain"
             width={76}
             height={76}
-            src={`https://jobis-bucket.s3.ap-northeast-2.amazonaws.com/${company_profile_url}`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${company_profile_url}`}
             alt={company_name}
           />
         </div>
@@ -51,7 +51,7 @@ export default function CompanyTitle({
           className="relative flex items-center justify-center bg-white border-none cursor-pointer"
           onClick={toggleModal}
         >
-          <Icon icon="KebabMenu" size={20} color='gray60' />
+          <Icon icon="KebabMenu" size={20} color="gray60" />
           <Modal>
             <div className="absolute top-[30px] right-0 w-[150px] h-[100px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] p-[10px] shadow-elevaiton flex flex-col">
               <div
