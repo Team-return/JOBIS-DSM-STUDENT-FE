@@ -72,7 +72,9 @@ export const Signup = () => {
 export const MyProfile = () => {
   return useQuery(
     ["myProfile"],
-    async () =>
-      await instance.get<MyProfileProps>(`${router}/my`)
+    async () => await instance.get<MyProfileProps>(`${router}/my`),
+    {
+      refetchOnWindowFocus: false,
+    }
   );
 };

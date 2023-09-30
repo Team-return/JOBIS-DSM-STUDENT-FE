@@ -1,9 +1,7 @@
 "use client";
 
-import styled from "@emotion/styled";
 import TextFiled from "@/components/common/TextFiled";
 import useInput from "@/hook/useInput";
-import CardList from "@/components/CardList";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CompanyCard from "@/components/CompanyCard";
