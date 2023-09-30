@@ -8,9 +8,7 @@ export default function ModalContextProvider({
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <ModalContext.Provider
-      value={{ isOpen, setIsOpen}}
-    >
+    <ModalContext.Provider value={{ isOpen, setIsOpen }}>
       {children}
     </ModalContext.Provider>
   );
