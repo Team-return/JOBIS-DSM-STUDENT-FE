@@ -20,7 +20,7 @@ function Filter() {
     tech_code: getParams.get("tech_code"),
   });
   const { state: searchState, onChange: onChangeSearch } = useInput<{
-    search: string | readonly string[] | undefined;
+    search: string | undefined;
   }>({
     search: getParams.get("name")?.toString(),
   });
@@ -55,9 +55,7 @@ function Filter() {
         onItemClick={onItemClick}
         selected={getParams.get("job_code")?.toString() || ""}
       />
-      <SearchDropDown
-        title="기술스택"
-      />
+      <SearchDropDown title="기술스택" />
       <TextFiled
         placeholder="검색어를 입력해주세요."
         value={searchState.search}
