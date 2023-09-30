@@ -15,15 +15,12 @@
     "@tanstack/react-query": "^4.33.0",
     "axios": "^1.4.0",
     "debug": "^4.3.4",
-    "eslint": "8.42.0",
-    "eslint-config-next": "13.4.5",
     "next": "^13.4.19",
     "react": "18.2.0",
     "react-cookie": "^6.1.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.3",
     "styled-components": "^6.0.7",
-    "typescript": "4.7.2",
     "yarn": "^1.22.19"
   },
   "packageManager": "yarn@3.6.2",
@@ -31,12 +28,16 @@
     "@team-return/design-system": "^1.0.89",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/debug": "^4",
+    "@types/eslint": "^8",
     "@types/node": "^20.7.1",
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.8",
     "@yarnpkg/sdks": "^3.0.0-rc.49",
     "autoprefixer": "^10.4.15",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.3",
     "postcss": "^8.4.29",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   }
 }
