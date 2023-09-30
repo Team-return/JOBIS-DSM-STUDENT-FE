@@ -25,7 +25,7 @@ export default function CompanyCard() {
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
       {companyList.map(
         ({ logo_url, name, take, has_recruitment, id }, index) => (
-          <Link_ href={`company/${id}`}>
+          <Link_ href={`/companies/${id}`}>
             <div
               className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1"
               key={index}

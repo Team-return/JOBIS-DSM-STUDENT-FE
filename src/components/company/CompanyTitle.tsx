@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import Image from "next/image";
-import DotIcon from "@public/Menu.svg";
 import useMoadl from "@/hook/useModal";
+import { Icon } from "@team-return/design-system";
 
 interface PropsType {
   business_number?: string;
@@ -51,7 +51,7 @@ export default function CompanyTitle({
           className="relative flex items-center justify-center bg-white border-none cursor-pointer"
           onClick={toggleModal}
         >
-          <Image width={24} height={24} src={DotIcon} alt="" />
+          <Icon icon="KebabMenu" size={20} color='gray60' />
           <Modal>
             <div className="absolute top-[30px] right-0 w-[150px] h-[100px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] p-[10px] shadow-elevaiton flex flex-col">
               <div

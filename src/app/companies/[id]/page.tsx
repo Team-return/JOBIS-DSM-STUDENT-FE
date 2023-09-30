@@ -4,7 +4,6 @@ import { GetCompaniesDetail } from "@/apis/companies";
 import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import { business_number_regex } from "@/util/regex";
-import styled from "@emotion/styled";
 import { useToastStore } from "@team-return/design-system";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -12,7 +11,9 @@ export default function CompanyDetialPage() {
   const navigator = useRouter();
   const { append } = useToastStore();
   const pathname = usePathname();
-  const id = pathname.replace("/company/", "");
+  const id = pathname.replace("/companies/", "").replace("/", "");
+  console.log(id);
+
   const { data } = GetCompaniesDetail(id);
 
   if (data) {

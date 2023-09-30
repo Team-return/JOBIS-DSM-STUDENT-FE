@@ -28,7 +28,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/company") !== -1 && "font-b"
           }`}
-          href={"/company?page=1&name="}
+          href={"/companies?page=1&name="}
           prefetch
         >
           기업체
