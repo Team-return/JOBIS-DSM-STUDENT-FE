@@ -2,17 +2,16 @@
 
 import useMoadl from "@/hook/useModal";
 import { Icon } from "@team-return/design-system";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-type ItemsType = {
+type DropDownItemsType = {
   code: number;
   keyword: string;
 };
 
 interface PropsType {
   title: string;
-  items?: ItemsType[];
+  items?: DropDownItemsType[];
   onItemClick: (item: string | number, name: "job_code" | "tech_code") => void;
   selected: number | string;
 }
