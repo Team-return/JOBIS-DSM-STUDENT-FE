@@ -2076,11 +2076,11 @@ __metadata:
   linkType: hard
 
 "@types/debug@npm:^4":
-  version: 4.1.8
-  resolution: "@types/debug@npm:4.1.8"
+  version: 4.1.9
+  resolution: "@types/debug@npm:4.1.9"
   dependencies:
     "@types/ms": "*"
-  checksum: a9a9bb40a199e9724aa944e139a7659173a9b274798ea7efbc277cb084bc37d32fc4c00877c3496fac4fed70a23243d284adb75c00b5fdabb38a22154d18e5df
+  checksum: e88ee8b19d106f33eb0d3bc58bacff9702e98d821fd1ebd1de8942e6b97419e19a1ccf39370f1764a1dc66f79fd4619f3412e1be6eeb9f0b76412f5ffe4ead93
   languageName: node
   linkType: hard
 
@@ -2088,15 +2088,6 @@ __metadata:
   version: 1.39.7
   resolution: "@types/emscripten@npm:1.39.7"
   checksum: 9871e4495358cc06cc45b2798022cd097d8ac2eb5b2fae7c276c6c5cadea05507150fad053c73ed346d4cbd844c50a3438604e5d7c3c2a7446b703cacb1ce172
-  languageName: node
-  linkType: hard
-
-"@types/follow-redirects@npm:^1.14.1":
-  version: 1.14.1
-  resolution: "@types/follow-redirects@npm:1.14.1"
-  dependencies:
-    "@types/node": "*"
-  checksum: febc76e12adb1ba5655ba50cc6b594b50dd56ae87ef832993b43115b1c8c661ea6829b6035d312948e0cfa3f6634abdd17abbcf03c2da0d5d343547792dce490
   languageName: node
   linkType: hard
 
@@ -2169,9 +2160,9 @@ __metadata:
   linkType: hard
 
 "@types/ms@npm:*":
-  version: 0.7.31
-  resolution: "@types/ms@npm:0.7.31"
-  checksum: daadd354aedde024cce6f5aa873fefe7b71b22cd0e28632a69e8b677aeb48ae8caa1c60e5919bb781df040d116b01cb4316335167a3fc0ef6a63fa3614c0f6da
+  version: 0.7.32
+  resolution: "@types/ms@npm:0.7.32"
+  checksum: 610744605c5924aa2657c8a62d307052af4f0e38e2aa015f154ef03391fabb4fd903f9c9baacb41f6e5798b8697e898463c351e5faf638738603ed29137b5254
   languageName: node
   linkType: hard
 
@@ -2489,13 +2480,6 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 538ba38af0cc9e5ef983aee196c4b8b4d87c0c94532334fa7e065b2c8a1f85863467bb774231aae91613fcda5e68740c15d97b1967ae3394d20faddddd8af61d
-  languageName: node
-  linkType: hard
-
-"add@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "add@npm:2.0.6"
-  checksum: e2d23d40494565dfed4acd65e478570c444db5ac6c053551ed429c39ea0f2c99d83df63e7befec936df601827d2254d06a2fb6f7dcfd2022e810b25eab818b8c
   languageName: node
   linkType: hard
 
@@ -4071,7 +4055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.0, follow-redirects@npm:^1.15.2":
+"follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -5480,20 +5464,16 @@ __metadata:
     "@team-return/design-system": ^1.0.89
     "@testing-library/jest-dom": ^5.16.5
     "@types/debug": ^4
-    "@types/follow-redirects": ^1.14.1
     "@types/node": ^20.7.1
     "@types/react": ^18.2.23
     "@types/react-dom": ^18.2.8
     "@yarnpkg/sdks": ^3.0.0-rc.49
-    add: ^2.0.6
     autoprefixer: ^10.4.15
     axios: ^1.4.0
     debug: ^4.3.4
     eslint: 8.42.0
     eslint-config-next: 13.4.5
-    follow-redirects: ^1.15.2
     next: ^13.4.19
-    or: ^0.2.0
     postcss: ^8.4.29
     react: 18.2.0
     react-cookie: ^6.1.0
@@ -5799,13 +5779,6 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ^0.4.0
   checksum: 09281999441f2fe9c33a5eeab76700795365a061563d66b098923eb719251a42bdbe432790d35064d0816ead9296dbeb1ad51a733edf4167c96bd5d0882e428a
-  languageName: node
-  linkType: hard
-
-"or@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "or@npm:0.2.0"
-  checksum: 4cb18d682cc496bcac5e4691d999ed6fe8c8140000248f769920eef740e0b941545fd919b231dca729b22f750d2ba5b86df24e3898a1f96e204dae9d04aa8510
   languageName: node
   linkType: hard
 

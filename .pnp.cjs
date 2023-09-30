@@ -34,21 +34,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:4.35.0"],\
             ["@team-return/design-system", "npm:1.1.2"],\
             ["@testing-library/jest-dom", "npm:5.17.0"],\
-            ["@types/debug", "npm:4.1.8"],\
-            ["@types/follow-redirects", "npm:1.14.1"],\
+            ["@types/debug", "npm:4.1.9"],\
             ["@types/node", "npm:20.7.1"],\
             ["@types/react", "npm:18.2.23"],\
             ["@types/react-dom", "npm:18.2.8"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.50"],\
-            ["add", "npm:2.0.6"],\
             ["autoprefixer", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:10.4.15"],\
             ["axios", "npm:1.5.0"],\
             ["debug", "virtual:feb0771c9f8eadaf509cfed41e14a8bebbea5442233275c1c87085111077a08ef71eb773b899665b154d8203a55a489610a54117ae059fce5f5b8b844493b1b1#npm:4.3.4"],\
             ["eslint", "npm:8.42.0"],\
             ["eslint-config-next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:13.4.5"],\
-            ["follow-redirects", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:1.15.2"],\
             ["next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:13.4.19"],\
-            ["or", "npm:0.2.0"],\
             ["postcss", "npm:8.4.29"],\
             ["react", "npm:18.2.0"],\
             ["react-cookie", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:6.1.1"],\
@@ -3405,11 +3401,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/debug", [\
-        ["npm:4.1.8", {\
-          "packageLocation": "./.yarn/cache/@types-debug-npm-4.1.8-a04e2ca136-a9a9bb40a1.zip/node_modules/@types/debug/",\
+        ["npm:4.1.9", {\
+          "packageLocation": "./.yarn/cache/@types-debug-npm-4.1.9-8e7cf27fbd-e88ee8b19d.zip/node_modules/@types/debug/",\
           "packageDependencies": [\
-            ["@types/debug", "npm:4.1.8"],\
-            ["@types/ms", "npm:0.7.31"]\
+            ["@types/debug", "npm:4.1.9"],\
+            ["@types/ms", "npm:0.7.32"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3419,16 +3415,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-emscripten-npm-1.39.7-b616932db8-9871e44953.zip/node_modules/@types/emscripten/",\
           "packageDependencies": [\
             ["@types/emscripten", "npm:1.39.7"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/follow-redirects", [\
-        ["npm:1.14.1", {\
-          "packageLocation": "./.yarn/cache/@types-follow-redirects-npm-1.14.1-fba231d694-febc76e12a.zip/node_modules/@types/follow-redirects/",\
-          "packageDependencies": [\
-            ["@types/follow-redirects", "npm:1.14.1"],\
-            ["@types/node", "npm:20.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3513,10 +3499,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/ms", [\
-        ["npm:0.7.31", {\
-          "packageLocation": "./.yarn/cache/@types-ms-npm-0.7.31-ea3b89342b-daadd354ae.zip/node_modules/@types/ms/",\
+        ["npm:0.7.32", {\
+          "packageLocation": "./.yarn/cache/@types-ms-npm-0.7.32-38dadca018-610744605c.zip/node_modules/@types/ms/",\
           "packageDependencies": [\
-            ["@types/ms", "npm:0.7.31"]\
+            ["@types/ms", "npm:0.7.32"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3911,15 +3897,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/acorn",\
             "acorn"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["add", [\
-        ["npm:2.0.6", {\
-          "packageLocation": "./.yarn/cache/add-npm-2.0.6-c96b78d852-e2d23d4049.zip/node_modules/add/",\
-          "packageDependencies": [\
-            ["add", "npm:2.0.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5902,19 +5879,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "debug"\
           ],\
           "linkType": "HARD"\
-        }],\
-        ["virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:1.15.2", {\
-          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-c0f0613857/0/cache/follow-redirects-npm-1.15.2-1ec1dd82be-faa66059b6.zip/node_modules/follow-redirects/",\
-          "packageDependencies": [\
-            ["follow-redirects", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:1.15.2"],\
-            ["@types/debug", "npm:4.1.8"],\
-            ["debug", "virtual:feb0771c9f8eadaf509cfed41e14a8bebbea5442233275c1c87085111077a08ef71eb773b899665b154d8203a55a489610a54117ae059fce5f5b8b844493b1b1#npm:4.3.4"]\
-          ],\
-          "packagePeers": [\
-            "@types/debug",\
-            "debug"\
-          ],\
-          "linkType": "HARD"\
         }]\
       ]],\
       ["for-each", [\
@@ -7466,21 +7430,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tanstack/react-query", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:4.35.0"],\
             ["@team-return/design-system", "npm:1.1.2"],\
             ["@testing-library/jest-dom", "npm:5.17.0"],\
-            ["@types/debug", "npm:4.1.8"],\
-            ["@types/follow-redirects", "npm:1.14.1"],\
+            ["@types/debug", "npm:4.1.9"],\
             ["@types/node", "npm:20.7.1"],\
             ["@types/react", "npm:18.2.23"],\
             ["@types/react-dom", "npm:18.2.8"],\
             ["@yarnpkg/sdks", "npm:3.0.0-rc.50"],\
-            ["add", "npm:2.0.6"],\
             ["autoprefixer", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:10.4.15"],\
             ["axios", "npm:1.5.0"],\
             ["debug", "virtual:feb0771c9f8eadaf509cfed41e14a8bebbea5442233275c1c87085111077a08ef71eb773b899665b154d8203a55a489610a54117ae059fce5f5b8b844493b1b1#npm:4.3.4"],\
             ["eslint", "npm:8.42.0"],\
             ["eslint-config-next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:13.4.5"],\
-            ["follow-redirects", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:1.15.2"],\
             ["next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:13.4.19"],\
-            ["or", "npm:0.2.0"],\
             ["postcss", "npm:8.4.29"],\
             ["react", "npm:18.2.0"],\
             ["react-cookie", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:6.1.1"],\
@@ -7812,15 +7772,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["levn", "npm:0.4.1"],\
             ["prelude-ls", "npm:1.2.1"],\
             ["type-check", "npm:0.4.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["or", [\
-        ["npm:0.2.0", {\
-          "packageLocation": "./.yarn/cache/or-npm-0.2.0-da6c7c227a-4cb18d682c.zip/node_modules/or/",\
-          "packageDependencies": [\
-            ["or", "npm:0.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\
