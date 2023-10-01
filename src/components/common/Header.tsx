@@ -26,7 +26,7 @@ function Header() {
       <nav className="flex itmes-center gap-[44px]">
         <Link
           className={`text-[#333333] text-b2 ${
-            pathname.indexOf("/company") !== -1 && "font-b"
+            pathname.indexOf("/companies") !== -1 && "font-b"
           }`}
           href={"/companies?page=1&name="}
           prefetch
@@ -61,7 +61,9 @@ function Header() {
             className="rounded-full bg-[#D9D9D9]"
             width={28}
             height={28}
-            src={profile.data?.data.profile_image_url || ""}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${
+              profile.data?.data.profile_image_url || ""
+            }`}
             alt="프로필사진"
           />
           <p className="text-[#333333] text-b2 font-r">
