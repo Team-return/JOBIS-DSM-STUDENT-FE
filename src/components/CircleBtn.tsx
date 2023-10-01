@@ -1,5 +1,6 @@
-import { Icon, theme } from "@team-return/design-system";
-import styled from "@emotion/styled";
+"use client";
+
+import { Icon } from "@team-return/design-system";
 
 interface PropsType {
   direction: "right" | "left";
@@ -8,24 +9,12 @@ interface PropsType {
 
 export default function CircleBtn({ direction, onClick }: PropsType) {
   return (
-    <Container aria-label="prevNextBtn" onClick={onClick}>
+    <button
+      className="w-[50px] h-[50px] border-none rounded-full bg-white shadow-[0_0_10px_0_rgba(0,0,0,0.25)] transition hover:-transition hover:scale-110 duration-0.2s"
+      aria-label="prevNextBtn"
+      onClick={onClick}
+    >
       <Icon icon="Chevron" direction={direction} size={30} color="gray60" />
-    </Container>
+    </button>
   );
 }
-
-const Container = styled.button`
-  width: 50px;
-  height: 50px;
-  border: none;
-  border-radius: 50%;
-  background-color: ${theme.color.gray10};
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
-  transition: 0.2s;
-  z-index: 2;
-  cursor: pointer;
-  &:hover {
-    scale: 1.1;
-    transition: 0.2s;
-  }
-`;

@@ -1,95 +1,81 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
-import Logo from "../../../public/Logo.png";
-import BellIcon from "../../../public/Bell.svg";
-import styled from "@emotion/styled";
-import { theme } from "@team-return/design-system";
+import Logo from "@public/Logo.png";
+import { Icon } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MyProfile } from "@/apis/students";
 
-export default function Header() {
+function Header() {
   const pathname = usePathname();
+  if (pathname.toString().indexOf("/account") !== -1) {
+    return null;
+  }
+
+  const profile = MyProfile();
 
   return (
-    <Container>
-      <Link href={"/"}>
+    <div
+      className={`w-screen h-[68px] bg-white flex justify-between shadow-[0_2px_4px_0_rgba(229,229,229,0.2)] items-center fixed top-0 left-0 py-[12px] px-[17.5vw] z-[4]`}
+    >
+      <Link href={"/"} prefetch>
         <Image width={80} height={22} src={Logo} alt="joibs_logo" />
       </Link>
-      <MenuWarpper>
-        <Menu router={pathname} id="/company" href={"/company"}>
+      <nav className="flex itmes-center gap-[44px]">
+        <Link
+          className={`text-[#333333] text-b2 ${
+            pathname.indexOf("/companies") !== -1 && "font-b"
+          }`}
+          href={"/companies?page=1&name="}
+          prefetch
+        >
           기업체
-        </Menu>
-        <Menu router={pathname} id="/recruitments" href={"/recruitments"}>
+        </Link>
+        <Link
+          className={`text-[#333333] text-b2 ${
+            pathname.indexOf("/recruitments") !== -1 && "font-b"
+          }`}
+          href={"/recruitments?page=1&job_code=&tech_code=&name="}
+        >
           모집의뢰서
-        </Menu>
-      </MenuWarpper>
-      <ASide>
-        <Bell onClick={() => {}}>
-          <Image width={16} height={20} src={BellIcon} alt="알림" />
-        </Bell>
-        <Profile onClick={() => {}}>
-          <div />
-          <p>강용수</p>
-        </Profile>
-      </ASide>
-    </Container>
+        </Link>
+        <Link
+          className={`text-[#333333] text-b2 ${
+            pathname.indexOf("/mypage") !== -1 && "font-b"
+          }`}
+          href={"/mypage"}
+        >
+          마이페이지
+        </Link>
+      </nav>
+      <div
+        className="flex items-center gap-[5px]"
+        onClick={() => {
+          //알림모달
+        }}
+      >
+        <div className="h-[32px] bg-white flex gap-[10px] items-center cursor-pointer">
+          <Image
+            className="rounded-full bg-[#D9D9D9]"
+            width={28}
+            height={28}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${
+              profile.data?.data.profile_image_url || ""
+            }`}
+            alt="프로필사진"
+          />
+          <p className="text-[#333333] text-b2 font-r">
+            {profile.data?.data.student_name}
+          </p>
+        </div>
+        <div>
+          <Icon icon={"Chevron"} size={16} color="gray90" />
+        </div>
+      </div>
+    </div>
   );
 }
 
-const Container = styled.div`
-  width: 100vw;
-  height: 68px;
-  background-color: ${theme.color.gray10};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 12px 17.5vw;
-  z-index: 10;
-  a,
-  p {
-    color: ${theme.color.gray80};
-  }
-`;
-
-const MenuWarpper = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: 30px;
-`;
-
-const Menu = styled(Link)<{ router: string; id: string }>`
-  ${theme.font.Body2}
-  font-weight: ${(props) => props.router === props.id && 700}
-`;
-
-const ASide = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-const Bell = styled.div`
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const Profile = styled.div`
-  height: 32px;
-  background-color: ${theme.color.gray10};
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  cursor: pointer;
-  ${theme.font.Body4}
-  > div {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: #d9d9d9;
-  }
-`;
+export default React.memo(Header);

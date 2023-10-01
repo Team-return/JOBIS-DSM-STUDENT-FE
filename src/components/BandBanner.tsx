@@ -1,0 +1,42 @@
+"use client";
+
+import { Icon } from "@team-return/design-system";
+import Image from "next/image";
+import BannerBackground from "@public/BannerBackground.png";
+import Guy from "@public/Guy.webp";
+import Link from "next/link";
+
+export default function BandBanner() {
+  return (
+    <Link
+      className="w-full h-[120px] py-7 px-[100px] mt-20 cursor-pointer relative"
+      href={"/"}
+    >
+      <div className="w-full h-full flex flex-col">
+        <p className="text-h6 leading-h6 font-b text-white">
+          우리학교 학생들은 얼마나 취업했을까?
+        </p>
+        <div className="flex items-center text-caption leading-caption font-m text-white w-[117px] py-1 px-[10px] bg-white/[.2] mt-3 rounded-full">
+          <p>취업률 보러가기</p>
+          <Icon icon="Chevron" direction="right" color="gray10" size={16} />
+        </div>
+      </div>
+      <div className="absolute top-0 left-0 w-full h-full rounded-[20px] z-[-1] overflow-hidden">
+        <div className="relative">
+          <Image
+            className="object-cover"
+            width={0}
+            height={0}
+            src={BannerBackground}
+            alt="배경이미지"
+          />
+        </div>
+      </div>
+      <div className="absolute bottom-0 right-[100px] w-[121px] h-[143px] mr-[50px] md:block">
+        <div className="relative w-full h-full">
+          <Image fill src={Guy} alt="사람" />
+        </div>
+      </div>
+    </Link>
+  );
+}

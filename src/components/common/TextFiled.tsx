@@ -1,56 +1,76 @@
-import styled from "@emotion/styled";
-import { Icon, theme } from "@team-return/design-system";
+"use client";
 
-interface PropsType extends React.ComponentProps<'input'> {
-  customType?: "Text" | "Search";
-  onIconClick?: () => void;
+import { Icon, theme } from "@team-return/design-system";
+import React, { KeyboardEvent, useState } from "react";
+
+interface PropsType extends React.ComponentProps<"input"> {
+  customType?: "Text" | "Search" | "EyesClose" | "EyesOpen";
+  iconClick?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  width: string | number;
+  height?: string | number;
 }
 
-export default function TextFiled({
+function TextFiled({
   value,
   placeholder,
   onChange,
   customType = "Text",
   name,
-  onIconClick,
+  iconClick,
+  width,
+  height,
+  label,
+  type,
 }: PropsType) {
+  const [focus, setFocuse] = useState<boolean>(false);
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") if (iconClick) iconClick();
+  };
+
   return (
-    <Container>
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        name={name}
-      />
-      {customType !== "Text" && (
-        <div onClick={onIconClick}>
-          <Icon icon={customType} size={16} />
-        </div>
+    <div style={{ width: typeof width === "number" ? width + "px" : width }}>
+      {label && (
+        <p className="text-caption text-[#333333] font-m mb-[4px]">{label}</p>
       )}
-    </Container>
+      <div
+        className={`w-full  border border-solid rounded-[8px] flex align-center overflow-hidden`}
+        style={{
+          borderColor: focus ? theme.color.liteBlue : "#cccccc",
+          height: height
+            ? typeof height === "number"
+              ? height + "px"
+              : height
+            : "40px",
+        }}
+      >
+        <input
+          className="w-full flex-1 h-full px-[16px] border-none text-b3 font-r leading-b3"
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          name={name}
+          onKeyUp={onKeyDown}
+          onFocus={() => {
+            setFocuse(true);
+          }}
+          onBlur={() => {
+            setFocuse(false);
+          }}
+        />
+        {customType !== "Text" && (
+          <div
+            className="flex justify-center items-center mr-[14px] cursor-pointer  "
+            onClick={iconClick}
+          >
+            <Icon icon={customType} size={20} color="gray60" />
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
-const Container = styled.div`
-  height: 34px;
-  width: 300px;
-  background-color: ${theme.color.gray10};
-  border: 1px solid ${theme.color.gray50};
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  input {
-    flex: 1;
-    height: 100%;
-    padding: 0 12px;
-    border: none;
-  }
-  div {
-    padding: 8px;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-`;
+export default React.memo(TextFiled);

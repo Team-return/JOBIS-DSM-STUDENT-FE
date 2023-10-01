@@ -1,83 +1,61 @@
-import { Icon, theme } from "@team-return/design-system";
+"use client";
+
 import Image from "next/image";
-import styled from "@emotion/styled";
-import { CompanyInfo } from "@/util/Type/CompanyInfoType";
+import { useSearchParams } from "next/navigation";
+import { GetCompaniesList } from "@/apis/companies";
+import { useEffect, useState } from "react";
+import { CompaniesListType } from "@/apis/companies/type";
+import HoverPrefetchLink from "./common/HoverPrefetchLink";
+import { Icon } from "@team-return/design-system";
 
-interface PropsType {
-  company_list: CompanyInfo[];
-}
+export default function CompanyCard() {
+  const getParams = useSearchParams();
+  const [companyList, setCompanyList] = useState<CompaniesListType[]>([]);
 
-export default function CompanyCard({ company_list }: PropsType) {
+  const res = GetCompaniesList(getParams.toString());
+
+  useEffect(() => {
+    if (res.data?.data.companies) {
+      (() => {
+        setCompanyList(res.data.data.companies);
+      })();
+    }
+  }, [res]);
+
   return (
-    <WarpperGrid>
-      {company_list.map(
-        ({ company_profile_url, company_name, take }, index) => (
-          <Container key={index}>
-            <Img>
-              <Image width={0} height={0} src={company_profile_url} alt="" />
-            </Img>
-            <Name>{company_name}</Name>
-            <Sales>연매출 {take}억원</Sales>
-            <IsDoc>
-              <Icon icon="Document" color="gray60" />
-            </IsDoc>
-          </Container>
+    <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
+      {companyList.map(
+        ({ logo_url, name, take, has_recruitment, id }, index) => (
+          <HoverPrefetchLink href={`/companies/${id}`}>
+            <div
+              className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1"
+              key={index}
+            >
+              <div className="w-full h-0 pb-[60%] relative shadow-elevaiton rounded-[14px] overflow-hidden">
+                <Image
+                  className="absolute object-contain"
+                  fill
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${logo_url}`}
+                  alt={name}
+                />
+              </div>
+              <div className="relative">
+                <p className="mt-4 mr-8 text-black text-h6 font-b leading-h6">
+                  {name}
+                </p>
+                <p className="text-b4 leading-b4 font-m text-[#7f7f7f] mt-2">
+                  연매출 {take}억원
+                </p>
+                {has_recruitment && (
+                  <div className="absolute flex items-center justify-center w-6 h-6 border-none top-1 right-1 bg-none">
+                    <Icon icon="Document" color="gray60" />
+                  </div>
+                )}
+              </div>
+            </div>
+          </HoverPrefetchLink>
         )
       )}
-    </WarpperGrid>
+    </div>
   );
 }
-
-const WarpperGrid = styled.div`
-  width: 100%;
-  display: grid;
-  margin-top: 20px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 3vw;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  cursor: pointer;
-  position: relative;
-`;
-
-const Img = styled.div`
-  width: 100%;
-  height: 0;
-  padding-bottom: 60%;
-  position: relative;
-  img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid ${theme.color.gray40};
-  }
-`;
-
-const Name = styled.p`
-  ${theme.font.Heading6}
-  color: ${theme.color.gray90};
-  margin-top: 16px;
-`;
-
-const Sales = styled.p`
-  ${theme.font.Body4}
-  color: ${theme.color.gray60};
-  margin-top: 8px;
-`;
-
-const IsDoc = styled.div`
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-`;
