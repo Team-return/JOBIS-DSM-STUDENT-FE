@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   images: {
     unoptimized: true,
     domains: ["picsum.photos"],
   },
   reactStrictMode: true,
   trailingSlash: true,
-  output: "export",
 };
 
 module.exports = nextConfig;
