@@ -61,8 +61,11 @@ function Header() {
             className="rounded-full bg-[#D9D9D9]"
             width={28}
             height={28}
-            src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${
-              profile.data?.data.profile_image_url || ""
+            src={`${
+              profile.data?.data.profile_image_url &&
+              process.env.NEXT_PUBLIC_IMAGE_URL +
+                "/" +
+                profile.data.data.profile_image_url
             }`}
             alt="프로필사진"
           />
