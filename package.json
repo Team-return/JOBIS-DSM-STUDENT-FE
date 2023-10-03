@@ -21,7 +21,7 @@
     "styled-components": "^6.0.7",
     "yarn": "^1.22.19"
   },
-  "packageManager": "yarn@3.6.2",
+  "packageManager": "yarn@3.5.0",
   "devDependencies": {
     "@team-return/design-system": "^1.0.89",
     "@testing-library/jest-dom": "^5.16.5",
