@@ -1,13 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { instance } from "../axios";
 import { ResponseBody } from "../user/type";
 import { MyProfileProps, RequestBody } from "./type";
 
-const router = "students";
+const router = "/students";
 
 export const Signup = () => {
   const [, setCookie] = useCookies();
@@ -16,7 +16,7 @@ export const Signup = () => {
 
   return useMutation(
     async (body: RequestBody) => {
-      const response = await instance.post<ResponseBody>(`${router}`, body);
+      const response = await axios.post<ResponseBody>(`${process.env.NEXT_PUBLIC_BASE_URL}${router}`, body);
       return response.data;
     },
     {

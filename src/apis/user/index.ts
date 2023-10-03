@@ -2,9 +2,8 @@ import { useToastStore, Toast } from "@team-return/design-system";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
-import { instance } from "../axios";
 import { RequestBody, ResponseBody } from "./type";
-import { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 
 const router = "/users";
 
@@ -15,8 +14,8 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
 
   return useMutation(
     async () => {
-      const response = await instance.post<ResponseBody>(
-        `${router}/login`,
+      const response = await axios.post<ResponseBody>(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${router}/login`,
         body
       );
       return response.data;

@@ -1,14 +1,14 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
-import { Axios, AxiosError } from "axios";
+import axios, { Axios, AxiosError } from "axios";
 import { instance } from "../axios";
 import { AuthCode, IAuthorizationResponse, SendAuthCodeType } from "./type";
 
 const router = "/auth";
 
 export const ReissueToken = async (refresh_token: string) => {
-  const response = await instance.put<IAuthorizationResponse>(
-    `${router}/reissue`,
+  const response = await axios.put<IAuthorizationResponse>(
+    `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue`,
     null,
     {
       headers: {
@@ -24,7 +24,10 @@ export const SendAuthCode = () => {
 
   return useMutation(
     async (body: SendAuthCodeType) => {
-      const response = await instance.post(`${router}/code`, body);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${router}/code`,
+        body
+      );
       return response.data;
     },
     {
@@ -75,8 +78,8 @@ export const CheckAuthCode = (
   const { append } = useToastStore();
   return useMutation(
     async () => {
-      const response = await instance.patch(
-        `${router}/code?email=${query_string.email}&auth_code=${query_string.auth_code}`
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${router}/code?email=${query_string.email}&auth_code=${query_string.auth_code}`
       );
       return response.data;
     },
