@@ -1,11 +1,11 @@
 "use client";
 
-import { GetCompaniesDetail } from "@/apis/companies";
+import { usePathname, useRouter } from "next/navigation";
+import { useToastStore } from "@team-return/design-system";
 import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
+import { GetCompaniesDetail } from "@/apis/companies";
 import { business_number_regex } from "@/util/regex";
-import { useToastStore } from "@team-return/design-system";
-import { usePathname, useRouter } from "next/navigation";
 
 export default function CompanyDetialPage() {
   const navigator = useRouter();
