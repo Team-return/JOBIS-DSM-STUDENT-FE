@@ -21,7 +21,7 @@ function FirstSignupPage() {
     },
     {
       onSuccess: () => {
-        navigator.push("signup?page=2");
+        navigator.push("/account/signup?page=2");
       },
     }
   );

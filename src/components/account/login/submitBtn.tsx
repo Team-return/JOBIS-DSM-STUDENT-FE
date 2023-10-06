@@ -49,10 +49,7 @@ function SubmitBtn({
       </button>
       <p className="mt-[10px] text-caption text-black font-m">
         아직 회원이 아니신가요?{" "}
-        <Link
-          className="font-b text-subBlue"
-          href={{ pathname: "/account/signup", query: { page: "1" } }}
-        >
+        <Link className="font-b text-subBlue" href="/account/signup">
           회원가입
         </Link>
       </p>

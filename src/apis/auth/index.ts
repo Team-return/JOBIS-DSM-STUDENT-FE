@@ -1,7 +1,6 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
-import axios, { Axios, AxiosError } from "axios";
-import { instance } from "../axios";
+import axios, { AxiosError } from "axios";
 import { AuthCode, IAuthorizationResponse, SendAuthCodeType } from "./type";
 
 const router = "/auth";

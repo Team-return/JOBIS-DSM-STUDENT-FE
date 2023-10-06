@@ -32,17 +32,13 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
           const accessExpires = new Date(res.access_expires_at);
           const refreshExpires = new Date(res.refresh_expires_at);
           setCookie("access_token", res.access_token, {
-            path: "/",
             expires: accessExpires,
           });
           setCookie("refresh_token", res.refresh_token, {
-            path: "/",
             expires: refreshExpires,
           });
           if (checkBoxValue) {
-            setCookie("account_id", body.account_id, {
-              path: "/",
-            });
+            setCookie("account_id", body.account_id);
           } else {
             removeCookie("account_id");
           }

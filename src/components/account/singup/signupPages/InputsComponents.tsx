@@ -14,7 +14,7 @@ export default function InputsComponents() {
     case "2":
       return <SecondSignupPage />;
     default:
-      router.push("signup?page=1");
+      router.push("/account/signup?page=1");
       return <> </>;
   }
 }
