@@ -7,6 +7,10 @@ const nextConfig = {
   },
   reactStrictMode: true,
   trailingSlash: true,
+  experimental: {
+    appDir: true,
+    esmExternals: "loose",
+  },
 };
 
 module.exports = nextConfig;
