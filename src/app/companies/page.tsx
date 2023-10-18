@@ -5,6 +5,7 @@ import useForm from "@/hook/useForm";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CompanyCard from "@/components/CompanyCard";
+import Pagination from "@/components/common/Pagination";
 
 export default function CompanyListPage() {
   const getParams = useSearchParams();
@@ -40,6 +41,7 @@ export default function CompanyListPage() {
         />
       </div>
       <CompanyCard />
+      <Pagination />
     </div>
   );
 }

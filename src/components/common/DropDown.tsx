@@ -12,7 +12,7 @@ type DropDownItemsType = {
 interface PropsType {
   title: string;
   items?: DropDownItemsType[];
-  onItemClick: (item: string | number, name: "job_code" | "tech_code") => void;
+  onItemClick: (itemCode: string | number, name: "job_code" | "tech_code") => void;
   selected: number | string;
 }
 
