@@ -2,43 +2,49 @@
 
 import { GetCode } from "@/apis/code";
 import useForm from "@/hook/useForm";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useQueryString } from "@/hook/useQueryString";
 import React, { useEffect, useState } from "react";
 import DropDown from "../common/DropDown";
 import SearchDropDown from "../common/SearchDropDown";
 import TextFiled from "../common/TextFiled";
 
 function Filter() {
-  const getParams = useSearchParams();
-  const navigator = useRouter();
-  const pathname = usePathname();
+  const { setQueryString, get } = useQueryString({
+    page: "1",
+    job_code: "",
+    tech_code: "",
+    name: "",
+  });
+
   const [filter, setFilter] = useState({
-    page: Number(getParams.get("page")),
-    job_code: getParams.get("job_code"),
-    tech_code: getParams.get("tech_code"),
+    page: get("page"),
+    job_code: get("job_code"),
+    tech_code: get("tech_code"),
   });
   const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
   }>({
-    search: getParams.get("name")?.toString(),
+    search: get("name"),
   });
 
   const onSearch = () => {
-    navigator.push(
-      `${pathname}?page=${filter.page}&job_code=${filter.job_code}&tech_code=${filter.tech_code}&name=${searchState.search}`
-    );
+    setQueryString({
+      page: "1",
+      job_code: filter.job_code,
+      tech_code: filter.tech_code,
+      name: searchState.search,
+    });
   };
 
   useEffect(onSearch, [filter]);
 
   const onItemClick = (
-    item: string | number,
+    itemCode: string | number,
     name: "job_code" | "tech_code"
   ) => {
-    if (filter[name] === item) {
+    if (filter[name] === itemCode) {
       setFilter((prev) => ({ ...prev, [name]: "" }));
-    } else setFilter((prev) => ({ ...prev, [name]: item }));
+    } else setFilter((prev) => ({ ...prev, [name]: itemCode }));
   };
 
   const { data } = GetCode("JOB");
@@ -49,7 +55,7 @@ function Filter() {
         title="분야"
         items={data?.data.codes}
         onItemClick={onItemClick}
-        selected={getParams.get("job_code")?.toString() || ""}
+        selected={get("job_code") || ""}
       />
       <SearchDropDown title="기술스택" />
       <TextFiled

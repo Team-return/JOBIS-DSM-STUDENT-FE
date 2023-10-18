@@ -42,7 +42,11 @@ export interface AreasType {
   tech: string[];
   hiring: number;
   major_task: string;
-};
+}
+
+export interface GetNumberOfPagesType {
+  total_page_count: number;
+}
 
 type HiringProgressType =
   | "CULTURE_INTERVIEW"

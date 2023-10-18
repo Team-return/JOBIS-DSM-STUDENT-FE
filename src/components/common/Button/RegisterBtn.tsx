@@ -4,7 +4,7 @@ import React from "react";
 
 interface PropsType {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 function RegisterBtn({ children, onClick }: PropsType) {
