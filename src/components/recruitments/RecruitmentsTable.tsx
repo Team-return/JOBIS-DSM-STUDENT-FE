@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { Icon } from "@team-return/design-system";
