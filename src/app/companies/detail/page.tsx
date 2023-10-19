@@ -1,19 +1,21 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import {
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import { useToastStore } from "@team-return/design-system";
 import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import { GetCompaniesDetail } from "@/apis/companies";
 import { business_number_regex } from "@/util/regex";
 
-export default function CompanyDetialPage() {
+export default function CompanyDetailPage() {
   const navigator = useRouter();
+  const params = useSearchParams();
   const { append } = useToastStore();
-  const pathname = usePathname();
-  const id = pathname.replace("/companies/", "").replace("/", "");
 
-  const { data } = GetCompaniesDetail(id);
+  const { data } = GetCompaniesDetail(params.get('id')!);
 
   if (data) {
     const {

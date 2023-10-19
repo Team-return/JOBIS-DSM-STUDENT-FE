@@ -31,7 +31,7 @@ export default function RecruitmentsCard() {
           bookmarked,
           recruit_id,
         }) => (
-          <HoverPrefetchLink href={`/recruitments/${recruit_id}`}>
+          <HoverPrefetchLink href={`/recruitments/detail?id=${recruit_id}`}>
             <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
               <div className="w-full h-0 pb-[70%] relative">
                 <Image
