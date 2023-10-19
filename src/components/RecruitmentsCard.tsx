@@ -23,15 +23,21 @@ export default function RecruitmentsCard() {
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
       {list.map(
-        ({
-          company_profile_url,
-          company_name,
-          train_pay,
-          job_code_list,
-          bookmarked,
-          recruit_id,
-        }) => (
-          <HoverPrefetchLink href={`/recruitments/detail?id=${recruit_id}`}>
+        (
+          {
+            company_profile_url,
+            company_name,
+            train_pay,
+            job_code_list,
+            bookmarked,
+            recruit_id,
+          },
+          index
+        ) => (
+          <HoverPrefetchLink
+            href={`/recruitments/detail?id=${recruit_id}`}
+            key={index}
+          >
             <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
               <div className="w-full h-0 pb-[70%] relative">
                 <Image

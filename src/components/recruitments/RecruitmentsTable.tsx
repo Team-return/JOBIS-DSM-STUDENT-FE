@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { Icon } from "@team-return/design-system";
@@ -30,7 +30,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             const [isOpen, setIsOpen] = useState<boolean>(false);
             return (
               <>
-                <tr>
+                <tr key={index}>
                   <td
                     className="key"
                     onClick={() => setIsOpen((prev) => !prev)}
