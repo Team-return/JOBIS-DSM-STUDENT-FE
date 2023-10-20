@@ -22,6 +22,18 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
     etc,
   } = rest;
 
+  const hiringProgressEnum = {
+    CULTURE_INTERVIEW: "컬쳐면접",
+    DOCUMENT: "서류전형",
+    TASK: "과제제출",
+    LIVE_CODING: "라이브코딩",
+    TECH_INTERVIEW: "기술면접",
+    FINAL_INTERVIEW: "최종면접",
+    PERSONALITY: "인적성 테스트",
+    AI: "AI면접",
+    CODING_TEST: "코딩테스트",
+  };
+
   return (
     <div className="drag mt-14 rounded-[12px] overflow-hidden border border-solid border-[#e5e5e5]">
       <table>
@@ -32,7 +44,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
               <>
                 <tr key={index}>
                   <td
-                    className="key"
+                    className="cursor-pointer key"
                     onClick={() => setIsOpen((prev) => !prev)}
                   >
                     모집분야 {areas.length !== 1 && index + 1}
@@ -43,21 +55,28 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                       direction={isOpen ? "right" : "bottom"}
                     />
                   </td>
-                  <td className="value">펼쳐서 확인하기</td>
+                  <td
+                    onClick={() => setIsOpen((prev) => !prev)}
+                    className="cursor-pointer value"
+                  >
+                    펼쳐서 확인하기
+                  </td>
                 </tr>
                 {isOpen && (
                   <>
                     <tr>
                       <td className="key detail">직무</td>
-                      <td className="value detail">{item.job}</td>
+                      <td className="value detail">{item.job.join(", ")}</td>
                     </tr>
                     <tr>
                       <td className="key detail">기술스택</td>
-                      <td className="value detail">{item.tech}</td>
+                      <td className="leading-6 whitespace-pre value detail">
+                        {item.tech.join("\n")}
+                      </td>
                     </tr>
                     <tr>
                       <td className="key detail">채용인원</td>
-                      <td className="value detail">{item.hiring}</td>
+                      <td className="value detail">{item.hiring} 명</td>
                     </tr>
                     <tr>
                       <td className="key detail">수행업무</td>
@@ -79,28 +98,28 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">필수자격증</td>
             <td className="value">
-              {required_licenses.length !== 0
-                ? required_licenses.toString().replaceAll(",", ", ")
-                : "-"}
+              {required_licenses[0] ? required_licenses.join(", ") : "-"}
             </td>
           </tr>
           <tr>
             <td className="key">근무시간</td>
-            <td className="value">{work_hours}</td>
+            <td className="value">{work_hours} 시간</td>
           </tr>
           <tr>
             <td className="key">면접과정</td>
             <td className="value">
-              {hiring_progress.toString().replaceAll(",", "  >  ")}
+              {hiring_progress
+                .map((itme) => hiringProgressEnum[itme])
+                .join("  >  ")}
             </td>
           </tr>
           <tr>
-            <td className="key">실습 수당 월급</td>
-            <td className="value">{train_pay}</td>
+            <td className="key">실습 수당 월</td>
+            <td className="value">{train_pay} 만원/월</td>
           </tr>
           <tr>
-            <td className="key">정규직 전환 시 월급</td>
-            <td className="value">{pay || "-"}</td>
+            <td className="key">정규직 전환 시 연봉</td>
+            <td className="value">{pay ?? "-"} 만원/년</td>
           </tr>
           <tr>
             <td className="key">복지</td>
@@ -108,7 +127,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           </tr>
           <tr>
             <td className="key">병역특례 여부</td>
-            <td className="value">{"" + military}</td>
+            <td className="value">{military ? "있음" : "없음"}</td>
           </tr>
           <tr>
             <td className="key">제출 서류</td>

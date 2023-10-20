@@ -31,6 +31,7 @@ export default function RecruitmentsCard() {
             job_code_list,
             bookmarked,
             recruit_id,
+            military,
           },
           index
         ) => (
@@ -56,7 +57,7 @@ export default function RecruitmentsCard() {
                 </p>
                 <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
                   <div className={tagStyle}>실습수당 {train_pay}만원</div>
-                  <div className={tagStyle}>병역특례</div>
+                  {military && <div className={tagStyle}>병역특례</div>}
                 </div>
                 <button
                   className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
