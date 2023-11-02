@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useToastStore } from "@team-return/design-system";
 import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
@@ -15,7 +12,7 @@ export default function CompanyDetailPage() {
   const params = useSearchParams();
   const { append } = useToastStore();
 
-  const { data } = GetCompaniesDetail(params.get('id')!);
+  const { data } = GetCompaniesDetail(params.get("id")!);
 
   if (data) {
     const {
@@ -28,7 +25,7 @@ export default function CompanyDetailPage() {
 
     const onClickRecruitments = () => {
       if (recruitment_id) {
-        navigator.push(`/recruitments/${recruitment_id}`);
+        navigator.push(`/recruitments/detail?id=${recruitment_id}`);
       } else {
         append({
           title: "",

@@ -64,9 +64,10 @@ function Filter() {
         onChange={onChangeSearch}
         name="search"
         customType="Search"
-        iconClick={onSearch}
+        EnterEvent={onSearch}
         width="26vw"
       />
+      
     </div>
   );
 }

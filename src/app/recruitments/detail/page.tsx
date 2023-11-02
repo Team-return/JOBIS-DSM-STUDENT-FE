@@ -1,7 +1,7 @@
 "use client";
 
 import { GetRecruitmentsDetail } from "@/apis/recruitments";
-import RegisterBtn from "@/components/common/Button/RegisterBtn";
+import GhostBtn from "@/components/common/Button/GhostBtn";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import RecruitmentsTable from "@/components/recruitments/RecruitmentsTable";
 import { useSearchParams } from "next/navigation";
@@ -19,7 +19,7 @@ export default function RecruitmentsDetailPage() {
           company_name={company_name}
           company_profile_url={company_profile_url}
         >
-          <RegisterBtn>지원하기</RegisterBtn>
+          <GhostBtn>지원하기</GhostBtn>
         </CompanyTitle>
         <RecruitmentsTable {...rest} />
       </div>
