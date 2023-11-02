@@ -34,9 +34,9 @@ function DropDown({ title, items, onItemClick, selected }: PropsType) {
           {items?.map((item, index) => (
             <div
               key={index}
-              onClick={(event) => {
+              onClick={() => {
                 onItemClick(item.code, "job_code");
-                closeDropDown(event);
+                closeDropDown();
               }}
               className={`text-caption leading-caption ${
                 selected == item.code

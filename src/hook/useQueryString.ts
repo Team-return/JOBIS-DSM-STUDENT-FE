@@ -7,7 +7,7 @@ interface QueryStringType {
   [key: string]: string;
 }
 
-interface recruitmentsQueryStringType {
+export interface setQueryStringType {
   page?: string;
   job_code?: string;
   tech_code?: string;
@@ -26,7 +26,7 @@ export const useQueryString = (initialState: QueryStringType) => {
     }, {} as QueryStringType)
   );
 
-  const setQueryString = (newValue: recruitmentsQueryStringType) => {
+  const setQueryString = (newValue: setQueryStringType) => {
     setValue((prev) => ({ ...prev, ...newValue }));
   };
 
@@ -43,10 +43,10 @@ export const useQueryString = (initialState: QueryStringType) => {
       .join("&");
   };
 
-  const get = (key: keyof recruitmentsQueryStringType) => {
+  const get = (key: keyof setQueryStringType) => {
     return value[key];
   };
-  const getEntry = (key: keyof recruitmentsQueryStringType) => {
+  const getEntry = (key: keyof setQueryStringType) => {
     return `${Object.keys(value).find((objectKey) => objectKey === key)}=${
       value[key]
     }`;
@@ -61,7 +61,6 @@ export const useQueryString = (initialState: QueryStringType) => {
       acc[key] = params.get(key) || initialState[key];
       return acc;
     }, {} as QueryStringType);
-
     setValue(newValue);
   }, [params.toString()]);
 

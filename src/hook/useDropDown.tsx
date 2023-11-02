@@ -5,23 +5,28 @@ import { useEffect, useRef, useState } from "react";
 export const useDropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [node, setNode] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    document.addEventListener("click", closeDropDown);
+    document.body.addEventListener("click", onClickOutside);
 
     return () => {
-      document.removeEventListener("click", closeDropDown);
+      document.body.removeEventListener("click", onClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, node]);
 
-  const closeDropDown = (event: React.MouseEvent | MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    )
-      setIsOpen(false);
+  useEffect(() => {
+    setNode(dropdownRef.current);
+  }, [dropdownRef]);
+
+  const onClickOutside = (event: React.MouseEvent | MouseEvent) => {
+    if (node && !node.contains(event.target as Node)) setIsOpen(false);
   };
-  
+
+  const closeDropDown = () => {
+    setIsOpen(false);
+  };
+
   const toggleDropdown = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };

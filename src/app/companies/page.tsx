@@ -37,7 +37,7 @@ export default function CompanyListPage() {
           onChange={onChangeSearch}
           name="search"
           customType="Search"
-          iconClick={onSearch}
+          EnterEvent={onSearch}
         />
       </div>
       <CompanyCard />

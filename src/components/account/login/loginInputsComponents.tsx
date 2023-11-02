@@ -30,7 +30,7 @@ function LoginInputs({ inputStates, handleChange }: PropsType) {
         name="password"
         label="비밀번호"
         placeholder="비밀번호를 입력해주세요"
-        iconClick={() => {
+        EnterEvent={() => {
           setIsHidden((prev) => !prev);
         }}
         customType={isHidden ? "EyesClose" : "EyesOpen"}
