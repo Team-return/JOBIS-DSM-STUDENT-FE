@@ -58,18 +58,18 @@ export default function CompanyTitle({
             <div className="absolute top-[30px] right-0 w-[150px] h-[100px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] p-[10px] shadow-elevaiton flex flex-col">
               <div
                 className={menuStyle}
-                onClick={(event) => {
+                onClick={() => {
                   onClickRecruitments();
-                  closeDropDown(event);
+                  closeDropDown();
                 }}
               >
                 모집의뢰서 조회
               </div>
               <div
                 className={menuStyle}
-                onClick={(event) => {
+                onClick={() => {
                   onClickInterview();
-                  closeDropDown(event);
+                  closeDropDown();
                 }}
               >
                 면접 후기 조회
