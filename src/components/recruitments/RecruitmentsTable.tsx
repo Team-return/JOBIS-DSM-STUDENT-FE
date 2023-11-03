@@ -1,6 +1,7 @@
 "use client";
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
+import { hiringProgressEnum } from "@/util/enum";
 import { Icon } from "@team-return/design-system";
 import React, { useState } from "react";
 
@@ -21,18 +22,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
     end_date,
     etc,
   } = rest;
-
-  const hiringProgressEnum = {
-    CULTURE_INTERVIEW: "컬쳐면접",
-    DOCUMENT: "서류전형",
-    TASK: "과제제출",
-    LIVE_CODING: "라이브코딩",
-    TECH_INTERVIEW: "기술면접",
-    FINAL_INTERVIEW: "최종면접",
-    PERSONALITY: "인적성 테스트",
-    AI: "AI면접",
-    CODING_TEST: "코딩테스트",
-  };
 
   return (
     <div className="drag mt-14 rounded-[12px] overflow-hidden border border-solid border-[#e5e5e5]">
