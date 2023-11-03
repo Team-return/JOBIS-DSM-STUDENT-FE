@@ -37,16 +37,16 @@ export const useQueryString = (initialState: QueryStringType) => {
     router.push(`${pathname}?${queryString}`);
   };
 
-  const toString = () => {
+  const queryStringtoString = () => {
     return Object.entries(value)
       .map(([key, val]) => `${key}=${val}`)
       .join("&");
   };
 
-  const getValue = (key: keyof setQueryStringType) => {
+  const getQueryString = (key: keyof setQueryStringType) => {
     return value[key];
   };
-  const getEntry = (key: keyof setQueryStringType) => {
+  const getQueryStringEntry = (key: keyof setQueryStringType) => {
     return `${Object.keys(value).find((objectKey) => objectKey === key)}=${
       value[key]
     }`;
@@ -69,9 +69,9 @@ export const useQueryString = (initialState: QueryStringType) => {
   return {
     setQueryString,
     refresh,
-    toString,
-    getValue,
-    getEntry,
+    queryStringtoString,
+    getQueryString,
+    getQueryStringEntry,
     resetQueryString,
   };
 };

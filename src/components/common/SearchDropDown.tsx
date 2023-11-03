@@ -18,7 +18,7 @@ interface PropsType {
 function SearchDropDown({ title }: PropsType) {
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
-  const { setQueryString, getValue } = useQueryString({
+  const { setQueryString, getQueryString } = useQueryString({
     page: "1",
     job_code: "",
     tech_code: "",
@@ -36,7 +36,7 @@ function SearchDropDown({ title }: PropsType) {
         <TechCodeDropDownComponent
           closeDropDown={closeDropDown}
           setQueryString={setQueryString}
-          getQueryString={getValue}
+          getQueryString={getQueryString}
         />
       </DropDownComponent>
     </div>
@@ -46,7 +46,7 @@ function SearchDropDown({ title }: PropsType) {
 function TechCodeDropDownComponent({
   closeDropDown,
   setQueryString,
-  getQueryString: getValue,
+  getQueryString
 }: {
   closeDropDown: () => void;
   setQueryString: (newValue: setQueryStringType) => void;
@@ -63,7 +63,7 @@ function TechCodeDropDownComponent({
   const { data } = GetCode("TECH", searchKeyword);
 
   useEffect(() => {
-    const techArray = getValue("tech_code")
+    const techArray = getQueryString("tech_code")
       .split(",")
       .map((item) => Number(item));
     setSelect(() => {
@@ -73,7 +73,7 @@ function TechCodeDropDownComponent({
         ) || []
       );
     });
-  }, [getValue("tech_code"), data?.data.codes]);
+  }, [getQueryString("tech_code"), data?.data.codes]);
 
   return (
     <div
