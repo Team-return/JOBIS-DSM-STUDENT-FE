@@ -87,7 +87,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">필수자격증</td>
             <td className="value">
-              {required_licenses[0] ? required_licenses.join(", ") : "-"}
+              {!!required_licenses.length ? required_licenses.join(", ") : "-"}
             </td>
           </tr>
           <tr>
