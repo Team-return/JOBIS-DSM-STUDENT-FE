@@ -26,11 +26,8 @@ export default function CompanyCard() {
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
       {companyList.map(
         ({ logo_url, name, take, has_recruitment, id }, index) => (
-          <HoverPrefetchLink href={`/companies/${id}`}>
-            <div
-              className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1"
-              key={index}
-            >
+          <HoverPrefetchLink href={`/companies/detail?id=${id}`} key={index}>
+            <div className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1">
               <div className="w-full h-0 pb-[60%] relative shadow-elevaiton rounded-[14px] overflow-hidden">
                 <Image
                   className="absolute object-contain"

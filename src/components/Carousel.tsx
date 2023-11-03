@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -64,6 +64,7 @@ export default function Banner() {
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap z-1 ">
         {test.map((item, index) => (
           <div
+            key={index}
             className={`w-[65vw] h-[20vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
               index === 0 && "m-[0_0_0_17.5vw]"
             } ${index === test.length - 1 && "m-[0_17.5vw_0_0]"}`}
@@ -72,12 +73,7 @@ export default function Banner() {
               window.open(item.url);
             }}
           >
-            <Image
-              className="object-cover"
-              fill
-              src={item.img}
-              alt=""
-            />
+            <Image className="object-cover" fill src={item.img} alt="" />
           </div>
         ))}
       </div>

@@ -1,7 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import { instance } from "../axios";
-import { RecruitmentsDetailType, RecruitmentsListResponseType } from "./type";
+import {
+  GetNumberOfPagesType,
+  RecruitmentsDetailType,
+  RecruitmentsListResponseType,
+} from "./type";
 
 const router = "/recruitments";
 
@@ -41,4 +45,15 @@ export const GetRecruitmentsDetail = (id: string) => {
       },
     }
   );
+};
+
+export const GetNumberOfRecruitmentRequestListPages = (queryString: string) => {
+  const { data } = useQuery(
+    ["getNumberOfRecruitmentRequestListPages", queryString],
+    async () =>
+      await instance.get<GetNumberOfPagesType>(
+        `${router}/student/count?${queryString}`
+      )
+  );
+  return data;
 };

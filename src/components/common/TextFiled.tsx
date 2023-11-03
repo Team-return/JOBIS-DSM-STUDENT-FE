@@ -5,7 +5,7 @@ import React, { KeyboardEvent, useState } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
   customType?: "Text" | "Search" | "EyesClose" | "EyesOpen";
-  iconClick?: () => void;
+  enterEvent?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   width: string | number;
@@ -18,7 +18,7 @@ function TextFiled({
   onChange,
   customType = "Text",
   name,
-  iconClick,
+  enterEvent,
   width,
   height,
   label,
@@ -26,7 +26,7 @@ function TextFiled({
 }: PropsType) {
   const [focus, setFocuse] = useState<boolean>(false);
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") if (iconClick) iconClick();
+    if (e.key === "Enter") if (enterEvent) enterEvent();
   };
 
   return (
@@ -63,7 +63,7 @@ function TextFiled({
         {customType !== "Text" && (
           <div
             className="flex justify-center items-center mr-[14px] cursor-pointer  "
-            onClick={iconClick}
+            onClick={enterEvent}
           >
             <Icon icon={customType} size={20} color="gray60" />
           </div>
