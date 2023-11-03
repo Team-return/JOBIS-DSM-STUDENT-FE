@@ -9,7 +9,7 @@ interface PropsType {
   select: TechCodeResponensType[];
 }
 
-function Chip({ value, setSelect, select }: PropsType) {
+function Chips({ value, setSelect, select }: PropsType) {
   return (
     <div className="flex flex-wrap w-full max-h-full gap-2 overflow-y-scroll">
       {value.map((item, idx) => {
@@ -45,4 +45,4 @@ function Chip({ value, setSelect, select }: PropsType) {
   );
 }
 
-export default React.memo(Chip);
+export default Chips;

@@ -5,7 +5,7 @@ import { useDropDown } from "@/hook/useDropDown";
 import { Icon } from "@team-return/design-system";
 import TextFiled from "./TextFiled";
 import useForm from "@/hook/useForm";
-import Chip from "./Chip";
+import Chips from "./Chips";
 import { GetCode } from "@/apis/code";
 import { TechCodeResponensType } from "@/util/type";
 import GhostBtn from "./Button/GhostBtn";
@@ -18,7 +18,7 @@ interface PropsType {
 function SearchDropDown({ title }: PropsType) {
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
-  const { setQueryString, get } = useQueryString({
+  const { setQueryString, getValue } = useQueryString({
     page: "1",
     job_code: "",
     tech_code: "",
@@ -36,7 +36,7 @@ function SearchDropDown({ title }: PropsType) {
         <TechCodeDropDownComponent
           closeDropDown={closeDropDown}
           setQueryString={setQueryString}
-          getQuerySteing={get}
+          getQueryString={getValue}
         />
       </DropDownComponent>
     </div>
@@ -46,11 +46,11 @@ function SearchDropDown({ title }: PropsType) {
 function TechCodeDropDownComponent({
   closeDropDown,
   setQueryString,
-  getQuerySteing: get,
+  getQueryString: getValue,
 }: {
   closeDropDown: () => void;
   setQueryString: (newValue: setQueryStringType) => void;
-  getQuerySteing: (key: keyof setQueryStringType) => string;
+  getQueryString: (key: keyof setQueryStringType) => string;
 }) {
   const [select, setSelect] = useState<TechCodeResponensType[]>([]);
   const [searchKeyword, setSearch] = useState<string>("");
@@ -63,7 +63,7 @@ function TechCodeDropDownComponent({
   const { data } = GetCode("TECH", searchKeyword);
 
   useEffect(() => {
-    const techArray = get("tech_code")
+    const techArray = getValue("tech_code")
       .split(",")
       .map((item) => Number(item));
     setSelect(() => {
@@ -73,7 +73,7 @@ function TechCodeDropDownComponent({
         ) || []
       );
     });
-  }, [get("tech_code"), data?.data.codes]);
+  }, [getValue("tech_code"), data?.data.codes]);
 
   return (
     <div
@@ -86,16 +86,16 @@ function TechCodeDropDownComponent({
         value={techSearchState.techCodeSearch}
         name="techCodeSearch"
         width="100%"
-        EnterEvent={() => {
+        enterEvent={() => {
           setSearch(techSearchState.techCodeSearch);
         }}
       />
       <hr className="mx-2 my-4" />
       <div className="mb-5">
-        <Chip value={select} select={select} setSelect={setSelect} />
+        <Chips value={select} select={select} setSelect={setSelect} />
       </div>
       <div className="flex-1 overflow-hidden">
-        <Chip
+        <Chips
           value={data?.data.codes || []}
           select={select}
           setSelect={setSelect}

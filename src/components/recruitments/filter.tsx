@@ -9,7 +9,7 @@ import SearchDropDown from "../common/SearchDropDown";
 import TextFiled from "../common/TextFiled";
 
 function Filter() {
-  const { setQueryString, get } = useQueryString({
+  const { setQueryString, getValue } = useQueryString({
     page: "1",
     job_code: "",
     tech_code: "",
@@ -17,14 +17,14 @@ function Filter() {
   });
 
   const [filter, setFilter] = useState({
-    page: get("page"),
-    job_code: get("job_code"),
-    tech_code: get("tech_code"),
+    page: getValue("page"),
+    job_code: getValue("job_code"),
+    tech_code: getValue("tech_code"),
   });
   const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
   }>({
-    search: get("name"),
+    search: getValue("name"),
   });
 
   const onSearch = () => {
@@ -55,7 +55,7 @@ function Filter() {
         title="분야"
         items={data?.data.codes}
         onItemClick={onItemClick}
-        selected={get("job_code") || ""}
+        selected={getValue("job_code") || ""}
       />
       <SearchDropDown title="기술스택" />
       <TextFiled
@@ -64,7 +64,7 @@ function Filter() {
         onChange={onChangeSearch}
         name="search"
         customType="Search"
-        EnterEvent={onSearch}
+        enterEvent={onSearch}
         width="26vw"
       />
       

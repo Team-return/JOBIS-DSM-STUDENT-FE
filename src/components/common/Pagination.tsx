@@ -10,13 +10,13 @@ import { useEffect, useState } from "react";
 export default function Pagination() {
   const pathname = usePathname();
 
-  const { setQueryString, get, getEntry } = useQueryString({
+  const { setQueryString, getValue, getEntry } = useQueryString({
     page: "1",
     job_code: "",
     tech_code: "",
     name: "",
   });
-  const currentPageNumber = get("page");
+  const currentPageNumber = getValue("page");
 
   const numberOfPages =
     pathname === "/recruitments/"
@@ -35,15 +35,15 @@ export default function Pagination() {
       <div
         className="flex items-center justify-center w-8 h-8 cursor-pointer"
         onClick={() => {
-          if (get("page") !== "1")
-            setQueryString({ page: "" + (Number(get("page")) - 1) });
+          if (getValue("page") !== "1")
+            setQueryString({ page: "" + (Number(getValue("page")) - 1) });
         }}
       >
         <Icon
           icon="Chevron"
           direction="left"
           size={16}
-          color={get("page") === "1" ? "gray50" : "gray90"}
+          color={getValue("page") === "1" ? "gray50" : "gray90"}
         />
       </div>
       {pagesArray?.map((_, idx) => (
@@ -65,15 +65,15 @@ export default function Pagination() {
       <div
         className="flex items-center justify-center w-8 h-8 cursor-pointer"
         onClick={() => {
-          if (get("page") !== pagesArray.length.toString())
-            setQueryString({ page: "" + (Number(get("page")) + 1) });
+          if (getValue("page") !== pagesArray.length.toString())
+            setQueryString({ page: "" + (Number(getValue("page")) + 1) });
         }}
       >
         <Icon
           icon="Chevron"
           direction="right"
           size={16}
-          color={get("page") === "" + pagesArray.length ? "gray50" : "gray90"}
+          color={getValue("page") === String(pagesArray.length) ? "gray50" : "gray90"}
         />
       </div>
     </div>

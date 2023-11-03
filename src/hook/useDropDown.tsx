@@ -20,7 +20,7 @@ export const useDropDown = () => {
   }, [dropdownRef]);
 
   const onClickOutside = (event: React.MouseEvent | MouseEvent) => {
-    if (node && !node.contains(event.target as Node)) setIsOpen(false);
+    if (node && !node.contains(event.target as Node)) closeDropDown();
   };
 
   const closeDropDown = () => {

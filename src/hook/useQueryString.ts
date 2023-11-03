@@ -43,7 +43,7 @@ export const useQueryString = (initialState: QueryStringType) => {
       .join("&");
   };
 
-  const get = (key: keyof setQueryStringType) => {
+  const getValue = (key: keyof setQueryStringType) => {
     return value[key];
   };
   const getEntry = (key: keyof setQueryStringType) => {
@@ -52,7 +52,7 @@ export const useQueryString = (initialState: QueryStringType) => {
     }`;
   };
 
-  const reset = () => {
+  const resetQueryString = () => {
     setValue({ ...initialState });
   };
 
@@ -66,5 +66,12 @@ export const useQueryString = (initialState: QueryStringType) => {
 
   useEffect(refresh, [value]);
 
-  return { setQueryString, refresh, toString, get, getEntry, reset };
+  return {
+    setQueryString,
+    refresh,
+    toString,
+    getValue,
+    getEntry,
+    resetQueryString,
+  };
 };
