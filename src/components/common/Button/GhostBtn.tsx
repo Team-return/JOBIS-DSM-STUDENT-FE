@@ -4,7 +4,7 @@ import React from "react";
 
 interface PropsType {
   children: React.ReactNode;
-  onClick?: (e: MouseEvent | React.MouseEvent) => void;
+  onClick?: () => void;
 }
 
 function GhostBtn({ children, onClick }: PropsType) {
@@ -18,4 +18,4 @@ function GhostBtn({ children, onClick }: PropsType) {
   );
 }
 
-export default React.memo(GhostBtn);
+export default GhostBtn;
