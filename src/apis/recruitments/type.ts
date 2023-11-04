@@ -21,9 +21,9 @@ export interface RecruitmentsDetailType extends RecruitmentsDetailTable {
 
 export interface RecruitmentsDetailTable {
   areas: AreasType[];
-  preferential_treatment: string;
   required_grade: number | null;
-  work_hours: number;
+  start_time: string;
+  end_time: string;
   required_licenses: string[] | [];
   hiring_progress: HiringProgressType[];
   train_pay: number;
@@ -42,6 +42,7 @@ export interface AreasType {
   tech: string[];
   hiring: number;
   major_task: string;
+  preferential_treatment: string | null;
 }
 
 export interface GetNumberOfPagesType {
