@@ -2,6 +2,7 @@
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { hiringProgressEnum } from "@/util/enum";
+import { time_parsing } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
 import React, { useState } from "react";
 
@@ -95,7 +96,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">근무시간</td>
             <td className="value">
-              {start_time} ~ {end_time}
+              {time_parsing(start_time)} ~ {time_parsing(end_time)}
             </td>
           </tr>
           <tr>

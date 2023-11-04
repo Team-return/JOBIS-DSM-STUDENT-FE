@@ -27,7 +27,7 @@ export interface RecruitmentsDetailTable {
   required_licenses: string[] | [];
   hiring_progress: HiringProgressType[];
   train_pay: number;
-  pay: number;
+  pay: string | null;
   benefits: string | null;
   military: boolean;
   submit_document: string;

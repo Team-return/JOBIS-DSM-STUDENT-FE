@@ -13,3 +13,7 @@ export const pon_number_regex = (number: string | null) => {
 
   return number;
 };
+
+export const time_parsing = (time: string) => {
+  return time.slice(0, 5);
+};
