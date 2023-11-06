@@ -22,7 +22,7 @@ export const Login = (body: RequestBody, checkBoxValue: boolean) => {
     },
     {
       onSuccess: (res) => {
-        if (res.authority !== "STUDENT") {
+        if (res.authority !== "STUDENT" && res.authority !== "DEVELOPER") {
           append({
             title: "해당 서비스를 사용할 수 없는 계정입니다.",
             message: "",
