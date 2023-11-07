@@ -1,4 +1,4 @@
-type AuthorityType = "TEACHER" | "STUDENT" | "COMPANY";
+type AuthorityType = "TEACHER" | "STUDENT" | "COMPANY" | "DEVELOPER";
 
 export interface RequestBody {
   account_id: string;

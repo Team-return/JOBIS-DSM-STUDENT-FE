@@ -4,7 +4,7 @@ import { Icon, theme } from "@team-return/design-system";
 import React, { KeyboardEvent, useState } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
-  customType?: "Text" | "Search" | "EyesClose" | "EyesOpen";
+  customType?: "Search" | "EyesClose" | "EyesOpen";
   enterEvent?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
@@ -16,16 +16,18 @@ function TextFiled({
   value,
   placeholder,
   onChange,
-  customType = "Text",
+  customType,
   name,
   enterEvent,
   width,
   height,
   label,
-  type,
+  type = "text",
 }: PropsType) {
   const [focus, setFocuse] = useState<boolean>(false);
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const [isHidden, setIsHidden] = useState<boolean>(true);
+
+  const isKeyDownToEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") if (enterEvent) enterEvent();
   };
 
@@ -47,12 +49,12 @@ function TextFiled({
       >
         <input
           className="w-full flex-1 h-full px-[16px] border-none text-b3 font-r leading-b3"
-          type={type}
+          type={type === "password" ? (isHidden ? "password" : "text") : type}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           name={name}
-          onKeyUp={onKeyDown}
+          onKeyUp={isKeyDownToEnter}
           onFocus={() => {
             setFocuse(true);
           }}
@@ -60,12 +62,16 @@ function TextFiled({
             setFocuse(false);
           }}
         />
-        {customType !== "Text" && (
+        {type !== "text" && (
           <div
             className="flex justify-center items-center mr-[14px] cursor-pointer  "
-            onClick={enterEvent}
+            onClick={() => setIsHidden((prev) => !prev)}
           >
-            <Icon icon={customType} size={20} color="gray60" />
+            <Icon
+              icon={isHidden ? "EyesClose" : "EyesOpen"}
+              size={20}
+              color="gray60"
+            />
           </div>
         )}
       </div>

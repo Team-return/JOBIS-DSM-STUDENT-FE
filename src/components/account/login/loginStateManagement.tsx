@@ -22,7 +22,11 @@ export default function LoginStateMenagement() {
 
   return (
     <div>
-      <LoginInputs inputStates={inputStates} handleChange={handleChange} />
+      <LoginInputs
+        inputStates={inputStates}
+        handleChange={handleChange}
+        enterEvent={loginClick}
+      />
       <SubmitBtn
         allIsInputState={allIsInputState}
         isChecked={isChecked}

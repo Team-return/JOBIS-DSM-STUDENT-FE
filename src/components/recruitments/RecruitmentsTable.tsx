@@ -2,15 +2,16 @@
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { hiringProgressEnum } from "@/util/enum";
+import { time_parsing } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
 import React, { useState } from "react";
 
 function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
   const {
     areas,
-    preferential_treatment,
     required_grade,
-    work_hours,
+    start_time,
+    end_time,
     required_licenses,
     hiring_progress,
     train_pay,
@@ -71,15 +72,17 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                       <td className="key detail">수행업무</td>
                       <td className="value detail">{item.major_task}</td>
                     </tr>
+                    <tr>
+                      <td className="key detail">우대사항</td>
+                      <td className="value detail">
+                        {item.preferential_treatment || "-"}
+                      </td>
+                    </tr>
                   </>
                 )}
               </>
             );
           })}
-          <tr>
-            <td className="key">우대사항</td>
-            <td className="value">{preferential_treatment || "-"}</td>
-          </tr>
           <tr>
             <td className="key">최소성적</td>
             <td className="value">{required_grade || "-"}</td>
@@ -92,7 +95,9 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           </tr>
           <tr>
             <td className="key">근무시간</td>
-            <td className="value">{work_hours} 시간</td>
+            <td className="value">
+              {time_parsing(start_time)} ~ {time_parsing(end_time)}
+            </td>
           </tr>
           <tr>
             <td className="key">면접과정</td>
