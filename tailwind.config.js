@@ -10,6 +10,7 @@ module.exports = {
         skyBlue: "#2492F4",
         subBlue: "#237BC9",
         lightBlue: "#135C9D",
+        prmyBlue03: "#002C53",
       },
       fontSize: {
         h1: "40px",
