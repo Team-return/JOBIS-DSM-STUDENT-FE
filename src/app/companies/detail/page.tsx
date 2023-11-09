@@ -35,6 +35,10 @@ export default function CompanyDetailPage() {
       }
     };
 
+    const onClickReviews = () => {
+      navigator.push(`/companies/reviews?id=${params.get("id")!}`);
+    };
+
     return (
       <div className="w-full my-[56px]">
         <CompanyTitle
@@ -42,9 +46,7 @@ export default function CompanyDetailPage() {
           company_name={company_name}
           company_profile_url={company_profile_url}
           onClickRecruitments={onClickRecruitments}
-          onClickInterview={() => {
-            // 후기조회 링크이동
-          }}
+          onClickInterview={onClickReviews}
         />
         <CompanyTable {...rest} />
       </div>
