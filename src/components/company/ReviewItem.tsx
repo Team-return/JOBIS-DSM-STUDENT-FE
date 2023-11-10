@@ -18,7 +18,7 @@ export default function ReviewItem({
         className="w-full px-3 py-5 border-b border-[#e5e5e5] flex justify-between cursor-pointer hover:bg-[#fcfcfc]"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <p className="leading-6 text-b3 font-r text-prmyBlue03">
+        <p className="leading-6 text-b3 font-r text-primaryBlue03">
           {item.question}
         </p>
         <Icon
