@@ -25,8 +25,8 @@ export default function ReviewList() {
 
   return (
     <>
-      {reviewList!.reviews.map((item) => (
-        <ReviewContainers {...item} />
+      {reviewList!.reviews.map((item, idx) => (
+        <ReviewContainers key={idx} {...item} />
       ))}
     </>
   );
@@ -36,8 +36,8 @@ function ReviewContainers({ review_id, writer, date }: getReviewListProps) {
   const { data: reviewDetails } = getReviewDetails(review_id);
   return (
     <>
-      {reviewDetails?.qna_responses.map((item) => (
-        <ReviewItem item={item} writer={writer} date={date} />
+      {reviewDetails?.qna_responses.map((item, idx) => (
+        <ReviewItem key={idx} item={item} writer={writer} date={date} />
       ))}
     </>
   );
