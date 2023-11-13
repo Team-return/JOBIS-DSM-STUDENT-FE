@@ -8,22 +8,19 @@ import {
 const router = "/reviews";
 
 export const GetReviewList = (companiesId: string) => {
-  const response = async () => {
+  return useQuery(["getReviewList", companiesId], async () => {
     const { data } = await instance.get<getReviewListResponseProps>(
       `${router}/${companiesId}`
     );
     return data;
-  };
-  return useQuery(["getReviewList", companiesId], response);
+  });
 };
 
 export const getReviewDetails = (reviewId: string) => {
-  const response = async () => {
+  return useQuery(["getReviewDetails", reviewId], async () => {
     const { data } = await instance.get<getReviewDetailResponseProps>(
       `${router}/details/${reviewId}`
     );
     return data;
-  };
-  return useQuery(["getReviewDetails", reviewId], response);
+  });
 };
-  
