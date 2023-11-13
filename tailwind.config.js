@@ -3,6 +3,17 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      keyframes: {
+        loading: {
+          "0%": { transform: "translateX(-150%)" },
+          "50%": { transform: "translateX(-60%)" },
+          "80%": { transform: "translateX(150%)" },
+        },
+      },
+      animation: {
+        loading: "loading 2.5s linear infinite",
+      },
+
       boxShadow: {
         elevaiton: "0px 4px 20px 0px rgba(112, 144, 176, 0.15);",
       },

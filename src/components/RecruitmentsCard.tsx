@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
+import RecruitmentSkelton from "./common/Skelton/SkeltonElement";
 
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
@@ -22,6 +23,7 @@ export default function RecruitmentsCard() {
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
+      {res.isLoading && <RecruitmentSkelton />}
       {list.map(
         (
           {

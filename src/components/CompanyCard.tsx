@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { CompaniesListType } from "@/apis/companies/type";
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
 import { Icon } from "@team-return/design-system";
+import CompaniesSkelton from "./common/Skelton/CompanySkelton";
 
 export default function CompanyCard() {
   const getParams = useSearchParams();
@@ -24,6 +25,7 @@ export default function CompanyCard() {
 
   return (
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
+      {res.isLoading && <CompaniesSkelton />}
       {companyList.map(
         ({ logo_url, name, take, has_recruitment, id }, index) => (
           <HoverPrefetchLink href={`/companies/detail?id=${id}`} key={index}>
