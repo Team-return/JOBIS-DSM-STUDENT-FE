@@ -4,7 +4,7 @@ import { Icon, theme } from "@team-return/design-system";
 import React, { KeyboardEvent, useState } from "react";
 
 interface PropsType extends React.ComponentProps<"input"> {
-  customType?: "Search" | "EyesClose" | "EyesOpen";
+  customType?: "Text" | "Search" | "Password";
   enterEvent?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
@@ -62,13 +62,25 @@ function TextFiled({
             setFocuse(false);
           }}
         />
-        {type !== "text" && (
+        {customType === "Password" && (
           <div
-            className="flex justify-center items-center mr-[14px] cursor-pointer  "
+            className="flex justify-center items-center mr-[14px] cursor-pointer"
             onClick={() => setIsHidden((prev) => !prev)}
           >
             <Icon
               icon={isHidden ? "EyesClose" : "EyesOpen"}
+              size={20}
+              color="gray60"
+            />
+          </div>
+        )}
+        {customType === "Search" && (
+          <div
+            className="flex justify-center items-center mr-[14px] cursor-pointer"
+            onClick={enterEvent}
+          >
+            <Icon
+              icon="Search"
               size={20}
               color="gray60"
             />
