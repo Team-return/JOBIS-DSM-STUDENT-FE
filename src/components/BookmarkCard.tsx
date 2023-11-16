@@ -1,28 +1,54 @@
-"use client";
-
+import { GetBookmarks } from "@/apis/bookmarks";
+import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { RecruitmentsListType } from "@/apis/recruitments/type";
-import { GetRecruitmentsList } from "@/apis/recruitments";
+import { useEffect, useState } from "react";
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
-import { SetBookmarks } from "@/apis/bookmarks";
 
-export default function RecruitmentsCard() {
-  const getParams = useSearchParams();
-  const [list, setList] = useState<RecruitmentsListType[]>([]);
+//테스트
+//=========================
 
-  const res = GetRecruitmentsList(getParams.toString());
-  useEffect(() => {
-    setList((prev) => res.data?.data.recruitments || prev);
-  }, [res]);
+const bookmarksList: RecruitmentsListType[] = [
+  {
+    recruit_id: 88,
+    company_name: "주식회사두잇(Doeat)",
+    company_profile_url: "LOGO_IMAGE/companydefault.png",
+    train_pay: 200,
+    military: true,
+    total_hiring: 0,
+    job_code_list:
+      "서버 개발자/프론트엔드/Android/iOS/임베디드 프로그래밍/인공지능 개발",
+    bookmarked: true,
+  },
+  {
+    recruit_id: 25,
+    company_name: "주식회사페이히어",
+    company_profile_url:
+      "LOGO_IMAGE/f9621d89-2e79-4ce6-94b0-fcac24346ddb-5.png",
+    train_pay: 0,
+    military: true,
+    total_hiring: 0,
+    job_code_list: "서버 개발자",
+    bookmarked: true,
+  },
+];
 
-  const { mutate: SetBookmarksMutate } = SetBookmarks();
+//=========================
+
+export default function BookmarkCard() {
+  // const [bookmarksList, setBookmarksList] = useState<RecruitmentsListType[]>(
+  //   []
+  // );
+
+  // const bookmarks = GetBookmarks();
+
+  // useEffect(() => {
+  //   setBookmarksList((prev) => bookmarks.recruitments || prev);
+  // }, [bookmarks]);
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
-      {list.map(
+      {bookmarksList.map(
         (
           {
             company_profile_url,
@@ -63,8 +89,7 @@ export default function RecruitmentsCard() {
                   className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
                   aria-label="bookMarkBtn"
                   onClick={(event: React.MouseEvent<HTMLElement>) => {
-                    event.preventDefault();
-                    SetBookmarksMutate(recruit_id);
+                    event.stopPropagation();
                   }}
                 >
                   <Icon

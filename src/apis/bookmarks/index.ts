@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { instance } from "../axios";
 
 const router = "/bookmarks";
@@ -10,8 +10,18 @@ export const GetBookmarks = () => {
   });
 };
 
-export const SetBookmaeks = (recruitmentId: number) => {
-  return useMutation(["SetBookmarks", recruitmentId], async () => {
-    await instance.patch(`${router}/${recruitmentId}`);
-  });
+export const SetBookmarks = () => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    async (recruitmentId: number) => {
+      await instance.patch(`${router}/${recruitmentId}`);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ["getRecruitmentsList"],
+        });
+      },
+    }
+  );
 };
