@@ -1,6 +1,6 @@
 import Pagination from "@/components/common/Pagination";
 import Filter from "@/components/recruitments/filter";
-import RecruitmentsCard from "@/components/RecruitmentsCard";
+import RecruitmentsCard from "@/components/recruitments/RecruitmentsCard";
 
 export default function Recruitments() {
   return (
