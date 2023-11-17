@@ -6,22 +6,28 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
+<<<<<<< HEAD:src/components/RecruitmentsCard.tsx
 import HoverPrefetchLink from "./common/HoverPrefetchLink";
 import { SetBookmarks } from "@/apis/bookmarks";
+=======
+import HoverPrefetchLink from "../common/HoverPrefetchLink";
+import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
+>>>>>>> develop:src/components/recruitments/RecruitmentsCard.tsx
 
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
   const [list, setList] = useState<RecruitmentsListType[]>([]);
 
-  const res = GetRecruitmentsList(getParams.toString());
+  const {data:recruitmentsList, isLoading} = GetRecruitmentsList(getParams.toString());
   useEffect(() => {
-    setList((prev) => res.data?.data.recruitments || prev);
-  }, [res]);
+    setList((prev) => recruitmentsList?.data.recruitments || prev);
+  }, [recruitmentsList]);
 
   const { mutate: SetBookmarksMutate } = SetBookmarks();
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
+      {isLoading && <RecruitmentSkelton />}
       {list.map(
         (
           {
