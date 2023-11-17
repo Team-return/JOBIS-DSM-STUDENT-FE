@@ -1,10 +1,9 @@
 import Shimmer from "./Shimmer";
 
 export default function RecruitmentSkelton() {
-  const skeltonArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   return (
     <>
-      {skeltonArray.map(() => (
+      {Array.from({ length: 12 }, () => (
         <div className="w-full rounded-[14px] overflow-hidden">
           <div className="w-full h-[10vw] skeltonUi relative ">
             <Shimmer />

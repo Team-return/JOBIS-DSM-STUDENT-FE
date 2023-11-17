@@ -7,7 +7,7 @@ module.exports = {
         loading: {
           "0%": { transform: "translateX(-150%)" },
           "50%": { transform: "translateX(-60%)" },
-          "80%": { transform: "translateX(150%)" },
+          "100%": { transform: "translateX(150%)" },
         },
       },
       animation: {
