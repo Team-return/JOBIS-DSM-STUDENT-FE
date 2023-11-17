@@ -5,7 +5,7 @@ import { MyProfile } from "@/apis/students";
 import Link from "next/link";
 
 interface PropsType {
-  listType: "Company" | "Recruitments" | "BookMark";
+  listType: "Company" | "Recruitments" | "Bookmark";
 }
 
 export default function SuggestionHeader({ listType }: PropsType) {
@@ -18,9 +18,10 @@ export default function SuggestionHeader({ listType }: PropsType) {
     },
     Recruitments: {
       title: `👩‍💻 ${data?.data.student_name || "사용자"}님의 관심 분야에요`,
+
       router: "/recruitments",
     },
-    BookMark: {
+    Bookmark: {
       title: "📌 내가 저장한 모집의뢰서",
     },
   };
@@ -29,7 +30,7 @@ export default function SuggestionHeader({ listType }: PropsType) {
       <div className="flex gap-[10px] items-center text-h5 leading-h5 font-b">
         <p>{suggestionHeaderDummy[listType].title}</p>
       </div>
-      {listType !== "BookMark" && (
+      {listType !== "Bookmark" && (
         <Link
           href={suggestionHeaderDummy[listType].router}
           className="w-[120px] h-[32px] flex items-end justify-center text-b3 leading-b3 text-[#7f7f7f] font-m bg-none border-none cursor-pointer"

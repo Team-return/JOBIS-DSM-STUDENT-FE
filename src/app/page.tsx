@@ -12,7 +12,7 @@ export default function Home() {
         <Suggestion listType="Company" />
         <Suggestion listType="Recruitments" />
         <BandBanner />
-        <Suggestion listType="BookMark" />
+        <Suggestion listType="Bookmark" />
       </div>
     </main>
   );

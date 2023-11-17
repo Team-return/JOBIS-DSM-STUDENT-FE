@@ -1,10 +1,10 @@
-
+import BookmarkCard from "./BookmarkCard";
 import CompanyCard from "./company/CompanyCard";
 import RecruitmentsCard from "./recruitments/RecruitmentsCard";
 import SuggestionHeader from "./SuggestionHeader";
 
 interface PropsType {
-  listType: "Company" | "Recruitments" | "BookMark";
+  listType: "Company" | "Recruitments" | "Bookmark";
 }
 
 export default function Suggestion({ listType }: PropsType) {
@@ -13,6 +13,7 @@ export default function Suggestion({ listType }: PropsType) {
       <SuggestionHeader listType={listType} />
       {listType === "Company" && <CompanyCard />}
       {listType === "Recruitments" && <RecruitmentsCard />}
+      {listType === "Bookmark" && <BookmarkCard />}
     </div>
   );
 }
