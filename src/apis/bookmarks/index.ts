@@ -18,9 +18,7 @@ export const SetBookmarks = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries({
-          queryKey: ["getRecruitmentsList"],
-        });
+        queryClient.invalidateQueries(["getRecruitmentsList"]);
       },
     }
   );
