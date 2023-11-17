@@ -3,13 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-<<<<<<< HEAD
   .tagStyle {
-    @apply text-caption leading-caption text-lightBlue font-r border rounded-full border-[#135C9D] py-1 px-2
-=======
+    @apply text-caption leading-caption text-lightBlue font-r border rounded-full border-[#135C9D] py-1 px-2;
+  }
   .skeltonUi {
     @apply bg-[#f7f7f7] relative;
->>>>>>> develop
   }
 }
 

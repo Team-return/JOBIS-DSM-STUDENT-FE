@@ -6,19 +6,17 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
-<<<<<<< HEAD:src/components/RecruitmentsCard.tsx
-import HoverPrefetchLink from "./common/HoverPrefetchLink";
 import { SetBookmarks } from "@/apis/bookmarks";
-=======
 import HoverPrefetchLink from "../common/HoverPrefetchLink";
 import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
->>>>>>> develop:src/components/recruitments/RecruitmentsCard.tsx
 
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
   const [list, setList] = useState<RecruitmentsListType[]>([]);
 
-  const {data:recruitmentsList, isLoading} = GetRecruitmentsList(getParams.toString());
+  const { data: recruitmentsList, isLoading } = GetRecruitmentsList(
+    getParams.toString()
+  );
   useEffect(() => {
     setList((prev) => recruitmentsList?.data.recruitments || prev);
   }, [recruitmentsList]);
