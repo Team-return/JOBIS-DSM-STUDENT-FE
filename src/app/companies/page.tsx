@@ -4,7 +4,7 @@ import TextFiled from "@/components/common/TextFiled";
 import useForm from "@/hook/useForm";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import CompanyCard from "@/components/CompanyCard";
+import CompanyCard from "@/components/company/CompanyCard";
 import Pagination from "@/components/common/Pagination";
 
 export default function CompanyListPage() {
