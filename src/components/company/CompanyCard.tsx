@@ -13,19 +13,19 @@ export default function CompanyCard() {
   const getParams = useSearchParams();
   const [companyList, setCompanyList] = useState<CompaniesListType[]>([]);
 
-  const compnayList = GetCompaniesList(getParams.toString());
+  const {data: compnayList, isLoading} = GetCompaniesList(getParams.toString());
 
   useEffect(() => {
-    if (compnayList.data?.data.companies) {
+    if (compnayList?.data.companies) {
       (() => {
-        setCompanyList(compnayList.data.data.companies);
+        setCompanyList(compnayList.data.companies);
       })();
     }
   }, [compnayList]);
 
   return (
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
-      {compnayList.isLoading && <CompaniesSkelton />}
+      {isLoading && <CompaniesSkelton />}
       {companyList.map(
         ({ logo_url, name, take, has_recruitment, id }, index) => (
           <HoverPrefetchLink href={`/companies/detail?id=${id}`} key={index}>

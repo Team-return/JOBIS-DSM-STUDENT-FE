@@ -13,9 +13,9 @@ export default function RecruitmentsCard() {
   const getParams = useSearchParams();
   const [list, setList] = useState<RecruitmentsListType[]>([]);
 
-  const recruitmentsList = GetRecruitmentsList(getParams.toString());
+  const {data:recruitmentsList, isLoading} = GetRecruitmentsList(getParams.toString());
   useEffect(() => {
-    setList((prev) => recruitmentsList.data?.data.recruitments || prev);
+    setList((prev) => recruitmentsList?.data.recruitments || prev);
   }, [recruitmentsList]);
 
   const tagStyle =
@@ -23,7 +23,7 @@ export default function RecruitmentsCard() {
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
-      {recruitmentsList.isLoading && <RecruitmentSkelton />}
+      {isLoading && <RecruitmentSkelton />}
       {list.map(
         (
           {
