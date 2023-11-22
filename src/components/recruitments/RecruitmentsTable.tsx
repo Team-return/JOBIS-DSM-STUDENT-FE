@@ -2,7 +2,7 @@
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { hiringProgressEnum } from "@/util/enum";
-import { time_parsing } from "@/util/regex";
+import { money_regex, time_parsing } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
 import React, { useState } from "react";
 
@@ -108,12 +108,12 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             </td>
           </tr>
           <tr>
-            <td className="key">실습 수당 월</td>
-            <td className="value">{train_pay} 만원/월</td>
+            <td className="key">실습 수당 월급</td>
+            <td className="value">{money_regex(train_pay)} 원/월</td>
           </tr>
           <tr>
             <td className="key">정규직 전환 시 연봉</td>
-            <td className="value">{pay ?? "-"} 만원/년</td>
+            <td className="value">{pay ? pay + " 만원/년" : "-"}</td>
           </tr>
           <tr>
             <td className="key">복지</td>
