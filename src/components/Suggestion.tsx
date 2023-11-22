@@ -1,11 +1,10 @@
 import CompanyCard from "./CompanyCard";
-import RecruitmentsCard from "./RecruitmentsCard";
+import RecruitmentsCard from "./recruitments/RecruitmentsCard";
 import SuggestionHeader from "./SuggestionHeader";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";
 }
-
 
 export default function Suggestion({ listType }: PropsType) {
   return (

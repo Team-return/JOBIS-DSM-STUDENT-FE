@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
-import HoverPrefetchLink from "./common/HoverPrefetchLink";
+import HoverPrefetchLink from "../common/HoverPrefetchLink";
 
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();

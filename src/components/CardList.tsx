@@ -1,6 +1,6 @@
 import React from "react";
 import CompanyCard from "./CompanyCard";
-import RecruitmentsCard from "./RecruitmentsCard";
+import RecruitmentsCard from "./recruitments/RecruitmentsCard";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "BookMark";

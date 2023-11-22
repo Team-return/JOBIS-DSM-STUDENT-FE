@@ -17,3 +17,7 @@ export const pon_number_regex = (number: string | null) => {
 export const time_parsing = (time: string) => {
   return time.slice(0, 5);
 };
+
+export const money_regex = (money: number) => {
+  return money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
