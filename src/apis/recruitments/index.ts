@@ -33,7 +33,12 @@ export const GetRecruitmentsDetail = (id: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsDetail", id],
-    async () => await instance.get<RecruitmentsDetailType>(`${router}/${id}`),
+    async () => {
+      const { data } = await instance.get<RecruitmentsDetailType>(
+        `${router}/${id}`
+      );
+      return data;
+    },
     {
       refetchOnWindowFocus: false,
       onError: () => {
