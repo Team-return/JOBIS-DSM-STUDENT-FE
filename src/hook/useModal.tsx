@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "@/context/ModalContext";
 
 export default function useMoadl() {
   const { isOpen, setIsOpen } = useContext(ModalContext);
+
+  const preventScroll = (e: Event) => {
+    e.preventDefault();
+  };
 
   const openModal = () => {
     setIsOpen(true);
@@ -13,6 +17,16 @@ export default function useMoadl() {
   const toggleModal = () => {
     setIsOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (isOpen)
+      document.addEventListener("wheel", preventScroll, { passive: false });
+    else document.removeEventListener("wheel", preventScroll);
+
+    return () => {
+      document.removeEventListener("wheel", preventScroll);
+    };
+  }, [isOpen]);
 
   return {
     Modal: ({
