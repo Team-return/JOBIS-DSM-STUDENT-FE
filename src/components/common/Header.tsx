@@ -14,7 +14,7 @@ function Header() {
     return null;
   }
 
-  const profile = MyProfile();
+  const { data: profile } = MyProfile();
 
   return (
     <div
@@ -62,15 +62,15 @@ function Header() {
             width={28}
             height={28}
             src={`${
-              profile.data?.data.profile_image_url &&
+              profile?.profile_image_url &&
               process.env.NEXT_PUBLIC_IMAGE_URL +
                 "/" +
-                profile.data.data.profile_image_url
+                profile?.profile_image_url
             }`}
             alt="프로필사진"
           />
           <p className="text-[#333333] text-b2 font-r">
-            {profile.data?.data.student_name}
+            {profile?.student_name}
           </p>
         </div>
         <div>

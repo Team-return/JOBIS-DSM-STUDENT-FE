@@ -1,3 +1,9 @@
+import DetailProfile from "@/components/mypage/DetailProfile";
+
 export default function MyPage() {
-  return <>mypage</>;
+  return (
+    <>
+      <DetailProfile />
+    </>
+  );
 }

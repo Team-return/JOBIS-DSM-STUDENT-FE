@@ -1,7 +1,7 @@
 "use client";
 
 import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
-import { hiringProgressEnum } from "@/util/enum";
+import { hiringProgressEnum } from "@/util/object/enum";
 import { money_regex, time_parsing } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
 import React, { useState } from "react";

@@ -7,7 +7,7 @@ import TextFiled from "./TextFiled";
 import useForm from "@/hook/useForm";
 import Chips from "./Chips";
 import { GetCode } from "@/apis/code";
-import { TechCodeResponensType } from "@/util/type";
+import { TechCodeResponensType } from "@/util/type/type";
 import GhostBtn from "./Button/GhostBtn";
 import { setQueryStringType, useQueryString } from "@/hook/useQueryString";
 
@@ -46,7 +46,7 @@ function SearchDropDown({ title }: PropsType) {
 function TechCodeDropDownComponent({
   closeDropDown,
   setQueryString,
-  getQueryString
+  getQueryString,
 }: {
   closeDropDown: () => void;
   setQueryString: (newValue: setQueryStringType) => void;

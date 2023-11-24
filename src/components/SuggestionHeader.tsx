@@ -9,7 +9,7 @@ interface PropsType {
 }
 
 export default function SuggestionHeader({ listType }: PropsType) {
-  const { data } = MyProfile();
+  const { data: profile } = MyProfile();
 
   const suggestionHeaderDummy = {
     Company: {
@@ -17,7 +17,7 @@ export default function SuggestionHeader({ listType }: PropsType) {
       router: "/companies",
     },
     Recruitments: {
-      title: `👩‍💻 ${data?.data.student_name || "사용자"}님의 관심 분야에요`,
+      title: `👩‍💻 ${profile?.student_name || "사용자"}님의 관심 분야에요`,
 
       router: "/recruitments",
     },

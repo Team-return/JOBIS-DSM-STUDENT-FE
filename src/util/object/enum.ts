@@ -9,3 +9,10 @@ export enum hiringProgressEnum {
   AI = "AI면접",
   CODING_TEST = "코딩테스트",
 }
+
+export enum departmentEnum {
+  SOFTWARE_DEVELOP = '소프트웨어개발과',
+  EMBEDDED_SOFTWARE = '임베디드소프트웨어과',
+  INFORMATION_SECURITY = '정보보안과',
+  AI_SOFTWARE = '인공지능스프트웨어과'
+}
