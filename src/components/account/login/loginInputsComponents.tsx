@@ -28,6 +28,7 @@ function LoginInputs({ inputStates, handleChange, enterEvent }: PropsType) {
         width="100%"
         height={48}
         name="password"
+        customType="Password"
         label="비밀번호"
         placeholder="비밀번호를 입력해주세요"
         enterEvent={enterEvent}
