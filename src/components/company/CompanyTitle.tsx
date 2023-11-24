@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import useMoadl from "@/hook/useModal";
-import { Icon } from "@team-return/design-system";
 import { useDropDown } from "@/hook/useDropDown";
+import { Icon } from "@team-return/design-system";
+import Image from "next/image";
 
 interface PropsType {
   business_number?: string;
@@ -22,11 +21,8 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
-  const { Modal, toggleModal, closeModal } = useMoadl();
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
-  const menuStyle =
-    "flex-1 text-b3 leading-b3 font-m text-[#7f7f7f] flex justify-start items-center px-[10px] cursor-pointer hover:text-[#333333]";
   return (
     <div className="flex items-center justify-between w-full">
       <div className="flex gap-6">
@@ -57,7 +53,7 @@ export default function CompanyTitle({
           <DropDownComponent>
             <div className="absolute top-[30px] right-0 w-[150px] h-[100px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] p-[10px] shadow-elevaiton flex flex-col">
               <div
-                className={menuStyle}
+                className="dropDownMenu"
                 onClick={() => {
                   onClickRecruitments();
                   closeDropDown();
@@ -66,7 +62,7 @@ export default function CompanyTitle({
                 모집의뢰서 조회
               </div>
               <div
-                className={menuStyle}
+                className="dropDownMenu"
                 onClick={() => {
                   onClickInterview();
                   closeDropDown();
