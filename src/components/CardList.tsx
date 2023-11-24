@@ -1,5 +1,5 @@
 import React from "react";
-import CompanyCard from "./company/CompanyCard";
+import CompanyCard from "./CompanyCard";
 import RecruitmentsCard from "./recruitments/RecruitmentsCard";
 
 interface PropsType {
