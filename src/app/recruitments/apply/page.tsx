@@ -61,7 +61,6 @@ export default function Apply() {
       if (fileList.length) {
         openModal();
       } else {
-        console.log("파일존재X");
         append({
           title: "",
           message: "파일이 존재하지 않습니다.",

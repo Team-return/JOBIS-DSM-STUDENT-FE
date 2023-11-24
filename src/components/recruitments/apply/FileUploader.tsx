@@ -23,8 +23,6 @@ export default function FileUploader({
     if (fileRef.current?.files?.length) {
       const files = Array.from(fileRef.current?.files);
       setFileList((prev) => [...prev, ...files]);
-    } else {
-      console.log("파일 추가에 실패하였습니다.");
     }
   };
 

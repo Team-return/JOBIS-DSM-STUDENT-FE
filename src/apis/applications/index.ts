@@ -21,8 +21,6 @@ export default function ApplyToCompany(recruitmentId: string) {
         navigator.push("/mypage");
       },
       onError: (error: AxiosError) => {
-        console.log(error);
-
         switch (error.response?.status) {
           case 401:
             append({
