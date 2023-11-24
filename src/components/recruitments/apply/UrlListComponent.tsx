@@ -1,9 +1,17 @@
-import { useEffect, useState } from "react";
-import { Icon } from "@team-return/design-system";
 import useForm from "@/hook/useForm";
+import { Icon } from "@team-return/design-system";
+import { useEffect, useState } from "react";
 import URLItem from "./URLItem";
 
-export default function LinkListComponent() {
+interface PropsType {
+  addUrlsToRequest: (urlList: string[]) => void;
+  isBtnClicked: boolean;
+}
+
+export default function UrlListComponent({
+  addUrlsToRequest,
+  isBtnClicked,
+}: PropsType) {
   const {
     state: urlState,
     onChange,
@@ -12,6 +20,10 @@ export default function LinkListComponent() {
     url: "",
   });
   const [urlList, setUrlList] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (isBtnClicked) addUrlsToRequest(urlList);
+  }, [isBtnClicked]);
 
   const onEnterEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") appendURL();
@@ -42,7 +54,7 @@ export default function LinkListComponent() {
           autoComplete="off"
         />
         <div
-          className="flex items-center justify-center mr-3"
+          className="flex items-center justify-center mr-3 cursor-pointer"
           onClick={appendURL}
         >
           <Icon icon="Plus" size={26} color="gray60" />

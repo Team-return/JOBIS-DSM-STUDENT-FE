@@ -5,7 +5,7 @@ import { Icon } from "@team-return/design-system";
 
 interface PropsType {
   fileName: string;
-  prepend: (fileName: string) => void;
+  prepend?: (fileName: string) => void;
 }
 
 function FilePreview({ fileName, prepend }: PropsType) {
@@ -15,17 +15,19 @@ function FilePreview({ fileName, prepend }: PropsType) {
       title={fileName}
     >
       <Image src={Clip} alt="첨부파일" width={16} height={16} />
-      <p className="text-b3 leading-b3 font-r text-[#7f7f7f] text-ellipsis whitespace-nowrap overflow-hidden">
+      <p className="text-b3 leading-b3 font-r text-[#7f7f7f] text-ellipsis whitespace-nowrap overflow-hidden mr-[6px]">
         {fileName}
       </p>
-      <div
-        className="flex items-center justify-center ml-1 cursor-pointer"
-        onClick={() => {
-          prepend(fileName);
-        }}
-      >
-        <Icon icon="Close" size={16} color="error" />
-      </div>
+      {prepend && (
+        <div
+          className="flex items-center justify-center ml-1 cursor-pointer"
+          onClick={() => {
+            prepend(fileName);
+          }}
+        >
+          <Icon icon="Close" size={16} color="error" />
+        </div>
+      )}
     </div>
   );
 }

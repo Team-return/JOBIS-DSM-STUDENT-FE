@@ -28,6 +28,7 @@ instance.interceptors.response.use(
     if (axios.isAxiosError(error) && error.response) {
       const { config } = error;
       const refreshToken = cookies.get("refresh_token");
+
       if (
         (error.response.data.message === "Invalid Token" ||
           error.response.data.message === "Token Expired" ||
@@ -61,8 +62,6 @@ instance.interceptors.response.use(
               window.location.href = "/account/login";
             });
         }
-      } else {
-        window.location.href = "/account/login";
       }
     }
     return Promise.reject(error);

@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import useMoadl from "@/hook/useModal";
-import { Icon } from "@team-return/design-system";
 import { useDropDown } from "@/hook/useDropDown";
+import { Icon } from "@team-return/design-system";
+import Image from "next/image";
 
 interface PropsType {
   business_number?: string;
@@ -22,7 +21,6 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
-  const { Modal, toggleModal, closeModal } = useMoadl();
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
   const menuStyle =

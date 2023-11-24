@@ -1,4 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
+import { useToastStore } from "@team-return/design-system";
+import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { instance } from "../axios";
 import { ApplyRequestItmeType } from "./type";
@@ -7,6 +9,7 @@ const router = "/applications";
 
 export default function ApplyToCompany(recruitmentId: string) {
   const navigator = useRouter();
+  const { append } = useToastStore();
   return useMutation(
     async function (body: ApplyRequestItmeType[]) {
       return await instance.post(`${router}/${recruitmentId}`, {
@@ -15,7 +18,37 @@ export default function ApplyToCompany(recruitmentId: string) {
     },
     {
       onSuccess: () => {
-        navigator.push('/mypage')
+        navigator.push("/mypage");
+      },
+      onError: (error: AxiosError) => {
+        console.log(error);
+
+        switch (error.response?.status) {
+          case 401:
+            append({
+              title: "",
+              message: "3학년이 아닌 학생은 지원할 수 없습니다.",
+              type: "RED",
+            });
+            break;
+          case 404:
+            append({
+              title: "",
+              message: "모집의뢰서가 존재하지 않습니다.",
+              type: "RED",
+            });
+            break;
+          case 409:
+            append({
+              title: "",
+              message:
+                "이미 해당 모집의뢰에 지원했거나 승인된 지원요청이 존재합니다.",
+              type: "RED",
+            });
+
+          default:
+            break;
+        }
       },
     }
   );

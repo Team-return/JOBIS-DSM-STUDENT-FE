@@ -1,14 +1,20 @@
 "use client";
 
 import { Icon } from "@team-return/design-system";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FilePreview from "./FilePreview";
 
 interface PropsType {
   multiple?: boolean;
+  addFilesToRequest: (fileList: File[]) => void;
+  isBtnClicked: boolean;
 }
 
-export default function FileUploader({ multiple = false }: PropsType) {
+export default function FileUploader({
+  multiple = false,
+  addFilesToRequest,
+  isBtnClicked,
+}: PropsType) {
   const [fileList, setFileList] = useState<File[]>([]);
   const [isHover, setIsHover] = useState<boolean>(false);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -18,7 +24,7 @@ export default function FileUploader({ multiple = false }: PropsType) {
       const files = Array.from(fileRef.current?.files);
       setFileList((prev) => [...prev, ...files]);
     } else {
-      console.log("추가할 파일이 없습니다.");
+      console.log("파일 추가에 실패하였습니다.");
     }
   };
 
@@ -27,12 +33,8 @@ export default function FileUploader({ multiple = false }: PropsType) {
   };
 
   useEffect(() => {
-    // console.log(fileList);
-  }, [fileList]);
-
-  useEffect(() => {
-    console.log(fileRef);
-  }, [fileRef]);
+    if (isBtnClicked) addFilesToRequest(fileList);
+  }, [isBtnClicked]);
 
   return (
     <div className="w-full">

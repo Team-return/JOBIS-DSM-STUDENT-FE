@@ -3,7 +3,7 @@ import { useState } from "react";
 
 interface PropsType {
   url: string;
-  prepend: () => void;
+  prepend?: () => void;
 }
 
 export default function URLItem({ url, prepend }: PropsType) {
@@ -18,10 +18,10 @@ export default function URLItem({ url, prepend }: PropsType) {
       }}
       className="flex w-full gap-5 bg-[#f7f7f7] rounded-[8px] py-[10px] px-[14px] items-center mt-2"
     >
-      <p className="flex-1 text-caption leading-caption font-r text-[#333333]">
+      <p className="flex-1 text-caption leading-caption font-r text-[#333333] drag">
         {url}
       </p>
-      {isHover && (
+      {isHover && prepend && (
         <div
           className="flex items-center justify-center cursor-pointer"
           onClick={prepend}
