@@ -1,27 +1,32 @@
 "use client";
 
 import { Icon } from "@team-return/design-system";
+import { SetBookmarks } from "@/apis/bookmarks";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { GetRecruitmentsList } from "@/apis/recruitments";
 import HoverPrefetchLink from "../common/HoverPrefetchLink";
+import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
 
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
   const [list, setList] = useState<RecruitmentsListType[]>([]);
 
-  const res = GetRecruitmentsList(getParams.toString());
+  const { data: recruitmentsList, isLoading } = GetRecruitmentsList(getParams.toString());
   useEffect(() => {
-    setList((prev) => res.data?.data.recruitments || prev);
-  }, [res]);
+    setList((prev) => recruitmentsList?.data.recruitments || prev);
+  }, [recruitmentsList]);
+
+  const { mutate: SetBookmarksMutate } = SetBookmarks();
 
   const tagStyle =
     "text-caption leading-caption text-lightBlue font-r border rounded-full border-[#135C9D] py-1 px-2";
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
+      {isLoading && <RecruitmentSkelton />}
       {list.map(
         (
           {
@@ -56,14 +61,15 @@ export default function RecruitmentsCard() {
                   {company_name}
                 </p>
                 <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
-                  <div className={tagStyle}>실습수당 {train_pay}만원</div>
-                  {military && <div className={tagStyle}>병역특례</div>}
+                  <div className="tagStyle">실습수당 {train_pay}만원</div>
+                  {military && <div className="tagStyle">병역특례</div>}
                 </div>
                 <button
                   className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
                   aria-label="bookMarkBtn"
                   onClick={(event: React.MouseEvent<HTMLElement>) => {
-                    event.stopPropagation();
+                    event.preventDefault();
+                    SetBookmarksMutate(recruit_id);
                   }}
                 >
                   <Icon
