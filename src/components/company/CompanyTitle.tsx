@@ -1,8 +1,6 @@
 "use client";
 
-import { useDropDown } from "@/hook/useDropDown";
 import { KebabItemType } from "@/util/type/kebabMenu";
-import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
 
@@ -23,7 +21,6 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
-  const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
   const kebabItems:KebabItemType[] = [
     {
