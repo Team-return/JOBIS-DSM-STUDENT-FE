@@ -44,6 +44,7 @@ export default function Apply() {
   const addRequestFileList = (fileList: File[]) => {
     setFileList((prev) => [...prev, ...fileList]);
   };
+  
   const addRequestUrlList = (urlList: string[]) => {
     setUrlList((prev) => [...prev, ...urlList]);
     if (urlList.length)
