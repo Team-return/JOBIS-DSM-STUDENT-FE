@@ -1,8 +1,10 @@
 "use client";
 
 import { useDropDown } from "@/hook/useDropDown";
+import { KebabItemType } from "@/util/type/kebabMenu";
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
+import KebabMenu from "../common/Dropdown/KebabMenu";
 
 interface PropsType {
   business_number?: string;
@@ -22,6 +24,22 @@ export default function CompanyTitle({
   children,
 }: PropsType) {
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
+
+  const kebabItems:KebabItemType[] = [
+    {
+      label : '모집의뢰서 조회',
+      onClick: ()=>{
+        onClickRecruitments && onClickRecruitments();
+      }
+    },
+    {
+      label : '면접 후기 조회',
+      onClick: ()=>{
+        onClickInterview && onClickInterview();
+
+      }
+    }
+  ]
 
   return (
     <div className="flex items-center justify-between w-full">
@@ -45,34 +63,7 @@ export default function CompanyTitle({
         </div>
       </div>
       {onClickInterview && onClickRecruitments && (
-        <button
-          className="relative flex items-center justify-center bg-white border-none cursor-pointer"
-          onClick={toggleDropdown}
-        >
-          <Icon icon="KebabMenu" size={20} color="gray60" />
-          <DropDownComponent>
-            <div className="absolute top-[30px] right-0 w-[150px] h-[100px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] p-[10px] shadow-elevaiton flex flex-col">
-              <div
-                className="dropDownMenu"
-                onClick={() => {
-                  onClickRecruitments();
-                  closeDropDown();
-                }}
-              >
-                모집의뢰서 조회
-              </div>
-              <div
-                className="dropDownMenu"
-                onClick={() => {
-                  onClickInterview();
-                  closeDropDown();
-                }}
-              >
-                면접 후기 조회
-              </div>
-            </div>
-          </DropDownComponent>
-        </button>
+        <KebabMenu items={kebabItems} />
       )}
       {children}
     </div>
