@@ -21,3 +21,7 @@ export const time_parsing = (time: string) => {
 export const money_regex = (money: number) => {
   return money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
+export const file_name_regex = (url: string) => {
+  return url.replace(/(?:.*?-){5}(.*)/, "$1").replaceAll("+", " ");
+};

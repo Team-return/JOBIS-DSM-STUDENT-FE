@@ -5,7 +5,7 @@ export interface ApplyRequestItmeType {
   type: AttachmentsType;
 }
 
-export type ApplicationsStatus =
+export type ApplicationsStatusType =
   | "REQUESTED"
   | "APPROVED"
   | "FAILED"
@@ -16,7 +16,7 @@ export interface ApplicationItemType {
   application_id: number;
   company: string;
   attachments: ApplyRequestItmeType[];
-  application_status: ApplicationsStatus;
+  application_status: ApplicationsStatusType;
 }
 
 export interface ApplicationsResponseType {
