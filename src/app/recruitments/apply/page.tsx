@@ -44,7 +44,7 @@ export default function Apply() {
   const addRequestFileList = (fileList: File[]) => {
     setFileList((prev) => [...prev, ...fileList]);
   };
-  
+
   const addRequestUrlList = (urlList: string[]) => {
     setUrlList((prev) => [...prev, ...urlList]);
     if (urlList.length)
@@ -117,11 +117,7 @@ export default function Apply() {
           <div className="w-full h-full pt-12 px-[60px] pb-[60px]">
             <div className="flex items-center gap-5 mb-5">
               <Logo
-                src={
-                  recruitmentsDetial
-                    ? recruitmentsDetial.company_profile_url
-                    : ""
-                }
+                src={recruitmentsDetial?.company_profile_url ?? ""}
                 width="44px"
                 height="44px"
               />
