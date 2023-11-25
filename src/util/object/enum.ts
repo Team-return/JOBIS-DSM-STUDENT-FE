@@ -11,8 +11,16 @@ export enum hiringProgressEnum {
 }
 
 export enum departmentEnum {
-  SOFTWARE_DEVELOP = '소프트웨어개발과',
-  EMBEDDED_SOFTWARE = '임베디드소프트웨어과',
-  INFORMATION_SECURITY = '정보보안과',
-  AI_SOFTWARE = '인공지능스프트웨어과'
+  SOFTWARE_DEVELOP = "소프트웨어개발과",
+  EMBEDDED_SOFTWARE = "임베디드소프트웨어과",
+  INFORMATION_SECURITY = "정보보안과",
+  AI_SOFTWARE = "인공지능스프트웨어과",
+}
+
+export enum applicationEnum {
+  REQUESTED = "승인요청",
+  APPROVED = "승인됨",
+  FAILED = "불합격",
+  PASS = "합격",
+  REJECTED = "반려",
 }
