@@ -59,7 +59,7 @@ export default function DetailProfile() {
   ];
 
   return (
-    <div className="flex items-center gap-6 px-[9vw]">
+    <div className="flex items-center gap-6">
       <div className="w-[100px] h-[100px] rounded-[50%] shadow-elevaiton overflow-hidden flex items-center justify-center">
         <Image
           width={100}

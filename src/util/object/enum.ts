@@ -24,3 +24,11 @@ export enum applicationEnum {
   PASS = "합격",
   REJECTED = "반려",
 }
+
+export const applicationStatusStyle = {
+  REQUESTED: { color: "#7F7F7F", backgroundColor: "#F7F7F7" },
+  APPROVED: { color: "#2ECC71", backgroundColor: "#E6F8EE" },
+  FAILED: { color: "#E74C3C", backgroundColor: "#FCE9E7" },
+  PASS: { color: "#237BC9", backgroundColor: "#E4EFF8" },
+  REJECTED: { color: "#F1C40F", backgroundColor: "#FDF8E2" },
+};
