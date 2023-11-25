@@ -40,9 +40,10 @@ export default function APpliedCompanyItem({
       <div className="w-full h-[76px] flex items-center justify-between">
         <div className="ml-4">
           <p className="text-b2 leading-b2 font-m">{company}</p>
-          <p className="text-caption leading-caption font-r text-[#7F7F7F]">
+          {/*디자인에는 있지만 api에는 없어서 잠시 주석*/}
+          {/* <p className="text-caption leading-caption font-r text-[#7F7F7F]">
             2023.11.25
-          </p>
+          </p> */}
         </div>
         <div className="absolute bottom-[12px] left-[22.5vw]">
           <Icon
