@@ -1,5 +1,6 @@
 "use client";
 
+import { GetCompanyKebabItems } from "@/util/object/kebabMenuItems";
 import { KebabItemType } from "@/util/type/kebabMenu";
 import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
@@ -21,22 +22,10 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
-
-  const kebabItems:KebabItemType[] = [
-    {
-      label : '모집의뢰서 조회',
-      onClick: ()=>{
-        onClickRecruitments && onClickRecruitments();
-      }
-    },
-    {
-      label : '면접 후기 조회',
-      onClick: ()=>{
-        onClickInterview && onClickInterview();
-
-      }
-    }
-  ]
+  const kebabItems = GetCompanyKebabItems(
+    onClickRecruitments,
+    onClickInterview
+  );
 
   return (
     <div className="flex items-center justify-between w-full">

@@ -2,61 +2,13 @@
 
 import { MyProfile } from "@/apis/students";
 import { departmentEnum } from "@/util/object/enum";
-import { KebabItemType } from "@/util/type/kebabMenu";
-import { useToastStore } from "@team-return/design-system";
+import { mypageKebabItems } from "@/util/object/kebabMenuItems";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Cookies } from "react-cookie";
 import KebabMenu from "../common/Dropdown/KebabMenu";
 import GhostTag from "./GhostTag";
 
 export default function DetailProfile() {
-  const { append } = useToastStore();
-  const navigator = useRouter();
-  const cookies = new Cookies();
-
   const { data: profile } = MyProfile();
-
-  const kebabItems: KebabItemType[] = [
-    {
-      label: "프로필 수정",
-      onClick: () => {
-        append({
-          title: "",
-          message: "개발 중인 기능입니다.",
-          type: "YELLOW",
-        });
-      },
-    },
-    {
-      label: "비밀변호 변경",
-      onClick: () => {
-        append({
-          title: "",
-          message: "개발 중인 기능입니다.",
-          type: "YELLOW",
-        });
-      },
-    },
-    {
-      label: "버그 제보하기",
-      onClick: () => {
-        append({
-          title: "",
-          message: "개발 중인 기능입니다.",
-          type: "YELLOW",
-        });
-      },
-    },
-    {
-      label: "로그아웃",
-      onClick: () => {
-        navigator.push("/account/login");
-        cookies.remove("access_token");
-        cookies.remove("refresh_token");
-      },
-    },
-  ];
 
   return (
     <div className="flex items-center gap-6">
@@ -81,7 +33,7 @@ export default function DetailProfile() {
           {profile && departmentEnum[profile.department]}
         </p>
       </div>
-      <KebabMenu items={kebabItems} />
+      <KebabMenu items={mypageKebabItems} />
     </div>
   );
 }
