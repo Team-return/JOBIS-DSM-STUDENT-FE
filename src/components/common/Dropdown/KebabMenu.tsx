@@ -14,7 +14,7 @@ export default function KebabMenu({ items }: PropsType) {
     <div className="relative cursor-pointer" onClick={toggleDropdown}>
       <Icon icon="KebabMenu" size={24} color="gray80" />
       <DropDownComponent>
-        <div className="absolute top-[30px] right-0 w-[150px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] py-3 shadow-elevaiton flex flex-col items-center">
+        <div className="absolute top-[30px] right-0 z-[3] w-[150px] bg-white rounded-b-[16px] rounded-tl-[16px] rounded-tr-[4px] py-3 shadow-elevaiton flex flex-col items-center">
           {items.map(({ label, onClick }, idx) => (
             <div
               key={idx}
