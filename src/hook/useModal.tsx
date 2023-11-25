@@ -21,7 +21,6 @@ export default function useMoadl() {
   useEffect(() => {
     if (isOpen)
       document.addEventListener("wheel", preventScroll, { passive: false });
-    else document.removeEventListener("wheel", preventScroll);
     return () => {
       document.removeEventListener("wheel", preventScroll);
     };
