@@ -65,7 +65,7 @@ function TechCodeDropDownComponent({
     techCodeSearch: "",
   });
 
-  const { data } = GetCode("TECH", searchKeyword);
+  const { data:codes } = GetCode("TECH", searchKeyword);
 
   useEffect(() => {
     const techArray = getQueryString("tech_code")
@@ -73,12 +73,12 @@ function TechCodeDropDownComponent({
       .map((item) => Number(item));
     setSelect(() => {
       return (
-        data?.data.codes.filter((item: TechCodeResponensType) =>
+        codes?.codes.filter((item: TechCodeResponensType) =>
           techArray?.some((techItem) => item.code === techItem)
         ) || []
       );
     });
-  }, [getQueryString("tech_code"), data?.data.codes]);
+  }, [getQueryString("tech_code"), codes?.codes]);
 
   return (
     <div
@@ -101,7 +101,7 @@ function TechCodeDropDownComponent({
       </div>
       <div className="flex-1 overflow-hidden">
         <Chips
-          value={data?.data.codes || []}
+          value={codes?.codes || []}
           select={select}
           setSelect={setSelect}
         />

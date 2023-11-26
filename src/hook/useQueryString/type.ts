@@ -7,7 +7,7 @@ export interface RecruitmentsQueryType extends QueryStringType {
   job_code: string;
   tech_code: string;
   name: string;
-  winter_intern: "true" | "false" | "";
+  winter_intern: string;
 }
 
 export interface CompaniesQueryType extends QueryStringType {
