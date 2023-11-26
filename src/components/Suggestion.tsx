@@ -17,3 +17,4 @@ export default function Suggestion({ listType }: PropsType) {
     </div>
   );
 }
+  
