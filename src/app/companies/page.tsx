@@ -25,7 +25,7 @@ export default function CompanyListPage() {
   useEffect(onSearch, [page]);
 
   return (
-    <div className="w-full mt-[68px]">
+    <div className="w-full my-[68px]">
       <div className="flex items-center justify-between w-full py-5">
         <div className="flex gap-[10px] items-center text-h5 leading-h5 font-b">
           <p>🏢 기업체</p>
