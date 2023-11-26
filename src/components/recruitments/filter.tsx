@@ -2,14 +2,19 @@
 
 import { GetCode } from "@/apis/code";
 import useForm from "@/hook/useForm";
-import { useQueryString } from "@/hook/useQueryString";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
 import React, { useEffect, useState } from "react";
 import DropDown from "../common/DropDown";
 import SearchDropDown from "../common/SearchDropDown";
 import TextFiled from "../common/TextFiled";
 
 function Filter() {
-  const { setQueryString, getQueryString } = useQueryString({
+  const { setQueryString, getQueryString } = useQueryString<{
+    page?: string;
+    job_code?: string;
+    tech_code?: string;
+    name?: string;
+  }>({
     page: "1",
     job_code: "",
     tech_code: "",
@@ -67,7 +72,6 @@ function Filter() {
         enterEvent={onSearch}
         width="26vw"
       />
-      
     </div>
   );
 }

@@ -2,7 +2,8 @@
 
 import { GetNumberOfCompaniesListPages } from "@/apis/companies";
 import { GetNumberOfRecruitmentRequestListPages } from "@/apis/recruitments";
-import { useQueryString } from "@/hook/useQueryString";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
 import { Icon, theme } from "@team-return/design-system";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -11,18 +12,19 @@ export default function Pagination() {
   const pathname = usePathname();
 
   const { setQueryString, getQueryString, getQueryStringEntry } =
-    useQueryString({
+    useQueryString<RecruitmentsQueryType>({
       page: "1",
       job_code: "",
       tech_code: "",
       name: "",
+      winter_intern: "",
     });
   const currentPageNumber = getQueryString("page");
 
   const recruitmentQuery = [
     getQueryStringEntry("job_code"),
     getQueryStringEntry("tech_code"),
-    getQueryString("name"),
+    getQueryStringEntry("name"),
   ]
     .filter((item) => item)
     .join("&");

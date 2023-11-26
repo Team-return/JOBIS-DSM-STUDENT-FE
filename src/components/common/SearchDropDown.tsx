@@ -9,7 +9,11 @@ import Chips from "./Chips";
 import { GetCode } from "@/apis/code";
 import { TechCodeResponensType } from "@/util/type";
 import GhostBtn from "./Button/GhostBtn";
-import { setQueryStringType, useQueryString } from "@/hook/useQueryString";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
+import {
+  RecruitmentsQueryType,
+  setQueryStringType,
+} from "@/hook/useQueryString/type";
 
 interface PropsType {
   title: string;
@@ -18,12 +22,14 @@ interface PropsType {
 function SearchDropDown({ title }: PropsType) {
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
-  const { setQueryString, getQueryString } = useQueryString({
-    page: "1",
-    job_code: "",
-    tech_code: "",
-    name: "",
-  });
+  const { setQueryString, getQueryString } =
+    useQueryString<RecruitmentsQueryType>({
+      page: "1",
+      job_code: "",
+      tech_code: "",
+      name: "",
+      winter_intern: "",
+    });
 
   return (
     <div
@@ -46,11 +52,11 @@ function SearchDropDown({ title }: PropsType) {
 function TechCodeDropDownComponent({
   closeDropDown,
   setQueryString,
-  getQueryString
+  getQueryString,
 }: {
   closeDropDown: () => void;
-  setQueryString: (newValue: setQueryStringType) => void;
-  getQueryString: (key: keyof setQueryStringType) => string;
+  setQueryString: (newValue: Partial<RecruitmentsQueryType>) => void;
+  getQueryString: (key: string) => string;
 }) {
   const [select, setSelect] = useState<TechCodeResponensType[]>([]);
   const [searchKeyword, setSearch] = useState<string>("");
