@@ -25,6 +25,7 @@ export default function Pagination() {
     getQueryStringEntry("job_code"),
     getQueryStringEntry("tech_code"),
     getQueryStringEntry("name"),
+    getQueryStringEntry("winter_intern"),
   ]
     .filter((item) => item)
     .join("&");

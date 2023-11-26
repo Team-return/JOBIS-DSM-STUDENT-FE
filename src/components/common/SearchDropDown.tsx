@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useDropDown } from "@/hook/useDropDown";
-import { Icon } from "@team-return/design-system";
-import TextFiled from "./TextFiled";
-import useForm from "@/hook/useForm";
-import Chips from "./Chips";
 import { GetCode } from "@/apis/code";
-import { TechCodeResponensType } from "@/util/type";
-import GhostBtn from "./Button/GhostBtn";
-import { useQueryString } from "@/hook/useQueryString/useQueryString";
+import { useDropDown } from "@/hook/useDropDown";
+import useForm from "@/hook/useForm";
 import {
-  RecruitmentsQueryType,
-  setQueryStringType,
+  RecruitmentsQueryType
 } from "@/hook/useQueryString/type";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
+import { TechCodeResponensType } from "@/util/type";
+import { Icon } from "@team-return/design-system";
+import React, { useEffect, useState } from "react";
+import GhostBtn from "./Button/GhostBtn";
+import Chips from "./Chips";
+import TextFiled from "./TextFiled";
 
 interface PropsType {
   title: string;
