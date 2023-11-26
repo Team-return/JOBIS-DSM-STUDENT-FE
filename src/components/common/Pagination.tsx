@@ -10,20 +10,29 @@ import { useEffect, useState } from "react";
 export default function Pagination() {
   const pathname = usePathname();
 
-  const { setQueryString, getQueryString, getQueryStringEntry } = useQueryString({
-    page: "1",
-    job_code: "",
-    tech_code: "",
-    name: "",
-  });
+  const { setQueryString, getQueryString, getQueryStringEntry } =
+    useQueryString({
+      page: "1",
+      job_code: "",
+      tech_code: "",
+      name: "",
+    });
   const currentPageNumber = getQueryString("page");
+
+  const recruitmentQuery = [
+    getQueryStringEntry("job_code"),
+    getQueryStringEntry("tech_code"),
+    getQueryString("name"),
+  ]
+    .filter((item) => item)
+    .join("&");
 
   const numberOfPages =
     pathname === "/recruitments/"
-      ? GetNumberOfRecruitmentRequestListPages(
-          `${getQueryStringEntry("job_code")}&${getQueryStringEntry("tech_code")}&${getQueryStringEntry("name")}`
-        )?.data
-      : GetNumberOfCompaniesListPages(`${getQueryStringEntry("name")}`)?.data;
+      ? GetNumberOfRecruitmentRequestListPages(recruitmentQuery)?.data
+      : GetNumberOfCompaniesListPages(
+          `${getQueryStringEntry("name") ? getQueryStringEntry("name") : ""}`
+        )?.data;
   const [pagesArray, setPagesArray] = useState<number[]>([]);
 
   useEffect(() => {
@@ -73,7 +82,11 @@ export default function Pagination() {
           icon="Chevron"
           direction="right"
           size={16}
-          color={getQueryString("page") === String(pagesArray.length) ? "gray50" : "gray90"}
+          color={
+            getQueryString("page") === String(pagesArray.length)
+              ? "gray50"
+              : "gray90"
+          }
         />
       </div>
     </div>
