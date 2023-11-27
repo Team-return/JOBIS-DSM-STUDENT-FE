@@ -101,11 +101,3 @@ export default function APpliedCompanyItem({
     </div>
   );
 }
-
-// const ContentsWrapper = styled.div`
-//   height: 0;
-//   width: inherit;
-//   padding: 0 8px;
-//   overflow: hidden;
-//   transition: height 0.35s ease, background 0.35s ease;
-// `;
