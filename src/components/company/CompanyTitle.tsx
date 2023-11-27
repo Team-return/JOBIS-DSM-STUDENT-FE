@@ -1,6 +1,6 @@
 "use client";
 
-import { GetCompanyKebabItems } from "@/util/object/kebabMenuItems";
+import { getCompanyKebabItems } from "@/util/object/kebabMenuItems";
 import { KebabItemType } from "@/util/type/kebabMenu";
 import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
@@ -22,7 +22,7 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
-  const kebabItems = GetCompanyKebabItems(
+  const kebabItems = getCompanyKebabItems(
     onClickRecruitments,
     onClickInterview
   );

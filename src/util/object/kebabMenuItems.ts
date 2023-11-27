@@ -3,56 +3,53 @@ import { useRouter } from "next/navigation";
 import { Cookies } from "react-cookie";
 import { KebabItemType } from "../type/kebabMenu";
 
-export const mypageKebabItems: KebabItemType[] = [
-  {
-    label: "프로필 수정",
-    onClick: () => {
-      const { append } = useToastStore();
-      append({
-        title: "",
-        message: "개발 중인 기능입니다.",
-        type: "YELLOW",
-      });
+export const getMypageKebabItems = (): KebabItemType[] => {
+  const { append } = useToastStore();
+  const navigator = useRouter();
+  const cookies = new Cookies();
+  return [
+    {
+      label: "프로필 수정",
+      onClick: () => {
+        append({
+          title: "",
+          message: "개발 중인 기능입니다.",
+          type: "YELLOW",
+        });
+      },
     },
-  },
-  {
-    label: "비밀변호 변경",
-    onClick: () => {
-      const { append } = useToastStore();
-
-      append({
-        title: "",
-        message: "개발 중인 기능입니다.",
-        type: "YELLOW",
-      });
+    {
+      label: "비밀변호 변경",
+      onClick: () => {
+        append({
+          title: "",
+          message: "개발 중인 기능입니다.",
+          type: "YELLOW",
+        });
+      },
     },
-  },
-  {
-    label: "버그 제보하기",
-    onClick: () => {
-      const { append } = useToastStore();
-
-      append({
-        title: "",
-        message: "개발 중인 기능입니다.",
-        type: "YELLOW",
-      });
+    {
+      label: "버그 제보하기",
+      onClick: () => {
+        append({
+          title: "",
+          message: "개발 중인 기능입니다.",
+          type: "YELLOW",
+        });
+      },
     },
-  },
-  {
-    label: "로그아웃",
-    onClick: () => {
-      const navigator = useRouter();
-      const cookies = new Cookies();
-
-      navigator.push("/account/login");
-      cookies.remove("access_token");
-      cookies.remove("refresh_token");
+    {
+      label: "로그아웃",
+      onClick: () => {
+        navigator.push("/account/login");
+        cookies.remove("access_token");
+        cookies.remove("refresh_token");
+      },
     },
-  },
-];
+  ];
+};
 
-export const GetCompanyKebabItems = (
+export const getCompanyKebabItems = (
   onClickRecruitments?: () => void,
   onClickInterview?: () => void
 ): KebabItemType[] => {

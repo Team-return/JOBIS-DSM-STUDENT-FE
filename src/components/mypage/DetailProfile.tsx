@@ -2,7 +2,7 @@
 
 import { MyProfile } from "@/apis/students";
 import { departmentEnum } from "@/util/object/enum";
-import { mypageKebabItems } from "@/util/object/kebabMenuItems";
+import { getMypageKebabItems } from "@/util/object/kebabMenuItems";
 import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
 import GhostTag from "./GhostTag";
@@ -33,7 +33,7 @@ export default function DetailProfile() {
           {profile && departmentEnum[profile.department]}
         </p>
       </div>
-      <KebabMenu items={mypageKebabItems} />
+      <KebabMenu items={getMypageKebabItems()} />
     </div>
   );
 }
