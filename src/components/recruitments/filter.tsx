@@ -1,6 +1,6 @@
 "use client";
 
-import { GetCode } from "@/apis/code";
+import { useGetCode } from "@/apis/code";
 import useForm from "@/hook/useForm";
 import { useQueryString } from "@/hook/useQueryString";
 import React, { useEffect, useState } from "react";
@@ -47,7 +47,7 @@ function Filter() {
     } else setFilter((prev) => ({ ...prev, [name]: itemCode }));
   };
 
-  const { data } = GetCode("JOB");
+  const { data } = useGetCode("JOB");
 
   return (
     <div className="flex gap-4">
@@ -67,7 +67,6 @@ function Filter() {
         enterEvent={onSearch}
         width="26vw"
       />
-      
     </div>
   );
 }
