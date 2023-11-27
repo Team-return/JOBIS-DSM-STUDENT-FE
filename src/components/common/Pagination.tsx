@@ -1,7 +1,7 @@
 "use client";
 
-import { GetNumberOfCompaniesListPages } from "@/apis/companies";
-import { GetNumberOfRecruitmentRequestListPages } from "@/apis/recruitments";
+import { useGetNumberOfCompaniesListPages } from "@/apis/companies";
+import { useGetNumberOfRecruitmentRequestListPages } from "@/apis/recruitments";
 import { useQueryString } from "@/hook/useQueryString";
 import { Icon, theme } from "@team-return/design-system";
 import { usePathname } from "next/navigation";
@@ -20,10 +20,10 @@ export default function Pagination() {
 
   const numberOfPages =
     pathname === "/recruitments/"
-      ? GetNumberOfRecruitmentRequestListPages(
+      ? useGetNumberOfRecruitmentRequestListPages(
           `${getQueryStringEntry("job_code")}&${getQueryStringEntry("tech_code")}&${getQueryStringEntry("name")}`
         )?.data
-      : GetNumberOfCompaniesListPages(`${getQueryStringEntry("name")}`)?.data;
+      : useGetNumberOfCompaniesListPages(`${getQueryStringEntry("name")}`)?.data;
   const [pagesArray, setPagesArray] = useState<number[]>([]);
 
   useEffect(() => {

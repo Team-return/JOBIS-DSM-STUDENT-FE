@@ -7,7 +7,7 @@ import { ApplyRequestItmeType } from "./type";
 
 const router = "/applications";
 
-export default function ApplyToCompany(recruitmentId: string) {
+export default function useApplyToCompany(recruitmentId: string) {
   const navigator = useRouter();
   const { append } = useToastStore();
   return useMutation(

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { Cookies } from "react-cookie";
-import { ReissueToken } from "./auth";
+import { useReissueToken } from "./auth";
 
 export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -38,7 +38,7 @@ instance.interceptors.response.use(
         if (!isRefreshing) {
           cookies.remove("access_token");
           isRefreshing = true;
-          ReissueToken(refreshToken)
+          useReissueToken(refreshToken)
             .then((res) => {
               isRefreshing = false;
               cookies.remove("refresh_token");

@@ -3,14 +3,14 @@ import { instance } from "../axios";
 
 const router = "/bookmarks";
 
-export const GetBookmarks = () => {
+export const useGetBookmarks = () => {
   return useQuery(["GetBookmarks"], async () => {
     const { data } = await instance.get(`${router}`);
     return data;
   });
 };
 
-export const SetBookmarks = () => {
+export const useSetBookmarks = () => {
   const queryClient = useQueryClient();
   return useMutation(
     async (recruitmentId: number) => {

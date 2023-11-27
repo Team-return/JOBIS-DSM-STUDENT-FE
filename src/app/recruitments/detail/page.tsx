@@ -1,6 +1,6 @@
 "use client";
 
-import { GetRecruitmentsDetail } from "@/apis/recruitments";
+import { useGetRecruitmentsDetail } from "@/apis/recruitments";
 import GhostBtn from "@/components/common/Button/GhostBtn";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import RecruitmentsTable from "@/components/recruitments/RecruitmentsTable";
@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function RecruitmentsDetailPage() {
   const param = useSearchParams();
   const navigator = useRouter();
-  const { data: RecruitmentsDetial } = GetRecruitmentsDetail(param.get("id")!);
+  const { data: RecruitmentsDetial } = useGetRecruitmentsDetail(param.get("id")!);
   if (RecruitmentsDetial) {
     const { company_id, company_name, company_profile_url, ...rest } =
       RecruitmentsDetial;

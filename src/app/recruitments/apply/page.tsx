@@ -1,12 +1,12 @@
 "use client";
 
-import ApplyToCompany from "@/apis/applications";
+import useApplyToCompany from "@/apis/applications";
 import {
   ApplyRequestItmeType,
   AttachmentsType,
 } from "@/apis/applications/type";
-import { FileUpload } from "@/apis/file";
-import { GetRecruitmentsDetail } from "@/apis/recruitments";
+import { useFileUpload } from "@/apis/file";
+import { useGetRecruitmentsDetail } from "@/apis/recruitments";
 import GhostBtn from "@/components/common/Button/GhostBtn";
 import Loading from "@/components/common/Loading";
 import Logo from "@/components/common/Logo";
@@ -26,13 +26,13 @@ export default function Apply() {
   const param = useSearchParams();
   const { Modal, openModal, closeModal } = useMoadl();
   const { mutate: onApplyToCompany, isLoading: applyIsLoading } =
-    ApplyToCompany(param.get("id")!);
+    useApplyToCompany(param.get("id")!);
   const {
     mutate: onUploadFile,
     data: fileResponse,
     isLoading,
     isSuccess,
-  } = FileUpload();
+  } = useFileUpload();
   const { append } = useToastStore();
   const [fileList, setFileList] = useState<File[]>([]);
   const [urlList, setUrlList] = useState<string[]>([]);
@@ -96,7 +96,7 @@ export default function Apply() {
   //==============================
   // 모집의뢰서
 
-  const { data: recruitmentsDetial } = GetRecruitmentsDetail(param.get("id")!);
+  const { data: recruitmentsDetial } = useGetRecruitmentsDetail(param.get("id")!);
 
   return (
     <>

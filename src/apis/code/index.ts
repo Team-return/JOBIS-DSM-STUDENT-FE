@@ -4,7 +4,7 @@ import axios from "axios";
 
 const router = "/codes";
 
-export const GetCode = (
+export const useGetCode = (
   type: CodeType,
   keyword?: string,
   parent_code?: number

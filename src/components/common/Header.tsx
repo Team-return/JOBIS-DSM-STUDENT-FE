@@ -6,7 +6,7 @@ import Logo from "@public/Logo.png";
 import { Icon } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MyProfile } from "@/apis/students";
+import { useMyProfile } from "@/apis/students";
 
 function Header() {
   const pathname = usePathname();
@@ -14,7 +14,7 @@ function Header() {
     return null;
   }
 
-  const profile = MyProfile();
+  const profile = useMyProfile();
 
   return (
     <div

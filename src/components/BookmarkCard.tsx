@@ -1,4 +1,4 @@
-import { GetBookmarks } from "@/apis/bookmarks";
+import { useGetBookmarks } from "@/apis/bookmarks";
 import { RecruitmentsListType } from "@/apis/recruitments/type";
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export default function BookmarkCard() {
   //   []
   // );
 
-  // const bookmarks = GetBookmarks();
+  // const bookmarks = useGetBookmarks();
 
   // useEffect(() => {
   //   setBookmarksList((prev) => bookmarks.recruitments || prev);

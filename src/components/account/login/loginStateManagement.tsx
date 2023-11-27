@@ -5,7 +5,7 @@ import { RequestBody } from "@/apis/user/type";
 import LoginInputs from "@/components/account/login/loginInputsComponents";
 import SubmitBtn from "@/components/account/login/submitBtn";
 import { useCallback, useState } from "react";
-import { Login } from "@/apis/user";
+import { useLogin } from "@/apis/user";
 import useForm from "@/hook/useForm";
 
 export default function LoginStateMenagement() {
@@ -14,7 +14,7 @@ export default function LoginStateMenagement() {
     account_id: "",
     password: "",
   });
-  const { mutate: loginClick } = Login(inputStates, isChecked);
+  const { mutate: loginClick } = useLogin(inputStates, isChecked);
   const allIsInputState = useCallback(
     (): boolean => inputStates.account_id !== "" && inputStates.password !== "",
     [inputStates]

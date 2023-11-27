@@ -9,7 +9,7 @@ import {
 
 const router = "/recruitments";
 
-export const GetRecruitmentsList = (queryString: string) => {
+export const useGetRecruitmentsList = (queryString: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsList", queryString],
@@ -29,7 +29,7 @@ export const GetRecruitmentsList = (queryString: string) => {
   );
 };
 
-export const GetRecruitmentsDetail = (id: string) => {
+export const useGetRecruitmentsDetail = (id: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsDetail", id],
@@ -52,7 +52,7 @@ export const GetRecruitmentsDetail = (id: string) => {
   );
 };
 
-export const GetNumberOfRecruitmentRequestListPages = (queryString: string) => {
+export const useGetNumberOfRecruitmentRequestListPages = (queryString: string) => {
   const { data } = useQuery(
     ["getNumberOfRecruitmentRequestListPages", queryString],
     async () =>

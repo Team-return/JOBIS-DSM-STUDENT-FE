@@ -6,7 +6,7 @@ import { UploadFileResponse } from "./type";
 
 const router = "/files";
 
-export const FileUpload = () => {
+export const useFileUpload = () => {
   const { append } = useToastStore();
   return useMutation(
     async (files: File[]) => {
