@@ -2,19 +2,9 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { QueryStringType } from "./type";
 
-interface QueryStringType {
-  [key: string]: string;
-}
-
-export interface setQueryStringType {
-  page?: string;
-  job_code?: string;
-  tech_code?: string;
-  name?: string;
-}
-
-export const useQueryString = (initialState: QueryStringType) => {
+export const useQueryString = <T extends QueryStringType>(initialState: T) => {
   const pathname = usePathname();
   const router = useRouter();
   const params = useSearchParams();
@@ -26,13 +16,14 @@ export const useQueryString = (initialState: QueryStringType) => {
     }, {} as QueryStringType)
   );
 
-  const setQueryString = (newValue: setQueryStringType) => {
+  const setQueryString = (newValue: Partial<T>) => {
     setValue((prev) => ({ ...prev, ...newValue }));
   };
 
   const refresh = () => {
     const queryString = Object.entries(value)
-      .map(([key, val]) => `${key}=${val}`)
+      .map(([key, val]) => val && `${key}=${val}`)
+      .filter((item) => item)
       .join("&");
     router.push(`${pathname}?${queryString}`);
   };
@@ -43,13 +34,16 @@ export const useQueryString = (initialState: QueryStringType) => {
       .join("&");
   };
 
-  const getQueryString = (key: keyof setQueryStringType) => {
+  const getQueryString = (key: string) => {
     return value[key];
   };
-  const getQueryStringEntry = (key: keyof setQueryStringType) => {
-    return `${Object.keys(value).find((objectKey) => objectKey === key)}=${
-      value[key]
-    }`;
+  const getQueryStringEntry = (key: string) => {
+    return (
+      value[key] &&
+      `${Object.keys(value).find((objectKey) => objectKey === key)}=${
+        value[key]
+      }`
+    );
   };
 
   const resetQueryString = () => {

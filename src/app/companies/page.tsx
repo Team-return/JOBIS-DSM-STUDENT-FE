@@ -1,28 +1,24 @@
 "use client";
 
-import TextFiled from "@/components/common/TextFiled";
-import useForm from "@/hook/useForm";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import CompanyCard from "@/components/company/CompanyCard";
 import Pagination from "@/components/common/Pagination";
+import TextFiled from "@/components/common/TextFiled";
+import CompanyCard from "@/components/company/CompanyCard";
+import useForm from "@/hook/useForm";
+import { CompaniesQueryType } from "@/hook/useQueryString/type";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
 
 export default function CompanyListPage() {
-  const getParams = useSearchParams();
-  const [page, setPage] = useState(Number(getParams.get("page")));
-  const navigator = useRouter();
-  const pathname = usePathname();
+  const { getQueryString, setQueryString } = useQueryString<CompaniesQueryType>(
+    {
+      page: "1",
+      name: "",
+    }
+  );
   const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
   }>({
-    search: getParams.get("name")?.toString(),
+    search: getQueryString("name"),
   });
-
-  const onSearch = () => {
-    navigator.push(`${pathname}?page=${page}&name=${searchState.search}`);
-  };
-
-  useEffect(onSearch, [page]);
 
   return (
     <div className="w-full my-[68px]">
@@ -37,7 +33,9 @@ export default function CompanyListPage() {
           onChange={onChangeSearch}
           name="search"
           customType="Search"
-          enterEvent={onSearch}
+          enterEvent={() => {
+            setQueryString({ name: searchState.search });
+          }}
         />
       </div>
       <CompanyCard />

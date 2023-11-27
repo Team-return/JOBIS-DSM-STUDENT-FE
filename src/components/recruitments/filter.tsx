@@ -2,24 +2,29 @@
 
 import { GetCode } from "@/apis/code";
 import useForm from "@/hook/useForm";
-import { useQueryString } from "@/hook/useQueryString";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
+import { internDropdownItems } from "@/util/object/jobCodeDorpdownItems";
 import React, { useEffect, useState } from "react";
 import DropDown from "../common/DropDown";
 import SearchDropDown from "../common/SearchDropDown";
 import TextFiled from "../common/TextFiled";
 
 function Filter() {
-  const { setQueryString, getQueryString } = useQueryString({
-    page: "1",
-    job_code: "",
-    tech_code: "",
-    name: "",
-  });
+  const { setQueryString, getQueryString } =
+    useQueryString<RecruitmentsQueryType>({
+      page: "1",
+      job_code: "",
+      tech_code: "",
+      name: "",
+      winter_intern: "",
+    });
 
   const [filter, setFilter] = useState({
     page: getQueryString("page"),
     job_code: getQueryString("job_code"),
     tech_code: getQueryString("tech_code"),
+    winter_intern: getQueryString("winter_intern"),
   });
   const { state: searchState, onChange: onChangeSearch } = useForm<{
     search: string | undefined;
@@ -33,28 +38,44 @@ function Filter() {
       job_code: filter.job_code,
       tech_code: filter.tech_code,
       name: searchState.search,
+      winter_intern: filter.winter_intern,
     });
   };
 
   useEffect(onSearch, [filter]);
 
   const onItemClick = (
-    itemCode: string | number,
-    name: "job_code" | "tech_code"
+    jobType: "job_code" | "winter_intern",
+    itemCode: string
   ) => {
-    if (filter[name] === itemCode) {
-      setFilter((prev) => ({ ...prev, [name]: "" }));
-    } else setFilter((prev) => ({ ...prev, [name]: itemCode }));
+    if (filter[jobType] === itemCode) {
+      setFilter((prev) => ({ ...prev, [jobType]: "" }));
+    } else setFilter((prev) => ({ ...prev, [jobType]: itemCode }));
   };
 
-  const { data } = GetCode("JOB");
+  const { data: codes } = GetCode("JOB");
+
+  const jobCodeDropdownItems = codes?.codes.map((item) => ({
+    code: item.code.toString(),
+    label: item.keyword,
+  }));
 
   return (
     <div className="flex gap-4">
       <DropDown
+        title="모집구분"
+        items={internDropdownItems}
+        onClickItem={(itemCode: string) => {
+          onItemClick("winter_intern", itemCode);
+        }}
+        selected={getQueryString("winter_intern") || ""}
+      />
+      <DropDown
         title="분야"
-        items={data?.data.codes}
-        onItemClick={onItemClick}
+        items={jobCodeDropdownItems ?? [{ code: "1", label: "" }]}
+        onClickItem={(itemCode: string) => {
+          onItemClick("job_code", itemCode);
+        }}
         selected={getQueryString("job_code") || ""}
       />
       <SearchDropDown title="기술스택" />
@@ -65,9 +86,8 @@ function Filter() {
         name="search"
         customType="Search"
         enterEvent={onSearch}
-        width="26vw"
+        width="20vw"
       />
-      
     </div>
   );
 }
