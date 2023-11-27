@@ -17,7 +17,7 @@ module.exports = {
           "50%": { transform: "rotate(165deg)" },
           "62.5%": { transform: "rotate(255deg)" },
           "75%": { transform: "rotate(315deg)" },
-          "87.%": { transform: "rotate(345deg)" },
+          "87.5%": { transform: "rotate(345deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
       },
