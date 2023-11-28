@@ -41,9 +41,10 @@ export const getMypageKebabItems = (): KebabItemType[] => {
     {
       label: "로그아웃",
       onClick: () => {
+        console.log("로그아웃");
+        cookies.remove("access_token", { path: "/" });
+        cookies.remove("refresh_token", { path: "/" });
         navigator.push("/account/login");
-        cookies.remove("access_token");
-        cookies.remove("refresh_token");
       },
     },
   ];

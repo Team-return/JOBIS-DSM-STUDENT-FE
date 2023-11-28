@@ -20,8 +20,8 @@ export default function KebabMenu({ items }: PropsType) {
               key={idx}
               className="flex items-center justify-center w-full py-3 text-b3 leading-b3 font-m text-[#7f7f7f] cursor-pointer hover:text-[#333333]"
               onClick={() => {
-                closeDropDown();
                 onClick();
+                closeDropDown();
               }}
             >
               {label}

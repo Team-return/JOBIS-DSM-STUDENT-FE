@@ -62,6 +62,8 @@ instance.interceptors.response.use(
               window.location.href = "/account/login";
             });
         }
+      } else if (error.response.status === 403) {
+        window.location.href = "/account/login";
       }
     }
     return Promise.reject(error);
