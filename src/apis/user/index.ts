@@ -1,13 +1,13 @@
-import { useToastStore, Toast } from "@team-return/design-system";
 import { useMutation } from "@tanstack/react-query";
+import { useToastStore } from "@team-return/design-system";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { RequestBody, ResponseBody } from "./type";
-import axios, { AxiosError } from "axios";
 
 const router = "/users";
 
-export const Login = (body: RequestBody, checkBoxValue: boolean) => {
+export const useLogin = (body: RequestBody, checkBoxValue: boolean) => {
   const [, setCookie, removeCookie] = useCookies();
   const navigator = useRouter();
   const { append } = useToastStore();

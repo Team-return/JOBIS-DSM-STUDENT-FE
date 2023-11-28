@@ -9,14 +9,17 @@ import { MyProfileProps, RequestBody } from "./type";
 
 const router = "/students";
 
-export const Signup = () => {
+export const useSignup = () => {
   const [, setCookie] = useCookies();
   const navigator = useRouter();
   const { append } = useToastStore();
 
   return useMutation(
     async (body: RequestBody) => {
-      const response = await axios.post<ResponseBody>(`${process.env.NEXT_PUBLIC_BASE_URL}${router}`, body);
+      const response = await axios.post<ResponseBody>(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${router}`,
+        body
+      );
       return response.data;
     },
     {
@@ -69,10 +72,13 @@ export const Signup = () => {
   );
 };
 
-export const MyProfile = () => {
+export const useMyProfile = () => {
   return useQuery(
     ["myProfile"],
-    async () => await instance.get<MyProfileProps>(`${router}/my`),
+    async () => {
+      const { data } = await instance.get<MyProfileProps>(`${router}/my`);
+      return data;
+    },
     {
       refetchOnWindowFocus: false,
     }

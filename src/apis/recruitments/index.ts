@@ -4,19 +4,21 @@ import { instance } from "../axios";
 import {
   GetNumberOfPagesType,
   RecruitmentsDetailType,
-  RecruitmentsListResponseType,
+  RecruitmentsListResponseType
 } from "./type";
 
 const router = "/recruitments";
 
-export const GetRecruitmentsList = (queryString: string) => {
+export const useGetRecruitmentsList = (queryString: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsList", queryString],
-    async () =>
-      await instance.get<RecruitmentsListResponseType>(
+    async () => {
+      const { data } = await instance.get<RecruitmentsListResponseType>(
         `${router}/student?${queryString}`
-      ),
+      );
+      return data;
+    },
     {
       onError: () => {
         append({
@@ -29,11 +31,16 @@ export const GetRecruitmentsList = (queryString: string) => {
   );
 };
 
-export const GetRecruitmentsDetail = (id: string) => {
+export const useGetRecruitmentsDetail = (id: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsDetail", id],
-    async () => await instance.get<RecruitmentsDetailType>(`${router}/${id}`),
+    async () => {
+      const { data } = await instance.get<RecruitmentsDetailType>(
+        `${router}/${id}`
+      );
+      return data;
+    },
     {
       refetchOnWindowFocus: false,
       onError: () => {
@@ -47,7 +54,7 @@ export const GetRecruitmentsDetail = (id: string) => {
   );
 };
 
-export const GetNumberOfRecruitmentRequestListPages = (queryString: string) => {
+export const useGetNumberOfRecruitmentRequestListPages = (queryString: string) => {
   const { data } = useQuery(
     ["getNumberOfRecruitmentRequestListPages", queryString],
     async () =>

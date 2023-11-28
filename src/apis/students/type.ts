@@ -11,6 +11,10 @@ export interface RequestBody {
 export interface MyProfileProps {
   student_name: string;
   student_gcn: string;
-  department: string; // 소개과 | 임베과 | 정보보안 | 인공지능
+  department:
+    | "SOFTWARE_DEVELOP"
+    | "EMBEDDED_SOFTWARE"
+    | "INFORMATION_SECURITY"
+    | "AI_SOFTWARE";
   profile_image_url: string;
 }

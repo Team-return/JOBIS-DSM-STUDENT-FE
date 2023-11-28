@@ -6,14 +6,15 @@ import { CompaniesDetailsType, CompaniesListResponseType } from "./type";
 
 const router = "/companies";
 
-export const GetCompaniesList = (queryString: string) => {
+export const useGetCompaniesList = (queryString: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["companiesList", queryString],
     async () => {
-      return await instance.get<CompaniesListResponseType>(
+      const { data } = await instance.get<CompaniesListResponseType>(
         `${router}/student?${queryString}`
       );
+      return data;
     },
     {
       onError: () => {
@@ -27,7 +28,7 @@ export const GetCompaniesList = (queryString: string) => {
   );
 };
 
-export const GetCompaniesDetail = (id: string) => {
+export const useGetCompaniesDetail = (id: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["companiesDetails"],
@@ -45,7 +46,7 @@ export const GetCompaniesDetail = (id: string) => {
   );
 };
 
-export const GetNumberOfCompaniesListPages = (queryString: string) => {
+export const useGetNumberOfCompaniesListPages = (queryString: string) => {
   const { data } = useQuery(
     ["getNumberOfCompaniesListPages", queryString],
     async () =>

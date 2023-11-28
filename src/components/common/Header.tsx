@@ -6,7 +6,7 @@ import Logo from "@public/Logo.png";
 import { Icon } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MyProfile } from "@/apis/students";
+import { useMyProfile } from "@/apis/students";
 
 function Header() {
   const pathname = usePathname();
@@ -14,7 +14,7 @@ function Header() {
     return null;
   }
 
-  const profile = MyProfile();
+  const { data: profile } = useMyProfile();
 
   return (
     <div
@@ -28,7 +28,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/companies") !== -1 && "font-b"
           }`}
-          href={"/companies?page=1&name="}
+          href={"/companies?page=1"}
           prefetch
         >
           기업체
@@ -37,7 +37,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/recruitments") !== -1 && "font-b"
           }`}
-          href={"/recruitments?page=1&job_code=&tech_code=&name="}
+          href={"/recruitments?page=1"}
         >
           모집의뢰서
         </Link>
@@ -56,25 +56,25 @@ function Header() {
           //알림모달
         }}
       >
-        <div className="h-[32px] bg-white flex gap-[10px] items-center cursor-pointer">
+        <div className="h-[32px] bg-white flex gap-[10px] items-center">
           <Image
             className="rounded-full bg-[#D9D9D9]"
             width={28}
             height={28}
             src={`${
-              profile.data?.data.profile_image_url &&
+              profile?.profile_image_url &&
               process.env.NEXT_PUBLIC_IMAGE_URL +
                 "/" +
-                profile.data.data.profile_image_url
+                profile?.profile_image_url
             }`}
             alt="프로필사진"
           />
           <p className="text-[#333333] text-b2 font-r">
-            {profile.data?.data.student_name}
+            {profile?.student_name}
           </p>
         </div>
         <div>
-          <Icon icon={"Chevron"} size={16} color="gray90" />
+          {/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}
         </div>
       </div>
     </div>

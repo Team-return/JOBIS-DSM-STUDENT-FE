@@ -1,17 +1,18 @@
 "use client";
 
-import { GetRecruitmentsDetail } from "@/apis/recruitments";
+import { useGetRecruitmentsDetail } from "@/apis/recruitments";
 import GhostBtn from "@/components/common/Button/GhostBtn";
 import CompanyTitle from "@/components/company/CompanyTitle";
 import RecruitmentsTable from "@/components/recruitments/RecruitmentsTable";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function RecruitmentsDetailPage() {
   const param = useSearchParams();
-  const { data } = GetRecruitmentsDetail(param.get("id")!);
-  if (data) {
+  const navigator = useRouter();
+  const { data: RecruitmentsDetial } = useGetRecruitmentsDetail(param.get("id")!);
+  if (RecruitmentsDetial) {
     const { company_id, company_name, company_profile_url, ...rest } =
-      data.data;
+      RecruitmentsDetial;
 
     return (
       <div className="w-full my-[56px]">
@@ -19,7 +20,13 @@ export default function RecruitmentsDetailPage() {
           company_name={company_name}
           company_profile_url={company_profile_url}
         >
-          <GhostBtn>지원하기</GhostBtn>
+          <GhostBtn
+            onClick={() => {
+              navigator.push(`/recruitments/apply/?id=${param.get("id")}`);
+            }}
+          >
+            지원하기
+          </GhostBtn>
         </CompanyTitle>
         <RecruitmentsTable {...rest} />
       </div>

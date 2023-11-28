@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { instance } from "../axios";
 import {
   getReviewDetailResponseProps,
-  getReviewListResponseProps,
+  getReviewListResponseProps
 } from "./type";
 
 const router = "/reviews";
 
-export const GetReviewList = (companiesId: string) => {
+export const useGetReviewList = (companiesId: string) => {
   return useQuery(["getReviewList", companiesId], async () => {
     const { data } = await instance.get<getReviewListResponseProps>(
       `${router}/${companiesId}`
@@ -16,7 +16,7 @@ export const GetReviewList = (companiesId: string) => {
   });
 };
 
-export const getReviewDetails = (reviewId: string) => {
+export const useGetReviewDetails = (reviewId: string) => {
   return useQuery(["getReviewDetails", reviewId], async () => {
     const { data } = await instance.get<getReviewDetailResponseProps>(
       `${router}/details/${reviewId}`

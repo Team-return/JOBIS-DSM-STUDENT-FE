@@ -1,6 +1,6 @@
 "use client";
 
-import { TechCodeResponensType } from "@/util/type";
+import { TechCodeResponensType } from "@/util/type/type";
 import React from "react";
 
 interface PropsType {

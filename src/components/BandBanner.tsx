@@ -1,19 +1,27 @@
 "use client";
 
-import { Icon } from "@team-return/design-system";
+import { Icon, useToastStore } from "@team-return/design-system";
 import Image from "next/image";
-import BannerBackground from "@public/BannerBackground.png";
+import BannerBackground from "@public/BannerBackground.webp";
 import Guy from "@public/Guy.webp";
 import Link from "next/link";
 
 export default function BandBanner() {
+  const { append } = useToastStore();
   return (
     <Link
-      className="w-full h-[120px] py-7 px-[100px] mt-20 cursor-pointer relative"
+      className="w-full h-[120px] py-7 px-[100px] mt-15 cursor-pointer relative"
       href={"/"}
+      onClick={() => {
+        append({
+          title: "",
+          message: "개발 중인 기능입니다.",
+          type: "YELLOW",
+        });
+      }}
     >
-      <div className="w-full h-full flex flex-col">
-        <p className="text-h6 leading-h6 font-b text-white">
+      <div className="flex flex-col w-full h-full">
+        <p className="text-white text-h6 leading-h6 font-b">
           우리학교 학생들은 얼마나 취업했을까?
         </p>
         <div className="flex items-center text-caption leading-caption font-m text-white w-[117px] py-1 px-[10px] bg-white/[.2] mt-3 rounded-full">

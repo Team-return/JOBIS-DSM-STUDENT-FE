@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useGetCode } from "@/apis/code";
 import { useDropDown } from "@/hook/useDropDown";
-import { Icon } from "@team-return/design-system";
-import TextFiled from "./TextFiled";
 import useForm from "@/hook/useForm";
-import Chips from "./Chips";
-import { GetCode } from "@/apis/code";
-import { TechCodeResponensType } from "@/util/type";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
+import { useQueryString } from "@/hook/useQueryString/useQueryString";
+import { TechCodeResponensType } from "@/util/type/type";
+import { Icon } from "@team-return/design-system";
+import React, { useEffect, useState } from "react";
 import GhostBtn from "./Button/GhostBtn";
-import { setQueryStringType, useQueryString } from "@/hook/useQueryString";
+import Chips from "./Chips";
+import TextFiled from "./TextFiled";
 
 interface PropsType {
   title: string;
@@ -18,12 +19,14 @@ interface PropsType {
 function SearchDropDown({ title }: PropsType) {
   const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
 
-  const { setQueryString, getQueryString } = useQueryString({
-    page: "1",
-    job_code: "",
-    tech_code: "",
-    name: "",
-  });
+  const { setQueryString, getQueryString } =
+    useQueryString<RecruitmentsQueryType>({
+      page: "1",
+      job_code: "",
+      tech_code: "",
+      name: "",
+      winter_intern: "",
+    });
 
   return (
     <div
@@ -46,11 +49,11 @@ function SearchDropDown({ title }: PropsType) {
 function TechCodeDropDownComponent({
   closeDropDown,
   setQueryString,
-  getQueryString
+  getQueryString,
 }: {
   closeDropDown: () => void;
-  setQueryString: (newValue: setQueryStringType) => void;
-  getQueryString: (key: keyof setQueryStringType) => string;
+  setQueryString: (newValue: Partial<RecruitmentsQueryType>) => void;
+  getQueryString: (key: string) => string;
 }) {
   const [select, setSelect] = useState<TechCodeResponensType[]>([]);
   const [searchKeyword, setSearch] = useState<string>("");
@@ -60,7 +63,7 @@ function TechCodeDropDownComponent({
     techCodeSearch: "",
   });
 
-  const { data } = GetCode("TECH", searchKeyword);
+  const { data: codes } = useGetCode("TECH", searchKeyword);
 
   useEffect(() => {
     const techArray = getQueryString("tech_code")
@@ -68,12 +71,12 @@ function TechCodeDropDownComponent({
       .map((item) => Number(item));
     setSelect(() => {
       return (
-        data?.data.codes.filter((item: TechCodeResponensType) =>
+        codes?.codes.filter((item: TechCodeResponensType) =>
           techArray?.some((techItem) => item.code === techItem)
         ) || []
       );
     });
-  }, [getQueryString("tech_code"), data?.data.codes]);
+  }, [getQueryString("tech_code"), codes?.codes]);
 
   return (
     <div
@@ -96,7 +99,7 @@ function TechCodeDropDownComponent({
       </div>
       <div className="flex-1 overflow-hidden">
         <Chips
-          value={data?.data.codes || []}
+          value={codes?.codes || []}
           select={select}
           setSelect={setSelect}
         />

@@ -1906,15 +1906,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@team-return/design-system@npm:^1.1.8":
-  version: 1.1.8
-  resolution: "@team-return/design-system@npm:1.1.8"
+"@team-return/design-system@npm:^1.1.15":
+  version: 1.1.15
+  resolution: "@team-return/design-system@npm:1.1.15"
   dependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
     uuid: ^9.0.0
     zustand: ^4.3.7
-  checksum: d87866fa3af2ef7a68269709e01923ab67a323ee887249b74323927dcf0df3e543dea8bc16125ed791b93613705c18f7e04d39805ee053aa1e59d6b0b0c0bce8
+  checksum: de878fb3ac32cc7faf19b91fe4172bbb416a99fd16924d540924149f1359698adf167d6fd606ac70987e7814595d0a5f9acaf93e7d5fe4dc85e37f6018f6b2f0
   languageName: node
   linkType: hard
 
@@ -5309,7 +5309,7 @@ __metadata:
   dependencies:
     "@next/font": ^13.5.2
     "@tanstack/react-query": ^4.33.0
-    "@team-return/design-system": ^1.1.8
+    "@team-return/design-system": ^1.1.15
     "@testing-library/jest-dom": ^5.16.5
     "@types/debug": ^4
     "@types/eslint": ^8

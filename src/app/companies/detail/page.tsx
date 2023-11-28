@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useToastStore } from "@team-return/design-system";
 import CompanyTable from "@/components/company/CompanyTable";
 import CompanyTitle from "@/components/company/CompanyTitle";
-import { GetCompaniesDetail } from "@/apis/companies";
+import { useGetCompaniesDetail } from "@/apis/companies";
 import { business_number_regex } from "@/util/regex";
 
 export default function CompanyDetailPage() {
@@ -12,7 +12,7 @@ export default function CompanyDetailPage() {
   const params = useSearchParams();
   const { append } = useToastStore();
 
-  const { data } = GetCompaniesDetail(params.get("id")!);
+  const { data } = useGetCompaniesDetail(params.get("id")!);
 
   if (data) {
     const {

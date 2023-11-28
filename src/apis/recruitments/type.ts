@@ -1,12 +1,12 @@
 export interface RecruitmentsListResponseType {
-  recruitments: RecruitmentsListType[];
+  recruitments: RecruitmentsListType[]; 
 }
 
 export interface RecruitmentsListType {
   recruit_id: number;
   company_name: string;
   company_profile_url: string;
-  train_pay: string;
+  train_pay: number;
   military: boolean;
   total_hiring: number;
   job_code_list: string;
