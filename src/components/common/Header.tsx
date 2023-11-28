@@ -14,11 +14,7 @@ function Header() {
     return null;
   }
 
-<<<<<<< HEAD
-  const { data: profile } = MyProfile();
-=======
-  const profile = useMyProfile();
->>>>>>> develop
+  const { data: profile } = useMyProfile();
 
   return (
     <div

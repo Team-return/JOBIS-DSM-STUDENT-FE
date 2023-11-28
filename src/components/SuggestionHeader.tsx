@@ -9,11 +9,7 @@ interface PropsType {
 }
 
 export default function SuggestionHeader({ listType }: PropsType) {
-<<<<<<< HEAD
-  const { data: profile } = MyProfile();
-=======
-  const { data } = useMyProfile();
->>>>>>> develop
+  const { data: profile } = useMyProfile();
 
   const suggestionHeaderDummy = {
     Company: {
