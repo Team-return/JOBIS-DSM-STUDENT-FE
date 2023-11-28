@@ -11,9 +11,10 @@ export const useGetCompaniesList = (queryString: string) => {
   return useQuery(
     ["companiesList", queryString],
     async () => {
-      return await instance.get<CompaniesListResponseType>(
+      const { data } = await instance.get<CompaniesListResponseType>(
         `${router}/student?${queryString}`
       );
+      return data;
     },
     {
       onError: () => {

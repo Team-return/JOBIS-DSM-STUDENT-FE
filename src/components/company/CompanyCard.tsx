@@ -1,33 +1,29 @@
 "use client";
 
+import { useGetCompaniesList } from "@/apis/companies";
+import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useGetCompaniesList } from "@/apis/companies";
-import { useEffect, useState } from "react";
-import { CompaniesListType } from "@/apis/companies/type";
 import HoverPrefetchLink from "../common/HoverPrefetchLink";
-import { Icon } from "@team-return/design-system";
 import CompaniesSkelton from "../common/Skelton/CompanySkelton";
 
-export default function CompanyCard() {
+interface PropsType {
+  maxLength?: number;
+}
+
+export default function CompanyCard({ maxLength = 12 }: PropsType) {
   const getParams = useSearchParams();
-  const [companyList, setCompanyList] = useState<CompaniesListType[]>([]);
 
-  const {data: compnayList, isLoading} = useGetCompaniesList(getParams.toString());
-
-  useEffect(() => {
-    if (compnayList?.data.companies) {
-      (() => {
-        setCompanyList(compnayList.data.companies);
-      })();
-    }
-  }, [compnayList]);
+  const { data: companyList, isLoading } = useGetCompaniesList(
+    getParams.toString()
+  );
 
   return (
     <div className="w-full my-[10px] grid grid-cols-2 md:grid-cols-3 gap-[2vw]">
       {isLoading && <CompaniesSkelton />}
-      {companyList.map(
-        ({ logo_url, name, take, has_recruitment, id }, index) => (
+      {companyList?.companies
+        .filter((_, idx) => idx < maxLength)
+        .map(({ logo_url, name, take, has_recruitment, id }, index) => (
           <HoverPrefetchLink href={`/companies/detail?id=${id}`} key={index}>
             <div className="relative w-full transition duration-200 cursor-pointer hover:transition hover:scale-105 z-1">
               <div className="w-full h-0 pb-[60%] relative shadow-elevaiton rounded-[14px] overflow-hidden">
@@ -53,8 +49,7 @@ export default function CompanyCard() {
               </div>
             </div>
           </HoverPrefetchLink>
-        )
-      )}
+        ))}
     </div>
   );
 }

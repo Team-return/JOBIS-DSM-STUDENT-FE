@@ -56,7 +56,7 @@ function Header() {
           //알림모달
         }}
       >
-        <div className="h-[32px] bg-white flex gap-[10px] items-center cursor-pointer">
+        <div className="h-[32px] bg-white flex gap-[10px] items-center">
           <Image
             className="rounded-full bg-[#D9D9D9]"
             width={28}
@@ -74,7 +74,7 @@ function Header() {
           </p>
         </div>
         <div>
-          <Icon icon={"Chevron"} size={16} color="gray90" />
+          {/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}
         </div>
       </div>
     </div>
