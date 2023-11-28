@@ -1,10 +1,10 @@
 "use client";
 
-import { Icon } from "@team-return/design-system";
 import { useSetBookmarks } from "@/apis/bookmarks";
+import { useGetRecruitmentsList } from "@/apis/recruitments";
+import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useGetRecruitmentsList } from "@/apis/recruitments";
 import React from "react";
 import HoverPrefetchLink from "../common/HoverPrefetchLink";
 import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
@@ -12,7 +12,7 @@ import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
 
-  const { data: recruitmentsList, isLoading } = GetRecruitmentsList(getParams.toString());
+  const { data: recruitmentsList, isLoading } = useGetRecruitmentsList(getParams.toString());
 
   const { mutate: SetBookmarksMutate } = useSetBookmarks();
 

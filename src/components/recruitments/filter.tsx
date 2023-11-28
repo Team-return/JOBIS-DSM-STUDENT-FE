@@ -5,7 +5,7 @@ import useForm from "@/hook/useForm";
 import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
 import { useQueryString } from "@/hook/useQueryString/useQueryString";
 import { internDropdownItems } from "@/util/object/jobCodeDorpdownItems";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DropDown from "../common/DropDown";
 import SearchDropDown from "../common/SearchDropDown";
 import TextFiled from "../common/TextFiled";
@@ -53,7 +53,7 @@ function Filter() {
     } else setFilter((prev) => ({ ...prev, [jobType]: itemCode }));
   };
 
-  const { data } = useGetCode("JOB");
+  const { data:codes } = useGetCode("JOB");
 
   const jobCodeDropdownItems = codes?.codes.map((item) => ({
     code: item.code.toString(),
