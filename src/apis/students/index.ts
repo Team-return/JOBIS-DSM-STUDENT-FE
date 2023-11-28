@@ -16,7 +16,10 @@ export const useSignup = () => {
 
   return useMutation(
     async (body: RequestBody) => {
-      const response = await axios.post<ResponseBody>(`${process.env.NEXT_PUBLIC_BASE_URL}${router}`, body);
+      const response = await axios.post<ResponseBody>(
+        `${process.env.NEXT_PUBLIC_BASE_URL}${router}`,
+        body
+      );
       return response.data;
     },
     {
@@ -72,7 +75,10 @@ export const useSignup = () => {
 export const useMyProfile = () => {
   return useQuery(
     ["myProfile"],
-    async () => await instance.get<MyProfileProps>(`${router}/my`),
+    async () => {
+      const { data } = await instance.get<MyProfileProps>(`${router}/my`);
+      return data;
+    },
     {
       refetchOnWindowFocus: false,
     }

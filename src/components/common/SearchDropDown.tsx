@@ -5,7 +5,7 @@ import { useDropDown } from "@/hook/useDropDown";
 import useForm from "@/hook/useForm";
 import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
 import { useQueryString } from "@/hook/useQueryString/useQueryString";
-import { TechCodeResponensType } from "@/util/type";
+import { TechCodeResponensType } from "@/util/type/type";
 import { Icon } from "@team-return/design-system";
 import React, { useEffect, useState } from "react";
 import GhostBtn from "./Button/GhostBtn";

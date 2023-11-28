@@ -4,7 +4,7 @@ import { instance } from "../axios";
 import {
   GetNumberOfPagesType,
   RecruitmentsDetailType,
-  RecruitmentsListResponseType,
+  RecruitmentsListResponseType
 } from "./type";
 
 const router = "/recruitments";

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { instance } from "../axios";
 import {
   getReviewDetailResponseProps,
-  getReviewListResponseProps,
+  getReviewListResponseProps
 } from "./type";
 
 const router = "/reviews";

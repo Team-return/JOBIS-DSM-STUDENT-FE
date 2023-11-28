@@ -15,6 +15,9 @@
     -ms-user-select: text;
     user-select: text;
   }
+  .dropDownMenu {
+    @apply flex-1 text-b3 leading-b3 font-m text-[#7f7f7f] flex justify-start items-center px-[10px] cursor-pointer hover:text-[#333333];
+  }
 }
 
 * {
