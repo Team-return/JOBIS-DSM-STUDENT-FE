@@ -6,7 +6,7 @@ import Logo from "@public/Logo.png";
 import { Icon } from "@team-return/design-system";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MyProfile } from "@/apis/students";
+import { useMyProfile } from "@/apis/students";
 
 function Header() {
   const pathname = usePathname();
@@ -14,7 +14,11 @@ function Header() {
     return null;
   }
 
+<<<<<<< HEAD
   const { data: profile } = MyProfile();
+=======
+  const profile = useMyProfile();
+>>>>>>> develop
 
   return (
     <div
@@ -28,7 +32,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/companies") !== -1 && "font-b"
           }`}
-          href={"/companies?page=1&name="}
+          href={"/companies?page=1"}
           prefetch
         >
           기업체
@@ -37,7 +41,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/recruitments") !== -1 && "font-b"
           }`}
-          href={"/recruitments?page=1&job_code=&tech_code=&name="}
+          href={"/recruitments?page=1"}
         >
           모집의뢰서
         </Link>

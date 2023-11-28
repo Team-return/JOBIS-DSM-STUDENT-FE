@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { Cookies } from "react-cookie";
-import { ReissueToken } from "./auth";
+import { useReissueToken } from "./auth";
 
 export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -28,6 +28,7 @@ instance.interceptors.response.use(
     if (axios.isAxiosError(error) && error.response) {
       const { config } = error;
       const refreshToken = cookies.get("refresh_token");
+
       if (
         (error.response.data.message === "Invalid Token" ||
           error.response.data.message === "Token Expired" ||
@@ -37,7 +38,7 @@ instance.interceptors.response.use(
         if (!isRefreshing) {
           cookies.remove("access_token");
           isRefreshing = true;
-          ReissueToken(refreshToken)
+          useReissueToken(refreshToken)
             .then((res) => {
               isRefreshing = false;
               cookies.remove("refresh_token");
@@ -61,8 +62,6 @@ instance.interceptors.response.use(
               window.location.href = "/account/login";
             });
         }
-      } else {
-        window.location.href = "/account/login";
       }
     }
     return Promise.reject(error);

@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon } from "@team-return/design-system";
-import { MyProfile } from "@/apis/students";
+import { useMyProfile } from "@/apis/students";
 import Link from "next/link";
 
 interface PropsType {
@@ -9,7 +9,11 @@ interface PropsType {
 }
 
 export default function SuggestionHeader({ listType }: PropsType) {
+<<<<<<< HEAD
   const { data: profile } = MyProfile();
+=======
+  const { data } = useMyProfile();
+>>>>>>> develop
 
   const suggestionHeaderDummy = {
     Company: {

@@ -1,9 +1,15 @@
 "use client";
 
+<<<<<<< HEAD
 import { getCompanyKebabItems } from "@/util/object/kebabMenuItems";
 import { KebabItemType } from "@/util/type/kebabMenu";
 import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
+=======
+import { useDropDown } from "@/hook/useDropDown";
+import { Icon } from "@team-return/design-system";
+import Image from "next/image";
+>>>>>>> develop
 
 interface PropsType {
   business_number?: string;
@@ -22,10 +28,14 @@ export default function CompanyTitle({
   onClickInterview,
   children,
 }: PropsType) {
+<<<<<<< HEAD
   const kebabItems = getCompanyKebabItems(
     onClickRecruitments,
     onClickInterview
   );
+=======
+  const { DropDownComponent, toggleDropdown, closeDropDown } = useDropDown();
+>>>>>>> develop
 
   return (
     <div className="flex items-center justify-between w-full">

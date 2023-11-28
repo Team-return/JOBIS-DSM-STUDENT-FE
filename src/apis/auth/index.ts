@@ -5,7 +5,7 @@ import { AuthCode, IAuthorizationResponse, SendAuthCodeType } from "./type";
 
 const router = "/auth";
 
-export const ReissueToken = async (refresh_token: string) => {
+export const useReissueToken = async (refresh_token: string) => {
   const response = await axios.put<IAuthorizationResponse>(
     `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue`,
     null,
@@ -18,7 +18,7 @@ export const ReissueToken = async (refresh_token: string) => {
   return response.data;
 };
 
-export const SendAuthCode = () => {
+export const useSendAuthCode = () => {
   const { append } = useToastStore();
 
   return useMutation(
@@ -67,7 +67,7 @@ export const SendAuthCode = () => {
   );
 };
 
-export const CheckAuthCode = (
+export const useCheckAuthCode = (
   query_string: AuthCode,
   options?: Omit<
     UseMutationOptions<any, AxiosError<unknown, any>, void, unknown>,

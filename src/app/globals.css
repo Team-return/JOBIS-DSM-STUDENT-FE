@@ -8,6 +8,12 @@
   }
   .skeltonUi {
     @apply bg-[#f7f7f7] relative;
+  }  
+  .drag {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
   }
   .dropDownMenu {
     @apply flex-1 text-b3 leading-b3 font-m text-[#7f7f7f] flex justify-start items-center px-[10px] cursor-pointer hover:text-[#333333];
@@ -54,12 +60,6 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.drag {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
 
 table {
   width: 100%;

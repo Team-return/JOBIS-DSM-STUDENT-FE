@@ -1,4 +1,4 @@
-import { Signup } from "@/apis/students";
+import { useSignup } from "@/apis/students";
 import LargeBtn from "@/components/common/Button/LargeBtn";
 import RadioBtn from "@/components/common/RadioBtn";
 import TextFiled from "@/components/common/TextFiled";
@@ -16,7 +16,7 @@ function SecondSignupPage() {
     setSignupState((prev) => ({ ...prev, ["gender"]: select }));
   }, [select]);
 
-  const { mutate } = Signup();
+  const { mutate } = useSignup();
 
   const SignupAPI = () => {
     const RequestBody = {

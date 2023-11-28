@@ -4,22 +4,19 @@ import { useDropDown } from "@/hook/useDropDown";
 import { Icon } from "@team-return/design-system";
 import React from "react";
 
-type DropDownItemsType = {
-  code: number;
-  keyword: string;
-};
+interface DropdownItemsType {
+  code: string;
+  label: string;
+}
 
 interface PropsType {
   title: string;
-  items?: DropDownItemsType[];
-  onItemClick: (
-    itemCode: string | number,
-    name: "job_code" | "tech_code"
-  ) => void;
+  items: DropdownItemsType[];
+  onClickItem: (itemId: string) => void;
   selected: number | string;
 }
 
-function DropDown({ title, items, onItemClick, selected }: PropsType) {
+function DropDown({ title, items, onClickItem, selected }: PropsType) {
   const { toggleDropdown, DropDownComponent, closeDropDown } = useDropDown();
 
   return (
@@ -31,11 +28,11 @@ function DropDown({ title, items, onItemClick, selected }: PropsType) {
       <Icon icon="Chevron" color="gray60" />
       <DropDownComponent className="absolute left-0 min-w-full top-11">
         <div className="min-w-full max-h-40 py-2 px-2 bg-white shadow-elevaiton rounded-[8px] overflow-scroll">
-          {items?.map((item, index) => (
+          {items?.map((item, idx) => (
             <div
-              key={index}
+              key={idx}
               onClick={() => {
-                onItemClick(item.code, "job_code");
+                onClickItem(item.code.toString());
                 closeDropDown();
               }}
               className={`text-caption leading-caption ${
@@ -44,7 +41,7 @@ function DropDown({ title, items, onItemClick, selected }: PropsType) {
                   : "text-[#7f7f7f] font-r"
               } hover:text-black py-2 w-full flex flex-col items-center`}
             >
-              {item.keyword}
+              {item.label}
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckAuthCode, SendAuthCode } from "@/apis/auth";
+import { useCheckAuthCode, useSendAuthCode } from "@/apis/auth";
 import LargeBtn from "@/components/common/Button/LargeBtn";
 import TextFiled from "@/components/common/TextFiled";
 import useSignUpContext from "@/hook/useSignupContext";
@@ -13,8 +13,8 @@ function FirstSignupPage() {
   const { email, auth_code, password, passwordCheck } = signupState;
   const { append } = useToastStore();
   const navigator = useRouter();
-  const { mutate: SandAuthCodeAPI } = SendAuthCode();
-  const { mutate: CheckAuthCodeAPI } = CheckAuthCode(
+  const { mutate: SandAuthCodeAPI } = useSendAuthCode();
+  const { mutate: CheckAuthCodeAPI } = useCheckAuthCode(
     {
       email,
       auth_code,

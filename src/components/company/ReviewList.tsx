@@ -1,13 +1,13 @@
 "use client";
 
-import { getReviewDetails, GetReviewList } from "@/apis/reviews";
+import { useGetReviewDetails, useGetReviewList } from "@/apis/reviews";
 import { getReviewListProps } from "@/apis/reviews/type";
 import { useSearchParams } from "next/navigation";
 import ReviewItem from "./ReviewItem";
 
 export default function ReviewList() {
   const params = useSearchParams();
-  const { data: reviewList, isLoading } = GetReviewList(params.get("id")!);
+  const { data: reviewList, isLoading } = useGetReviewList(params.get("id")!);
 
   if (isLoading)
     return (
@@ -33,7 +33,7 @@ export default function ReviewList() {
 }
 
 function ReviewContainers({ review_id, writer, date }: getReviewListProps) {
-  const { data: reviewDetails } = getReviewDetails(review_id);
+  const { data: reviewDetails } = useGetReviewDetails(review_id);
   return (
     <>
       {reviewDetails?.qna_responses.map((item, idx) => (

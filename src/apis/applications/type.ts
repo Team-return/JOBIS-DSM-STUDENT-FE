@@ -23,3 +23,7 @@ export interface ApplicationsResponseType {
   applications: ApplicationItemType[];
   count: number
 }
+
+export interface ApplyRequestBody {
+  attachments: ApplyRequestItmeType[];
+}

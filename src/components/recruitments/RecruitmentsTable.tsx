@@ -4,7 +4,7 @@ import { RecruitmentsDetailTable } from "@/apis/recruitments/type";
 import { hiringProgressEnum } from "@/util/object/enum";
 import { money_regex, time_parsing } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
   const {
@@ -30,56 +30,79 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
         <tbody>
           {areas.map((item, index) => {
             const [isOpen, setIsOpen] = useState<boolean>(false);
+            const parentRef = useRef<HTMLDivElement>(null);
+            const childRef = useRef<HTMLDivElement>(null);
+
+            const handleButtonClick = useCallback(
+              (event: React.MouseEvent) => {
+                event.stopPropagation();
+                if (parentRef.current === null || childRef.current === null)
+                  return;
+                if (parentRef.current.clientHeight > 0) {
+                  parentRef.current.style.height = "0px";
+                } else {
+                  parentRef.current.style.height = `${childRef.current.clientHeight}px`;
+                }
+                setIsOpen((prev) => !prev);
+              },
+              [isOpen]
+            );
+
             return (
               <>
-                <tr key={index}>
-                  <td
-                    className="cursor-pointer key"
-                    onClick={() => setIsOpen((prev) => !prev)}
+                <div>
+                  <tr key={index} onClick={handleButtonClick}>
+                    <td
+                      className="cursor-pointer key"
+                      onClick={() => setIsOpen((prev) => !prev)}
+                    >
+                      모집분야 {areas.length !== 1 && index + 1}
+                      <Icon
+                        icon="Chevron"
+                        color="liteBlue"
+                        size={18}
+                        direction={isOpen ? "right" : "bottom"}
+                      />
+                    </td>
+                    <td
+                      /*onClick={() => setIsOpen((prev) => !prev)}*/
+                      className="cursor-pointer value"
+                    >
+                      {isOpen ? "닫기" : "펼쳐서 확인하기"}
+                    </td>
+                  </tr>
+                  <div
+                    ref={parentRef}
+                    className="h-0 overflow-hidden transition-[height_0.5s_ease]"
                   >
-                    모집분야 {areas.length !== 1 && index + 1}
-                    <Icon
-                      icon="Chevron"
-                      color="liteBlue"
-                      size={18}
-                      direction={isOpen ? "right" : "bottom"}
-                    />
-                  </td>
-                  <td
-                    onClick={() => setIsOpen((prev) => !prev)}
-                    className="cursor-pointer value"
-                  >
-                    펼쳐서 확인하기
-                  </td>
-                </tr>
-                {isOpen && (
-                  <>
-                    <tr>
-                      <td className="key detail">직무</td>
-                      <td className="value detail">{item.job.join(", ")}</td>
-                    </tr>
-                    <tr>
-                      <td className="key detail">기술스택</td>
-                      <td className="leading-6 whitespace-pre value detail">
-                        {item.tech.join("\n")}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="key detail">채용인원</td>
-                      <td className="value detail">{item.hiring} 명</td>
-                    </tr>
-                    <tr>
-                      <td className="key detail">수행업무</td>
-                      <td className="value detail">{item.major_task}</td>
-                    </tr>
-                    <tr>
-                      <td className="key detail">우대사항</td>
-                      <td className="value detail">
-                        {item.preferential_treatment || "-"}
-                      </td>
-                    </tr>
-                  </>
-                )}
+                    <div ref={childRef} className="">
+                      <tr>
+                        <td className="key detail">직무</td>
+                        <td className="value detail">{item.job.join(", ")}</td>
+                      </tr>
+                      <tr>
+                        <td className="key detail">기술스택</td>
+                        <td className="leading-6 whitespace-pre value detail">
+                          {item.tech.join("\n")}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="key detail">채용인원</td>
+                        <td className="value detail">{item.hiring} 명</td>
+                      </tr>
+                      <tr>
+                        <td className="key detail">수행업무</td>
+                        <td className="value detail">{item.major_task}</td>
+                      </tr>
+                      <tr>
+                        <td className="key detail">우대사항</td>
+                        <td className="value detail">
+                          {item.preferential_treatment || "-"}
+                        </td>
+                      </tr>
+                    </div>
+                  </div>
+                </div>
               </>
             );
           })}

@@ -3,3 +3,4 @@ export interface TechCodeResponensType {
   keyword: string;
   job_type: string | null;
 }
+
