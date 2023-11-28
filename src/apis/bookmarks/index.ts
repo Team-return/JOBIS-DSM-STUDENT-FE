@@ -1,11 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { instance } from "../axios";
+import { BookmarkResponseType } from "./type";
 
 const router = "/bookmarks";
 
 export const useGetBookmarks = () => {
   return useQuery(["GetBookmarks"], async () => {
-    const { data } = await instance.get(`${router}`);
+    const { data } = await instance.get<BookmarkResponseType>(`${router}`);
     return data;
   });
 };
@@ -18,7 +19,7 @@ export const useSetBookmarks = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["getRecruitmentsList"]);
+        queryClient.invalidateQueries(["getRecruitmentsList", "GetBookmarks"]);
       },
     }
   );
