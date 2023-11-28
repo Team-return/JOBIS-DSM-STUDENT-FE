@@ -13,10 +13,12 @@ export const useGetRecruitmentsList = (queryString: string) => {
   const { append } = useToastStore();
   return useQuery(
     ["getRecruitmentsList", queryString],
-    async () =>
-      await instance.get<RecruitmentsListResponseType>(
+    async () => {
+      const { data } = await instance.get<RecruitmentsListResponseType>(
         `${router}/student?${queryString}`
-      ),
+      );
+      return data;
+    },
     {
       onError: () => {
         append({

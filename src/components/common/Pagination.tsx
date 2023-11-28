@@ -3,6 +3,7 @@
 import { useGetNumberOfCompaniesListPages } from "@/apis/companies";
 import { useGetNumberOfRecruitmentRequestListPages } from "@/apis/recruitments";
 import { useQueryString } from "@/hook/useQueryString";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
 import { Icon, theme } from "@team-return/design-system";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,19 +11,28 @@ import { useEffect, useState } from "react";
 export default function Pagination() {
   const pathname = usePathname();
 
-  const { setQueryString, getQueryString, getQueryStringEntry } = useQueryString({
-    page: "1",
-    job_code: "",
-    tech_code: "",
-    name: "",
-  });
+  const { setQueryString, getQueryString, getQueryStringEntry } =
+    useQueryString<RecruitmentsQueryType>({
+      page: "1",
+      job_code: "",
+      tech_code: "",
+      name: "",
+      winter_intern: "",
+    });
   const currentPageNumber = getQueryString("page");
+
+  const recruitmentQuery = [
+    getQueryStringEntry("job_code"),
+    getQueryStringEntry("tech_code"),
+    getQueryStringEntry("name"),
+    getQueryStringEntry("winter_intern"),
+  ]
+    .filter((item) => item)
+    .join("&");
 
   const numberOfPages =
     pathname === "/recruitments/"
-      ? useGetNumberOfRecruitmentRequestListPages(
-          `${getQueryStringEntry("job_code")}&${getQueryStringEntry("tech_code")}&${getQueryStringEntry("name")}`
-        )?.data
+      ? GetNumberOfRecruitmentRequestListPages(recruitmentQuery)?.data
       : useGetNumberOfCompaniesListPages(`${getQueryStringEntry("name")}`)?.data;
   const [pagesArray, setPagesArray] = useState<number[]>([]);
 
@@ -73,7 +83,11 @@ export default function Pagination() {
           icon="Chevron"
           direction="right"
           size={16}
-          color={getQueryString("page") === String(pagesArray.length) ? "gray50" : "gray90"}
+          color={
+            getQueryString("page") === String(pagesArray.length)
+              ? "gray50"
+              : "gray90"
+          }
         />
       </div>
     </div>

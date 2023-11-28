@@ -28,7 +28,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/companies") !== -1 && "font-b"
           }`}
-          href={"/companies?page=1&name="}
+          href={"/companies?page=1"}
           prefetch
         >
           기업체
@@ -37,7 +37,7 @@ function Header() {
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/recruitments") !== -1 && "font-b"
           }`}
-          href={"/recruitments?page=1&job_code=&tech_code=&name="}
+          href={"/recruitments?page=1"}
         >
           모집의뢰서
         </Link>
