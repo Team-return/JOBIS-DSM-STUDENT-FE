@@ -1,17 +1,10 @@
 "use client";
 
-import { GetCode } from "@/apis/code";
+import { useGetCode } from "@/apis/code";
 import { useDropDown } from "@/hook/useDropDown";
 import useForm from "@/hook/useForm";
-<<<<<<< HEAD
-import Chips from "./Chips";
-import { useGetCode } from "@/apis/code";
-=======
-import {
-  RecruitmentsQueryType
-} from "@/hook/useQueryString/type";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
 import { useQueryString } from "@/hook/useQueryString/useQueryString";
->>>>>>> develop
 import { TechCodeResponensType } from "@/util/type";
 import { Icon } from "@team-return/design-system";
 import React, { useEffect, useState } from "react";
@@ -70,11 +63,7 @@ function TechCodeDropDownComponent({
     techCodeSearch: "",
   });
 
-<<<<<<< HEAD
-  const { data } = useGetCode("TECH", searchKeyword);
-=======
-  const { data:codes } = GetCode("TECH", searchKeyword);
->>>>>>> develop
+  const { data: codes } = useGetCode("TECH", searchKeyword);
 
   useEffect(() => {
     const techArray = getQueryString("tech_code")
