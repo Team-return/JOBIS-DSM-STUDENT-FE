@@ -2,7 +2,7 @@
 
 import { Icon, useToastStore } from "@team-return/design-system";
 import Image from "next/image";
-import BannerBackground from "@public/BannerBackground.png";
+import BannerBackground from "@public/BannerBackground.webp";
 import Guy from "@public/Guy.webp";
 import Link from "next/link";
 

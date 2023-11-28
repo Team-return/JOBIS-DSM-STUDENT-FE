@@ -5,8 +5,8 @@ import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
 
 //=======================================================================================================
-import PopularCompanyBanner from "@public/PopularCompanyBanner.png";
-import WinterIntrenBanner from "@public/WinterIntrenBanner.png";
+import PopularCompanyBanner from "@public/PopularCompanyBanner.webp";
+import WinterIntrenBanner from "@public/WinterIntrenBanner.webp";
 import { useRouter } from "next/navigation";
 const BannerList = [
   {
