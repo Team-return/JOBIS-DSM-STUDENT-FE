@@ -1,11 +1,9 @@
 "use client";
 
-import { GetCode } from "@/apis/code";
+import { useGetCode } from "@/apis/code";
 import { useDropDown } from "@/hook/useDropDown";
 import useForm from "@/hook/useForm";
-import {
-  RecruitmentsQueryType
-} from "@/hook/useQueryString/type";
+import { RecruitmentsQueryType } from "@/hook/useQueryString/type";
 import { useQueryString } from "@/hook/useQueryString/useQueryString";
 import { TechCodeResponensType } from "@/util/type";
 import { Icon } from "@team-return/design-system";
@@ -65,7 +63,7 @@ function TechCodeDropDownComponent({
     techCodeSearch: "",
   });
 
-  const { data:codes } = GetCode("TECH", searchKeyword);
+  const { data: codes } = useGetCode("TECH", searchKeyword);
 
   useEffect(() => {
     const techArray = getQueryString("tech_code")

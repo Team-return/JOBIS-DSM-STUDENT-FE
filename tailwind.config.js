@@ -4,14 +4,26 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        loading: {
+        skeleton: {
           "0%": { transform: "translateX(-150%)" },
           "50%": { transform: "translateX(-60%)" },
           "100%": { transform: "translateX(150%)" },
         },
+        loading: {
+          "0%": { transform: "rotate(0deg)" },
+          "12.5%": { transform: "rotate(15deg)" },
+          "25%": { transform: "rotate(45deg)" },
+          "37.5%": { transform: "rotate(90deg)" },
+          "50%": { transform: "rotate(165deg)" },
+          "62.5%": { transform: "rotate(255deg)" },
+          "75%": { transform: "rotate(315deg)" },
+          "87.5%": { transform: "rotate(345deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
-        loading: "loading 2.5s linear infinite",
+        skeleton: "skeleton 2.5s linear infinite",
+        loading: "loading 1s linear infinite",
       },
 
       boxShadow: {

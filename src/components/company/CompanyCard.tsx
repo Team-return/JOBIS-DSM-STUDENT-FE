@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { GetCompaniesList } from "@/apis/companies";
+import { useGetCompaniesList } from "@/apis/companies";
 import { useEffect, useState } from "react";
 import { CompaniesListType } from "@/apis/companies/type";
 import HoverPrefetchLink from "../common/HoverPrefetchLink";
@@ -13,7 +13,7 @@ export default function CompanyCard() {
   const getParams = useSearchParams();
   const [companyList, setCompanyList] = useState<CompaniesListType[]>([]);
 
-  const {data: compnayList, isLoading} = GetCompaniesList(getParams.toString());
+  const {data: compnayList, isLoading} = useGetCompaniesList(getParams.toString());
 
   useEffect(() => {
     if (compnayList?.data.companies) {

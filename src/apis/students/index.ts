@@ -9,7 +9,7 @@ import { MyProfileProps, RequestBody } from "./type";
 
 const router = "/students";
 
-export const Signup = () => {
+export const useSignup = () => {
   const [, setCookie] = useCookies();
   const navigator = useRouter();
   const { append } = useToastStore();
@@ -69,7 +69,7 @@ export const Signup = () => {
   );
 };
 
-export const MyProfile = () => {
+export const useMyProfile = () => {
   return useQuery(
     ["myProfile"],
     async () => await instance.get<MyProfileProps>(`${router}/my`),

@@ -1,7 +1,7 @@
 "use client";
 
-import { SetBookmarks } from "@/apis/bookmarks";
-import { GetRecruitmentsList } from "@/apis/recruitments";
+import { useSetBookmarks } from "@/apis/bookmarks";
+import { useGetRecruitmentsList } from "@/apis/recruitments";
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -12,9 +12,9 @@ import RecruitmentSkelton from "../common/Skelton/SkeltonElement";
 export default function RecruitmentsCard() {
   const getParams = useSearchParams();
 
-  const { data: recruitmentsList, isLoading } = GetRecruitmentsList(getParams.toString());
+  const { data: recruitmentsList, isLoading } = useGetRecruitmentsList(getParams.toString());
 
-  const { mutate: SetBookmarksMutate } = SetBookmarks();
+  const { mutate: SetBookmarksMutate } = useSetBookmarks();
 
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
