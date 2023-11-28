@@ -1,6 +1,6 @@
-import { CodeType, GetCodeType } from "./type";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { CodeType, GetCodeType } from "./type";
 
 const router = "/codes";
 

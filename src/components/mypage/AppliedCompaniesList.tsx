@@ -1,12 +1,12 @@
 "use client";
 
-import { GetApplications } from "@/apis/applications";
+import { useGetApplications } from "@/apis/applications";
 import APpliedCompanyItem from "./AppliedICompanyItem";
 import Docs from "@public/Docs.svg";
 import Image from "next/image";
 
 export default function AppliedCompaniesList() {
-  const { data: applications } = GetApplications();
+  const { data: applications } = useGetApplications();
 
   return (
     <div className="mt-10">

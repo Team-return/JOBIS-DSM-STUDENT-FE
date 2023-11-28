@@ -1,6 +1,6 @@
 "use client";
 
-import { MyProfile } from "@/apis/students";
+import { useMyProfile } from "@/apis/students";
 import { departmentEnum } from "@/util/object/enum";
 import { getMypageKebabItems } from "@/util/object/kebabMenuItems";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import KebabMenu from "../common/Dropdown/KebabMenu";
 import GhostTag from "./GhostTag";
 
 export default function DetailProfile() {
-  const { data: profile } = MyProfile();
+  const { data: profile } = useMyProfile();
 
   return (
     <div className="flex items-center gap-6">

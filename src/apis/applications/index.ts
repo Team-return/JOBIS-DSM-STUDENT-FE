@@ -1,9 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { instance } from "../axios";
-import { ApplyRequestItmeType } from "./type";
+import { ApplicationsResponseType, ApplyRequestItmeType } from "./type";
 
 const router = "/applications";
 
@@ -52,10 +52,8 @@ export default function useApplyToCompany(recruitmentId: string) {
   );
 }
 
-import { useQuery } from "@tanstack/react-query";
-import { ApplicationsResponseType } from "./type";
 
-export function GetApplications() {
+export function useGetApplications() {
   return useQuery(["GetApplications"], async () => {
     const { data } = await instance.get<ApplicationsResponseType>(
       `${router}/students`
