@@ -5,27 +5,17 @@ import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
 
 //=======================================================================================================
-import TeatBannerImg from "@public/test-banner-1.png";
-const test = [
+import PopularCompanyBanner from "@public/PopularCompanyBanner.png";
+import WinterIntrenBanner from "@public/WinterIntrenBanner.png";
+import { useRouter } from "next/navigation";
+const BannerList = [
   {
-    img: TeatBannerImg,
-    url: "https://www.naver.com",
+    img: WinterIntrenBanner,
+    url: "/recruitments/?page=1&winter_intern=true",
   },
   {
-    img: TeatBannerImg,
-    url: "https://www.naver.com",
-  },
-  {
-    img: TeatBannerImg,
-    url: "https://www.naver.com",
-  },
-  {
-    img: TeatBannerImg,
-    url: "https://www.naver.com",
-  },
-  {
-    img: TeatBannerImg,
-    url: "https://www.naver.com",
+    img: PopularCompanyBanner,
+    url: "/companies/detail/?id=9",
   },
 ];
 //=======================================================================================================
@@ -33,10 +23,11 @@ const test = [
 export default function Banner() {
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
+  const navigator = useRouter();
 
   const handleChangeNext = () => {
     setSelected((prev) => {
-      if (test.length - 1 === prev) {
+      if (BannerList.length - 1 === prev) {
         return 0;
       }
       return ++prev;
@@ -45,7 +36,7 @@ export default function Banner() {
   const handleChangePrev = () => {
     setSelected((prev) => {
       if (prev === 0) {
-        return test.length - 1;
+        return BannerList.length - 1;
       }
       return --prev;
     });
@@ -62,15 +53,15 @@ export default function Banner() {
   return (
     <div className="flex flex-col items-center gap-[15px]">
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap z-1 ">
-        {test.map((item, index) => (
+        {BannerList.map((item, index) => (
           <div
             key={index}
-            className={`w-[65vw] h-[20vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
+            className={`cursor-pointer z-[1] w-[65vw] h-[20vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
               index === 0 && "m-[0_0_0_17.5vw]"
-            } ${index === test.length - 1 && "m-[0_17.5vw_0_0]"}`}
+            } ${index === BannerList.length - 1 && "m-[0_17.5vw_0_0]"}`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              window.open(item.url);
+              navigator.push(item.url);
             }}
           >
             <Image className="object-cover" fill src={item.img} alt="" />
@@ -79,7 +70,7 @@ export default function Banner() {
       </div>
 
       <div className="flex gap-[7px] relative bottom-[40px] z-3">
-        {test.map((_, index: number) => (
+        {BannerList.map((_, index: number) => (
           <div
             className={`w-[8px] h-[8px] rounded-full cursor-pointer ${
               index === selected ? "bg-white" : "bg-white/[.4]"
