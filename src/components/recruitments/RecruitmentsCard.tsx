@@ -2,6 +2,7 @@
 
 import { useSetBookmarks } from "@/apis/bookmarks";
 import { useGetRecruitmentsList } from "@/apis/recruitments";
+import { money_regex } from "@/util/regex";
 import { Icon } from "@team-return/design-system";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -59,7 +60,7 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
                     {company_name}
                   </p>
                   <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
-                    <div className="tagStyle">실습수당 {train_pay}만원</div>
+                    <div className="tagStyle">실습수당 {money_regex(train_pay)}원</div>
                     {military && <div className="tagStyle">병역특례</div>}
                   </div>
                   <button
