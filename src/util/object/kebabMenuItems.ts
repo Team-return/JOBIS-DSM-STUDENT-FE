@@ -19,7 +19,7 @@ export const getMypageKebabItems = (): KebabItemType[] => {
       },
     },
     {
-      label: "비밀변호 변경",
+      label: "비밀번호 변경",
       onClick: () => {
         append({
           title: "",
