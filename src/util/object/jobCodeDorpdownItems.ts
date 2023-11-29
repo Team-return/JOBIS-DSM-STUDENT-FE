@@ -1,7 +1,7 @@
 export const internDropdownItems = [
   {
     code: "true",
-    label: "채험형",
+    label: "체험형",  
   },
   {
     code: "false",
