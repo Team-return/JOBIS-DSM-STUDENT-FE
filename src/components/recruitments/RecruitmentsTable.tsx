@@ -108,7 +108,9 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           })}
           <tr>
             <td className="key">최소성적</td>
-            <td className="value">{required_grade || "-"}</td>
+            <td className="value">
+              {required_grade ? required_grade + "%" : "-"}
+            </td>
           </tr>
           <tr>
             <td className="key">필수자격증</td>
