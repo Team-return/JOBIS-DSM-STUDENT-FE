@@ -113,7 +113,7 @@ function TechCodeDropDownComponent({
             closeDropDown();
           }}
         >
-          저장
+          적용
         </GhostBtn>
       </div>
     </div>
