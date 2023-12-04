@@ -32,15 +32,15 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
               company_profile_url,
               company_name,
               train_pay,
-              job_code_list,
+              hiring_jobs,
               bookmarked,
-              recruit_id,
-              military,
+              id,
+              military_support,
             },
             index
           ) => (
             <HoverPrefetchLink
-              href={`/recruitments/detail?id=${recruit_id}`}
+              href={`/recruitments/detail?id=${id}`}
               key={index}
             >
               <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
@@ -54,21 +54,21 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
                 </div>
                 <div className="relative bg-[#fafafa] p-[14px] flex-1 flex flex-col">
                   <p className="mr-8 text-black text-b2 leading-b2 font-b">
-                    {job_code_list}
+                    {hiring_jobs}
                   </p>
                   <p className="text-b3 leading-b3 font-r text-[#444444] mt-1">
                     {company_name}
                   </p>
                   <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
                     <div className="tagStyle">실습수당 {money_regex(train_pay)}원</div>
-                    {military && <div className="tagStyle">병역특례</div>}
+                    {military_support && <div className="tagStyle">병역특례</div>}
                   </div>
                   <button
                     className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer"
                     aria-label="bookMarkBtn"
                     onClick={(event: React.MouseEvent<HTMLElement>) => {
                       event.preventDefault();
-                      SetBookmarksMutate(recruit_id);
+                      SetBookmarksMutate(id);
                     }}
                   >
                     <Icon
