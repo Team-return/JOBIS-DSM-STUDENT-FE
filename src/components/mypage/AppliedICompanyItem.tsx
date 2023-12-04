@@ -53,7 +53,21 @@ export default function APpliedCompanyItem({
             direction={parentRefHeight === "0px" ? "bottom" : "top"}
           />
         </div>
-        <ApplicationStatus status={application_status} />
+        <div className="flex flex-row items-center gap-4">
+          {(application_status === "REQUESTED" ||
+            application_status === "REJECTED") && (
+            <p
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+              className="underline text-caption leading-caption font-r text-[#7f7f7f] cursor-pointer"
+            >
+              재지원하기
+            </p>
+          )}
+
+          <ApplicationStatus status={application_status} />
+        </div>
       </div>
       <div
         ref={parentRef}
