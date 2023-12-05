@@ -3,11 +3,15 @@ import { useToastStore } from "@team-return/design-system";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { instance } from "../axios";
-import { ApplicationsResponseType, ApplyRequestItmeType } from "./type";
+import {
+  ApplicationsResponseType,
+  ApplyRequestItmeType,
+  RejectionResponseType,
+} from "./type";
 
 const router = "/applications";
 
-export default function useApplyToCompany(recruitmentId: string) {
+export function useApplyToCompany(recruitmentId: string) {
   const navigator = useRouter();
   const { append } = useToastStore();
   return useMutation(
@@ -52,11 +56,69 @@ export default function useApplyToCompany(recruitmentId: string) {
   );
 }
 
-
 export function useGetApplications() {
   return useQuery(["GetApplications"], async () => {
     const { data } = await instance.get<ApplicationsResponseType>(
       `${router}/students`
+    );
+    return data;
+  });
+}
+
+export function useReapply(applicationId: string | null) {
+  const navigator = useRouter();
+  const { append } = useToastStore();
+  return useMutation(
+    async (body: ApplyRequestItmeType[]) =>
+      await instance.put(`${router}/${applicationId}`, {
+        attachments: body,
+      }),
+    {
+      onSuccess: () => {
+        navigator.push("/mypage");
+      },
+      onError: (error: AxiosError) => {
+        switch (error.response?.status) {
+          case 400:
+            append({
+              title: "",
+              message: "승인요청또는 반려상태가 아닙니다.",
+              type: "RED",
+            });
+          case 401:
+            append({
+              title: "",
+              message: "3학년이 아닌 학생은 지원할 수 없습니다.",
+              type: "RED",
+            });
+            break;
+          case 404:
+            append({
+              title: "",
+              message: "모집의뢰서가 존재하지 않습니다.",
+              type: "RED",
+            });
+            break;
+          case 409:
+            append({
+              title: "",
+              message:
+                "이미 해당 모집의뢰에 지원했거나 승인된 지원요청이 존재합니다.",
+              type: "RED",
+            });
+
+          default:
+            break;
+        }
+      },
+    }
+  );
+}
+
+export function useGetRejectionReason(applicationid: string) {
+  return useQuery(["GetRejectionReason"], async () => {
+    const { data } = await instance.get<RejectionResponseType>(
+      `${router}/rejection/${applicationid}`
     );
     return data;
   });
