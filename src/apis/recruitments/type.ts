@@ -9,6 +9,7 @@ export interface RecruitmentsListType {
   train_pay: number;
   military_support: boolean;
   hiring_jobs: number;
+  job_code_list: string;
   bookmarked: boolean;
 }
 

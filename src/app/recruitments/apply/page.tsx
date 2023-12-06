@@ -1,6 +1,6 @@
 "use client";
 
-import useApplyToCompany from "@/apis/applications";
+import { useApplyToCompany, useReapply } from "@/apis/applications";
 import {
   ApplyRequestItmeType,
   AttachmentsType,
@@ -13,20 +13,23 @@ import Logo from "@/components/common/Logo";
 import FilePreview from "@/components/recruitments/apply/FilePreview";
 import FileUploader from "@/components/recruitments/apply/FileUploader";
 import Header_Contents from "@/components/recruitments/apply/Header_Contents";
-import UrlListComponent from "@/components/recruitments/apply/UrlListComponent";
 import ShadowBox from "@/components/recruitments/apply/ShadowBox";
 import TitleBox from "@/components/recruitments/apply/TitleBox";
+import URLItem from "@/components/recruitments/apply/URLItem";
+import UrlListComponent from "@/components/recruitments/apply/UrlListComponent";
 import useMoadl from "@/hook/useModal";
 import { Icon, useToastStore } from "@team-return/design-system";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import URLItem from "@/components/recruitments/apply/URLItem";
 
 export default function Apply() {
   const param = useSearchParams();
+  const applicationId = param.get("application");
   const { Modal, openModal, closeModal } = useMoadl();
   const { mutate: onApplyToCompany, isLoading: applyIsLoading } =
     useApplyToCompany(param.get("id")!);
+  const { mutate: onReapply, isLoading: reapplyIsLoading } =
+    useReapply(applicationId);
   const {
     mutate: onUploadFile,
     data: fileResponse,
@@ -88,19 +91,21 @@ export default function Apply() {
 
   useEffect(() => {
     if (isApply) {
-      onApplyToCompany(applyRequest);
-      //openModal();
+      if (!applicationId) onApplyToCompany(applyRequest);
+      else onReapply(applyRequest);
     }
   }, [applyRequest]);
 
   //==============================
   // 모집의뢰서
 
-  const { data: recruitmentsDetial } = useGetRecruitmentsDetail(param.get("id")!);
+  const { data: recruitmentsDetial } = useGetRecruitmentsDetail(
+    param.get("id")!
+  );
 
   return (
     <>
-      {(isLoading || applyIsLoading) && (
+      {(isLoading || applyIsLoading || reapplyIsLoading) && (
         <div
           className="fixed top-0 left-0 w-screen h-screen z-10 bg-[rgba(0,0,0,0.2)]"
           onClick={(e) => {
