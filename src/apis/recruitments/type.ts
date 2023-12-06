@@ -1,5 +1,5 @@
 export interface RecruitmentsListResponseType {
-  recruitments: RecruitmentsListType[]; 
+  recruitments: RecruitmentsListType[];
 }
 
 export interface RecruitmentsListType {
