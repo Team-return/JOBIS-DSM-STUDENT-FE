@@ -1,6 +1,8 @@
+import { useGetRejectionReason } from "@/apis/applications";
 import { ApplicationItemType } from "@/apis/applications/type";
 import { Icon } from "@team-return/design-system";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import FileDownload from "../common/Button/FIleDownload";
 import ApplicationStatus from "./ApplicationStatus";
@@ -9,7 +11,10 @@ export default function APpliedCompanyItem({
   company,
   application_status,
   attachments,
+  recruitment_id,
+  application_id,
 }: ApplicationItemType) {
+  const navigator = useRouter();
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
   const [isCollapse, setIsCollapse] = useState(false);
@@ -32,6 +37,13 @@ export default function APpliedCompanyItem({
 
   const parentRefHeight = parentRef.current?.style.height ?? "0px";
 
+  const rejectReason = () => {
+    if (application_status === "REJECTED") {
+      const { data } = useGetRejectionReason(application_id.toString());
+      return data?.rejection_reason;
+    }
+  };
+
   return (
     <div
       className="w-full border border-[#e5e5e5] rounded-[8px] p-4 relative"
@@ -53,13 +65,40 @@ export default function APpliedCompanyItem({
             direction={parentRefHeight === "0px" ? "bottom" : "top"}
           />
         </div>
-        <ApplicationStatus status={application_status} />
+        <div className="flex flex-row items-center gap-4">
+          {(application_status === "REQUESTED" ||
+            application_status === "REJECTED") && (
+            <p
+              onClick={(event) => {
+                event.stopPropagation();
+                navigator.push(
+                  `/recruitments/apply/?id=${recruitment_id}&application=${application_id}`
+                );
+              }}
+              className="underline text-caption leading-caption font-r text-[#7f7f7f] cursor-pointer"
+            >
+              재지원하기
+            </p>
+          )}
+
+          <ApplicationStatus status={application_status} />
+        </div>
       </div>
       <div
         ref={parentRef}
         className="w-full h-0 px-2 overflow-hidden transition-[height_0.35s_ease]"
       >
         <div ref={childRef}>
+          {application_status === "REJECTED" && (
+            <div className="mb-6 ml-2">
+              <p className="text-b3 leading-b3 font-m text-[#E74C3C]">
+                반려사유
+              </p>
+              <p className="text-caption leading-caption font-r text-[#E74C3C]">
+                {rejectReason()}
+              </p>
+            </div>
+          )}
           <div className="flex flex-wrap gap-2">
             {attachments.map((item, idx) => (
               <>

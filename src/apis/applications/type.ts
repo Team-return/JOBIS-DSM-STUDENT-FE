@@ -13,6 +13,7 @@ export type ApplicationsStatusType =
   | "REJECTED";
 
 export interface ApplicationItemType {
+  recruitment_id: number;
   application_id: number;
   company: string;
   attachments: ApplyRequestItmeType[];
@@ -21,9 +22,13 @@ export interface ApplicationItemType {
 
 export interface ApplicationsResponseType {
   applications: ApplicationItemType[];
-  count: number
+  count: number;
 }
 
 export interface ApplyRequestBody {
   attachments: ApplyRequestItmeType[];
+}
+
+export interface RejectionResponseType {
+  rejection_reason: string;
 }
