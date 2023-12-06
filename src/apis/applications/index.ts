@@ -82,7 +82,7 @@ export function useReapply(applicationId: string | null) {
           case 400:
             append({
               title: "",
-              message: "승인요청또는 반려상태가 아닙니다.",
+              message: "승인요청 또는 반려상태가 아닙니다.",
               type: "RED",
             });
           case 401:
