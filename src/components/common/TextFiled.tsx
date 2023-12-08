@@ -8,7 +8,7 @@ interface PropsType extends React.ComponentProps<"input"> {
   enterEvent?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  width: string | number;
+  width?: string | number;
   height?: string | number;
 }
 
@@ -23,6 +23,7 @@ function TextFiled({
   height,
   label,
   type = "text",
+  className
 }: PropsType) {
   const [focus, setFocuse] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(true);
@@ -32,7 +33,12 @@ function TextFiled({
   };
 
   return (
-    <div style={{ width: typeof width === "number" ? width + "px" : width }}>
+    <div
+      style={
+        width ? { width: typeof width === "number" ? width + "px" : width } : {}
+      }
+      className={className}
+    >
       {label && (
         <p className="text-caption text-[#333333] font-m mb-[4px]">{label}</p>
       )}
@@ -79,11 +85,7 @@ function TextFiled({
             className="flex justify-center items-center mr-[14px] cursor-pointer"
             onClick={enterEvent}
           >
-            <Icon
-              icon="Search"
-              size={20}
-              color="gray60"
-            />
+            <Icon icon="Search" size={20} color="gray60" />
           </div>
         )}
       </div>

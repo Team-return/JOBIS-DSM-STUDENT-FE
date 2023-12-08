@@ -52,13 +52,15 @@ export default function Banner() {
 
   return (
     <div className="flex flex-col items-center gap-[15px]">
-      <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap z-1 ">
+      <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap z-1">
         {BannerList.map((item, index) => (
           <div
             key={index}
-            className={`cursor-pointer z-[1] w-[65vw] h-[20vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
-              index === 0 && "m-[0_0_0_17.5vw]"
-            } ${index === BannerList.length - 1 && "m-[0_17.5vw_0_0]"}`}
+            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
+              index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
+            } ${
+              index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
+            }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
               navigator.push(item.url);
@@ -82,7 +84,7 @@ export default function Banner() {
           />
         ))}
       </div>
-      <div className="w-screen h-[20vw] flex justify-between bg-none items-center absolute px-[8vw]">
+      <div className="w-screen md:h-[20vw] sm:h-[27vw] flex justify-between bg-none items-center absolute px-[8vw]">
         <CircleBtn direction="left" onClick={handleChangePrev} />
         <CircleBtn direction="right" onClick={handleChangeNext} />
       </div>
