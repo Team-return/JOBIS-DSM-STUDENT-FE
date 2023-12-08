@@ -61,7 +61,7 @@ function Filter() {
   }));
 
   return (
-    <div className="flex gap-4">
+    <div className="flex justify-end gap-4">
       <DropDown
         title="모집구분"
         items={internDropdownItems}
@@ -86,7 +86,7 @@ function Filter() {
         name="search"
         customType="Search"
         enterEvent={onSearch}
-        width="20vw"
+        className="md:20vw sm:22vw"
       />
     </div>
   );

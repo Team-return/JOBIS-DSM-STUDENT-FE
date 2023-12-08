@@ -18,7 +18,7 @@ function Header() {
 
   return (
     <div
-      className={`w-screen h-[68px] bg-white flex justify-between shadow-[0_2px_4px_0_rgba(229,229,229,0.2)] items-center fixed top-0 left-0 py-[12px] px-[17.5vw] z-[4]`}
+      className={`w-screen h-[68px] bg-white flex justify-between shadow-[0_2px_4px_0_rgba(229,229,229,0.2)] items-center fixed top-0 left-0 py-[12px] md:px-[17.5vw] sm:px-[7.5vw] z-[4]`}
     >
       <Link href={"/"} prefetch>
         <Image width={80} height={22} src={Logo} alt="joibs_logo" />
