@@ -84,7 +84,7 @@ function Filter() {
         name="search"
         customType="Search"
         enterEvent={onSearch}
-        className="md:20vw sm:22vw"
+        className="md:w-[20vw] sm:w-[25vw]"
       />
     </div>
   );
