@@ -28,12 +28,20 @@ function SearchDropDown({ title }: PropsType) {
       winter_intern: "",
     });
 
+  const isTechCode = !!getQueryString("tech_code");
+
   return (
     <div
       className="h-10 pr-[12px] pl-4 border border-solid border-[#cccccc] rounded-[8px] flex items-center gap-[23px] text-b3 leading-b3 font-r text-[#7f7f7f] relative"
       onClick={toggleDropdown}
     >
-      <p>{title}</p>
+      <p
+        className={`${
+          isTechCode ? "text-lightBlue font-m" : "text-[#7f7f7f] font-r"
+        }`}
+      >
+        {title}
+      </p>
       <Icon icon="Chevron" color="gray60" />
       <DropDownComponent className="absolute left-0 min-w-full top-11">
         <TechCodeDropDownComponent
