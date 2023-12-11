@@ -42,7 +42,7 @@ html {
 body {
   min-height: 100vh;
   margin: auto;
-  padding-top: 68px;
+  padding: 68px 0;
 }
 
 a {
