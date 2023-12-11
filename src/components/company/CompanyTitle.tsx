@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { getCompanyKebabItems } from "@/util/object/kebabMenuItems";
 import { KebabItemType } from "@/util/type/kebabMenu";
-import Image from "next/image";
 import KebabMenu from "../common/Dropdown/KebabMenu";
 
 interface PropsType {
@@ -12,6 +13,7 @@ interface PropsType {
   onClickRecruitments?: () => void;
   onClickInterview?: () => void;
   children?: React.ReactNode;
+  company_id?: number;
 }
 
 export default function CompanyTitle({
@@ -21,11 +23,14 @@ export default function CompanyTitle({
   onClickRecruitments,
   onClickInterview,
   children,
+  company_id,
 }: PropsType) {
   const kebabItems: KebabItemType[] = getCompanyKebabItems(
     onClickRecruitments,
     onClickInterview
   );
+
+  const navigator = useRouter();
 
   return (
     <div className="flex items-center justify-between w-full">
@@ -44,6 +49,16 @@ export default function CompanyTitle({
           {business_number && (
             <p className="text-b2 leading-b2 font-m text-[#7f7f7f]">
               사업자 번호 : {business_number}
+            </p>
+          )}
+          {company_id && (
+            <p
+              className="text-b2 leading-b2 font-m text-[#7f7f7f] cursor-pointer underline"
+              onClick={() => {
+                navigator.push(`/companies/detail/?id=${company_id}`);
+              }}
+            >
+              기업보기
             </p>
           )}
         </div>

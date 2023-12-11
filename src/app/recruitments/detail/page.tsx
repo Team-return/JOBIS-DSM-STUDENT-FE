@@ -19,6 +19,7 @@ export default function RecruitmentsDetailPage() {
         <CompanyTitle
           company_name={company_name}
           company_profile_url={company_profile_url}
+          company_id={company_id}
         >
           <GhostBtn
             onClick={() => {
