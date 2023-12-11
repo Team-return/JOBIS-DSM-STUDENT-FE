@@ -34,11 +34,9 @@ function Filter() {
 
   const onSearch = () => {
     setQueryString({
+      ...filter,
       page: "1",
-      job_code: filter.job_code,
-      tech_code: filter.tech_code,
       name: searchState.search,
-      winter_intern: filter.winter_intern,
     });
   };
 
@@ -53,7 +51,7 @@ function Filter() {
     } else setFilter((prev) => ({ ...prev, [jobType]: itemCode }));
   };
 
-  const { data:codes } = useGetCode("JOB");
+  const { data: codes } = useGetCode("JOB");
 
   const jobCodeDropdownItems = codes?.codes.map((item) => ({
     code: item.code.toString(),
@@ -86,7 +84,7 @@ function Filter() {
         name="search"
         customType="Search"
         enterEvent={onSearch}
-        className="md:20vw sm:22vw"
+        className="md:w-[20vw] sm:w-[25vw]"
       />
     </div>
   );
