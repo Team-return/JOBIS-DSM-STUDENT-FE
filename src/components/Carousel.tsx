@@ -56,7 +56,7 @@ export default function Banner() {
         {BannerList.map((item, index) => (
           <div
             key={index}
-            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
+            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
               index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
             } ${
               index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
