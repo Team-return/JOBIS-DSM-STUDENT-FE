@@ -15,14 +15,13 @@ function Header() {
       pathname.toString().indexOf("/apply") !== -1 ||
       pathname.toString().indexOf("/account") !== -1
     ) {
-      document.body.style.backgroundColor = "#fafafa";
+      document.querySelector("body")!.style.backgroundColor = "#fafafa";
     } else {
-      document.body.style.backgroundColor = "#ffffff";
+      document.querySelector("body")!.style.backgroundColor = "#ffffff";
     }
   }, []);
 
   if (pathname.toString().indexOf("/account") !== -1) {
-    document.querySelector("body")!.style.backgroundColor = "#f5f5f5";
     return null;
   }
 
