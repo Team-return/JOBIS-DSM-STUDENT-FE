@@ -52,10 +52,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
               <>
                 <div>
                   <tr key={index} onClick={handleButtonClick}>
-                    <td
-                      className="cursor-pointer key"
-                      onClick={() => setIsOpen((prev) => !prev)}
-                    >
+                    <td className="cursor-pointer key">
                       모집분야 {areas.length !== 1 && index + 1}
                       <Icon
                         icon="Chevron"
