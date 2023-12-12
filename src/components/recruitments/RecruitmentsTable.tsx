@@ -62,7 +62,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                       />
                     </td>
                     <td
-                      /*onClick={() => setIsOpen((prev) => !prev)}*/
                       className="cursor-pointer value"
                     >
                       {isOpen ? "닫기" : "펼쳐서 확인하기"}
