@@ -52,10 +52,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
               <>
                 <div>
                   <tr key={index} onClick={handleButtonClick}>
-                    <td
-                      className="cursor-pointer key"
-                      onClick={() => setIsOpen((prev) => !prev)}
-                    >
+                    <td className="cursor-pointer key">
                       모집분야 {areas.length !== 1 && index + 1}
                       <Icon
                         icon="Chevron"
@@ -65,7 +62,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                       />
                     </td>
                     <td
-                      /*onClick={() => setIsOpen((prev) => !prev)}*/
                       className="cursor-pointer value"
                     >
                       {isOpen ? "닫기" : "펼쳐서 확인하기"}
