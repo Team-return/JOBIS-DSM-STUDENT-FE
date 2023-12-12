@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Logo from "@public/Logo.png";
 import { Icon } from "@team-return/design-system";
@@ -10,7 +10,19 @@ import { useMyProfile } from "@/apis/students";
 
 function Header() {
   const pathname = usePathname();
+  useEffect(() => {
+    if (
+      pathname.toString().indexOf("/apply") !== -1 ||
+      pathname.toString().indexOf("/account") !== -1
+    ) {
+      document.body.style.backgroundColor = "#fafafa";
+    } else {
+      document.body.style.backgroundColor = "#ffffff";
+    }
+  }, []);
+
   if (pathname.toString().indexOf("/account") !== -1) {
+    document.querySelector("body")!.style.backgroundColor = "#f5f5f5";
     return null;
   }
 
@@ -73,9 +85,7 @@ function Header() {
             {profile?.student_name}
           </p>
         </div>
-        <div>
-          {/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}
-        </div>
+        <div>{/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}</div>
       </div>
     </div>
   );
