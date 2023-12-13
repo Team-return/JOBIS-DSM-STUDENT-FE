@@ -9,7 +9,7 @@ interface PropsType {
 export default function ShadowBox({ children, width, height }: PropsType) {
   return (
     <div
-      className={`bg-white rounded-[8px] shadow-elevaiton`}
+      className={`bg-white rounded-[8px]`}
       style={{ width: width, height: height }}
     >
       {children}

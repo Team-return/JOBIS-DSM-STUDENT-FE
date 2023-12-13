@@ -18,7 +18,12 @@ export default function RootLayout({
   return (
     <html>
       <SEOConfig />
-      <body className={"md:w-[65vw] sm:w-[85vw] " + notoSans.className}>
+      <body
+        className={
+          "w-screen py-[68px] md:px-[17.5vw] sm:px-[7.5vw] min-h-screen " +
+          notoSans.className
+        }
+      >
         <Provider>
           <Header />
           {children}
