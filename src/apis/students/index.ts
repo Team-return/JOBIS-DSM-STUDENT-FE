@@ -81,6 +81,9 @@ export const useMyProfile = () => {
     },
     {
       refetchOnWindowFocus: false,
+      onSuccess: ()=>{
+        
+      }
     }
   );
 };

@@ -1,10 +1,11 @@
 "use client";
 
+import UserProfileProvider from "@/context/provider/UserContextProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "@team-return/design-system";
 import { CookiesProvider } from "react-cookie";
-import SignupContextProvider from "./account/singup/ContextProvider";
-import ModalContextProvider from "./modal/ModalContextProvider";
+import ModalContextProvider from "../context/provider/ModalContextProvider";
+import SignupContextProvider from "../context/provider/SignupContextProvider";
 
 interface PropsType {
   children: React.ReactNode;
@@ -15,12 +16,14 @@ export default function Provider({ children }: PropsType) {
   return (
     <QueryClientProvider client={queryClient}>
       <CookiesProvider>
-        <ModalContextProvider>
-          <SignupContextProvider>
-            <ToastContainer />
-            {children}
-          </SignupContextProvider>
-        </ModalContextProvider>
+        <UserProfileProvider>
+          <ModalContextProvider>
+            <SignupContextProvider>
+              <ToastContainer />
+              {children}
+            </SignupContextProvider>
+          </ModalContextProvider>
+        </UserProfileProvider>
       </CookiesProvider>
     </QueryClientProvider>
   );

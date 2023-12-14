@@ -1,7 +1,7 @@
 import { SignupContext } from "@/context/SignupContext";
 import useForm from "@/hook/useForm";
 import { ReactNode } from "react";
-import { SignupType } from "./type";
+import { SignupType } from "../../components/account/singup/type";
 
 export default function SignupContextProvider({
   children,

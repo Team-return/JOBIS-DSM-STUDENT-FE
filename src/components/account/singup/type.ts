@@ -13,20 +13,6 @@ export interface IsHiddenProps {
   passwordCheck: Boolean;
 }
 
-interface PropsType {
-  inputStates: SignupType;
-  setInputsStates?: React.Dispatch<React.SetStateAction<SignupType>>;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  isHidden: IsHiddenProps;
-  setIsHidden: React.Dispatch<React.SetStateAction<IsHiddenProps>>;
-  SandAuthCodeAPI?: UseMutateFunction<
-    any,
-    AxiosError<unknown, any>,
-    SendAuthCodeType,
-    unknown
-  >;
-}
-
 export interface FirstInputsPropsType {
   inputStates: SignupType;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
