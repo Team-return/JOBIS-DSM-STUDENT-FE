@@ -4,7 +4,7 @@ import { instance } from "../axios";
 import {
   GetNumberOfPagesType,
   RecruitmentsDetailType,
-  RecruitmentsListResponseType
+  RecruitmentsListResponseType,
 } from "./type";
 
 const router = "/recruitments";
@@ -54,7 +54,9 @@ export const useGetRecruitmentsDetail = (id: string) => {
   );
 };
 
-export const useGetNumberOfRecruitmentRequestListPages = (queryString: string) => {
+export const useGetNumberOfRecruitmentRequestListPages = (
+  queryString: string
+) => {
   const { data } = useQuery(
     ["getNumberOfRecruitmentRequestListPages", queryString],
     async () =>
