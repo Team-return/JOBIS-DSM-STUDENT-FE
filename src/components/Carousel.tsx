@@ -52,11 +52,11 @@ export default function Banner() {
 
   return (
     <div className="flex flex-col items-center gap-[15px]">
-      <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap z-1">
+      <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap">
         {BannerList.map((item, index) => (
           <div
             key={index}
-            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[12px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
+            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
               index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
             } ${
               index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
@@ -71,17 +71,21 @@ export default function Banner() {
         ))}
       </div>
 
-      <div className="flex gap-[7px] relative bottom-[40px] z-3">
+      <div className="flex relative bottom-[50px] z-[3]">
         {BannerList.map((_, index: number) => (
           <div
-            className={`w-[8px] h-[8px] rounded-full cursor-pointer ${
-              index === selected ? "bg-white" : "bg-white/[.4]"
-            }`}
+            className="w-[20px] h-[20px] flex justify-center items-center cursor-pointer"
             key={index}
             onClick={() => {
               setSelected(index);
             }}
-          />
+          >
+            <div
+              className={`w-[8px] h-[8px] rounded-full ${
+                index === selected ? "bg-white" : "bg-white/[.4]"
+              }`}
+            />
+          </div>
         ))}
       </div>
       <div className="w-screen md:h-[20vw] sm:h-[27vw] flex justify-between bg-none items-center absolute px-[8vw]">
