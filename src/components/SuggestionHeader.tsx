@@ -1,15 +1,16 @@
 "use client";
 
+import { UserProfileContext } from "@/context/UserContext";
 import { Icon } from "@team-return/design-system";
-import { useMyProfile } from "@/apis/students";
 import Link from "next/link";
+import { useContext } from "react";
 
 interface PropsType {
   listType: "Company" | "Recruitments" | "Bookmark";
 }
 
 export default function SuggestionHeader({ listType }: PropsType) {
-  const { data: profile } = useMyProfile();
+  const { userProfile } = useContext(UserProfileContext);
 
   const suggestionHeaderDummy = {
     Company: {
@@ -17,7 +18,7 @@ export default function SuggestionHeader({ listType }: PropsType) {
       router: "/companies",
     },
     Recruitments: {
-      title: `👩‍💻 ${profile?.student_name || "사용자"}님의 관심 분야에요`,
+      title: `👩‍💻 ${userProfile.student_name || "사용자"}님의 관심 분야에요`,
 
       router: "/recruitments",
     },

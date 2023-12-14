@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Image from "next/image";
+import { UserProfileContext } from "@/context/UserContext";
 import Logo from "@public/Logo.png";
-import { Icon } from "@team-return/design-system";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMyProfile } from "@/apis/students";
+import React, { useContext, useEffect } from "react";
 
 function Header() {
   const pathname = usePathname();
+  const {userProfile} = useContext(UserProfileContext)
   useEffect(() => {
     if (
       pathname.toString().indexOf("/apply") !== -1 ||
@@ -25,7 +25,6 @@ function Header() {
     return null;
   }
 
-  const { data: profile } = useMyProfile();
 
   return (
     <div
@@ -73,15 +72,15 @@ function Header() {
             width={28}
             height={28}
             src={`${
-              profile?.profile_image_url &&
+              userProfile.profile_image_url &&
               process.env.NEXT_PUBLIC_IMAGE_URL +
                 "/" +
-                profile?.profile_image_url
+                userProfile.profile_image_url
             }`}
             alt="프로필사진"
           />
           <p className="text-[#333333] text-b2 font-r">
-            {profile?.student_name}
+            {userProfile.student_name}
           </p>
         </div>
         <div>{/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}</div>

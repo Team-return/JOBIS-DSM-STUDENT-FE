@@ -1,15 +1,15 @@
 "use client";
 
-import { useMyProfile } from "@/apis/students";
+import { UserProfileContext } from "@/context/UserContext";
 import { departmentEnum } from "@/util/object/enum";
 import { getMypageKebabItems } from "@/util/object/kebabMenuItems";
 import Image from "next/image";
+import { useContext } from "react";
 import KebabMenu from "../common/Dropdown/KebabMenu";
 import GhostTag from "./GhostTag";
 
 export default function DetailProfile() {
-  const { data: profile } = useMyProfile();
-
+  const { userProfile } = useContext(UserProfileContext);
   return (
     <div className="flex items-center gap-6">
       <div className="w-[100px] h-[100px] rounded-[50%] shadow-elevaiton overflow-hidden flex items-center justify-center">
@@ -17,8 +17,8 @@ export default function DetailProfile() {
           width={100}
           height={100}
           src={
-            profile
-              ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${profile.profile_image_url}`
+            userProfile.profile_image_url
+              ? `${process.env.NEXT_PUBLIC_IMAGE_URL}/${userProfile.profile_image_url}`
               : ""
           }
           alt="프로필 사진"
@@ -26,11 +26,11 @@ export default function DetailProfile() {
       </div>
       <div className="flex-1">
         <div className="flex items-center gap-2">
-          <p className="text-h5 leading-h5 font-m">{profile?.student_name}</p>
-          <GhostTag>{profile?.student_gcn}</GhostTag>
+          <p className="text-h5 leading-h5 font-m">{userProfile.student_name}</p>
+          <GhostTag>{userProfile.student_gcn}</GhostTag>
         </div>
         <p className="text-b3 leading-b3 font-r text-[#7F7F7F]">
-          {profile && departmentEnum[profile.department]}
+          {departmentEnum[userProfile.department]}
         </p>
       </div>
       <KebabMenu items={getMypageKebabItems()} />
