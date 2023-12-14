@@ -34,6 +34,7 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
   );
 }
 
+
 function RecruitmentsItem({
   company_profile_url,
   company_name,
