@@ -19,6 +19,7 @@ const pretendard = localFont({
       weight: "400",
     },
   ],
+  display: "swap",
 });
 
 export default function RootLayout({
