@@ -19,7 +19,7 @@ function Header() {
     } else {
       document.querySelector("body")!.style.backgroundColor = "#ffffff";
     }
-  }, []);
+  }, [pathname]);
 
   if (pathname.toString().indexOf("/account") !== -1) {
     return null;
