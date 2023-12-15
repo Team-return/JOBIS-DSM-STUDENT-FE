@@ -1,8 +1,8 @@
 "use client";
 
+import BandBanner from "@/components/BandBanner";
 import Banner from "@/components/Carousel";
 import Suggestion from "@/components/Suggestion";
-import BandBanner from "@/components/BandBanner";
 
 export default function Home() {
   return (

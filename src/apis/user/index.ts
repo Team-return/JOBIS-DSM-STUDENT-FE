@@ -3,7 +3,6 @@ import { useToastStore } from "@team-return/design-system";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
-import { useMyProfile } from "../students";
 import { RequestBody, ResponseBody } from "./type";
 
 const router = "/users";
@@ -47,7 +46,6 @@ export const useLogin = (body: RequestBody, checkBoxValue: boolean) => {
           }
           navigator.push("/");
         }
-        useMyProfile()
       },
       onError: (error: AxiosError) => {
         switch (error.response?.status) {

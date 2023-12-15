@@ -16,14 +16,14 @@ export default function Provider({ children }: PropsType) {
   return (
     <QueryClientProvider client={queryClient}>
       <CookiesProvider>
-        <UserProfileProvider>
-          <ModalContextProvider>
-            <SignupContextProvider>
+        <ModalContextProvider>
+          <SignupContextProvider>
+            <UserProfileProvider>
               <ToastContainer />
               {children}
-            </SignupContextProvider>
-          </ModalContextProvider>
-        </UserProfileProvider>
+            </UserProfileProvider>
+          </SignupContextProvider>
+        </ModalContextProvider>
       </CookiesProvider>
     </QueryClientProvider>
   );

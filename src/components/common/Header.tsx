@@ -1,15 +1,19 @@
 "use client";
 
+import { useMyProfile } from "@/apis/students";
 import { UserProfileContext } from "@/context/UserContext";
 import Logo from "@public/Logo.png";
+import { access } from "fs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useContext, useEffect } from "react";
+import { Cookies, useCookies } from "react-cookie";
 
 function Header() {
   const pathname = usePathname();
-  const {userProfile} = useContext(UserProfileContext)
+  const { userProfile, setUserProfile } = useContext(UserProfileContext);
+  const [cookies] = useCookies();
   useEffect(() => {
     if (
       pathname.toString().indexOf("/apply") !== -1 ||
@@ -20,11 +24,16 @@ function Header() {
       document.querySelector("body")!.style.backgroundColor = "#ffffff";
     }
   }, [pathname]);
+  
+  useEffect(() => {
+    if(cookies.access_token){
+      useMyProfile(setUserProfile);
+    }
+  }, [cookies.access_token]);
 
   if (pathname.toString().indexOf("/account") !== -1) {
     return null;
   }
-
 
   return (
     <div
