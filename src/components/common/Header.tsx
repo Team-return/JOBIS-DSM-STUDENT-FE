@@ -14,24 +14,26 @@ function Header() {
   const pathname = usePathname();
   const { userProfile, setUserProfile } = useContext(UserProfileContext);
   const [cookies] = useCookies();
+  console.log(pathname);
+
   useEffect(() => {
     if (
-      pathname.toString().indexOf("/apply") !== -1 ||
-      pathname.toString().indexOf("/account") !== -1
+      pathname.toString().startsWith("/apply", 13) ||
+      pathname.toString().startsWith("/account")
     ) {
       document.querySelector("body")!.style.backgroundColor = "#fafafa";
     } else {
       document.querySelector("body")!.style.backgroundColor = "#ffffff";
     }
   }, [pathname]);
-  
+
   useEffect(() => {
-    if(cookies.access_token){
+    if (cookies.access_token) {
       useMyProfile(setUserProfile);
     }
   }, [cookies.access_token]);
 
-  if (pathname.toString().indexOf("/account") !== -1) {
+  if (pathname.toString().startsWith("/account")) {
     return null;
   }
 
