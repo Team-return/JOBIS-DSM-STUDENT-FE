@@ -1,7 +1,9 @@
+import { UserProfileContext } from "@/context/UserContext";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { useCookies } from "react-cookie";
 import { instance } from "../axios";
 import { ResponseBody } from "../user/type";
@@ -72,15 +74,14 @@ export const useSignup = () => {
   );
 };
 
-export const useMyProfile = () => {
-  return useQuery(
-    ["myProfile"],
-    async () => {
-      const { data } = await instance.get<MyProfileProps>(`${router}/my`);
-      return data;
-    },
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
+export const useMyProfile = async (
+  setUserProfile: Dispatch<SetStateAction<MyProfileProps>>
+) => {
+  const data = await instance
+    .get<MyProfileProps>(`${router}/my`)
+    .then(({ data: profile }) => {
+      setUserProfile(profile);
+      return profile;
+    });
+  return data;
 };

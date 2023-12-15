@@ -1,7 +1,6 @@
 "use client";
 
-import { SignupType } from "@/components/account/singup/type";
-import { ChangeEvent, createContext, Dispatch, SetStateAction } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 interface ModalContextType {
   isOpen: boolean;

@@ -1,19 +1,25 @@
 "use client";
 
-import React, { useEffect } from "react";
-import Image from "next/image";
+import { useMyProfile } from "@/apis/students";
+import { UserProfileContext } from "@/context/UserContext";
 import Logo from "@public/Logo.png";
-import { Icon } from "@team-return/design-system";
+import { access } from "fs";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMyProfile } from "@/apis/students";
+import React, { useContext, useEffect } from "react";
+import { Cookies, useCookies } from "react-cookie";
 
 function Header() {
   const pathname = usePathname();
+  const { userProfile, setUserProfile } = useContext(UserProfileContext);
+  const [cookies] = useCookies();
+  console.log(pathname);
+
   useEffect(() => {
     if (
-      pathname.toString().indexOf("/apply") !== -1 ||
-      pathname.toString().indexOf("/account") !== -1
+      pathname.toString().startsWith("/apply", 13) ||
+      pathname.toString().startsWith("/account")
     ) {
       document.querySelector("body")!.style.backgroundColor = "#fafafa";
     } else {
@@ -21,11 +27,15 @@ function Header() {
     }
   }, [pathname]);
 
-  if (pathname.toString().indexOf("/account") !== -1) {
+  useEffect(() => {
+    if (cookies.access_token) {
+      useMyProfile(setUserProfile);
+    }
+  }, [cookies.access_token]);
+
+  if (pathname.toString().startsWith("/account")) {
     return null;
   }
-
-  const { data: profile } = useMyProfile();
 
   return (
     <div
@@ -73,15 +83,15 @@ function Header() {
             width={28}
             height={28}
             src={`${
-              profile?.profile_image_url &&
+              userProfile.profile_image_url &&
               process.env.NEXT_PUBLIC_IMAGE_URL +
                 "/" +
-                profile?.profile_image_url
+                userProfile.profile_image_url
             }`}
             alt="프로필사진"
           />
           <p className="text-[#333333] text-b2 font-r">
-            {profile?.student_name}
+            {userProfile.student_name}
           </p>
         </div>
         <div>{/* <Icon icon={"Chevron"} size={16} color="gray90" /> */}</div>
