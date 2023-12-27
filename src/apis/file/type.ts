@@ -1,7 +1,3 @@
-export interface UploadFileResponse {
-  urls: string[];
-}
-
 export interface PresignedURLResponse {
   urls: ResignedURLResponseItem[];
 }

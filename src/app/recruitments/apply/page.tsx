@@ -3,9 +3,9 @@
 import { useApplyToCompany, useReapply } from "@/apis/applications";
 import {
   ApplyRequestItmeType,
-  AttachmentsType,
+  AttachmentsType
 } from "@/apis/applications/type";
-import { useCreatePresignedURL, useFileUpload } from "@/apis/file";
+import { useCreatePresignedURL } from "@/apis/file";
 import { useGetRecruitmentsDetail } from "@/apis/recruitments";
 import GhostBtn from "@/components/common/Button/GhostBtn";
 import Loading from "@/components/common/Loading";
