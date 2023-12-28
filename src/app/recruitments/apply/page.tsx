@@ -207,7 +207,6 @@ export default function Apply() {
             <GhostBtn
               onClick={() => {
                 onUploadFile(fileList);
-                //
               }}
             >
               지원하기
