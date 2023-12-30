@@ -20,7 +20,7 @@ export const departmentEnum = {
 export const applicationEnum = {
   REQUESTED: "승인요청",
   APPROVED: "승인됨",
-  SEND: "전송",
+  SEND: "지원 중",
   FAILED: "불합격",
   PASS: "합격",
   REJECTED: "반려",
@@ -29,12 +29,12 @@ export const applicationEnum = {
 };
 
 export const applicationStatusStyle = {
-  REQUESTED: { color: "#7F7F7F", backgroundColor: "#F7F7F7" },
-  APPROVED: { color: "#2ECC71", backgroundColor: "#E6F8EE" },
-  SEND: { color: "#873CE7", backgroundColor: "#F0E7FC" },
+  REQUESTED: { color: "#F1C40F", backgroundColor: "#FDF7E2" },
+  APPROVED: { color: "#F1C40F", backgroundColor: "#FDF7E2" },
+  SEND: { color: "#237BC9", backgroundColor: "#E0EBF6" },
   FAILED: { color: "#E74C3C", backgroundColor: "#FCE9E7" },
-  PASS: { color: "#237BC9", backgroundColor: "#E4EFF8" },
-  REJECTED: { color: "#F1C40F", backgroundColor: "#FDF8E2" },
-  FIELD_TRAIN: { color: "#237BC9", backgroundColor: "#E4EFF8" },
-  ACCEPTANCE: { color: "#237BC9", backgroundColor: "#E4EFF8" },
+  PASS: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
+  REJECTED: { color: "#E74C3C", backgroundColor: "#FCE9E7" },
+  FIELD_TRAIN: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
+  ACCEPTANCE: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
 };
