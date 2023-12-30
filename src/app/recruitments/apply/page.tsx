@@ -3,9 +3,9 @@
 import { useApplyToCompany, useReapply } from "@/apis/applications";
 import {
   ApplyRequestItmeType,
-  AttachmentsType,
+  AttachmentsType
 } from "@/apis/applications/type";
-import { useFileUpload } from "@/apis/file";
+import { useCreatePresignedURL } from "@/apis/file";
 import { useGetRecruitmentsDetail } from "@/apis/recruitments";
 import GhostBtn from "@/components/common/Button/GhostBtn";
 import Loading from "@/components/common/Loading";
@@ -31,11 +31,11 @@ export default function Apply() {
   const { mutate: onReapply, isLoading: reapplyIsLoading } =
     useReapply(applicationId);
   const {
-    mutate: onUploadFile,
     data: fileResponse,
+    mutate: onUploadFile,
     isLoading,
     isSuccess,
-  } = useFileUpload();
+  } = useCreatePresignedURL();
   const { append } = useToastStore();
   const [fileList, setFileList] = useState<File[]>([]);
   const [urlList, setUrlList] = useState<string[]>([]);
@@ -81,13 +81,13 @@ export default function Apply() {
       setIsApply(true);
       setApplyRequest((prev: ApplyRequestItmeType[]) => [
         ...prev,
-        ...fileResponse.urls.map((url) => ({
-          url,
+        ...fileResponse.data.urls.map(({ file_path }) => ({
+          url: file_path,
           type: "FILE" as AttachmentsType,
         })),
       ]);
     }
-  }, [fileResponse]);
+  }, [fileResponse?.data]);
 
   useEffect(() => {
     if (isApply) {
