@@ -7,7 +7,7 @@ const router = "/auth";
 
 export const useReissueToken = async (refresh_token: string) => {
   const response = await axios.put<IAuthorizationResponse>(
-    `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue?platform_type=WEB`,
     null,
     {
       headers: {

@@ -16,7 +16,7 @@ export const useLogin = (body: RequestBody, checkBoxValue: boolean) => {
     async () => {
       const response = await axios.post<ResponseBody>(
         `${process.env.NEXT_PUBLIC_BASE_URL}${router}/login`,
-        body
+        { ...body, platform_type: "WEB" }
       );
       return response.data;
     },

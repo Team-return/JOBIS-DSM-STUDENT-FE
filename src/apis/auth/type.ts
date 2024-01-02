@@ -6,6 +6,7 @@ export interface IAuthorizationResponse {
   refresh_token: string;
   refresh_expires_at: string;
   authority: string;
+  platform_type: "WEB" | "ANDROID" | "IOS";
 }
 
 export interface SendAuthCodeType {
