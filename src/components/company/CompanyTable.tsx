@@ -1,6 +1,7 @@
 import { CompaniesDetailsTable } from "@/apis/companies/type";
 import { pon_number_regex } from "@/util/regex";
 import React from "react";
+import FilePreview from "../recruitments/apply/FilePreview";
 
 function CompanyTable({ ...rest }: CompaniesDetailsTable) {
   const {
@@ -102,7 +103,20 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           </tr>
           <tr>
             <td className="key">첨부파일</td>
-            <td className="value">첨부파일</td>
+            <td className="value file">
+              {attachments.length === 0
+                ? "-"
+                : attachments.map(fileUrl => (
+                    <FilePreview
+                      fileName={fileUrl.split("/")[1].slice(37)}
+                      onClick={() => {
+                        window.open(
+                          `${process.env.NEXT_PUBLIC_IMAGE_URL}/${fileUrl}`
+                        );
+                      }}
+                    />
+                  ))}
+            </td>
           </tr>
         </tbody>
       </table>

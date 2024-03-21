@@ -92,4 +92,9 @@ table {
     padding-left: 40px;
     padding-right: 40px;
   }
+  & .file {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
 }

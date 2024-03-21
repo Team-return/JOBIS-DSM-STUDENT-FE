@@ -22,12 +22,12 @@ export default function FileUploader({
   const addFileList = () => {
     if (fileRef.current?.files?.length) {
       const files = Array.from(fileRef.current?.files);
-      setFileList((prev) => [...prev, ...files]);
+      setFileList(prev => [...prev, ...files]);
     }
   };
 
   const prependFileItem = (fileName: string) => {
-    setFileList((prev) => prev.filter((file) => file.name !== fileName));
+    setFileList(prev => prev.filter(file => file.name !== fileName));
   };
 
   useEffect(() => {
