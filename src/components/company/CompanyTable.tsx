@@ -39,7 +39,7 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           <tr>
             <td className="key">대표 번호</td>
             <td className="value">
-              {pon_number_regex(representative_phone_no)}
+              {pon_number_regex(representative_phone_no) || "-"}
             </td>
           </tr>
           <tr>
