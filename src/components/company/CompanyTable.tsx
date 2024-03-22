@@ -6,6 +6,7 @@ import FilePreview from "../recruitments/apply/FilePreview";
 function CompanyTable({ ...rest }: CompaniesDetailsTable) {
   const {
     representative_name,
+    representative_phone_no,
     worker_number,
     company_introduce,
     main_zip_code,
@@ -34,6 +35,12 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           <tr>
             <td className="key">대표</td>
             <td className="value">{representative_name}</td>
+          </tr>
+          <tr>
+            <td className="key">대표 번호</td>
+            <td className="value">
+              {pon_number_regex(representative_phone_no)}
+            </td>
           </tr>
           <tr>
             <td className="key">직원 수</td>
