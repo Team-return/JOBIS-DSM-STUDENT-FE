@@ -4,6 +4,7 @@ import { useCheckAuthCode, useSendAuthCode } from "@/apis/auth";
 import LargeBtn from "@/components/common/Button/LargeBtn";
 import TextFiled from "@/components/common/TextFiled";
 import useSignUpContext from "@/hook/useSignupContext";
+import { CheckPasswordFormat } from "@/util/passwordFormat";
 import { theme, useToastStore } from "@team-return/design-system";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -11,6 +12,7 @@ import React from "react";
 function FirstSignupPage() {
   const { signupState, handleChange } = useSignUpContext();
   const { email, auth_code, password, passwordCheck } = signupState;
+  const passwordFormat = CheckPasswordFormat();
   const { append } = useToastStore();
   const navigator = useRouter();
   const { mutate: SandAuthCodeAPI } = useSendAuthCode();
@@ -25,6 +27,18 @@ function FirstSignupPage() {
       },
     }
   );
+
+  const nextBtnClick = () => {
+    if (password === passwordCheck) {
+      CheckAuthCodeAPI();
+    } else {
+      append({
+        title: "",
+        message: "비밀번호가 일치하지 않습니다.",
+        type: "RED",
+      });
+    }
+  };
 
   return (
     <div>
@@ -71,6 +85,8 @@ function FirstSignupPage() {
           height={48}
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
+          type="password"
+          customType="Password"
         />
         <TextFiled
           value={passwordCheck}
@@ -80,6 +96,8 @@ function FirstSignupPage() {
           height={48}
           label="비밀번호 확인"
           placeholder="비밀번호를 한번 더 입력해주세요"
+          type="password"
+          customType="Password"
         />
       </div>
       <div
@@ -94,15 +112,7 @@ function FirstSignupPage() {
             !!signupState.passwordCheck
           }
           onClick={() => {
-            if (password === passwordCheck) {
-              CheckAuthCodeAPI();
-            } else {
-              append({
-                title: "",
-                message: "비밀번호가 일치하지 않습니다.",
-                type: "RED",
-              });
-            }
+            passwordFormat(password, nextBtnClick);
           }}
         />
       </div>

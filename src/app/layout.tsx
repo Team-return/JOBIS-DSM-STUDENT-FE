@@ -1,7 +1,11 @@
+'use client'
+
 import Header from "@/components/common/Header";
 import Provider from "@/components/Provider";
 import SEOConfig from "@/components/SEO";
 import localFont from "@next/font/local";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react"
 import "./globals.css";
 
 const pretendard = localFont({
@@ -27,6 +31,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (
+      pathname.toString().indexOf("/apply") !== -1 ||
+      pathname.toString().indexOf("/account") !== -1
+    ) {
+      document.querySelector("body")!.style.backgroundColor = "#fafafa";
+    } else {
+      document.querySelector("body")!.style.backgroundColor = "#ffffff";
+    }
+  }, [pathname]);
+
   return (
     <html>
       <SEOConfig />
@@ -37,7 +54,9 @@ export default function RootLayout({
         }
       >
         <Provider>
-          <Header />
+          {
+            pathname.toString().indexOf("/account") === -1 && <Header />
+          }
           {children}
         </Provider>
       </body>

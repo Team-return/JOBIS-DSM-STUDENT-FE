@@ -1,10 +1,12 @@
 import { CompaniesDetailsTable } from "@/apis/companies/type";
 import { pon_number_regex } from "@/util/regex";
 import React from "react";
+import FilePreview from "../recruitments/apply/FilePreview";
 
 function CompanyTable({ ...rest }: CompaniesDetailsTable) {
   const {
     representative_name,
+    representative_phone_no,
     worker_number,
     company_introduce,
     main_zip_code,
@@ -33,6 +35,12 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           <tr>
             <td className="key">대표</td>
             <td className="value">{representative_name}</td>
+          </tr>
+          <tr>
+            <td className="key">대표 번호</td>
+            <td className="value">
+              {pon_number_regex(representative_phone_no)}
+            </td>
           </tr>
           <tr>
             <td className="key">직원 수</td>
@@ -102,7 +110,20 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           </tr>
           <tr>
             <td className="key">첨부파일</td>
-            <td className="value">첨부파일</td>
+            <td className="value file">
+              {attachments.length === 0
+                ? "-"
+                : attachments.map(fileUrl => (
+                    <FilePreview
+                      fileName={fileUrl.split("/")[1].slice(37)}
+                      onClick={() => {
+                        window.open(
+                          `${process.env.NEXT_PUBLIC_IMAGE_URL}/${fileUrl}`
+                        );
+                      }}
+                    />
+                  ))}
+            </td>
           </tr>
         </tbody>
       </table>

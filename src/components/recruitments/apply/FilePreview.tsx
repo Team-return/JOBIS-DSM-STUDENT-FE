@@ -6,13 +6,15 @@ import { Icon } from "@team-return/design-system";
 interface PropsType {
   fileName: string;
   prepend?: (fileName: string) => void;
+  onClick?: () => void;
 }
 
-function FilePreview({ fileName, prepend }: PropsType) {
+function FilePreview({ fileName, prepend, onClick }: PropsType) {
   return (
     <div
       className="flex gap-1 items-center py-1 px-3 rounded-[20px] bg-[#f7f7f7] hover:opacity-70 relative max-w-[200px]"
       title={fileName}
+      onClick={onClick}
     >
       <Image src={Clip} alt="첨부파일" width={16} height={16} />
       <p className="text-b3 leading-b3 font-r text-[#7f7f7f] text-ellipsis whitespace-nowrap overflow-hidden mr-[6px]">
