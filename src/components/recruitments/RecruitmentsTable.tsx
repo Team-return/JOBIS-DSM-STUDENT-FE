@@ -10,8 +10,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
   const {
     areas,
     required_grade,
-    start_time,
-    end_time,
+    working_hours,
     required_licenses,
     hiring_progress,
     train_pay,
@@ -74,12 +73,12 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                     <div ref={childRef} className="">
                       <tr>
                         <td className="key detail">직무</td>
-                        <td className="value detail">{item.job.join(", ")}</td>
+                        <td className="value detail">{item.job.map(item=>item.name).join(", ")}</td>
                       </tr>
                       <tr>
                         <td className="key detail">기술스택</td>
                         <td className="leading-6 whitespace-pre value detail">
-                          {item.tech.join("\n")}
+                          {item.tech.map(item=>item.name).join("\n")}
                         </td>
                       </tr>
                       <tr>
@@ -117,7 +116,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">근무시간</td>
             <td className="value">
-              {time_parsing(start_time)} ~ {time_parsing(end_time)}
+              {working_hours}
             </td>
           </tr>
           <tr>

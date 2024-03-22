@@ -32,6 +32,7 @@ export interface CompaniesDetailsTable {
   fax: string | null;
   email: string;
   representative_name: string;
+  representative_phone_no: string;
   founded_at: string;
   worker_number: number;
   take: number;

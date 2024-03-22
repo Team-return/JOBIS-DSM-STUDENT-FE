@@ -1,3 +1,4 @@
+import { instance } from "../axios";
 export interface RecruitmentsListResponseType {
   recruitments: RecruitmentsListType[];
 }
@@ -22,8 +23,7 @@ export interface RecruitmentsDetailType extends RecruitmentsDetailTable {
 export interface RecruitmentsDetailTable {
   areas: AreasType[];
   required_grade: number | null;
-  start_time: string;
-  end_time: string;
+  working_hours: string;
   required_licenses: string[] | [];
   hiring_progress: HiringProgressType[];
   train_pay: number;
@@ -36,10 +36,15 @@ export interface RecruitmentsDetailTable {
   etc: string | null;
 }
 
+interface CodeType {
+  id: number;
+  name: string;
+}
+
 export interface AreasType {
   id: number;
-  job: string[];
-  tech: string[];
+  job: CodeType[];
+  tech: CodeType[];
   hiring: number;
   major_task: string;
   preferential_treatment: string | null;
