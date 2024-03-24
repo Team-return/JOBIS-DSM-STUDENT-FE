@@ -128,14 +128,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             </td>
           </tr>
           <tr>
-            <td className="key">실습 수당 월급</td>
-            <td className="value">{money_regex(train_pay)} 원/월</td>
-          </tr>
-          <tr>
-            <td className="key">정규직 전환 시 연봉</td>
-            <td className="value">{pay ? pay + " 만원/년" : "-"}</td>
-          </tr>
-          <tr>
             <td className="key">복지</td>
             <td className="value">{benefits || "-"}</td>
           </tr>
