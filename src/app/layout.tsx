@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
 import Header from "@/components/common/Header";
 import Provider from "@/components/Provider";
 import SEOConfig from "@/components/SEO";
 import localFont from "@next/font/local";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react"
+import { useEffect } from "react";
 import "./globals.css";
 
 const pretendard = localFont({
@@ -36,7 +36,8 @@ export default function RootLayout({
   useEffect(() => {
     if (
       pathname.toString().indexOf("/apply") !== -1 ||
-      pathname.toString().indexOf("/account") !== -1
+      pathname.toString().indexOf("/account") !== -1 ||
+      pathname.toString().indexOf("/employmentStatus") !== -1
     ) {
       document.querySelector("body")!.style.backgroundColor = "#fafafa";
     } else {
@@ -54,9 +55,7 @@ export default function RootLayout({
         }
       >
         <Provider>
-          {
-            pathname.toString().indexOf("/account") === -1 && <Header />
-          }
+          {pathname.toString().indexOf("/account") === -1 && <Header />}
           {children}
         </Provider>
       </body>

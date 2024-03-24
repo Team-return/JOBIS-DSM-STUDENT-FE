@@ -25,9 +25,10 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
       {isLoading && <RecruitmentSkelton />}
-      {recruitmentsList?.recruitments
-        .filter((_, idx) => idx < maxLength)
-        .map((item) => {
+        {recruitmentsList?.recruitments.length === 0 ? (
+          <p className="col-span-4 text-center">⚠ 아직 모집의뢰서가 없습니다.</p>
+        ) :
+        recruitmentsList?.recruitments.filter((_, idx) => idx < maxLength).map((item) => {
           return <RecruitmentsItem key={item.id} {...item} />;
         })}
     </div>
@@ -68,7 +69,6 @@ function RecruitmentsItem({
             {company_name}
           </p>
           <div className="flex content-end mt-[10px] flex-wrap w-full overflow-x-scroll whitespace-nowrap gap-1 flex-1">
-            <div className="tagStyle">실습수당 {money_regex(train_pay)}원</div>
             {military_support && <div className="tagStyle">병역특례</div>}
           </div>
           <button
