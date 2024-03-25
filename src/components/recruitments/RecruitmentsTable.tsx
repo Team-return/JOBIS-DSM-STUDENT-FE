@@ -42,7 +42,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                 } else {
                   parentRef.current.style.height = `${childRef.current.clientHeight}px`;
                 }
-                setIsOpen((prev) => !prev);
+                setIsOpen(prev => !prev);
               },
               [isOpen]
             );
@@ -60,9 +60,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                         direction={isOpen ? "right" : "bottom"}
                       />
                     </td>
-                    <td
-                      className="cursor-pointer value"
-                    >
+                    <td className="cursor-pointer value">
                       {isOpen ? "닫기" : "펼쳐서 확인하기"}
                     </td>
                   </tr>
@@ -73,12 +71,14 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                     <div ref={childRef} className="">
                       <tr>
                         <td className="key detail">직무</td>
-                        <td className="value detail">{item.job.map(item=>item.name).join(", ")}</td>
+                        <td className="value detail">
+                          {item.job.map(item => item.name).join(", ")}
+                        </td>
                       </tr>
                       <tr>
                         <td className="key detail">기술스택</td>
                         <td className="leading-6 whitespace-pre value detail">
-                          {item.tech.map(item=>item.name).join("\n")}
+                          {item.tech.map(item => item.name).join("\n")}
                         </td>
                       </tr>
                       <tr>
@@ -115,15 +115,13 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           </tr>
           <tr>
             <td className="key">근무시간</td>
-            <td className="value">
-              {working_hours}
-            </td>
+            <td className="value">{working_hours}</td>
           </tr>
           <tr>
             <td className="key">면접과정</td>
             <td className="value">
               {hiring_progress
-                .map((itme) => hiringProgressEnum[itme])
+                .map(itme => hiringProgressEnum[itme])
                 .join("  >  ")}
             </td>
           </tr>
@@ -140,12 +138,12 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             <td className="value">{submit_document}</td>
           </tr>
           <tr>
-            <td className="key">모집 시작일</td>
-            <td className="value">{start_date}</td>
-          </tr>
-          <tr>
-            <td className="key">모집 종료일</td>
-            <td className="value">{end_date}</td>
+            <td className="key">모집일</td>
+            <td className="value">
+              {start_date && end_date
+                ? start_date + " ~ " + end_date
+                : "상시채용"}
+            </td>
           </tr>
           <tr>
             <td className="key">기타</td>
