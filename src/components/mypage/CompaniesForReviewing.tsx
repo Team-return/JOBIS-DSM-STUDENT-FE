@@ -18,7 +18,7 @@ export default function CompaniesForReviewing() {
       <p className="text-b2 leading-[150%] font-m text-[#333333]">면접은 어땠나요? 후기 작성하기 </p>
       <div className="mt-1">
         {
-          response.companies.map(({id, name})=>(
+          response?.companies.map(({id, name})=>(
             <p className="text-right text-b3 leading-b3 font-r text-[#333333]">👉{' '}
               <span 
                 className="underline decoration-black decoration-[#333333] cursor-pointer" 
