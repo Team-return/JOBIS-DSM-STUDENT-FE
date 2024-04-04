@@ -47,17 +47,24 @@ export const useCreateReviews = (options: Omit<UseMutationOptions<AxiosResponse<
             break;
           }
           case 404: {
-            if (
-              (response as AxiosResponse<{ message: string }>).data.message ===
-              "Code Not Found"
-            ) {
-              append({
-                title: "",
-                message: "질문 분야가 누락되었습니다.",
-                type: "RED",
-              });
+            switch ((response as AxiosResponse<{ message: string }>).data.message) {
+              case "Code Not Found": {
+                append({
+                  title: "",
+                  message: "질문 분야가 누락되었습니다.",
+                  type: "RED",
+                });
+                break;
+              }
+              case 'ApplicationEntity Not Found': {
+                append({
+                  title: '',
+                  message: '해당 기업에는 후기를 작성할 수 없습니다.',
+                  type: 'RED',
+                })
+              }
             }
-            break;
+            
           }
         }
       },
