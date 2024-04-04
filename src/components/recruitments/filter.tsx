@@ -51,12 +51,12 @@ function Filter() {
     } else setFilter((prev) => ({ ...prev, [jobType]: itemCode }));
   };
 
-  const { data: codes } = useGetCode("JOB");
+    const { data: codes } = useGetCode("JOB");
 
-  const jobCodeDropdownItems = codes?.codes.map((item) => ({
-    code: item.code.toString(),
-    label: item.keyword,
-  }));
+    const jobCodeDropdownItems = codes?.codes.map((item) => ({
+      code: item.code.toString(),
+      label: item.keyword,
+    }));
 
   return (
     <div className="flex justify-end gap-4">
