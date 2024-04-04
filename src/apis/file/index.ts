@@ -30,12 +30,23 @@ export const useCreatePresignedURL = () => {
         });
       },
       onError: (error: AxiosError) => {
-        if (error.response)
-          append({
-            title: "",
-            message: "파일 업로드에 실패했습니다.",
-            type: "RED",
-          });
+        switch (error.response.status) {
+          case 400 : {
+            append({
+              title: '',
+              message: '잘못된 파일 확장자입니다.',
+              type: 'RED',
+            })
+          }
+          break;
+          default : {
+            append({
+              title: "",
+              message: "파일 업로드에 실패했습니다.",
+              type: "RED",
+            });
+          }
+        }
       },
     }
   );
