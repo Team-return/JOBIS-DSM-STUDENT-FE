@@ -6,8 +6,8 @@ import { AuthCode, IAuthorizationResponse, SendAuthCodeType } from "./type";
 const router = "/auth";
 
 export const useReissueToken = async (refresh_token: string) => {
-  const response = await axios.put<IAuthorizationResponse>(
-    `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue?platform_type=WEB`,
+  const response = await axios.put<IAuthorizationResponse>( 
+    `${process.env.NEXT_PUBLIC_BASE_URL}${router}/reissue?platform-type=WEB`,
     null,
     {
       headers: {
