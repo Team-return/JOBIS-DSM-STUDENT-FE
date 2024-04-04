@@ -30,8 +30,8 @@ export const useCreatePresignedURL = () => {
         });
       },
       onError: (error: AxiosError) => {
-        switch (error.response.status) {
-          case 400 : {
+        switch (error.response?.status) {
+          case 400 : {  
             append({
               title: '',
               message: '잘못된 파일 확장자입니다.',
