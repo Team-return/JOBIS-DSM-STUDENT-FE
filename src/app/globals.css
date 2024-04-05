@@ -95,10 +95,18 @@ table {
     background-color: white;
     padding-left: 40px;
     padding-right: 40px;
+    position: relative;
   }
   & .file {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+  }
+  & .easteregg {
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    left: 0px;
+    backdrop-filter: blur(10px);
   }
 }

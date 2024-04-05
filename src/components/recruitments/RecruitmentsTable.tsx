@@ -13,8 +13,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
     working_hours,
     required_licenses,
     hiring_progress,
-    train_pay,
-    pay,
     benefits,
     military,
     submit_document,
@@ -102,6 +100,14 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             );
           })}
           <tr>
+            <td className="key">모집일</td>
+            <td className="value">
+              {start_date && end_date
+                ? start_date + " ~ " + end_date
+                : "상시채용"}
+            </td>
+          </tr>
+          <tr>
             <td className="key">최소성적</td>
             <td className="value">
               {required_grade ? required_grade + "%" : "-"}
@@ -126,6 +132,14 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             </td>
           </tr>
           <tr>
+            <td className="key">실습 수당</td>
+            <td className="value">이스터에그 입니다 ^^<div className="easteregg" /></td>       
+          </tr>
+          <tr>
+            <td className="key">정규직 전환 시</td>
+            <td className="value">안 보여 줄 거지롱~<div className="easteregg" /></td>       
+          </tr>
+          <tr>
             <td className="key">복지</td>
             <td className="value">{benefits || "-"}</td>
           </tr>
@@ -136,14 +150,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">제출 서류</td>
             <td className="value">{submit_document}</td>
-          </tr>
-          <tr>
-            <td className="key">모집일</td>
-            <td className="value">
-              {start_date && end_date
-                ? start_date + " ~ " + end_date
-                : "상시채용"}
-            </td>
           </tr>
           <tr>
             <td className="key">기타</td>
