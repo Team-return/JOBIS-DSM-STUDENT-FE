@@ -43,10 +43,7 @@ export default function BookmarkCard() {
               <button className="w-6 h-6 absolute top-[14px] right-[14px] flex items-center justify-center bg-none border-none cursor-pointer" 
                 onClick={(event: React.MouseEvent<HTMLElement>) => {
                   event.preventDefault();
-                  setLocalBookmarks(prev=>{
-                    const newLocalBookmarks = prev.filter(({recruitment_id: id}) => id !== recruitment_id);
-                    return newLocalBookmarks
-                  })
+                  setLocalBookmarks(prev=>prev.filter(({recruitment_id: id}) => id !== recruitment_id))
                   SetBookmarksMutate(recruitment_id);
                 }}
               >
