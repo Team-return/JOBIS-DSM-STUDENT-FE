@@ -103,6 +103,6 @@ table {
     height: 20px;
     width: 100%;
     left: 0px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
   }
 }
