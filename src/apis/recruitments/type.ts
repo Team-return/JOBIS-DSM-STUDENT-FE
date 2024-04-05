@@ -18,9 +18,11 @@ export interface RecruitmentsDetailType extends RecruitmentsDetailTable {
   company_id: number;
   company_profile_url: string;
   company_name: string;
+  bookmarked: boolean;
 }
 
 export interface RecruitmentsDetailTable {
+  recruitment_id: number;
   areas: AreasType[];
   required_grade: number | null;
   working_hours: string;

@@ -11,7 +11,7 @@ export default function RecruitmentsDetailPage() {
   const navigator = useRouter();
   const { data: RecruitmentsDetial } = useGetRecruitmentsDetail(param.get("id")!);
   if (RecruitmentsDetial) {
-    const { company_id, company_name, company_profile_url, ...rest } =
+    const { company_id, company_name, company_profile_url, bookmarked, recruitment_id, ...rest } =
       RecruitmentsDetial;
 
     return (
@@ -20,6 +20,8 @@ export default function RecruitmentsDetailPage() {
           company_name={company_name}
           company_profile_url={company_profile_url}
           company_id={company_id}
+          bookmarked={bookmarked}
+          recruitmentId={recruitment_id}
         >
           <GhostBtn
             onClick={() => {

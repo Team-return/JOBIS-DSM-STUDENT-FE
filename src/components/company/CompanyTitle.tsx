@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { getCompanyKebabItems } from "@/util/object/kebabMenuItems";
 import { KebabItemType } from "@/util/type/kebabMenu";
+import { useSetBookmarks } from "@/apis/bookmarks";
 import KebabMenu from "../common/Dropdown/KebabMenu";
+import { Icon } from "@team-return/design-system";
+import { useState } from "react";
 
 interface PropsType {
   business_number?: string;
@@ -14,6 +17,8 @@ interface PropsType {
   onClickInterview?: () => void;
   children?: React.ReactNode;
   company_id?: number;
+  bookmarked?: boolean; 
+  recruitmentId?: number;
 }
 
 export default function CompanyTitle({
@@ -24,10 +29,16 @@ export default function CompanyTitle({
   onClickInterview,
   children,
   company_id,
+  bookmarked,
+  recruitmentId
 }: PropsType) {
   const kebabItems: KebabItemType[] = getCompanyKebabItems(
     onClickRecruitments,
     onClickInterview
+  );
+  const { mutate: SetBookmarksMutate } = useSetBookmarks();
+  const [localBookmarked, setLocalBookmarked] = useState<boolean>(
+    bookmarked || false
   );
 
   const navigator = useRouter();
@@ -45,7 +56,26 @@ export default function CompanyTitle({
           />
         </div>
         <div className="flex flex-col justify-center drag">
-          <p className="mb-2 text-h4 leading-h4 font-b">{company_name}</p>
+          <div className="flex items-center gap-2">
+            <p className="mb-2 text-h4 leading-h4 font-b">{company_name}</p>
+            {
+              recruitmentId && (
+                <button 
+                  className="mt-[-8px]" 
+                  onClick={()=>{
+                    setLocalBookmarked(prev=>!prev);
+                    SetBookmarksMutate(recruitmentId);
+                  }}
+                >
+                  <Icon 
+                    icon={localBookmarked ? "BookmarkOn" : "BookmarkOff"}
+                    color={localBookmarked ? "skyblue" : "gray60"}
+                  />
+                </button>
+              )
+            }
+            
+          </div>
           {business_number && (
             <p className="text-b2 leading-b2 font-m text-[#7f7f7f]">
               사업자 번호 : {business_number}
