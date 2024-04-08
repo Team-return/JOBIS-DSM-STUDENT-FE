@@ -3,7 +3,8 @@ export interface BookmarkResponseType {
 }
 
 export interface BookmarkItemsType {
-  company_name: string;
-  recruitment_id: number;
-  created_at: string;
+  "company_logo_url": string;
+  "company_name": string;
+  "recruitment_id": number;
+  "created_at": string;
 }
