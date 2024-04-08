@@ -40,3 +40,12 @@ export interface CompaniesDetailsTable {
   service_name: string;
   business_area: string;
 }
+
+export interface CompaniesForReviewType {
+  id: number,
+  name: string,
+}
+
+export interface GetCompaniesForReviewingResponse {
+  companies : CompaniesForReviewType[]
+}

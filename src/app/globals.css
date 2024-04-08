@@ -53,6 +53,10 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+textarea {
+  resize: none;
+}
+
 table {
   width: 100%;
   border: none;
