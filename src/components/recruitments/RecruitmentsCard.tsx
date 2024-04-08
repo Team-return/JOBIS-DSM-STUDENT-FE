@@ -39,7 +39,6 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
 function RecruitmentsItem({
   company_profile_url,
   company_name,
-  train_pay,
   hiring_jobs,
   bookmarked,
   id,
