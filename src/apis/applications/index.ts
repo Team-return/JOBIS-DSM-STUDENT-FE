@@ -36,7 +36,7 @@ export function useApplyToCompany(recruitmentId: string) {
           case 404:
             append({
               title: "",
-              message: "모집의뢰서가 존재하지 않습니다.",
+              message: "모집 기간이 아니거나 모집의뢰서가 존재하지 않습니다.",
               type: "RED",
             });
             break;
@@ -85,6 +85,7 @@ export function useReapply(applicationId: string | null) {
               message: "승인요청 또는 반려상태가 아닙니다.",
               type: "RED",
             });
+            break;
           case 401:
             append({
               title: "",
@@ -95,7 +96,7 @@ export function useReapply(applicationId: string | null) {
           case 404:
             append({
               title: "",
-              message: "모집의뢰서가 존재하지 않습니다.",
+              message: "모집 기간이 아니거나 모집의뢰서가 존재하지 않습니다.",
               type: "RED",
             });
             break;
@@ -106,7 +107,7 @@ export function useReapply(applicationId: string | null) {
                 "이미 해당 모집의뢰에 지원했거나 승인된 지원요청이 존재합니다.",
               type: "RED",
             });
-
+            break;
           default:
             break;
         }
