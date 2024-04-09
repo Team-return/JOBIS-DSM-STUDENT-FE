@@ -31,11 +31,8 @@ export default function FileUploader({
     array.forEach(obj => {
       const { name, lastModified,} = obj
       const key = JSON.stringify({...name, ...lastModified});
-      console.log(key)
       uniqueObjects[key] = obj;
     });
-    console.log(array);
-    console.log(uniqueObjects); 
   return Object.values(uniqueObjects);
   }
 
