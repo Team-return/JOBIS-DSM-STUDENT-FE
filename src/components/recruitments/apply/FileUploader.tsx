@@ -26,11 +26,11 @@ export default function FileUploader({
     }
   };
 
-  const removeOverlap = (array: any[]) => {
+  const removeOverlap = (array: File[]) => {
     let uniqueObjects:{[key:string]:File} = {}
     array.forEach(obj => {
       const { name, lastModified,} = obj
-      const key = JSON.stringify({...name, ...lastModified});
+      const key = JSON.stringify({name, lastModified});
       uniqueObjects[key] = obj;
     });
   return Object.values(uniqueObjects);
