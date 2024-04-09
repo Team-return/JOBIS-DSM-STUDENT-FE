@@ -175,7 +175,7 @@ export default function Apply() {
                 ※ 파일 첨부 시 파일 확장자를 확인해 주시기 바랍니다.
               </p>
               <p className="text-caption leading-caption font-r text-[#7f7f7f]">
-                pdf, ppt, pptx, hwp, jpg, png, zip, txt, mp4, png, jpg, svg
+                pdf, ppt, pptx, hwp, zip, txt, mp4, png, jpg, svg
               </p>
               </div>
               <GhostBtn

@@ -57,7 +57,7 @@ export default function APpliedCompanyItem({
             2023.11.25
           </p> */}
         </div>
-        <div className="absolute bottom-[12px] left-[22.5vw]">
+        <div className="absolute bottom-[12px] left-[50%] translate-x-[-50%]">
           <Icon
             icon="Chevron"
             color="gray60"

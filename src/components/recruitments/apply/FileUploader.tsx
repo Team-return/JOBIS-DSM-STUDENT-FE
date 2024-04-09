@@ -21,10 +21,20 @@ export default function FileUploader({
 
   const addFileList = () => {
     if (fileRef.current?.files?.length) {
-      const files = Array.from(fileRef.current?.files);
-      setFileList(prev => [...prev, ...files]);
+      const files = removeOverlap([...fileList, ...(Array.from(fileRef.current?.files))]);
+      setFileList(files);
     }
   };
+
+  const removeOverlap = (array: File[]) => {
+    let uniqueObjects:{[key:string]:File} = {}
+    array.forEach(obj => {
+      const { name, lastModified } = obj
+      const key = JSON.stringify({name, lastModified});
+      uniqueObjects[key] = obj;
+    });
+  return Object.values(uniqueObjects);
+  }
 
   const prependFileItem = (fileName: string) => {
     setFileList(prev => prev.filter(file => file.name !== fileName));
@@ -42,7 +52,10 @@ export default function FileUploader({
           ref={fileRef}
           type="file"
           multiple={multiple}
-          onChange={addFileList}
+          onChange={(e)=>{
+            addFileList();
+            e.target.value = "";
+          }}
         />
         <div
           onMouseEnter={() => {
