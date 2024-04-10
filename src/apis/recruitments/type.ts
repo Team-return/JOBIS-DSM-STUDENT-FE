@@ -20,6 +20,7 @@ export interface RecruitmentsDetailType extends RecruitmentsDetailTable {
   company_name: string;
   bookmarked: boolean;
   recruitment_id: number;
+  is_applicable: boolean;
 }
 
 export interface RecruitmentsDetailTable {
