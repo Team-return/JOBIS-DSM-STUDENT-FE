@@ -86,25 +86,10 @@ export function useReapply(applicationId: string | null) {
               type: "RED",
             });
             break;
-          case 401:
-            append({
-              title: "",
-              message: "3학년이 아닌 학생은 지원할 수 없습니다.",
-              type: "RED",
-            });
-            break;
           case 404:
             append({
               title: "",
-              message: "모집 기간이 아니거나 모집의뢰서가 존재하지 않습니다.",
-              type: "RED",
-            });
-            break;
-          case 409:
-            append({
-              title: "",
-              message:
-                "이미 해당 모집의뢰에 지원했거나 승인된 지원요청이 존재합니다.",
+              message: "지원서가 존재하지 않습니다.",
               type: "RED",
             });
             break;
