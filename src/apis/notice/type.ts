@@ -18,4 +18,5 @@ type AttachmentType =
 export interface AttachmentResponse {
     url: string;
     type: AttachmentType;
+    id: string;
 }

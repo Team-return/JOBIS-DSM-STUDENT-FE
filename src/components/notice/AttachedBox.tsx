@@ -10,21 +10,23 @@ interface PropsType {
 }
 
 export default function AttachedBox ({props}: PropsType) {
-    console.log(props);
+    const downLoadFile = async (attachment: AttachmentResponse) => {
+        try {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_IMAGE_URL}/${attachment.url}`, {
+                responseType: 'blob'
+            });
 
-    const downLoadFile = (attachment: AttachmentResponse) => {
-        fetch("https://jobis-store.s3.ap-northeast-2.amazonaws.com/" + attachment.url, { method: "GET"}).then(res => res.blob()).then((blob) => 
-            {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = file_name_regex(attachment.url);
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-            }
-        )
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = file_name_regex(attachment.url);
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        } catch (error) {
+            console.error('파일 다운로드 에러: ', error);
+        }
     }
 
     return (
@@ -32,8 +34,8 @@ export default function AttachedBox ({props}: PropsType) {
             <div className="flex flex-row w-full h-auto mt-[32px] border-t-[2px] border-b-[1px] border-[#135C9D] p-[16px] gap-[20px]">
                 <div className="font-[500] text-[18px] ">첨부자료</div>
                 <div className="flex flex-col gap-[4px] justify-center ">
-                    {props.map((attachment, index) => (
-                        <div key={index} className="flex gap-[7px] items-center">
+                    {props.map((attachment) => (
+                        <div key={attachment.id} className="flex gap-[7px] items-center">
                             <div>{file_name_regex(attachment.url)}</div> 
                             <Icon icon="Download" size={15} color="liteBlue" cursor="pointer" onClick={() => downLoadFile(attachment)} />
                         </div>

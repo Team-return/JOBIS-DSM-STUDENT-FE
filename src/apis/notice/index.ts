@@ -1,18 +1,17 @@
 import { NoticeListResponse } from "./type";
-import { NoticeDetailResponse } from "./type";
 import { useState, useEffect } from "react";
 import { instance } from "../axios";
+import { useQuery } from "@tanstack/react-query";
+import { useToastStore } from "@team-return/design-system";
 
 /** 공지사항 리스트를 조회하는 api 입니다 */
 export const useGetNoticeListData = () => {
     const [notices, setNotices] = useState<NoticeListResponse[]>([]);
-
+    const { append } = useToastStore();
     useEffect(() => {
         const fetchNoticeList = async () => {
             try {
-                const response = await instance.get(`${process.env.NEXT_PUBLIC_BASE_URL}/notices`);
-                const data = response.data;
-
+                const { data } = await instance.get(`${process.env.NEXT_PUBLIC_BASE_URL}/notices`);
                 const fetchedNotices: NoticeListResponse[] = data.notices.map((notice: any) => ({
                     id: notice.id,
                     title: notice.title,
@@ -20,7 +19,11 @@ export const useGetNoticeListData = () => {
                 }));
                 setNotices(fetchedNotices);
             } catch (error: any) {
-                console.error('notice list error: ', error.message);
+                append({
+                    title: "",
+                    message: "공지사항 리스트 조회에 실패하였습니다.",
+                    type: "RED",
+                });
             }
         };
         fetchNoticeList();
@@ -29,32 +32,36 @@ export const useGetNoticeListData = () => {
     return { notices };
 }
 
+
 /** 공지사항 상세보기를 조회하는 api 입니다 */
 export const useGetNoticeDetailData = (noticeId: string) => {
-    const [noticeDetail, setNoticeDetail] = useState<NoticeDetailResponse | null>(null);
-    
-    useEffect(() => {
-        const fetchNoticeDetail = async () => {
-            try {
-                const response = await instance.get(`${process.env.NEXT_PUBLIC_BASE_URL}/notices/${noticeId}`);
-                const data = response.data;
+    const { append } = useToastStore();
+    const fetchNoticeDetail = async () => {
+        const {data} = await instance.get(`${process.env.NEXT_PUBLIC_BASE_URL}/notices/${noticeId}`);
 
-                const fetchedNoticeDetail: NoticeDetailResponse = {
-                    title: data.title,
-                    content: data.content,
-                    created_at: new Date(data.created_at).toISOString(),
-                    attachments: data.attachments.map((attachment: any) => ({
-                        url: attachment.url,
-                        type: attachment.type
-                    }))
-                };
-                setNoticeDetail(fetchedNoticeDetail);
-            } catch (error: any) {
-                console.error('notice detail error:', error.message);
-            }
+        return {
+            title: data.title,
+            content: data.content,
+            created_at: new Date(data.created_at).toISOString(),
+            attachments: data.attachments.map((attachment: any) => ({
+                url: attachment.url,
+                type: attachment.type
+            }))
         };
-        fetchNoticeDetail();
-    }, [noticeId]);
+    };
+
+    const { data: noticeDetail } = useQuery(['noticeDetail', noticeId], fetchNoticeDetail, {
+        onSuccess: () => {
+            console.log('공지사항 상세보기 성공');
+        },
+        onError: () => {
+            append({
+              title: "",
+              message: "공지사항 상세보기 조회에 실패하였습니다.",
+              type: "RED",
+            });
+        },
+    });
 
     return { noticeDetail };
 };
