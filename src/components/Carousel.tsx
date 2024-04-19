@@ -4,15 +4,14 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
 import { useRouter } from "next/navigation";
-import { useGetBanners } from "@/apis/banners";
-import { BannerType } from "../apis/banners/type";
+import { useGetBanners } from "../apis/banners";
+import { bannerTypeEnum } from "../util/object/enum";
 
 export default function Banner() {
   const { data: banners } = useGetBanners();
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
   const navigator = useRouter();
-  console.log(banners);
 
   const handleChangeNext = () => {
     setSelected((prev) => {
@@ -39,14 +38,6 @@ export default function Banner() {
     });
   }, [selected]);
 
-  const BannerMove = {
-    RECRUITMENT: "/recruitments/?page=1",
-    BOOKMARK: "/",
-    NONE: "",
-    INTERNSHIP: "/recruitments/?page=1",
-    COMPANY: "/companies/detail/?id=`${id}`",
-  };
-
   return (
     <div className="flex flex-col items-center gap-[15px]">
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap">
@@ -63,7 +54,9 @@ export default function Banner() {
               ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
               onClick={() => {
                 navigator.push(
-                  BannerMove[banner.banner_type as keyof BannerType]
+                  bannerTypeEnum[
+                    banner.banner_type as keyof typeof bannerTypeEnum
+                  ]
                 );
               }}
             >
