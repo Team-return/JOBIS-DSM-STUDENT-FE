@@ -6,10 +6,10 @@ import { file_name_regex } from "@/util/regex";
 import axios from "axios";
 
 interface PropsType {
-    props: AttachmentResponse[]
+    attachmentProps: AttachmentResponse[]
 }
 
-export default function AttachedBox ({props}: PropsType) {
+export default function AttachedBox ({attachmentProps}: PropsType) {
     const downLoadFile = async (attachment: AttachmentResponse) => {
         try {
             const response = await axios.get(`${process.env.NEXT_PUBLIC_IMAGE_URL}/${attachment.url}`, {
@@ -34,7 +34,7 @@ export default function AttachedBox ({props}: PropsType) {
             <div className="flex flex-row w-full h-auto mt-[32px] border-t-[2px] border-b-[1px] border-[#135C9D] p-[16px] gap-[20px]">
                 <div className="font-[500] text-[18px] ">첨부자료</div>
                 <div className="flex flex-col gap-[4px] justify-center ">
-                    {props.map((attachment) => (
+                    {attachmentProps && attachmentProps.map((attachment) => (
                         <div key={attachment.id} className="flex gap-[7px] items-center">
                             <div>{file_name_regex(attachment.url)}</div> 
                             <Icon icon="Download" size={15} color="liteBlue" cursor="pointer" onClick={() => downLoadFile(attachment)} />

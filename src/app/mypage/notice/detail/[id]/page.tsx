@@ -1,13 +1,11 @@
 'use client'
 
-import { useGetNoticeDetailData, useGetNoticeListData } from "@/apis/notice";
-import { useEffect, useState } from "react";
+import { useGetNoticeDetailData } from "@/apis/notice";
 import AttachedBox from "@/components/notice/AttachedBox";
 
 export default function NoticeDetailPage(props:any) {
     const noticeId = props.params.id
     const {noticeDetail} = useGetNoticeDetailData(noticeId);
-    // const items = [noticeDetail]
 
     return (
         <div className="flex justify-cent4er items-center mt-[100px]">
@@ -18,7 +16,7 @@ export default function NoticeDetailPage(props:any) {
                         <h1 className="font-[700] text-[28px]">{noticeDetail?.title}</h1>
                         <h2 className="font-[500] text-[20px] mt-[20px]">{noticeDetail?.created_at.substring(0, 10)}</h2>
                         <p className="font-[400] text-[16px] mt-[28px] whitespace-pre-line">{noticeDetail?.content}</p>
-                        <AttachedBox props={noticeDetail?.attachments || []} />
+                        <AttachedBox attachmentProps = {noticeDetail?.attachments || []} />
                     </div>
                 </div>
             </div>
