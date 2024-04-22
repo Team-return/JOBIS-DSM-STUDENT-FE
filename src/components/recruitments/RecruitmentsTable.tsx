@@ -10,12 +10,9 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
   const {
     areas,
     required_grade,
-    start_time,
-    end_time,
+    working_hours,
     required_licenses,
     hiring_progress,
-    train_pay,
-    pay,
     benefits,
     military,
     submit_document,
@@ -43,7 +40,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                 } else {
                   parentRef.current.style.height = `${childRef.current.clientHeight}px`;
                 }
-                setIsOpen((prev) => !prev);
+                setIsOpen(prev => !prev);
               },
               [isOpen]
             );
@@ -61,9 +58,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                         direction={isOpen ? "right" : "bottom"}
                       />
                     </td>
-                    <td
-                      className="cursor-pointer value"
-                    >
+                    <td className="cursor-pointer value">
                       {isOpen ? "닫기" : "펼쳐서 확인하기"}
                     </td>
                   </tr>
@@ -74,12 +69,14 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
                     <div ref={childRef} className="">
                       <tr>
                         <td className="key detail">직무</td>
-                        <td className="value detail">{item.job.join(", ")}</td>
+                        <td className="value detail">
+                          {item.job.map(item => item.name).join(", ")}
+                        </td>
                       </tr>
                       <tr>
                         <td className="key detail">기술스택</td>
                         <td className="leading-6 whitespace-pre value detail">
-                          {item.tech.join("\n")}
+                          {item.tech.map(item => item.name).join("\n")}
                         </td>
                       </tr>
                       <tr>
@@ -103,6 +100,14 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
             );
           })}
           <tr>
+            <td className="key">모집일</td>
+            <td className="value">
+              {start_date && end_date
+                ? start_date + " ~ " + end_date
+                : "상시채용"}
+            </td>
+          </tr>
+          <tr>
             <td className="key">최소성적</td>
             <td className="value">
               {required_grade ? required_grade + "%" : "-"}
@@ -116,25 +121,23 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           </tr>
           <tr>
             <td className="key">근무시간</td>
-            <td className="value">
-              {time_parsing(start_time)} ~ {time_parsing(end_time)}
-            </td>
+            <td className="value">{working_hours}</td>
           </tr>
           <tr>
             <td className="key">면접과정</td>
             <td className="value">
               {hiring_progress
-                .map((itme) => hiringProgressEnum[itme])
+                .map(itme => hiringProgressEnum[itme])
                 .join("  >  ")}
             </td>
           </tr>
           <tr>
-            <td className="key">실습 수당 월급</td>
-            <td className="value">{money_regex(train_pay)} 원/월</td>
+            <td className="key">실습 수당</td>
+            <td className="value">이스터에그 입니다 ^^<div className="easteregg" /></td>       
           </tr>
           <tr>
-            <td className="key">정규직 전환 시 연봉</td>
-            <td className="value">{pay ? pay + " 만원/년" : "-"}</td>
+            <td className="key">정규직 전환 시</td>
+            <td className="value">안 보여 줄 거지롱~<div className="easteregg" /></td>       
           </tr>
           <tr>
             <td className="key">복지</td>
@@ -147,14 +150,6 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           <tr>
             <td className="key">제출 서류</td>
             <td className="value">{submit_document}</td>
-          </tr>
-          <tr>
-            <td className="key">모집 시작일</td>
-            <td className="value">{start_date}</td>
-          </tr>
-          <tr>
-            <td className="key">모집 종료일</td>
-            <td className="value">{end_date}</td>
           </tr>
           <tr>
             <td className="key">기타</td>

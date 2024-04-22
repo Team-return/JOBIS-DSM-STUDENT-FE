@@ -19,7 +19,7 @@ interface PropsType {
 function DropDown({ title, items, onClickItem, selected }: PropsType) {
   const { toggleDropdown, DropDownComponent, closeDropDown } = useDropDown();
 
-  const selectedItemLabel = items.find((item) => item.code === selected);
+  const selectedItemLabel = items.find((item) => item.code === selected.toString());
 
   return (
     <div

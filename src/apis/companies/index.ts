@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
 import { instance } from "../axios";
 import { GetNumberOfPagesType } from "../recruitments/type";
-import { CompaniesDetailsType, CompaniesListResponseType } from "./type";
+import { CompaniesDetailsType, CompaniesListResponseType, GetCompaniesForReviewingResponse } from "./type";
 
 const router = "/companies";
 
@@ -56,3 +56,13 @@ export const useGetNumberOfCompaniesListPages = (queryString: string) => {
   );
   return data;
 };
+
+export const useGetCompaniesForReviewing = () => {
+  return useQuery(
+    ["getCompaniesForReviewing"],
+    async () => {
+      const {data} = await instance.get<GetCompaniesForReviewingResponse>(`${router}/review`);
+      return data;
+    }
+  )
+}

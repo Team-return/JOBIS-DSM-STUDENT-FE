@@ -133,6 +133,7 @@ export default function Apply() {
             <p className="mb-[60px] text-caption leading-caption font-r text-[#7f7f7f]">
               제출서류 : {recruitmentsDetial?.submit_document}
             </p>
+            
             <TitleBox title="제출서류">
               <Header_Contents title="포트폴리오">
                 <FileUploader
@@ -168,7 +169,15 @@ export default function Apply() {
                 />
               </Header_Contents>
             </TitleBox>
-            <div className="flex justify-end w-full mt-14">
+            <div className="flex justify-between items-end w-full mt-14">
+              <div>
+              <p className="text-caption leading-caption font-r text-[#E74C3C]">
+                ※ 파일 첨부 시 파일 확장자를 확인해 주시기 바랍니다.
+              </p>
+              <p className="text-caption leading-caption font-r text-[#7f7f7f]">
+                pdf, ppt, pptx, hwp, zip, txt, mp4, png, jpg, svg
+              </p>
+              </div>
               <GhostBtn
                 onClick={() => {
                   setIsClickedApplyBtn(true);
@@ -204,6 +213,7 @@ export default function Apply() {
             </div>
           </div>
           <div className="self-end mt-4">
+            
             <GhostBtn
               onClick={() => {
                 onUploadFile(fileList);

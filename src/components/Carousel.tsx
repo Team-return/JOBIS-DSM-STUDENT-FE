@@ -6,13 +6,8 @@ import CircleBtn from "./CircleBtn";
 
 //=======================================================================================================
 import PopularCompanyBanner from "@public/PopularCompanyBanner.webp";
-import WinterIntrenBanner from "@public/WinterIntrenBanner.webp";
 import { useRouter } from "next/navigation";
 const BannerList = [
-  {
-    img: WinterIntrenBanner,
-    url: "/recruitments/?page=1&winter_intern=true",
-  },
   {
     img: PopularCompanyBanner,
     url: "/companies/detail/?id=9",
