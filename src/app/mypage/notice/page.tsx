@@ -1,4 +1,3 @@
-import Logo from "@/components/common/Logo"
 import NoticeLists from "@/components/notice/NoticeLists"
 
 export default function Notice () {
