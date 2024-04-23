@@ -18,3 +18,14 @@ export interface getReviewDetailProps {
   answer: string;
   area: string;
 }
+
+export interface qnaElementsType {
+  question: string;
+  answer: string;
+  code_id: number;
+}
+
+export interface createReviewRequestType {
+  company_id: number;
+  qna_elements: qnaElementsType[]
+}

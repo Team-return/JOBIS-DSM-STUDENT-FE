@@ -43,7 +43,7 @@ function TextFiled({
         <p className="text-caption text-[#333333] font-m mb-[4px]">{label}</p>
       )}
       <div
-        className={`w-full  border border-solid rounded-[8px] flex align-center overflow-hidden`}
+        className={`w-full border border-solid rounded-[8px] flex align-center overflow-hidden`}
         style={{
           borderColor: focus ? theme.color.liteBlue : "#cccccc",
           height: height

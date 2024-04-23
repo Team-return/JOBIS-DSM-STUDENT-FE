@@ -10,21 +10,6 @@ import { useMyProfile } from "@/apis/students";
 
 function Header() {
   const pathname = usePathname();
-  useEffect(() => {
-    if (
-      pathname.toString().indexOf("/apply") !== -1 ||
-      pathname.toString().indexOf("/account") !== -1
-    ) {
-      document.querySelector("body")!.style.backgroundColor = "#fafafa";
-    } else {
-      document.querySelector("body")!.style.backgroundColor = "#ffffff";
-    }
-  }, [pathname]);
-
-  if (pathname.toString().indexOf("/account") !== -1) {
-    return null;
-  }
-
   const { data: profile } = useMyProfile();
 
   return (

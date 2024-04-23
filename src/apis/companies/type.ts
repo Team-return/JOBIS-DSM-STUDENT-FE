@@ -32,10 +32,20 @@ export interface CompaniesDetailsTable {
   fax: string | null;
   email: string;
   representative_name: string;
+  representative_phone_no: string;
   founded_at: string;
   worker_number: number;
   take: number;
   attachments: any[];
   service_name: string;
   business_area: string;
+}
+
+export interface CompaniesForReviewType {
+  id: number,
+  name: string,
+}
+
+export interface GetCompaniesForReviewingResponse {
+  companies : CompaniesForReviewType[]
 }
