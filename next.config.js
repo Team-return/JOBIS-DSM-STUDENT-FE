@@ -1,33 +1,30 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-    domains: ["picsum.photos"],
-  },
-  reactStrictMode: true,
-  trailingSlash: true,
-  experimental: {
-    appDir: true,
-    esmExternals: "loose",
-  },
+    output: 'export',
+    images: {
+        unoptimized: true,
+        domains: ['picsum.photos'],
+    },
+    reactStrictMode: true,
+    trailingSlash: true,
+    experimental: {
+        appDir: true,
+        esmExternals: 'loose',
+    },
 };
 
 module.exports = nextConfig;
 
-
 // Injected content via Sentry wizard below
 
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } = require('@sentry/nextjs');
 
-module.exports = withSentryConfig(
-  module.exports,
-  {
+module.exports = withSentryConfig(module.exports, {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 
-    org: "jobis-fe",
-    project: "jobis-student",
+    org: 'jobis-fe',
+    project: 'jobis-student',
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -40,14 +37,14 @@ module.exports = withSentryConfig(
 
     // Automatically annotate React components to show their full name in breadcrumbs and session replay
     reactComponentAnnotation: {
-      enabled: true,
+        enabled: true,
     },
 
     // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
     // This can increase your server load as well as your hosting bill.
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
-    tunnelRoute: "/monitoring",
+    // tunnelRoute: '/monitoring',
 
     // Hides source maps from generated client bundles
     hideSourceMaps: true,
@@ -60,5 +57,4 @@ module.exports = withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
-  }
-);
+});
