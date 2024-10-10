@@ -4298,7 +4298,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sentry/bundler-plugin-core", "npm:2.22.3"],\
             ["@babel/core", "npm:7.25.7"],\
             ["@sentry/babel-plugin-component-annotate", "npm:2.22.3"],\
-            ["@sentry/cli", "npm:2.36.6"],\
+            ["@sentry/cli", "npm:2.37.0"],\
             ["dotenv", "npm:16.3.1"],\
             ["find-up", "npm:5.0.0"],\
             ["glob", "npm:9.3.5"],\
@@ -4309,19 +4309,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@sentry/cli", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-npm-2.36.6-f0154cbea9/node_modules/@sentry/cli/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-npm-2.37.0-4771cec08a/node_modules/@sentry/cli/",\
           "packageDependencies": [\
-            ["@sentry/cli", "npm:2.36.6"],\
-            ["@sentry/cli-darwin", "npm:2.36.6"],\
-            ["@sentry/cli-linux-arm", "npm:2.36.6"],\
-            ["@sentry/cli-linux-arm64", "npm:2.36.6"],\
-            ["@sentry/cli-linux-i686", "npm:2.36.6"],\
-            ["@sentry/cli-linux-x64", "npm:2.36.6"],\
-            ["@sentry/cli-win32-i686", "npm:2.36.6"],\
-            ["@sentry/cli-win32-x64", "npm:2.36.6"],\
+            ["@sentry/cli", "npm:2.37.0"],\
+            ["@sentry/cli-darwin", "npm:2.37.0"],\
+            ["@sentry/cli-linux-arm", "npm:2.37.0"],\
+            ["@sentry/cli-linux-arm64", "npm:2.37.0"],\
+            ["@sentry/cli-linux-i686", "npm:2.37.0"],\
+            ["@sentry/cli-linux-x64", "npm:2.37.0"],\
+            ["@sentry/cli-win32-i686", "npm:2.37.0"],\
+            ["@sentry/cli-win32-x64", "npm:2.37.0"],\
             ["https-proxy-agent", "npm:5.0.1"],\
-            ["node-fetch", "virtual:f0154cbea90f7e21a7bbb040ea0d30611086702a28b3555ecbb27d18d597b49699fc39263b19626313645428ef1ee46413827e4afdc934c1cd5b405579153cff#npm:2.7.0"],\
+            ["node-fetch", "virtual:4771cec08a8e7b5502905a495d236866034bd34f48de7406fd0652acabeec09eab447568b9acfb1f5e2ff92bee43b7ceb8c4aa496a88d9871758780b263b6c0b#npm:2.7.0"],\
             ["progress", "npm:2.0.3"],\
             ["proxy-from-env", "npm:1.1.0"],\
             ["which", "npm:2.0.2"]\
@@ -4330,64 +4330,64 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@sentry/cli-darwin", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-darwin-npm-2.36.6-598628fff1/node_modules/@sentry/cli-darwin/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-darwin-npm-2.37.0-109f3042d1/node_modules/@sentry/cli-darwin/",\
           "packageDependencies": [\
-            ["@sentry/cli-darwin", "npm:2.36.6"]\
+            ["@sentry/cli-darwin", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-linux-arm", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-arm-npm-2.36.6-2abe9c6904/node_modules/@sentry/cli-linux-arm/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-arm-npm-2.37.0-8c36028258/node_modules/@sentry/cli-linux-arm/",\
           "packageDependencies": [\
-            ["@sentry/cli-linux-arm", "npm:2.36.6"]\
+            ["@sentry/cli-linux-arm", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-linux-arm64", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-arm64-npm-2.36.6-45d6aab9ec/node_modules/@sentry/cli-linux-arm64/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-arm64-npm-2.37.0-525445bbb4/node_modules/@sentry/cli-linux-arm64/",\
           "packageDependencies": [\
-            ["@sentry/cli-linux-arm64", "npm:2.36.6"]\
+            ["@sentry/cli-linux-arm64", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-linux-i686", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-i686-npm-2.36.6-3de0ae070f/node_modules/@sentry/cli-linux-i686/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-i686-npm-2.37.0-2e28f62944/node_modules/@sentry/cli-linux-i686/",\
           "packageDependencies": [\
-            ["@sentry/cli-linux-i686", "npm:2.36.6"]\
+            ["@sentry/cli-linux-i686", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-linux-x64", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-x64-npm-2.36.6-1bf3c38789/node_modules/@sentry/cli-linux-x64/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-linux-x64-npm-2.37.0-1ccd9d140f/node_modules/@sentry/cli-linux-x64/",\
           "packageDependencies": [\
-            ["@sentry/cli-linux-x64", "npm:2.36.6"]\
+            ["@sentry/cli-linux-x64", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-win32-i686", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-win32-i686-npm-2.36.6-4861d6f15f/node_modules/@sentry/cli-win32-i686/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-win32-i686-npm-2.37.0-c7a9888675/node_modules/@sentry/cli-win32-i686/",\
           "packageDependencies": [\
-            ["@sentry/cli-win32-i686", "npm:2.36.6"]\
+            ["@sentry/cli-win32-i686", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@sentry/cli-win32-x64", [\
-        ["npm:2.36.6", {\
-          "packageLocation": "./.yarn/unplugged/@sentry-cli-win32-x64-npm-2.36.6-51f6990f22/node_modules/@sentry/cli-win32-x64/",\
+        ["npm:2.37.0", {\
+          "packageLocation": "./.yarn/unplugged/@sentry-cli-win32-x64-npm-2.37.0-5dee5dc61d/node_modules/@sentry/cli-win32-x64/",\
           "packageDependencies": [\
-            ["@sentry/cli-win32-x64", "npm:2.36.6"]\
+            ["@sentry/cli-win32-x64", "npm:2.37.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5936,7 +5936,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["browserslist", "npm:4.24.0"],\
             ["caniuse-lite", "npm:1.0.30001667"],\
-            ["electron-to-chromium", "npm:1.5.32"],\
+            ["electron-to-chromium", "npm:1.5.35"],\
             ["node-releases", "npm:2.0.18"],\
             ["update-browserslist-db", "virtual:6b67324c878ea06e56ed3caefea53f7683e6ecc2f59a5ccb4eed038528684d5d9ad5763adbad2b939021498b8316c469d622a567bb66012ffd14e8022cf45739#npm:1.1.1"]\
           ],\
@@ -6663,10 +6663,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:1.5.32", {\
-          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.5.32-0ad6126270-ff75702fe4.zip/node_modules/electron-to-chromium/",\
+        ["npm:1.5.35", {\
+          "packageLocation": "./.yarn/cache/electron-to-chromium-npm-1.5.35-c08494529a-7eca311ebc.zip/node_modules/electron-to-chromium/",\
           "packageDependencies": [\
-            ["electron-to-chromium", "npm:1.5.32"]\
+            ["electron-to-chromium", "npm:1.5.35"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9267,10 +9267,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:f0154cbea90f7e21a7bbb040ea0d30611086702a28b3555ecbb27d18d597b49699fc39263b19626313645428ef1ee46413827e4afdc934c1cd5b405579153cff#npm:2.7.0", {\
-          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-43e9cbd3d5/0/cache/node-fetch-npm-2.7.0-587d57004e-d76d2f5edb.zip/node_modules/node-fetch/",\
+        ["virtual:4771cec08a8e7b5502905a495d236866034bd34f48de7406fd0652acabeec09eab447568b9acfb1f5e2ff92bee43b7ceb8c4aa496a88d9871758780b263b6c0b#npm:2.7.0", {\
+          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-95a772430a/0/cache/node-fetch-npm-2.7.0-587d57004e-d76d2f5edb.zip/node_modules/node-fetch/",\
           "packageDependencies": [\
-            ["node-fetch", "virtual:f0154cbea90f7e21a7bbb040ea0d30611086702a28b3555ecbb27d18d597b49699fc39263b19626313645428ef1ee46413827e4afdc934c1cd5b405579153cff#npm:2.7.0"],\
+            ["node-fetch", "virtual:4771cec08a8e7b5502905a495d236866034bd34f48de7406fd0652acabeec09eab447568b9acfb1f5e2ff92bee43b7ceb8c4aa496a88d9871758780b263b6c0b#npm:2.7.0"],\
             ["@types/encoding", null],\
             ["encoding", null],\
             ["whatwg-url", "npm:5.0.0"]\
