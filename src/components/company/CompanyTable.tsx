@@ -13,13 +13,7 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
     main_address,
     main_address_detail,
     sub_zip_code,
-    sub_address,
-    sub_address_detail,
     manager_name,
-    manager_phone_no,
-    sub_manager_name,
-    sub_manager_phone_no,
-    fax,
     email,
     founded_at,
     take,
@@ -61,36 +55,14 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
             </td>
           </tr>
           <tr>
-            <td className="key">지점 주소</td>
-            <td className="value">
-              {(sub_zip_code &&
-                sub_address &&
-                sub_address_detail &&
-                `(${sub_zip_code}) ${sub_address}(${sub_address_detail})`) ||
-                "-"}
-            </td>
-          </tr>
-          <tr>
             <td className="key">담당자</td>
             <td className="value">{manager_name}</td>
           </tr>
           <tr>
             <td className="key">담당자 연락처</td>
-            <td className="value">{pon_number_regex(manager_phone_no)}</td>
-          </tr>
-          <tr>
-            <td className="key">부담당자</td>
-            <td className="value">{sub_manager_name || "-"}</td>
-          </tr>
-          <tr>
-            <td className="key">부담당자 연락처</td>
             <td className="value">
-              {pon_number_regex(sub_manager_phone_no) || "-"}
+              {pon_number_regex(representative_phone_no)}
             </td>
-          </tr>
-          <tr>
-            <td className="key">팩스번호</td>
-            <td className="value">{pon_number_regex(fax) || "-"}</td>
           </tr>
           <tr>
             <td className="key">이메일</td>
