@@ -22,11 +22,7 @@ export interface CompaniesDetailsTable {
   main_zip_code: string;
   main_address: string;
   main_address_detail: string;
-  sub_zip_code: string | null;
-  manager_name: string;
-  email: string;
   representative_name: string;
-  representative_phone_no: string;
   founded_at: string;
   worker_number: number;
   take: number;
@@ -36,10 +32,10 @@ export interface CompaniesDetailsTable {
 }
 
 export interface CompaniesForReviewType {
-  id: number,
-  name: string,
+  id: number;
+  name: string;
 }
 
 export interface GetCompaniesForReviewingResponse {
-  companies : CompaniesForReviewType[]
+  companies: CompaniesForReviewType[];
 }
