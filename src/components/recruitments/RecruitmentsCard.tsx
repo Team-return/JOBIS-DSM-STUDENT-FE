@@ -25,16 +25,18 @@ export default function RecruitmentsCard({ maxLength = 12 }: PropsType) {
   return (
     <div className="w-full mt-5 grid grid-cols-3 md:grid-cols-4 gap-[1.5vw]">
       {isLoading && <RecruitmentSkelton />}
-        {recruitmentsList?.recruitments.length === 0 ? (
-          <p className="col-span-4 text-center">⚠ 아직 모집의뢰서가 없습니다.</p>
-        ) :
-        recruitmentsList?.recruitments.filter((_, idx) => idx < maxLength).map((item) => {
-          return <RecruitmentsItem key={item.id} {...item} />;
-        })}
+      {recruitmentsList?.recruitments.length === 0 ? (
+        <p className="col-span-4 text-center">⚠ 아직 모집의뢰서가 없습니다.</p>
+      ) : (
+        recruitmentsList?.recruitments
+          .filter((_, idx) => idx < maxLength)
+          .map((item) => {
+            return <RecruitmentsItem key={item.id} {...item} />;
+          })
+      )}
     </div>
   );
 }
-
 
 function RecruitmentsItem({
   company_profile_url,
@@ -51,7 +53,7 @@ function RecruitmentsItem({
 
   return (
     <HoverPrefetchLink href={`/recruitments/detail?id=${id}`}>
-      <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
+      <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105 h-full">
         <div className="w-full h-0 pb-[70%] relative">
           <Image
             className="absolute object-contain"
