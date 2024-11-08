@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@channel.io/channel-web-sdk-loader", "npm:2.0.0"],\
             ["@next/font", "npm:13.5.7"],\
             ["@sentry/nextjs", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:8.33.1"],\
             ["@sentry/utils", "npm:8.33.1"],\
@@ -324,6 +325,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/helper-string-parser", "npm:7.25.7"],\
             ["@babel/helper-validator-identifier", "npm:7.25.7"],\
             ["to-fast-properties", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@channel.io/channel-web-sdk-loader", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@channel.io-channel-web-sdk-loader-npm-2.0.0-a716027852-11902a0695.zip/node_modules/@channel.io/channel-web-sdk-loader/",\
+          "packageDependencies": [\
+            ["@channel.io/channel-web-sdk-loader", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6424,6 +6434,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["my-app", "workspace:."],\
+            ["@channel.io/channel-web-sdk-loader", "npm:2.0.0"],\
             ["@next/font", "npm:13.5.7"],\
             ["@sentry/nextjs", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:8.33.1"],\
             ["@sentry/utils", "npm:8.33.1"],\
