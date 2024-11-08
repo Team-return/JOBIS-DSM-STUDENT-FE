@@ -54,7 +54,7 @@ function Header() {
       >
         <div className="h-[32px] bg-white flex gap-[10px] items-center">
           <Image
-            className="rounded-full bg-[#D9D9D9]"
+            className="rounded-full bg-[#D9D9D9] w-7 h-7"
             width={28}
             height={28}
             src={`${
