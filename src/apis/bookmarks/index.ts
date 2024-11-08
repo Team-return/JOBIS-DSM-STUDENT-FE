@@ -20,7 +20,7 @@ export const useSetBookmarks = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries(["getRecruitmentsList"]);
-        queryClient.invalidateQueries(["GetBookmarks"]);  
+        queryClient.invalidateQueries(["GetBookmarks"]);
       },
     }
   );
