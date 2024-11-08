@@ -237,6 +237,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@channel.io/channel-web-sdk-loader@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@channel.io/channel-web-sdk-loader@npm:2.0.0"
+  checksum: 11902a0695e718b2ff8f1df92684bd2c5bea06b5e4d83a1f907fe6eef16d1ca6e231bd4bceced2cd4e839c05407d9a8b96034cb902d17998e1e9e2bd799ea8ff
+  languageName: node
+  linkType: hard
+
 "@emotion/is-prop-valid@npm:1.2.2":
   version: 1.2.2
   resolution: "@emotion/is-prop-valid@npm:1.2.2"
@@ -5104,6 +5111,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "my-app@workspace:."
   dependencies:
+    "@channel.io/channel-web-sdk-loader": ^2.0.0
     "@next/font": ^13.5.2
     "@sentry/nextjs": ^8.33.1
     "@sentry/utils": ^8.33.1
