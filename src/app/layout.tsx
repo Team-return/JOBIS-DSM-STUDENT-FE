@@ -7,6 +7,7 @@ import localFont from "@next/font/local";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import "./globals.css";
+import * as ChannelService from "@channel.io/channel-web-sdk-loader";
 
 const pretendard = localFont({
   src: [
@@ -44,6 +45,14 @@ export default function RootLayout({
       document.querySelector("body")!.style.backgroundColor = "#ffffff";
     }
   }, [pathname]);
+
+  ChannelService.loadScript();
+
+  const CHATKEY = process.env.NEXT_PUBLIC_CHAT_KEY || "";
+
+  ChannelService.boot({
+    pluginKey: CHATKEY,
+  });
 
   return (
     <html>
