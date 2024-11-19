@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { ModalContext } from "@/context/ModalContext";
 
-export default function useMoadl() {
+export default function useModal() {
   const { isOpen, setIsOpen } = useContext(ModalContext);
 
   const preventScroll = (e: Event) => {
