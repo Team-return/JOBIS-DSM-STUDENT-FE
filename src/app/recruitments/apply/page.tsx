@@ -3,7 +3,7 @@
 import { useApplyToCompany, useReapply } from "@/apis/applications";
 import {
   ApplyRequestItmeType,
-  AttachmentsType
+  AttachmentsType,
 } from "@/apis/applications/type";
 import { useCreatePresignedURL } from "@/apis/file";
 import { useGetRecruitmentsDetail } from "@/apis/recruitments";
@@ -17,7 +17,7 @@ import ShadowBox from "@/components/recruitments/apply/ShadowBox";
 import TitleBox from "@/components/recruitments/apply/TitleBox";
 import URLItem from "@/components/recruitments/apply/URLItem";
 import UrlListComponent from "@/components/recruitments/apply/UrlListComponent";
-import useMoadl from "@/hook/useModal";
+import useModal from "@/hook/useModal";
 import { Icon, useToastStore } from "@team-return/design-system";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -25,7 +25,7 @@ import { useEffect, useState } from "react";
 export default function Apply() {
   const param = useSearchParams();
   const applicationId = param.get("application");
-  const { Modal, openModal, closeModal } = useMoadl();
+  const { Modal, openModal, closeModal } = useModal();
   const { mutate: onApplyToCompany, isLoading: applyIsLoading } =
     useApplyToCompany(param.get("id")!);
   const { mutate: onReapply, isLoading: reapplyIsLoading } =
@@ -133,7 +133,7 @@ export default function Apply() {
             <p className="mb-[60px] text-caption leading-caption font-r text-[#7f7f7f]">
               제출서류 : {recruitmentsDetial?.submit_document}
             </p>
-            
+
             <TitleBox title="제출서류">
               <Header_Contents title="포트폴리오">
                 <FileUploader
@@ -171,12 +171,12 @@ export default function Apply() {
             </TitleBox>
             <div className="flex justify-between items-end w-full mt-14">
               <div>
-              <p className="text-caption leading-caption font-r text-[#E74C3C]">
-                ※ 파일 첨부 시 파일 확장자를 확인해 주시기 바랍니다.
-              </p>
-              <p className="text-caption leading-caption font-r text-[#7f7f7f]">
-                pdf, ppt, pptx, hwp, zip, txt, mp4, png, jpg, svg
-              </p>
+                <p className="text-caption leading-caption font-r text-[#E74C3C]">
+                  ※ 파일 첨부 시 파일 확장자를 확인해 주시기 바랍니다.
+                </p>
+                <p className="text-caption leading-caption font-r text-[#7f7f7f]">
+                  pdf, ppt, pptx, hwp, zip, txt, mp4, png, jpg, svg
+                </p>
               </div>
               <GhostBtn
                 onClick={() => {
@@ -213,10 +213,10 @@ export default function Apply() {
             </div>
           </div>
           <div className="self-end mt-4">
-            
             <GhostBtn
               onClick={() => {
                 onUploadFile(fileList);
+                closeModal();
               }}
             >
               지원하기

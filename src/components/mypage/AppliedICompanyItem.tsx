@@ -1,10 +1,18 @@
-import { useGetRejectionReason } from "@/apis/applications";
+import {
+  useDeleteApplication,
+  useGetRejectionReason,
+} from "@/apis/applications";
 import { ApplicationItemType } from "@/apis/applications/type";
+import useModal from "@/hook/useModal";
+import { getApplyKebabItems } from "@/util/object/kebabMenuItems";
+import { KebabItemType } from "@/util/type/kebabMenu";
 import { Icon } from "@team-return/design-system";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import FileDownload from "../common/Button/FIleDownload";
+import FillBtn from "../common/Button/FillBtn";
+import KebabMenu from "../common/Dropdown/KebabMenu";
 import ApplicationStatus from "./ApplicationStatus";
 
 export default function APpliedCompanyItem({
@@ -18,6 +26,18 @@ export default function APpliedCompanyItem({
   const parentRef = useRef<HTMLDivElement>(null);
   const childRef = useRef<HTMLDivElement>(null);
   const [isCollapse, setIsCollapse] = useState(false);
+  const { Modal, openModal, closeModal } = useModal();
+  const { mutate: deleteApplication } = useDeleteApplication(application_id);
+  const KebabItems: KebabItemType[] = getApplyKebabItems(
+    () => {
+      navigator.push(
+        `/recruitments/apply/?id=${recruitment_id}&application=${application_id}`
+      );
+    },
+    () => {
+      openModal();
+    }
+  );
 
   const handleButtonClick = useCallback(
     (event: React.MouseEvent) => {
@@ -66,22 +86,36 @@ export default function APpliedCompanyItem({
           />
         </div>
         <div className="flex flex-row items-center gap-4">
+          <ApplicationStatus status={application_status} />
           {(application_status === "REQUESTED" ||
             application_status === "REJECTED") && (
-            <p
-              onClick={(event) => {
-                event.stopPropagation();
-                navigator.push(
-                  `/recruitments/apply/?id=${recruitment_id}&application=${application_id}`
-                );
-              }}
-              className="underline text-caption leading-caption font-r text-[#7f7f7f] cursor-pointer"
-            >
-              재지원하기
-            </p>
+            <>
+              <KebabMenu items={KebabItems} />
+              <Modal>
+                <div className=" text-h5 font-b leading-h5">지원 취소</div>
+                <p className=" mt-2 text-b1 font-r leading-b1 text-[#7F7F7F]">
+                  {company}에 지원을 취소하겠습니까?
+                </p>
+                <div className=" flex justify-end gap-2 mt-8">
+                  <div
+                    onClick={closeModal}
+                    className="text-b2 leading-b2 font-b min-w-[122px] h-[48px] text-[#135C9D] flex gap-2 items-center py-[10px] px-6 border border-[#135C9D] rounded-[8px] hover:bg-[#135C9D] hover:text-white justify-center cursor-pointer"
+                  >
+                    취소
+                  </div>
+                  <FillBtn
+                    onClick={() => {
+                      deleteApplication();
+                      closeModal();
+                      location.reload();
+                    }}
+                  >
+                    확인
+                  </FillBtn>
+                </div>
+              </Modal>
+            </>
           )}
-
-          <ApplicationStatus status={application_status} />
         </div>
       </div>
       <div

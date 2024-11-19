@@ -1,6 +1,10 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import {
+  useMutation,
+  UseMutationOptions,
+  useQuery,
+} from "@tanstack/react-query";
 import { useToastStore } from "@team-return/design-system";
-import { AxiosError } from "axios";
+import { Axios, AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { instance } from "../axios";
 import {
@@ -108,4 +112,20 @@ export function useGetRejectionReason(applicationid: string) {
     );
     return data;
   });
+}
+
+export function useDeleteApplication(applicationId: number) {
+  const { append } = useToastStore();
+  return useMutation(
+    async () => instance.delete(`${router}/${applicationId}`),
+    {
+      onSuccess: () => {
+        append({
+          title: "",
+          message: "지원이 취소되었습니다",
+          type: "GREEN",
+        });
+      },
+    }
+  );
 }
