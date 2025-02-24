@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 const data = [
@@ -8,6 +9,13 @@ const data = [
 ];
 
 export default function JobPieChart() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
   return (
     <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8">
       <div className="w-full">
@@ -27,7 +35,11 @@ export default function JobPieChart() {
         </div>
 
         <div className="flex flex-col gap-[10px] items-center relative">
-          <PieChart width={160} height={160}>
+          <PieChart
+            width={160}
+            height={160}
+            style={{ position: "relative", margin: "0 auto" }}
+          >
             <Pie
               data={data}
               dataKey="value"
@@ -35,9 +47,10 @@ export default function JobPieChart() {
               outerRadius={70}
               startAngle={90}
               endAngle={-270}
+              isAnimationActive={false}
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
+                <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
               ))}
             </Pie>
           </PieChart>

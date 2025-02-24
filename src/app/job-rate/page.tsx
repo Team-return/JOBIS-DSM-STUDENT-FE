@@ -2,8 +2,8 @@ import JobPieChart from "@/components/jobRate/JobPieChart";
 
 export default function JobRate() {
   return (
-    <div>
+    <main>
       <JobPieChart />
-    </div>
+    </main>
   );
 }
