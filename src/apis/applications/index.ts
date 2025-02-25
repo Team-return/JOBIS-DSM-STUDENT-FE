@@ -131,14 +131,11 @@ export function useDeleteApplication(applicationId: number) {
   );
 }
 
-export const useEmploymentStats = () => {
-  return useQuery({
-    queryKey: ["employmentStats"],
-    queryFn: async () => {
-      const { data } = await instance.get<EmploymentStatsResponse>(
-        `${router}/employment`
-      );
-      return data;
-    },
+export function useEmploymentStats() {
+  return useQuery(["employmentStats"], async () => {
+    const { data } = await instance.get<EmploymentStatsResponse>(
+      `${router}/employment`
+    );
+    return data;
   });
-};
+}
