@@ -17,7 +17,7 @@ export default function JobPieChart() {
 
   if (!isMounted) return null;
   return (
-    <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8">
+    <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8 border border-[#E5E5E5]">
       <div className="w-full">
         <div className="flex flex-col items-end w-full">
           <div>
