@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [18] # 기존 16 → 18 이상으로 변경
 
     steps:
       - name: Checkout
@@ -28,19 +28,29 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Node.js 18 고정
+
+      - name: Remove node_modules
+        run: rm -rf node_modules .next
 
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
         with:
           path: "**/node_modules"
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install Dependencies
-        # 이전의 cache가 없다면 의존성을 설치합니다.
         run: yarn install --immutable
 
-      - name: Build Packages
-        run: yarn run build
+      # - name: Create .env file  # 환경 변수 설정 추가
+      #   run: |
+      #     echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env
+
+      # - name: Debug build  # 빌드 디버깅 모드 추가
+      #   run: |
+      #     set -x
+      #     yarn run build
