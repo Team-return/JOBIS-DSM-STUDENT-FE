@@ -46,11 +46,11 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      # - name: Create .env file  # 환경 변수 설정 추가
-      #   run: |
-      #     echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env
+      - name: Create .env file # 환경 변수 설정 추가
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> .env
 
-      # - name: Debug build  # 빌드 디버깅 모드 추가
-      #   run: |
-      #     set -x
-      #     yarn run build
+      - name: Debug build # 빌드 디버깅 모드 추가
+        run: |
+          set -x
+          yarn run build
