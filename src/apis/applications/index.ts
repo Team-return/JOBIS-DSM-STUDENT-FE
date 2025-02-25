@@ -10,6 +10,7 @@ import { instance } from "../axios";
 import {
   ApplicationsResponseType,
   ApplyRequestItmeType,
+  EmploymentStatsResponse,
   RejectionResponseType,
 } from "./type";
 
@@ -129,3 +130,15 @@ export function useDeleteApplication(applicationId: number) {
     }
   );
 }
+
+export const useEmploymentStats = () => {
+  return useQuery({
+    queryKey: ["employmentStats"],
+    queryFn: async () => {
+      const { data } = await instance.get<EmploymentStatsResponse>(
+        `${router}/employment`
+      );
+      return data;
+    },
+  });
+};
