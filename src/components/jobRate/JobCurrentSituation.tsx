@@ -6,7 +6,7 @@ export default function JobCurrentSituation() {
   const { data, error } = useEmploymentStats();
 
   return (
-    <div className="w-[460px]">
+    <div className="w-full grid grid-cols-2 gap-10">
       {data?.classes.map((classItem) => {
         let className = "";
 
