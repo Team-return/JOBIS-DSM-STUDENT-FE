@@ -1,5 +1,6 @@
 "use client";
 
+import { useTotalEmplymentStats } from "@/apis/applications";
 import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
@@ -10,7 +11,11 @@ const data = [
 
 export default function JobPieChart() {
   const [isMounted, setIsMounted] = useState(false);
-
+  const { data: employmentData, error } = useTotalEmplymentStats();
+  
+  if (error) {
+    console.log(error);
+  }
   useEffect(() => {
     setIsMounted(true);
   }, []);

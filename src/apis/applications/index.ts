@@ -10,8 +10,9 @@ import { instance } from "../axios";
 import {
   ApplicationsResponseType,
   ApplyRequestItmeType,
-  EmploymentStatsResponse,
+  EmploymentStatsResponseType,
   RejectionResponseType,
+  TotalEmPlymentStatsResponseType,
 } from "./type";
 
 const router = "/applications";
@@ -133,8 +134,17 @@ export function useDeleteApplication(applicationId: number) {
 
 export function useEmploymentStats() {
   return useQuery(["employmentStats"], async () => {
-    const { data } = await instance.get<EmploymentStatsResponse>(
+    const { data } = await instance.get<EmploymentStatsResponseType>(
       `${router}/employment`
+    );
+    return data;
+  });
+}
+
+export function useTotalEmplymentStats() {
+  return useQuery(["totalEmploymentStats"], async () => {
+    const { data } = await instance.get<TotalEmPlymentStatsResponseType>(
+      `${router}/employment/count`
     );
     return data;
   });

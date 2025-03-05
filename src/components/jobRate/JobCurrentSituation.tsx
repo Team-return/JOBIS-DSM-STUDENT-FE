@@ -5,6 +5,10 @@ import { useEmploymentStats } from "@/apis/applications";
 export default function JobCurrentSituation() {
   const { data, error } = useEmploymentStats();
 
+  if (error) {
+    console.log(error);
+  }
+
   return (
     <div className="w-full grid grid-cols-2 gap-10">
       {data?.classes.map((classItem) => {
