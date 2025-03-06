@@ -10,17 +10,12 @@ const data = [
 ];
 
 export default function JobPieChart() {
-  const [isMounted, setIsMounted] = useState(false);
   const { data: employmentData, error } = useTotalEmplymentStats();
-  
+
   if (error) {
     console.log(error);
   }
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
-  if (!isMounted) return null;
   return (
     <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8 border border-[#E5E5E5]">
       <div className="w-full">
