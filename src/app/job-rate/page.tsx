@@ -3,9 +3,9 @@ import JobPieChart from "@/components/jobRate/JobPieChart";
 
 export default function JobRate() {
   return (
-    <main className="flex flex-col pt-16 gap-[63px]">
+    <div className="flex flex-col pt-16 gap-[63px]">
       <JobPieChart />
       <JobCurrentSituation />
-    </main>
+    </div>
   );
 }
