@@ -4,6 +4,12 @@ import { useEmploymentStats } from "@/apis/applications";
 
 export default function JobCurrentSituation() {
   const { data, error } = useEmploymentStats();
+  const department = [
+    "소프트웨어 개발 1반",
+    "소프트웨어 개발 2반",
+    "임베디드 개발과",
+    "인공지능 개발과",
+  ];
 
   if (error) {
     console.log(error);
@@ -12,29 +18,12 @@ export default function JobCurrentSituation() {
   return (
     <div className="w-full grid grid-cols-2 gap-10">
       {data?.classes.map((classItem) => {
-        let className = "";
-
-        switch (classItem.class_id) {
-          case 1:
-            className = "소프트웨어 개발 1반";
-            break;
-          case 2:
-            className = "소프트웨어 개발 2반";
-            break;
-          case 3:
-            className = "임베디드 개발과";
-            break;
-          case 4:
-            className = "인공지능 개발과";
-            break;
-          default:
-            className = "기타";
-        }
-
         return (
           <div key={classItem.class_id} className="flex flex-col gap-4">
             <header className="flex items-center justify-between pr-[17px]">
-              <span className="text-h6 font-b">{className}</span>
+              <span className="text-h6 font-b">
+                {department[classItem.class_id - 1]}
+              </span>
               <span className="text-b3 font-m text-subBlue">
                 {classItem.passed_students}/{classItem.total_students}
               </span>
