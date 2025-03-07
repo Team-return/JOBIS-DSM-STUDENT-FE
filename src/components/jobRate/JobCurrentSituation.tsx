@@ -2,14 +2,26 @@
 
 import { useEmploymentStats } from "@/apis/applications";
 
+export const setClass = (classId: number) => {
+  switch (classId) {
+    case 1:
+      return "소프트웨어 개발 1반";
+
+    case 2:
+      return "소프트웨어 개발 2반";
+
+    case 3:
+      return "임베디드 개발과";
+
+    case 4:
+      return "인공지능 개발과";
+
+    default:
+      return "기타";
+  }
+};
 export default function JobCurrentSituation() {
   const { data, error } = useEmploymentStats();
-  const department = [
-    "소프트웨어 개발 1반",
-    "소프트웨어 개발 2반",
-    "임베디드 개발과",
-    "인공지능 개발과",
-  ];
 
   if (error) {
     console.log(error);
@@ -22,7 +34,7 @@ export default function JobCurrentSituation() {
           <div key={classItem.class_id} className="flex flex-col gap-4">
             <header className="flex items-center justify-between pr-[17px]">
               <span className="text-h6 font-b">
-                {department[classItem.class_id - 1]}
+                {setClass(classItem.class_id)}
               </span>
               <span className="text-b3 font-m text-subBlue">
                 {classItem.passed_students}/{classItem.total_students}
