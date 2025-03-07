@@ -1,7 +1,7 @@
 "use client";
 
 import { useEmploymentStats } from "@/apis/applications";
-import useGetClass from "@/hook/useGetClass";
+import useGetClass from "@/util/getClassName";
 
 export default function JobCurrentSituation() {
   const { data, error } = useEmploymentStats();
