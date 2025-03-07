@@ -1,4 +1,4 @@
-export default function useGetClass(classId: number) {
+export default function getClassName(classId: number) {
   switch (classId) {
     case 1:
       return "소프트웨어 개발 1반";
