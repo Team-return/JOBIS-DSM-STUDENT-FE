@@ -32,3 +32,22 @@ export interface ApplyRequestBody {
 export interface RejectionResponseType {
   rejection_reason: string;
 }
+
+export interface EmploymentStatsResponseType {
+  classes: {
+    class_id: number;
+    employment_rate_response_list: {
+      id: number;
+      company_name: string;
+      logo_url: string;
+    }[];
+    total_students: number;
+    passed_students: number;
+  }[];
+}
+
+export interface TotalEmPlymentStatsResponseType {
+  total_student_count: number;
+  pass_count: number;
+  approved_count: number;
+}
