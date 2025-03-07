@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 const data = [
-  { name: "취업 완료", value: 59, color: "#237BC9" },
-  { name: "취업 전", value: 16, color: "rgba(35, 123, 201, 0.2)" },
+  { name: "취업 완료", value: 59, color: "#237BC9", id: 1 },
+  { name: "취업 전", value: 16, color: "rgba(35, 123, 201, 0.2)", id: 2 },
 ];
 
 export default function JobPieChart() {
@@ -50,7 +50,11 @@ export default function JobPieChart() {
               isAnimationActive={false}
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} stroke="none" />
+                <Cell
+                  key={`cell-${entry.id}`}
+                  fill={entry.color}
+                  stroke="none"
+                />
               ))}
             </Pie>
           </PieChart>
