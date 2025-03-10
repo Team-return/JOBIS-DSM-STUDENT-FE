@@ -26,7 +26,7 @@ export default function JobPieChart() {
               <span className="text-caption font-m text-subBlue">취업완료</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-[6px] h-[6px] rounded-xl bg-[#CCC]"></div>
+              <div className="w-[6px] h-[6px] rounded-xl bg-[#CCC]" />
               <span className="text-caption font-m text-[#7F7F7F]">
                 취업 전
               </span>
