@@ -4,11 +4,7 @@ import { useEmploymentStats } from "@/apis/applications";
 import useGetClass from "@/util/getClassName";
 
 export default function JobCurrentSituation() {
-  const { data, error } = useEmploymentStats();
-
-  if (error) {
-    console.log(error);
-  }
+  const { data } = useEmploymentStats();
 
   return (
     <div className="w-full grid grid-cols-2 gap-10">
