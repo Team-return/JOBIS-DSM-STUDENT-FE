@@ -48,6 +48,6 @@ export interface EmploymentStatsResponseType {
 
 export interface TotalEmPlymentStatsResponseType {
   total_student_count: number;
-  pass_count: number;
+  passed_count: number;
   approved_count: number;
 }
