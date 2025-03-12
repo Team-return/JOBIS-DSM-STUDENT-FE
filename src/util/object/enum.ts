@@ -40,11 +40,11 @@ export const applicationStatusStyle = {
   ACCEPTANCE: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
 };
 
-export const bannerTypeEnum = {
+export const bannerTypeEnum: Record<string, string> = {
   RECRUITMENT: "/recruitments/?page=1",
   BOOKMARK: "/",
   NONE: "/",
   INTERNSHIP: "/recruitments/?page=1&winter_intern=true",
   COMPANY: "/companies/detail/",
   EMPLOYMENT: "/job-rate",
-}
+} 
