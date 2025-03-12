@@ -3,24 +3,26 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
+import { useGetBanners } from "@/apis/banners";
+import { bannerTypeEnum } from "@/util/object/enum";
 
 //=======================================================================================================
-import PopularCompanyBanner from "@public/PopularCompanyBanner.webp";
-import WinterInternBanner from "@public/WinterInternBanner.webp";
 import { useRouter } from "next/navigation";
-const BannerList = [
-  {
-    img: WinterInternBanner,
-    url: "",
-  },
-  {
-    img: PopularCompanyBanner,
-    url: "/companies/detail/?id=9",
-  },
-];
+import EmploymentRateBanner from "@public/EmploymentRateBanner.webp";
+
+const EmploymentRateBannerList = {
+  id: 1,
+  banner_url: EmploymentRateBanner,
+  banner_type: "EMPLOYMENT",
+  detail_id: 1,
+};
+
 //=======================================================================================================
 
 export default function Banner() {
+  const { data } = useGetBanners();
+  const BannerList = [EmploymentRateBannerList, ...(data?.banners || [])];
+
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
   const navigator = useRouter();
@@ -33,6 +35,7 @@ export default function Banner() {
       return ++prev;
     });
   };
+
   const handleChangePrev = () => {
     setSelected((prev) => {
       if (prev === 0) {
@@ -55,18 +58,21 @@ export default function Banner() {
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap">
         {BannerList.map((item, index) => (
           <div
-            key={index}
-            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
-              index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
-            } ${
-              index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
-            }`}
+            key={item.id}
+            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
+              } ${index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
+              }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              navigator.push(item.url);
+              if (item.banner_type === "COMPANY") {
+                navigator.push(`${bannerTypeEnum.COMPANY}?id=${item.detail_id}`);
+              } else {
+                navigator.push(bannerTypeEnum[item.banner_type]);
+              }
             }}
+
           >
-            <Image className="object-cover" fill src={item.img} alt="" />
+            <Image className="object-cover" fill src={item.banner_url} alt="" />
           </div>
         ))}
       </div>
@@ -81,9 +87,8 @@ export default function Banner() {
             }}
           >
             <div
-              className={`w-[8px] h-[8px] rounded-full ${
-                index === selected ? "bg-white" : "bg-white/[.4]"
-              }`}
+              className={`w-[8px] h-[8px] rounded-full ${index === selected ? "bg-white" : "bg-white/[.4]"
+                }`}
             />
           </div>
         ))}
