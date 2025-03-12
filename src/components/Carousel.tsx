@@ -8,11 +8,12 @@ import { bannerTypeEnum } from "@/util/object/enum";
 
 //=======================================================================================================
 import { useRouter } from "next/navigation";
-import EmploymentRateBanner from "@public/EmploymentRateBanner.webp";
+import EmploymentRateBannerImage from "@public/EmploymentRateBanner.webp";
+import { BannerStatusType } from "@/apis/banners/type";
 
-const EmploymentRateBannerList = {
+const EmploymentRateBanner = {
   id: 1,
-  banner_url: EmploymentRateBanner,
+  banner_url: EmploymentRateBannerImage,
   banner_type: "EMPLOYMENT",
   detail_id: 1,
 };
@@ -21,7 +22,7 @@ const EmploymentRateBannerList = {
 
 export default function Banner() {
   const { data } = useGetBanners();
-  const BannerList = [EmploymentRateBannerList, ...(data?.banners || [])];
+  const BannerList = [EmploymentRateBanner, ...(data?.banners || [])];
 
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
@@ -67,7 +68,7 @@ export default function Banner() {
               if (item.banner_type === "COMPANY") {
                 navigator.push(`${bannerTypeEnum.COMPANY}?id=${item.detail_id}`);
               } else {
-                navigator.push(bannerTypeEnum[item.banner_type]);
+                navigator.push(bannerTypeEnum[item.banner_type as BannerStatusType]);
               }
             }}
           >

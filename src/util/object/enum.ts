@@ -1,3 +1,5 @@
+import { BannerStatusType } from "@/apis/banners/type";
+
 export const hiringProgressEnum = {
   CULTURE_INTERVIEW: "컬쳐면접",
   DOCUMENT: "서류전형",
@@ -40,7 +42,7 @@ export const applicationStatusStyle = {
   ACCEPTANCE: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
 };
 
-export const bannerTypeEnum: Record<string, string> = {
+export const bannerTypeEnum: Record<BannerStatusType, string> = {
   RECRUITMENT: "/recruitments/?page=1",
   BOOKMARK: "/",
   NONE: "/",
