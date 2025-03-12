@@ -39,3 +39,12 @@ export const applicationStatusStyle = {
   FIELD_TRAIN: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
   ACCEPTANCE: { color: "#2ECC71", backgroundColor: "#E5F8EE" },
 };
+
+export const bannerTypeEnum = {
+  RECRUITMENT: "/recruitments/?page=1",
+  BOOKMARK: "/",
+  NONE: "/",
+  INTERNSHIP: "/recruitments/?page=1&winter_intern=true",
+  COMPANY: "/companies/detail/",
+  EMPLOYMENT: "/job-rate",
+}
