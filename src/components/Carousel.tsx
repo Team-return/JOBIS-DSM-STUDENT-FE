@@ -64,13 +64,12 @@ export default function Banner() {
               }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              if (item.banner_type as keyof typeof === "COMPANY") {
+              if (item.banner_type === "COMPANY") {
                 navigator.push(`${bannerTypeEnum.COMPANY}?id=${item.detail_id}`);
               } else {
                 navigator.push(bannerTypeEnum[item.banner_type]);
               }
             }}
-
           >
             <Image className="object-cover" fill src={item.banner_url} alt="" />
           </div>
