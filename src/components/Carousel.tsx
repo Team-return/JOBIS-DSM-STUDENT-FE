@@ -64,7 +64,7 @@ export default function Banner() {
               }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              if (item.banner_type === "COMPANY") {
+              if (item.banner_type as keyof typeof === "COMPANY") {
                 navigator.push(`${bannerTypeEnum.COMPANY}?id=${item.detail_id}`);
               } else {
                 navigator.push(bannerTypeEnum[item.banner_type]);
