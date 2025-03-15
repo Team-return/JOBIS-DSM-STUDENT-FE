@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import EmploymentRateBannerImage from "@public/EmploymentRateBanner.webp";
 import { BannerStatusType } from "@/apis/banners/type";
 
-const EmploymentRateBanner = {
+const employmentRateBanner = {
   id: 1,
   banner_url: EmploymentRateBannerImage,
   banner_type: "EMPLOYMENT",
@@ -22,7 +22,7 @@ const EmploymentRateBanner = {
 
 export default function Banner() {
   const { data } = useGetBanners();
-  const BannerList = [EmploymentRateBanner, ...(data?.banners || [])];
+  const bannerList = [employmentRateBanner, ...(data?.banners || [])];
 
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
@@ -30,7 +30,7 @@ export default function Banner() {
 
   const handleChangeNext = () => {
     setSelected((prev) => {
-      if (BannerList.length - 1 === prev) {
+      if (bannerList.length - 1 === prev) {
         return 0;
       }
       return ++prev;
@@ -40,7 +40,7 @@ export default function Banner() {
   const handleChangePrev = () => {
     setSelected((prev) => {
       if (prev === 0) {
-        return BannerList.length - 1;
+        return bannerList.length - 1;
       }
       return --prev;
     });
@@ -57,11 +57,11 @@ export default function Banner() {
   return (
     <div className="flex flex-col items-center gap-[15px]">
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap">
-        {BannerList.map((item, index) => (
+        {bannerList.map((item, index) => (
           <div
             key={item.id}
             className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
-              } ${index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
+              } ${index === bannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
               }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
@@ -78,7 +78,7 @@ export default function Banner() {
       </div>
 
       <div className="flex relative bottom-[50px] z-[3]">
-        {BannerList.map((_, index: number) => (
+        {bannerList.map((_, index: number) => (
           <div
             className="w-[20px] h-[20px] flex justify-center items-center cursor-pointer"
             key={index}
