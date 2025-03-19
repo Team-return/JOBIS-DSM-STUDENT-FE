@@ -1,16 +1,24 @@
 "use client";
 
-import { Icon } from "@team-return/design-system";
+import { Icon, useToastStore } from "@team-return/design-system";
 import Image from "next/image";
 import BannerBackground from "@public/BannerBackground.webp";
 import Guy from "@public/Guy.webp";
 import Link from "next/link";
 
 export default function BandBanner() {
+  const { append } = useToastStore();
   return (
     <Link
       className="w-full h-[120px] py-7 px-[100px] mt-15 cursor-pointer relative"
-      href={"/job-rate"}
+      href={"/"} /**추후에 다시 취업률 페이지로 연동 */
+      onClick={() => {
+        append({
+          title: "",
+          message: "개발 중인 기능입니다.",
+          type: "YELLOW",
+        });
+      }}
     >
       <div className="flex flex-col w-full h-full">
         <p className="text-white text-h6 leading-h6 font-b">
