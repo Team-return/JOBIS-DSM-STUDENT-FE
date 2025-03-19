@@ -11,7 +11,7 @@ export default function BandBanner() {
   return (
     <Link
       className="w-full h-[120px] py-7 px-[100px] mt-15 cursor-pointer relative"
-      href={"/"}
+      href={"/"} /**추후에 다시 취업률 페이지로 연동 */
       onClick={() => {
         append({
           title: "",
