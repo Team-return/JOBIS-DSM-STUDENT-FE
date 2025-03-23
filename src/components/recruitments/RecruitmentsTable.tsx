@@ -13,7 +13,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
     required_licenses,
     hiring_progress,
     benefits,
-    military,
+    military_support,
     submit_document,
     start_date,
     end_date,
@@ -134,7 +134,7 @@ function RecruitmentsTable({ ...rest }: RecruitmentsDetailTable) {
           {!winter_intern && (
             <tr>
               <td className="key">병역특례 여부</td>
-              <td className="value">{military ? "있음" : "없음"}</td>
+              <td className="value">{military_support ? "있음" : "없음"}</td>
             </tr>
           )}
           <tr>

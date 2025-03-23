@@ -31,7 +31,7 @@ export interface RecruitmentsDetailTable {
   train_pay: number;
   pay: string | null;
   benefits: string | null;
-  military: boolean;
+  military_support: boolean;
   submit_document: string;
   start_date: string;
   end_date: string;
