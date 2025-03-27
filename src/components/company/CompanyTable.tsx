@@ -55,7 +55,7 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
           </tr>
           <tr>
             <td className="key">연매출</td>
-            <td className="value">{take} 억원</td>
+            <td className="value">{take}억원</td>
           </tr>
           <tr>
             <td className="key">사업분야</td>
