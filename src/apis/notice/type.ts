@@ -1,14 +1,18 @@
-export interface NoticeListResponse {
+export interface NoticeListResponseType {
     id: number
     title: string
     created_at: string
+}
+
+export interface NoticeListResponse {
+    notices: NoticeListResponseType[]
 }
 
 export interface NoticeDetailResponse {
     title: string;
     content: string;
     created_at: string;
-    attachments: AttachmentResponse[];
+    attachments: AttachmentResponse[] | null;
 }
 
 type AttachmentType =
