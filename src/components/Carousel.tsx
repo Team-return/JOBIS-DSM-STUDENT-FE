@@ -3,35 +3,44 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import CircleBtn from "./CircleBtn";
+import { useGetBanners } from "@/apis/banners";
+import { bannerTypeEnum } from "@/util/object/enum";
 
 //=======================================================================================================
-import PopularCompanyBanner from "@public/PopularCompanyBanner.webp";
 import { useRouter } from "next/navigation";
-const BannerList = [
-  {
-    img: PopularCompanyBanner,
-    url: "/companies/detail/?id=9",
-  },
-];
+import EmploymentRateBannerImage from "@public/EmploymentRateBanner.webp";
+import { BannerStatusType } from "@/apis/banners/type";
+
+const employmentRateBanner = {
+  id: 1,
+  banner_url: EmploymentRateBannerImage,
+  banner_type: "EMPLOYMENT",
+  detail_id: 1,
+};
+
 //=======================================================================================================
 
 export default function Banner() {
+  const { data } = useGetBanners();
+  const bannerList = [employmentRateBanner, ...(data?.banners || [])];
+
   const [selected, setSelected] = useState<number>(0);
   const BannerRefs = useRef<HTMLDivElement[] | null[]>([]);
   const navigator = useRouter();
 
   const handleChangeNext = () => {
     setSelected((prev) => {
-      if (BannerList.length - 1 === prev) {
+      if (bannerList.length - 1 === prev) {
         return 0;
       }
       return ++prev;
     });
   };
+
   const handleChangePrev = () => {
     setSelected((prev) => {
       if (prev === 0) {
-        return BannerList.length - 1;
+        return bannerList.length - 1;
       }
       return --prev;
     });
@@ -48,26 +57,28 @@ export default function Banner() {
   return (
     <div className="flex flex-col items-center gap-[15px]">
       <div className="w-screen flex gap-[50px] relative overflow-hidden whitespace-nowrap">
-        {BannerList.map((item, index) => (
+        {bannerList.map((item, index) => (
           <div
-            key={index}
-            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${
-              index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
-            } ${
-              index === BannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
-            }`}
+            key={item.id}
+            className={`cursor-pointer z-[1] md:w-[65vw] sm:w-[85vw] md:h-[20vw] sm:h-[27vw] inline-block flex-[0_0_auto] relative rounded-[14px] border border-[#E5E5E5] border-solid overflow-hidden curosr-pointer ${index === 0 && "md:ml-[17.5vw] sm:ml-[7.5vw]"
+              } ${index === bannerList.length - 1 && "md:mr-[17.5vw] sm:mr-[7.5vw]"
+              }`}
             ref={(el: HTMLDivElement) => (BannerRefs.current[index] = el)}
             onClick={() => {
-              navigator.push(item.url);
+              if (item.banner_type === "COMPANY") {
+                navigator.push(`${bannerTypeEnum.COMPANY}?id=${item.detail_id}`);
+              } else {
+                navigator.push(bannerTypeEnum[item.banner_type as BannerStatusType]);
+              }
             }}
           >
-            <Image className="object-cover" fill src={item.img} alt="" />
+            <Image className="object-cover" fill src={item.banner_url} alt="" />
           </div>
         ))}
       </div>
 
       <div className="flex relative bottom-[50px] z-[3]">
-        {BannerList.map((_, index: number) => (
+        {bannerList.map((_, index: number) => (
           <div
             className="w-[20px] h-[20px] flex justify-center items-center cursor-pointer"
             key={index}
@@ -76,9 +87,8 @@ export default function Banner() {
             }}
           >
             <div
-              className={`w-[8px] h-[8px] rounded-full ${
-                index === selected ? "bg-white" : "bg-white/[.4]"
-              }`}
+              className={`w-[8px] h-[8px] rounded-full ${index === selected ? "bg-white" : "bg-white/[.4]"
+                }`}
             />
           </div>
         ))}

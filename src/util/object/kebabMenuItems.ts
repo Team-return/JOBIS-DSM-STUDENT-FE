@@ -68,3 +68,23 @@ export const getCompanyKebabItems = (
     },
   ];
 };
+
+export const getApplyKebabItems = (
+  onClickReSupport?: () => void,
+  onClickCancelApplication?: () => void
+): KebabItemType[] => {
+  return [
+    {
+      label: "재지원",
+      onClick: () => {
+        onClickReSupport && onClickReSupport();
+      },
+    },
+    {
+      label: "지원 취소",
+      onClick: () => {
+        onClickCancelApplication && onClickCancelApplication();
+      },
+    },
+  ];
+};

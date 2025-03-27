@@ -1,42 +1,45 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@next/font": "^13.5.2",
-    "@tanstack/react-query": "4.33.0",
-    "@team-return/design-system": "^1.1.15",
-    "aws-sdk": "^2.1582.0",
-    "axios": "^1.6.2",
-    "debug": "^4.3.4",
-    "next": "13.4.7",
-    "react": "^18.2.0",
-    "react-cookie": "6.1.0",
-    "react-dom": "18.2.0",
-    "react-query": "^3.39.3",
-    "styled-components": "^6.0.7",
-    "yarn": "^1.22.19"
-  },
-  "packageManager": "yarn@3.6.2",
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@types/debug": "^4",
-    "@types/eslint": "^8",
-    "@types/node": "20.8.2",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "@yarnpkg/sdks": "^3.0.0-rc.49",
-    "autoprefixer": "^10.4.17",
-    "eslint": "^8.50.0",
-    "eslint-config-next": "^13.5.3",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "typescript": "4.7.2"
-  }
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@channel.io/channel-web-sdk-loader": "^2.0.0",
+        "@next/font": "^13.5.2",
+        "@sentry/nextjs": "^8.33.1",
+        "@sentry/utils": "^8.33.1",
+        "@tanstack/react-query": "4.33.0",
+        "@team-return/design-system": "^1.1.15",
+        "axios": "^1.6.2",
+        "debug": "^4.3.4",
+        "next": "13.4.7",
+        "react": "^18.2.0",
+        "react-cookie": "^7.2.1",
+        "react-dom": "18.2.0",
+        "react-query": "^3.39.3",
+        "recharts": "^2.15.1",
+        "styled-components": "^6.0.7"
+    },
+    "devDependencies": {
+        "@sentry/webpack-plugin": "^2.22.5",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@types/debug": "^4",
+        "@types/eslint": "^8",
+        "@types/node": "20.8.2",
+        "@types/react": "18.2.0",
+        "@types/react-dom": "18.2.7",
+        "@yarnpkg/sdks": "^3.0.0-rc.49",
+        "autoprefixer": "^10.4.17",
+        "eslint": "^8.50.0",
+        "eslint-config-next": "^13.5.3",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
+        "typescript": "4.7.2"
+    },
+    "packageManager": "yarn@3.6.1+sha512.de524adec81a6c3d7a26d936d439d2832e351cdfc5728f9d91f3fc85dd20b04391c038e9b4ecab11cae2b0dd9f0d55fd355af766bc5c1a7f8d25d96bb2a0b2ca"
 }

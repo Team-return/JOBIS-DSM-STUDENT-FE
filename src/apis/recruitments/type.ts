@@ -25,18 +25,20 @@ export interface RecruitmentsDetailType extends RecruitmentsDetailTable {
 
 export interface RecruitmentsDetailTable {
   areas: AreasType[];
-  required_grade: number | null;
   working_hours: string;
   required_licenses: string[] | [];
   hiring_progress: HiringProgressType[];
   train_pay: number;
   pay: string | null;
   benefits: string | null;
-  military: boolean;
+  military_support: boolean;
   submit_document: string;
   start_date: string;
   end_date: string;
   etc: string | null;
+  winter_intern: boolean;
+  additional_qualifications: string | null;
+  integration_plan: boolean;
 }
 
 interface CodeType {
