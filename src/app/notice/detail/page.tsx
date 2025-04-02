@@ -2,10 +2,11 @@
 
 import { useGetNoticeDetailData } from "@/apis/notice";
 import AttachedBox from "@/components/notice/AttachedBox";
+import { useSearchParams } from "next/navigation";
 
-export default function NoticeDetailPage(props:any) {
-    const noticeId = props.params.id
-    const {data} = useGetNoticeDetailData(noticeId);
+export default function NoticeDetailPage() {
+    const param = useSearchParams();
+    const { data } = useGetNoticeDetailData(param.get('id')!);
 
     return (
         <div className="flex justify-cent4er items-center mt-[100px]">
@@ -16,11 +17,10 @@ export default function NoticeDetailPage(props:any) {
                         <h1 className="font-[700] text-[28px]">{data?.title}</h1>
                         <h2 className="font-[500] text-[20px] mt-[20px]">{data?.created_at.substring(0, 10)}</h2>
                         <p className="font-[400] text-[16px] mt-[28px] whitespace-pre-line">{data?.content}</p>
-                        {data?.attachments && <AttachedBox attachmentProps = {data?.attachments || []} /> }
+                        {data?.attachments && <AttachedBox attachmentProps = {data?.attachments} />}
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
