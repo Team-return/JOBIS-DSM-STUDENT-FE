@@ -1,7 +1,8 @@
+'use client'
+
 import Pagination from "../common/Pagination"
 import Link from "next/link";
 import NoticeListTable from "./NoticeListTable";
-import { useGetNoticeList } from "@/apis/notice";
 
 export default function NoticeLists() {
     return (
@@ -16,9 +17,6 @@ export default function NoticeLists() {
                 </thead>
                 <NoticeListTable />
             </table>
-            <div className="mb-[98px]">
-                <Pagination />
-            </div>
         </div>
     )
 }
