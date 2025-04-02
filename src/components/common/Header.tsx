@@ -37,14 +37,14 @@ function Header() {
         >
           모집의뢰서
         </Link>
-        <Link
+        {/* <Link
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/notice") !== -1 && "font-b"
           }`}
           href={"/notice"}
         >
           공지사항
-        </Link>
+        </Link> */}
         <Link
           className={`text-[#333333] text-b2 ${
             pathname.indexOf("/mypage") !== -1 && "font-b"
