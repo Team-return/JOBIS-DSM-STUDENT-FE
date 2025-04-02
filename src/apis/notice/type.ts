@@ -1,3 +1,9 @@
+export interface NoticeListResponseType {
+    id: number
+    title: string
+    created_at: string
+}
+
 export interface NoticeListResponse {
     id: number
     title: string
