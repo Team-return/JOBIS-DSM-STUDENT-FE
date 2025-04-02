@@ -5,16 +5,14 @@ export interface NoticeListResponseType {
 }
 
 export interface NoticeListResponse {
-    id: number
-    title: string
-    created_at: string
+    notices: NoticeListResponseType[]
 }
 
 export interface NoticeDetailResponse {
     title: string;
     content: string;
     created_at: string;
-    attachments: AttachmentResponse[];
+    attachments: AttachmentResponse[] | null;
 }
 
 type AttachmentType =

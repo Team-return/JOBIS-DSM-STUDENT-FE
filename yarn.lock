@@ -1378,6 +1378,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/core@npm:^9.10.1":
+  version: 9.10.1
+  resolution: "@sentry/core@npm:9.10.1"
+  checksum: 1d7bac88b750311bbdc4dbe1573040746dbbbdfdf051cdd5ab01187047e6cb86a3486fb15bc05b9416e2214b394993edb1540e9675b841917cea7f93e86a83f2
+  languageName: node
+  linkType: hard
+
 "@sentry/nextjs@npm:^8.33.1":
   version: 8.55.0
   resolution: "@sentry/nextjs@npm:8.55.0"
@@ -5474,6 +5481,7 @@ __metadata:
     "@opentelemetry/core": ^2.0.0
     "@opentelemetry/instrumentation": ^0.200.0
     "@opentelemetry/sdk-trace-base": ^2.0.0
+    "@sentry/core": ^9.10.1
     "@sentry/nextjs": ^8.33.1
     "@sentry/utils": ^8.33.1
     "@sentry/webpack-plugin": ^2.22.5
