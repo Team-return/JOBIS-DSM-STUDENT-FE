@@ -9,7 +9,7 @@ export default function NoticeListTable () {
     return (
         <>
             {data?.notices.map((notice, index) => (
-                <Link key={notice.id} href={`detail/${notice.id}`}>
+                <Link key={notice.id} href={`detail/?id=${notice.id}`}>
                     <tbody className="flex justify-center items-center border-collapse">
                         <tr className="h-[60px] border-b-[0.5px] border-[#7F7F7F]">
                             <td className="border-none w-[192px] text-[16px] text-[#135C9D] flex justify-center">{index+1}</td>
