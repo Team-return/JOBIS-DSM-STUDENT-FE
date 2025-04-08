@@ -33,7 +33,7 @@ export default function BookmarkCard() {
           key={recruitment_id}
         >
           <div className="flex flex-col w-full overflow-hidden transition duration-200 cursor-pointer shadow-elevaiton rounded-xl hover:transition hover:scale-105">
-            <div className="w-[100px] h-[100px] overflow-hidden flex justify-center items-center mx-4">
+            <div className="h-[100px] overflow-hidden flex justify-center items-center mx-4">
               <Image src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${company_logo_url}`} width={100} height={100} alt="기업로고" />
             </div>
             <div className="relative bg-[#ffffff] p-[14px] flex-1 flex flex-col">

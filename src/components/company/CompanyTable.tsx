@@ -26,11 +26,6 @@ function CompanyTable({ ...rest }: CompaniesDetailsTable) {
             <td className="key">대표</td>
             <td className="value">{representative_name}</td>
           </tr>
-
-          <tr>
-            <td className="key">직원 수</td>
-            <td className="value">{worker_number} 명</td>
-          </tr>
           <tr>
             <td className="key">서비스이름</td>
             <td className="value">{service_name}</td>
