@@ -11,14 +11,7 @@ export default function BandBanner() {
   return (
     <Link
       className="w-full h-[120px] py-7 px-[100px] mt-15 cursor-pointer relative"
-      href={"/"} /**추후에 다시 취업률 페이지로 연동 */
-      onClick={() => {
-        append({
-          title: "",
-          message: "개발 중인 기능입니다.",
-          type: "YELLOW",
-        });
-      }}
+      href={"/job-rate"}
     >
       <div className="flex flex-col w-full h-full">
         <p className="text-white text-h6 leading-h6 font-b">
