@@ -5,25 +5,27 @@ import { useEffect, useState } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 export default function JobPieChart() {
-  const { data: employmentData } = useTotalEmplymentStats();
+  const { data: employmentData, isLoading } = useTotalEmplymentStats();
+
   const passedCount = employmentData?.passed_count || 0;
   const totalStudentCount = employmentData?.total_student_count || 1;
+
   const data = [
     {
       name: "취업 완료",
-      value: employmentData?.passed_count,
+      value: passedCount,
       color: "#237BC9",
       id: 1,
     },
     {
       name: "취업 전",
-      value:
-        (employmentData?.total_student_count ?? 0) -
-        (employmentData?.passed_count ?? 0),
+      value: totalStudentCount - passedCount,
       color: "rgba(35, 123, 201, 0.2)",
       id: 2,
     },
   ];
+
+  if (isLoading || !employmentData) return null;
 
   return (
     <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8 border border-[#E5E5E5]">
@@ -58,7 +60,7 @@ export default function JobPieChart() {
               endAngle={-270}
               isAnimationActive={false}
             >
-              {data.map((entry, index) => (
+              {data.map((entry) => (
                 <Cell
                   key={`cell-${entry.id}`}
                   fill={entry.color}
@@ -83,7 +85,7 @@ export default function JobPieChart() {
         <div className="w-[1px] h-[26px] bg-[#E5E5E5]"></div>
         <div className="flex flex-col gap-3 items-center">
           <p className="text-primaryBlue03 font-m text-caption">전체 통계</p>
-          <p className="text-primaryBlue03 font-m text-h6">{`${employmentData?.passed_count}/${employmentData?.total_student_count}명`}</p>
+          <p className="text-primaryBlue03 font-m text-h6">{`${passedCount}/${totalStudentCount}명`}</p>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEmploymentStats } from "@/apis/applications";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 import useGetClass from "@/util/getClassName";
 
 export default function JobCurrentSituation() {
@@ -28,7 +28,7 @@ export default function JobCurrentSituation() {
                   className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1"
                 >
                   <img
-                    src={`${BASE_URL}/applications/employment${data.logo_url}`}
+                    src={`${BASE_URL}/${data.logo_url}`}
                     alt={`${data.company_name} 로고`}
                     className="w-full h-auto rounded-md"
                   />

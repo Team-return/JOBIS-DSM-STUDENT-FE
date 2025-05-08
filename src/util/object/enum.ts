@@ -48,5 +48,5 @@ export const bannerTypeEnum: Record<BannerStatusType, string> = {
   NONE: "/",
   INTERNSHIP: "/recruitments/?page=1&winter_intern=true",
   COMPANY: "/companies/detail/",
-  EMPLOYMENT: "/", /**추후에 다시 취업률 페이지로 연동 */
-} 
+  EMPLOYMENT: "/job-rate",
+};
