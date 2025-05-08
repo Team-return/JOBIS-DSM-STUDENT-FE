@@ -25,7 +25,7 @@ export default function JobCurrentSituation() {
               {classItem.employment_rate_response_list.map((data) => (
                 <div
                   key={data.id}
-                  className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1 flex"
+                  className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1 flex justify-center"
                 >
                   <img
                     src={`${BASE_URL}/${data.logo_url}`}
