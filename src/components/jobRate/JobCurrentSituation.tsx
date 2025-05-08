@@ -30,7 +30,7 @@ export default function JobCurrentSituation() {
                   <img
                     src={`${BASE_URL}/${data.logo_url}`}
                     alt={`${data.company_name} 로고`}
-                    className="w-full h-auto rounded-md"
+                    className="w-[100px] h-[44px]rounded-md"
                   />
                 </div>
               ))}
