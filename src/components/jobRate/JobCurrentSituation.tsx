@@ -1,6 +1,7 @@
 "use client";
 
 import { useEmploymentStats } from "@/apis/applications";
+const BASE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 import useGetClass from "@/util/getClassName";
 
 export default function JobCurrentSituation() {
@@ -24,12 +25,12 @@ export default function JobCurrentSituation() {
               {classItem.employment_rate_response_list.map((data) => (
                 <div
                   key={data.id}
-                  className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1"
+                  className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1 flex justify-center"
                 >
                   <img
-                    src={data.logo_url}
+                    src={`${BASE_URL}/${data.logo_url}`}
                     alt={`${data.company_name} 로고`}
-                    className="w-full h-auto rounded-md"
+                    className="rounded-md"
                   />
                 </div>
               ))}
