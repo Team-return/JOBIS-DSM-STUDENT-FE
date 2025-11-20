@@ -23,7 +23,6 @@ function Filter() {
   const [filter, setFilter] = useState({
     page: getQueryString("page"),
     job_code: getQueryString("job_code"),
-    tech_code: getQueryString("tech_code"),
     winter_intern: getQueryString("winter_intern"),
   });
   const { state: searchState, onChange: onChangeSearch } = useForm<{

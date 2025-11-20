@@ -1,11 +1,11 @@
 "use client";
 
 import { useTotalEmplymentStats } from "@/apis/applications";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-export default function JobPieChart() {
-  const { data: employmentData, isLoading } = useTotalEmplymentStats();
+export default function JobPieChart({ year }: { year: number }) {
+  const { data: employmentData, isLoading } = useTotalEmplymentStats(year);
 
   const passedCount = employmentData?.passed_count || 0;
   const totalStudentCount = employmentData?.total_student_count || 1;
@@ -25,7 +25,32 @@ export default function JobPieChart() {
     },
   ];
 
-  if (isLoading || !employmentData) return null;
+  if (isLoading || !employmentData) {
+    return (
+      <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9 gap-8 border border-[#E5E5E5] animate-pulse">
+        <div className="w-full flex justify-end mb-2">
+          <div className="w-24 h-6 bg-[#eee] rounded" />
+        </div>
+        <div className="flex flex-col gap-[10px] items-center relative">
+          <div className="w-[160px] h-[160px] rounded-full bg-[#f5f5f5]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-b2 font-b text-primaryBlue03">
+            --
+          </div>
+        </div>
+        <div className="flex justify-center items-center gap-[34px] w-full">
+          <div className="flex flex-col gap-3 items-center">
+            <div className="w-28 h-4 bg-[#eee] rounded" />
+            <div className="w-20 h-6 bg-[#eee] rounded mt-1" />
+          </div>
+          <div className="w-[1px] h-[26px] bg-[#E5E5E5]" />
+          <div className="flex flex-col gap-3 items-center">
+            <div className="w-28 h-4 bg-[#eee] rounded" />
+            <div className="w-24 h-6 bg-[#eee] rounded mt-1" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center bg-[#FFF] rounded-xl pt-[24px] pb-[27px] pr-9  gap-8 border border-[#E5E5E5]">

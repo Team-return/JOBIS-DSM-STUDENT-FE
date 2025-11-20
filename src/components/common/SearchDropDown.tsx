@@ -115,7 +115,15 @@ function TechCodeDropDownComponent({
       <div className="flex justify-end h-8 mt-2">
         <GhostBtn
           onClick={() => {
+            const currentJobCode = getQueryString("job_code");
+            const currentWinterIntern = getQueryString("winter_intern");
+            const currentName = getQueryString("name");
+            
             setQueryString({
+              page: "1",
+              job_code: currentJobCode,
+              winter_intern: currentWinterIntern,
+              name: currentName,
               tech_code: select.map((item) => item.code).toString(),
             });
             closeDropDown();
