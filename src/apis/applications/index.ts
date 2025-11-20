@@ -132,19 +132,19 @@ export function useDeleteApplication(applicationId: number) {
   );
 }
 
-export function useEmploymentStats() {
-  return useQuery(["employmentStats"], async () => {
+export function useEmploymentStats(year?: number) {
+  return useQuery(["employmentStats", year], async () => {
     const { data } = await instance.get<EmploymentStatsResponseType>(
-      `${router}/employment`
+      `${router}/employment/${year}`
     );
     return data;
   });
 }
 
-export function useTotalEmplymentStats() {
-  return useQuery(["totalEmploymentStats"], async () => {
+export function useTotalEmplymentStats(year?: number) {
+  return useQuery(["totalEmploymentStats", year], async () => {
     const { data } = await instance.get<TotalEmPlymentStatsResponseType>(
-      `${router}/employment/count`
+      `${router}/employment/count/${year}`
     );
     return data;
   });

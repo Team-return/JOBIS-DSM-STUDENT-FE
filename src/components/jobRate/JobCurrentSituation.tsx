@@ -4,9 +4,29 @@ import { useEmploymentStats } from "@/apis/applications";
 const BASE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 import useGetClass from "@/util/getClassName";
 
-export default function JobCurrentSituation() {
-  const { data } = useEmploymentStats();
+export default function JobCurrentSituation({ year }: { year: number }) {
+  const { data, isLoading } = useEmploymentStats(year);
+  if (isLoading || !data) {
+    return (
+      <div className="bg-white rounded-xl p-6 border border-[#E5E5E5] animate-pulse">
+        <div className="flex justify-between items-center mb-4">
+          <div className="w-40 h-6 bg-[#eee] rounded" />
+          <div className="w-24 h-6 bg-[#eee] rounded" />
+        </div>
 
+        <div className="grid grid-cols-2 gap-4">
+          <div className="p-4 bg-[#fafafa] rounded">
+            <div className="w-32 h-4 bg-[#eee] rounded mb-2" />
+            <div className="w-full h-6 bg-[#eee] rounded" />
+          </div>
+          <div className="p-4 bg-[#fafafa] rounded">
+            <div className="w-32 h-4 bg-[#eee] rounded mb-2" />
+            <div className="w-full h-6 bg-[#eee] rounded" />
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="w-full grid grid-cols-2 gap-10">
       {data?.classes.map((classItem) => {
