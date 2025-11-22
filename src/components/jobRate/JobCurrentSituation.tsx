@@ -28,7 +28,7 @@ export default function JobCurrentSituation({ year }: { year: number }) {
     );
   }
   return (
-    <div className="w-full grid grid-cols-2 gap-10">
+    <div className="w-full grid grid-cols-2 gap-10 ">
       {data?.classes.map((classItem) => {
         return (
           <div key={classItem.class_id} className="flex flex-col gap-4">
@@ -41,17 +41,22 @@ export default function JobCurrentSituation({ year }: { year: number }) {
               </span>
             </header>
 
-            <div className="px-[18px] py-5 border border-[#E5E5E5] bg-[#fff] rounded-md grid grid-cols-4 gap-2">
+            <div className="pt-[12px] px-[18px] pb-[16px] border border-[#E5E5E5] bg-[#fff] rounded-md grid grid-cols-4 gap-2">
               {classItem.employment_rate_response_list.map((data) => (
                 <div
                   key={data.id}
-                  className="bg-[#fff] border border-[#F7F7F7] rounded-md w-[100px] h-[44px] p-1 flex justify-center"
+                  className="bg-[#fff] rounded-md p-1 flex flex-col items-center justify-center gap-1"
                 >
-                  <img
-                    src={`${BASE_URL}/${data.logo_url}`}
-                    alt={`${data.company_name} 로고`}
-                    className="rounded-md"
-                  />
+                  <div className="w-[100px] h-[40px] overflow-hidden rounded-md flex items-center justify-center bg-white shadow-[0px_4px_20px_rgba(112,144,176,0.12)]">
+                    <img
+                      src={`${BASE_URL}/${data.logo_url}`}
+                      alt={`${data.company_name} 로고`}
+                      className="object-contain w-[100px] h-[40px]"
+                    />
+                  </div>
+                  <div className="text-[#7F7F7F] text-caption truncate text-center w-[100px]">
+                    {data.company_name}
+                  </div>
                 </div>
               ))}
             </div>

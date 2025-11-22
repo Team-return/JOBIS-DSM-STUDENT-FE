@@ -95,7 +95,7 @@ export default function JobPieChart({ year }: { year: number }) {
             </Pie>
           </PieChart>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-b2 font-b text-primaryBlue03">
-            {((passedCount / totalStudentCount) * 100).toFixed(1)}
+            {((passedCount / totalStudentCount) * 100).toFixed(1)}%
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function JobPieChart({ year }: { year: number }) {
         <div className="flex flex-col gap-3 items-center">
           <p className="text-primaryBlue03 font-m text-caption">전체 취업률</p>
           <p className="text-primaryBlue03 font-m text-h6">
-            {((passedCount / totalStudentCount) * 100).toFixed(1)}
+            {((passedCount / totalStudentCount) * 100).toFixed(1)}%
           </p>
         </div>
         <div className="w-[1px] h-[26px] bg-[#E5E5E5]"></div>
