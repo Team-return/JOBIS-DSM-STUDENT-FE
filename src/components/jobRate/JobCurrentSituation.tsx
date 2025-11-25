@@ -54,8 +54,30 @@ export default function JobCurrentSituation({ year }: { year: number }) {
                       className="object-contain w-[100px] h-[40px]"
                     />
                   </div>
-                  <div className="text-[#7F7F7F] text-caption truncate text-center w-[100px]">
-                    {data.company_name}
+                  <div className="text-[#7F7F7F] text-caption text-center w-[100px] overflow-hidden relative">
+                    <div
+                      className="inline-block whitespace-nowrap marquee-track"
+                      aria-hidden="false"
+                    >
+                      <span className="inline-block pr-6">
+                        {data.company_name}
+                      </span>
+                      <span className="inline-block pr-6">
+                        {data.company_name}
+                      </span>
+                    </div>
+
+                    <style>{`
+                      .marquee-track {
+                        display: inline-block;
+                        /* adjust duration (s) to change speed */
+                        animation: marquee 8s linear infinite;
+                      }
+                      @keyframes marquee {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                      }
+                    `}</style>
                   </div>
                 </div>
               ))}
