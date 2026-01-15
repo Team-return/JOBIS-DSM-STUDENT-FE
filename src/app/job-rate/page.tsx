@@ -6,9 +6,9 @@ import JobPieChart from "@/components/jobRate/JobPieChart";
 import { useState } from "react";
 
 export default function JobRate() {
-  const [year, setYear] = useState<number>(new Date().getFullYear());
-  const startYear = 2024;
   const currentYear = new Date().getFullYear();
+  const [year, setYear] = useState<number>(currentYear);
+  const startYear = 2024;
   const dropdownItems = Array.from(
     { length: Math.max(currentYear, startYear) - startYear + 1 },
     (_, i) => {
