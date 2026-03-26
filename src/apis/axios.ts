@@ -1,7 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { Cookies } from "react-cookie";
 import { useReissueToken } from "./auth";
-import * as Sentry from "@sentry/nextjs";
 
 export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -29,8 +28,6 @@ instance.interceptors.response.use(
     if (axios.isAxiosError(error) && error.response) {
       const { config } = error;
       const refreshToken = cookies.get("refresh_token");
-
-      Sentry.captureMessage(error.response.data.message);
 
       if (
         (error.response.data.message === "Invalid Token" ||
