@@ -80,11 +80,15 @@ export const getApplyKebabItems = (
         onClickReSupport && onClickReSupport();
       },
     },
-    {
-      label: "지원 취소",
-      onClick: () => {
-        onClickCancelApplication && onClickCancelApplication();
-      },
-    },
+    ...(onClickCancelApplication
+      ? [
+          {
+            label: "지원 취소",
+            onClick: () => {
+              onClickCancelApplication();
+            },
+          },
+        ]
+      : []),
   ];
 };

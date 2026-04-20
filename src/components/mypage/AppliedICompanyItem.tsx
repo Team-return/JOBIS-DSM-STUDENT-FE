@@ -1,7 +1,4 @@
-import {
-  useDeleteApplication,
-  useGetRejectionReason,
-} from "@/apis/applications";
+import { useDeleteApplication, useGetRejectionReason } from "@/apis/applications";
 import { ApplicationItemType } from "@/apis/applications/type";
 import useModal from "@/hook/useModal";
 import { getApplyKebabItems } from "@/util/object/kebabMenuItems";
@@ -30,13 +27,13 @@ export default function APpliedCompanyItem({
   const { mutate: deleteApplication } = useDeleteApplication(application_id);
   const KebabItems: KebabItemType[] = getApplyKebabItems(
     () => {
-      navigator.push(
-        `/recruitments/apply/?id=${recruitment_id}&application=${application_id}`
-      );
+      navigator.push(`/recruitments/apply/?id=${recruitment_id}&application=${application_id}`);
     },
-    () => {
-      openModal();
-    }
+    application_status === "REQUESTED"
+      ? () => {
+          openModal();
+        }
+      : undefined,
   );
 
   const handleButtonClick = useCallback(
@@ -52,7 +49,7 @@ export default function APpliedCompanyItem({
       }
       setIsCollapse(!isCollapse);
     },
-    [isCollapse]
+    [isCollapse],
   );
 
   const parentRefHeight = parentRef.current?.style.height ?? "0px";
@@ -65,10 +62,7 @@ export default function APpliedCompanyItem({
   };
 
   return (
-    <div
-      className="w-full border border-[#e5e5e5] rounded-[8px] p-4 relative"
-      onClick={handleButtonClick}
-    >
+    <div className="w-full border border-[#e5e5e5] rounded-[8px] p-4 relative" onClick={handleButtonClick}>
       <div className="w-full h-[76px] flex items-center justify-between">
         <div className="ml-4">
           <p className="text-b2 leading-b2 font-m">{company}</p>
@@ -78,59 +72,46 @@ export default function APpliedCompanyItem({
           </p> */}
         </div>
         <div className="absolute bottom-[12px] left-[50%] translate-x-[-50%]">
-          <Icon
-            icon="Chevron"
-            color="gray60"
-            size={18}
-            direction={parentRefHeight === "0px" ? "bottom" : "top"}
-          />
+          <Icon icon="Chevron" color="gray60" size={18} direction={parentRefHeight === "0px" ? "bottom" : "top"} />
         </div>
         <div className="flex flex-row items-center gap-4">
           <ApplicationStatus status={application_status} />
-          {(application_status === "REQUESTED" ||
-            application_status === "REJECTED") && (
+          {(application_status === "REQUESTED" || application_status === "REJECTED") && (
             <>
               <KebabMenu items={KebabItems} />
-              <Modal>
-                <div className=" text-h5 font-b leading-h5">지원 취소</div>
-                <p className=" mt-2 text-b1 font-r leading-b1 text-[#7F7F7F]">
-                  {company}에 지원을 취소하겠습니까?
-                </p>
-                <div className=" flex justify-end gap-2 mt-8">
-                  <div
-                    onClick={closeModal}
-                    className="text-b2 leading-b2 font-b min-w-[122px] h-[48px] text-[#135C9D] flex gap-2 items-center py-[10px] px-6 border border-[#135C9D] rounded-[8px] hover:bg-[#135C9D] hover:text-white justify-center cursor-pointer"
-                  >
-                    취소
+              {application_status === "REQUESTED" && (
+                <Modal>
+                  <div className=" text-h5 font-b leading-h5">지원 취소</div>
+                  <p className=" mt-2 text-b1 font-r leading-b1 text-[#7F7F7F]">{company}에 지원을 취소하겠습니까?</p>
+                  <div className=" flex justify-end gap-2 mt-8">
+                    <div
+                      onClick={closeModal}
+                      className="text-b2 leading-b2 font-b min-w-[122px] h-[48px] text-[#135C9D] flex gap-2 items-center py-[10px] px-6 border border-[#135C9D] rounded-[8px] hover:bg-[#135C9D] hover:text-white justify-center cursor-pointer"
+                    >
+                      취소
+                    </div>
+                    <FillBtn
+                      onClick={() => {
+                        deleteApplication();
+                        closeModal();
+                        location.reload();
+                      }}
+                    >
+                      확인
+                    </FillBtn>
                   </div>
-                  <FillBtn
-                    onClick={() => {
-                      deleteApplication();
-                      closeModal();
-                      location.reload();
-                    }}
-                  >
-                    확인
-                  </FillBtn>
-                </div>
-              </Modal>
+                </Modal>
+              )}
             </>
           )}
         </div>
       </div>
-      <div
-        ref={parentRef}
-        className="w-full h-0 px-2 overflow-hidden transition-[height_0.35s_ease]"
-      >
+      <div ref={parentRef} className="w-full h-0 px-2 overflow-hidden transition-[height_0.35s_ease]">
         <div ref={childRef}>
           {application_status === "REJECTED" && (
             <div className="mb-6 ml-2">
-              <p className="text-b3 leading-b3 font-m text-[#E74C3C]">
-                반려사유
-              </p>
-              <p className="text-caption leading-caption font-r text-[#E74C3C]">
-                {rejectReason()}
-              </p>
+              <p className="text-b3 leading-b3 font-m text-[#E74C3C]">반려사유</p>
+              <p className="text-caption leading-caption font-r text-[#E74C3C]">{rejectReason()}</p>
             </div>
           )}
           <div className="flex flex-wrap gap-2">
@@ -158,10 +139,7 @@ export default function APpliedCompanyItem({
               <>
                 {item.type === "URL" && (
                   <Link href={item.url} target="_blank">
-                    <li
-                      key={idx}
-                      className="text-caption leading-caption font-r underline text-[#3366BB]"
-                    >
+                    <li key={idx} className="text-caption leading-caption font-r underline text-[#3366BB]">
                       {item.url}
                     </li>
                   </Link>
